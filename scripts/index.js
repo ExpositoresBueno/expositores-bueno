@@ -155,10 +155,6 @@ function renderizarProdutos(lista) {
     cardDiv.className = "product-card";
     cardDiv.style.cursor = "pointer";
 
-    cardDiv.addEventListener("click", () => {
-      window.location.href = `../pages/productDetails.html?id=${prod.id}`;
-    });
-
     // Pega apenas a primeira categoria para mostrar no badge (se for lista)
     const categoriaPrincipal = Array.isArray(prod.categoria)
       ? prod.categoria[0]
@@ -175,12 +171,18 @@ function renderizarProdutos(lista) {
             <div class="price-container">
               <span class="price-label">A partir de</span>
               <span class="price-value">R$ ${prod.preco.toFixed(2).replace(".", ",")}</span>
-                            <img class="carrinho_card" src="../images/carrinho_card.jpg">
-
+<button class="btn-add-cart" data-id="${prod.id}">
+  <img class="carrinho_card" src="../images/carrinho_card.jpg">
+</button>
             </div>
           </div>
         </div>
     `;
+    cardDiv.addEventListener("click", (e) => {
+      if (e.target.closest(".btn-add-cart")) return;
+
+      window.location.href = `../pages/productDetails.html?id=${prod.id}`;
+    });
     grid.appendChild(cardDiv);
   });
 }
@@ -237,9 +239,106 @@ window.paginaAnterior = () => {
 };
 
 /* ==========================================================================
+   CARRINHO
+   ========================================================================== */
+
+function getCart() {
+  return JSON.parse(localStorage.getItem("cart")) || [];
+}
+
+function saveCart(cart) {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+function addToCart(produto) {
+  const cart = getCart();
+
+  const existente = cart.find((item) => item.id === produto.id);
+
+  if (existente) {
+    existente.quantidade += 1;
+  } else {
+    cart.push({ ...produto, quantidade: 1 });
+  }
+
+  saveCart(cart);
+  atualizarContadorCarrinho();
+}
+
+function atualizarContadorCarrinho() {
+  const cart = getCart();
+  const total = cart.reduce((acc, item) => acc + item.quantidade, 0);
+
+  const contador = document.getElementById("cart-count");
+  if (contador) contador.textContent = total;
+}
+
+const cartDrawer = document.getElementById("cart-drawer");
+const cartOverlay = document.getElementById("cart-overlay");
+const closeCartBtn = document.getElementById("close-cart");
+const cartIcon = document.querySelector(".cart-icon");
+
+if (cartIcon) {
+  cartIcon.addEventListener("click", () => {
+    cartDrawer.classList.add("active");
+    cartOverlay.classList.add("active");
+    renderizarCarrinho();
+  });
+}
+
+if (closeCartBtn) {
+  closeCartBtn.addEventListener("click", fecharCarrinho);
+}
+
+if (cartOverlay) {
+  cartOverlay.addEventListener("click", fecharCarrinho);
+}
+
+function fecharCarrinho() {
+  cartDrawer.classList.remove("active");
+  cartOverlay.classList.remove("active");
+}
+
+function renderizarCarrinho() {
+  const cartItemsContainer = document.getElementById("cart-items");
+  const totalElement = document.getElementById("cart-total");
+  const cart = getCart();
+
+  if (!cartItemsContainer) return;
+
+  cartItemsContainer.innerHTML = "";
+
+  if (cart.length === 0) {
+    cartItemsContainer.innerHTML = "<p>Seu carrinho está vazio.</p>";
+    totalElement.textContent = "R$ 0,00";
+    return;
+  }
+
+  let total = 0;
+
+  cart.forEach((item) => {
+    total += item.preco * item.quantidade;
+
+    cartItemsContainer.innerHTML += `
+      <div class="cart-item">
+        <img src="${item.img}" alt="${item.nome}">
+        <div>
+          <h4>${item.nome}</h4>
+          <p>Qtd: ${item.quantidade}</p>
+          <p>R$ ${(item.preco * item.quantidade).toFixed(2).replace(".", ",")}</p>
+        </div>
+      </div>
+    `;
+  });
+
+  totalElement.textContent = "R$ " + total.toFixed(2).replace(".", ",");
+}
+
+/* ==========================================================================
    EVENTOS
    ========================================================================== */
 document.addEventListener("DOMContentLoaded", () => {
+  atualizarContadorCarrinho();
   carregarCatalogo();
 
   // CLIQUE NOS CARDS COLORIDOS E SIDEBAR
@@ -358,6 +457,21 @@ document.addEventListener("DOMContentLoaded", () => {
       aplicarFiltros();
     });
   }
+  // Clique no botão de adicionar ao carrinho
+  document.addEventListener("click", function (e) {
+    const botao = e.target.closest(".btn-add-cart");
+    if (!botao) return;
+
+    e.stopPropagation();
+
+    const id = parseInt(botao.dataset.id);
+    const produto = produtos.find((p) => p.id === id);
+
+    if (produto) {
+      addToCart(produto);
+      alert("Produto adicionado ao carrinho!");
+    }
+  });
 });
 
 /* ==========================================================================

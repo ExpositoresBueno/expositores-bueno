@@ -24,6 +24,7 @@
   <body>
     <div class="page">
       <header class="header">
+
         <div class="header-top">
           <div class="header-top-left">
             <img src="./images/callPhone.png" alt="Telefone" />
@@ -57,6 +58,10 @@
             <input type="text" id="search-input" placeholder="Buscar produtos" />
             <button id="search-btn" aria-label="Buscar">🔍</button>
           </div>
+          <div class="cart-icon">
+  <i class="fa-solid fa-cart-shopping"></i>
+  <span id="cart-count">0</span>
+</div>
         </div>
 
        <nav class="header-nav">
@@ -283,5 +288,25 @@
       <a href="https://wa.me/5551996034579" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
       </a>
-    </div> </body>
+    </div>
+  <!-- Overlay -->
+<div class="cart-overlay" id="cart-overlay"></div>
+
+<!-- Carrinho Lateral -->
+<div class="cart-drawer" id="cart-drawer">
+  <div class="cart-header">
+    <h2>Seu Carrinho</h2>
+    <button id="close-cart">✕</button>
+  </div>
+
+  <div class="cart-items" id="cart-items"></div>
+
+  <div class="cart-footer">
+    <div class="cart-total">
+      Total: <span id="cart-total">R$ 0,00</span>
+    </div>
+    <button class="checkout-btn">Finalizar Pedido</button>
+  </div>
+</div>
+  </body>
 </html>
