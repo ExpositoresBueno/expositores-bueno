@@ -1214,5 +1214,39 @@ body {
     display: block;
   }
 }
+/* ===== AJUSTE SEÇÃO ALGUNS PRODUTOS MOBILE ===== */
+@media (max-width: 768px) {
+  .carousel-section,
+  .carousel-wrapper,
+  .carousel-container,
+  .carousel-item,
+  .carousel-slide {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .carousel-section {
+    display: block !important;
+    padding: 15px !important;
+  }
+
+  .carousel-container {
+    margin: 0 auto !important;
+  }
+
+  .carousel-slide img,
+  .carousel-item img {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+  }
+
+  .carousel-prev,
+  .carousel-next {
+    width: 45px !important;
+    font-size: 30px !important;
+  }
+}
+/* ===== FIM AJUSTE SEÇÃO ALGUNS PRODUTOS MOBILE ===== */
 /* ===== FIM AJUSTE MOBILE EXTRA GPT ===== */
 /* =====  IM AJUSTE MOBILE TESTE GPT ===== */
