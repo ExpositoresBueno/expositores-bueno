@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (Array.isArray(produtoSelecionado.galeria) && produtoSelecionado.galeria.length > 0) {
           produtoSelecionado.galeria.forEach((imagem, index) => {
             const thumb = document.createElement('img');
-            const imagemCorrigida = imagem.replace('./images/', '../images/');
+            const imagemCorrigida = encodeURI(imagem.replace('./images/', '../images/'));
 
             thumb.src = imagemCorrigida;
             thumb.alt = `${produtoSelecionado.nome} - imagem ${index + 2}`;
