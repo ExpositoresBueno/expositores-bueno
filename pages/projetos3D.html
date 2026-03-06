@@ -50,6 +50,10 @@
             <input type="text" id="search-input" placeholder="Buscar produtos" />
             <button id="search-btn" aria-label="Buscar">🔍</button>
           </div>
+          <div class="cart-icon">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="cart-count">0</span>
+          </div>
         </div>
 
        <nav class="header-nav">
@@ -170,8 +174,19 @@
               </div>
             </div>
           </section>
-
         </main>
+        <div class="cart-overlay" id="cart-overlay"></div>
+          <div class="cart-drawer" id="cart-drawer">
+            <div class="cart-header">
+              <h2>Seu Carrinho</h2>
+              <button id="close-cart">✕</button>
+            </div>
+            <div class="cart-items" id="cart-items"></div>
+            <div class="cart-footer">
+              <div class="cart-total">Total: <span id="cart-total">R$ 0,00</span></div>
+              <button class="checkout-btn">Finalizar Pedido</button>
+            </div>
+          </div>
       </div>
       </main>
 

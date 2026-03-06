@@ -47,6 +47,10 @@
             <input type="text" id="search-input" placeholder="Buscar produtos" />
             <button id="search-btn" aria-label="Buscar">🔍</button>
           </div>
+          <div class="cart-icon">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="cart-count">0</span>
+          </div>
         </div>
 
        <nav class="header-nav">
@@ -120,8 +124,19 @@
             <div class="cta-installations_text"><img src="../images/whatsappIcon.png" alt="">Conversar com um Consultor</div>
           </a>
         </section>
-
       </main>
+      <div class="cart-overlay" id="cart-overlay"></div>
+          <div class="cart-drawer" id="cart-drawer">
+            <div class="cart-header">
+              <h2>Seu Carrinho</h2>
+              <button id="close-cart">✕</button>
+            </div>
+            <div class="cart-items" id="cart-items"></div>
+            <div class="cart-footer">
+              <div class="cart-total">Total: <span id="cart-total">R$ 0,00</span></div>
+              <button class="checkout-btn">Finalizar Pedido</button>
+            </div>
+          </div>
 
       <footer class="main-footer">
           <div class="footer-container">
@@ -161,7 +176,7 @@
         <h3>QUEM SOMOS</h3>
         <ul class="footer-info">
           <li>
-            <a href="./pages/about.html">Nossa História</a>
+            <a href="./about.html">Nossa História</a>
           </li>
         </ul>
       </div>
@@ -181,4 +196,5 @@
       <a href="https://wa.me/5551996034579" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
       </a>
-    </div> </body>
+    </div> 
+  </body>
