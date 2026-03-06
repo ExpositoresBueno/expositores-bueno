@@ -982,3 +982,154 @@ body {
     grid-template-columns: 1fr;
   }
 }
+/* ===== AJUSTE MOBILE TESTE GPT ===== */
+@media (max-width: 768px) {
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .header-top {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 6px;
+    padding: 10px 15px;
+  }
+
+  .header-top-left,
+  .header-top-right {
+    padding: 0;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .header-main {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 15px;
+    gap: 12px;
+  }
+
+  .header-logo {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .header-logo img {
+    height: auto;
+    max-height: 70px;
+    max-width: 220px;
+    width: auto;
+  }
+
+  .header-search {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: 42px;
+  }
+
+  .header-search select {
+    width: 42%;
+    min-width: 110px;
+    font-size: 13px;
+    padding: 0 10px;
+  }
+
+  .header-search input {
+    width: 58%;
+    min-width: 0;
+    font-size: 13px;
+    padding: 0 10px;
+  }
+
+  .cart-icon {
+    right: 12px;
+    top: 145px;
+    width: 50px;
+    height: 50px;
+    z-index: 1200;
+  }
+
+  .header-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 18px;
+    padding: 14px 12px;
+  }
+
+  .header-nav li a {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .breadcrumb {
+    padding: 15px 10px;
+  }
+
+  .breadcrumb-content {
+    max-width: 100%;
+    padding: 12px 14px;
+    flex-wrap: wrap;
+  }
+
+  .carousel-section {
+    padding: 15px 10px;
+  }
+
+  .carousel-container {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .carousel-prev,
+  .carousel-next {
+    width: 50px;
+    font-size: 34px;
+  }
+
+  .categories-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin: 20px auto;
+    padding: 0 15px;
+  }
+
+  .category-card {
+    min-height: 150px;
+    padding: 28px 20px;
+  }
+
+  .product-page {
+    padding: 20px 0;
+  }
+
+  .container-main {
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 15px;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .cart-drawer {
+    width: 100%;
+    right: -100%;
+  }
+
+  .whatsapp-float {
+    right: 15px;
+    bottom: 15px;
+    width: 52px;
+    height: 52px;
+    font-size: 26px;
+  }
+}
+/* ===== FIM AJUSTE MOBILE TESTE GPT ===== */
