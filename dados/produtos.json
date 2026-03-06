@@ -51,11 +51,6 @@
   "tamanho": "1.80m",
   "dimensoes": "1.80m Altura x 90cm Largura x 30cm Profundidade",
   "img": "./images/cards/armarioColmeia.jpg",
-  "galeria": [
-    "./images/cards/COLMEIA (1).jpg",
-    "./images/cards/COLMEIA (2).jpg",
-    "./images/cards/COLMEIA (3).jpg"
-  ],
   "descricao": "Expositor vertical com nichos. Ótimo para Pet Shops (rações/acessórios) e lojas de roupas. Altura: 1.80m. Largura: 90cm. Profundidade: 30cm.",
   "tags": ["armario", "colmeia", "nicho", "nichos", "estante", "expositor", "pet shop", "roupa", "camiseta", "movel", "moveis"]
 }
