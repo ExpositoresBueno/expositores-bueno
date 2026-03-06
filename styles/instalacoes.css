@@ -1,0 +1,214 @@
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+}
+
+.menu a {
+  font-weight: 500;
+}
+
+.card h4 {
+  font-weight: 600;
+}
+
+.card p {
+  font-weight: 400;
+}
+
+/* =======================================================
+   RESET BÁSICO (ESSENCIAL PARA O BANNER)
+   ======================================================= */
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Evita barra de rolagem horizontal */
+}
+
+/* =======================================================
+   BANNER DE PONTA A PONTA (FULL WIDTH)
+   ======================================================= */
+.hero-installations-full {
+    position: relative;
+    width: 100vw; /* Força largura total da janela */
+    height: 400px; /* Altura do banner */
+
+    /* Centraliza e estica ignorando as margens do site */
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+
+    overflow: hidden;
+}
+
+.hero-banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Imagem cobre tudo sem distorcer */
+    object-position: center;
+    display: block;
+}
+
+/* =======================================================
+   TEXTO SOBRE O BANNER
+   ======================================================= */
+.hero-overlay-full {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Gradiente para leitura do texto branco */
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+    display: flex;
+    align-items: center;
+
+    /* Alinha o texto visualmente com o container do site */
+    padding-left: max(20px, calc(50vw - 600px));
+}
+
+.hero-text-content {
+    color: white;
+    max-width: 600px;
+    padding: 0 20px;
+}
+
+.hero-text-content h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    line-height: 1.1;
+    letter-spacing: 2px;
+}
+
+.hero-text-content p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    opacity: 0.9;
+}
+
+/* =======================================================
+   CONTEÚDO PRINCIPAL (FARMÁCIA / PET SHOP)
+   ======================================================= */
+.installations-container {
+    max-width: 1200px;
+    margin: 0 auto; /* Centraliza o conteúdo na tela */
+    padding: 40px 20px;
+}
+
+.niche-section {
+    padding: 20px 0;
+}
+
+.niche-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas colunas iguais */
+    gap: 30px;
+}
+
+.niche-box {
+    background: #f8f9fa;
+    padding: 40px;
+    border-radius: 8px;
+    text-align: center;
+    border-bottom: 4px solid #007bff;
+    transition: 0.3s;
+    cursor: default;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.niche-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.niche-box i {
+    font-size: 3rem;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.niche-box h2 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* =======================================================
+   SEÇÃO DE ORÇAMENTO (BOTÃO WHATSAPP)
+   ======================================================= */
+.cta-installations {
+    background: #e9ecef;
+    padding: 60px 20px;
+    border-radius: 12px;
+    margin-top: 40px;
+
+    /* FLEXBOX PARA CENTRALIZAR O BOTÃO */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza horizontalmente */
+    text-align: center;
+}
+
+
+.cta-installations h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.cta-installations p {
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* Estilo do Botão Verde */
+.btn-whatsapp-large {
+    display: inline-block;
+    background-color: #25D366;
+    color: white !important;
+    text-decoration: none;
+    padding: 12px 35px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-top: 20px;
+    box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4);
+    transition: transform 0.2s ease, background-color 0.2s;
+}
+
+.btn-whatsapp-large:hover {
+    background-color: #128C7E;
+    transform: translateY(-3px);
+}
+
+/* Alinhamento do Ícone com o Texto (dentro do botão) */
+.cta-installations_text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Espaço entre ícone e texto */
+}
+
+.cta-installations_text img {
+    width: 24px;
+    height: auto;
+    /* Se o ícone for preto, isso o deixa branco. Se já for branco, pode remover. */
+    filter: brightness(0) invert(1);
+}
+
+/* =======================================================
+   RESPONSIVIDADE (CELULAR)
+   ======================================================= */
+@media (max-width: 768px) {
+    .hero-installations-full { height: 300px; }
+    .hero-text-content h1 { font-size: 2rem; }
+    .hero-overlay-full {
+        padding-left: 0;
+        justify-content: center;
+        text-align: center;
+    }
+    .niche-content { grid-template-columns: 1fr; }
+}

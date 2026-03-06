@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A Expositores Bueno fabrica expositores e displays para lojas, vitrines e comércios. Soluções sob medida, diversos modelos e orçamento via WhatsApp." />
+    <meta name="author" content="Expositores Bueno" />
+    <meta name="keywords" content="expositores para lojas, expositores comerciais, expositores de metal, expositores sob medida, expositores para vitrines, display para loja, fabricante de expositores" />
+
+    <meta property="og:title" content="Expositores Bueno | Expositores e Displays para Lojas" />
+    <meta property="og:description" content="Expositores e displays para lojas, vitrines e comércios. Soluções sob medida com orçamento via WhatsApp." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.expositoresbueno.com.br" />
+    <meta property="og:image" content="https://www.expositoresbueno.com.br/img/og-image.jpg" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./styles/index.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+    <title>Expositores Bueno | Expositores e Displays para Lojas</title>
+  </head>
+
+  <body>
+    <div class="page">
+      <header class="header">
+
+        <div class="header-top">
+          <div class="header-top-left">
+            <img src="./images/callPhone.png" alt="Telefone" />
+            <a href="https://wa.me/5551996034579" style="color: white; text-decoration: none;">Ligue agora +55 (51) 99603-4579</a>
+          </div>
+        </div>
+
+        <div class="header-main">
+          <div class="header-logo">
+            <img src="./images/expo-bueno-logo.jpg" alt="Expositores Bueno" />
+          </div>
+
+          <div class="header-search">
+            <select id="search-category">
+              <option value="Todos">Todos os produtos</option>
+
+              <option value="BALCÃO CAIXA C/ RODAPÉ">Balcão Caixa c/ Rodapé</option>
+              <option value="BALCÃO CAIXA COM VITRINE">Balcão Caixa com Vitrine</option>
+              <option value="BALCÃO CAIXA COM VITRINE (PRETO)">Balcão Caixa com Vitrine (Preto)</option>
+              <option value="BALCÃO VITRINE">Balcão Vitrine</option>
+              <option value="BALCÃO CAIXA (FECHADO)">Balcão Caixa (Fechado)</option>
+
+              <option value="ARMÁRIO COLMEIA">Armário Colmeia</option>
+              <option value="MÓVEL COM PRATELEIRAS">Móvel com Prateleiras</option>
+
+              <option value="ARARA DE MDF COM COLMEIA">Arara de MDF com Colmeia</option>
+              <option value="ARARA DE MDF (SIMPLES)">Arara de MDF (Simples)</option>
+              <option value="ARARA DE MDF COM COLMEIA LATERAL">Arara de MDF c/ Colmeia Lateral</option>
+              <option value="MÓVEL COM PRATELEIRAS">Móveis</option>
+            </select>
+            <input type="text" id="search-input" placeholder="Buscar produtos" />
+            <button id="search-btn" aria-label="Buscar">🔍</button>
+            <div id="search-suggestions" class="search-suggestions"></div>
+          </div>
+          
+          <div class="cart-icon">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="cart-count">0</span>
+          </div>
+        </div>
+
+       <nav class="header-nav">
+          <ul>
+            <li><a href="#">INÍCIO</a></li>
+
+            <li class="has-dropdown">
+              <a href="javascript:void(0)">MAIS VENDIDOS ▾</a>
+              <ul class="dropdown-menu">
+                <li><a href="#" data-filter="BALCÃO CAIXA COM VITRINE">Balcão Caixa c/ Vitrine</a></li>
+                <li><a href="#" data-filter="ARMÁRIO COLMEIA">Armário Colmeia</a></li>
+                <li><a href="#" data-filter="MÓVEL COM PRATELEIRAS">Móvel c/ Prateleiras</a></li>
+                <li><a href="#" data-filter="ARARA DE MDF COM COLMEIA">Arara c/ Colmeia</a></li>
+              </ul>
+            </li>
+
+            <li class="has-dropdown">
+              <a href="./pages/projetos3D.html">PROJETOS 3D</a>
+            </li>
+
+            <li class="has-dropdown">
+              <a href="./pages/instalacoes.html">INSTALAÇÕES</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <div class="content-container">
+        <nav class="breadcrumb">
+          <div class="breadcrumb-content">
+            <a href="/" class="breadcrumb-link">
+              <img src="./images/homeVector.png" alt="Homepage" class="home-icon">
+              Homepage
+            </a>
+            <span class="breadcrumb-separator">>></span>
+            <span class="breadcrumb-current">Produtos</span>
+          </div>
+        </nav>
+
+        <section class="carousel-section">
+  <div>Alguns dos nossos produtos</div>
+  <div class="carousel-container">
+    <button class="carousel-prev" id="prevBtn">‹</button>
+    <div class="carousel-wrapper">
+
+      <a href="./pages/productDetails.html?id=7" class="carousel-item active">
+        <img src="./images/araraMDFColmeia.png" alt="Arara MDF Colmeia">
+      </a>
+
+      <a href="./pages/productDetails.html?id=3" class="carousel-item">
+        <img src="./images/armarioColmeia.png" alt="Armario Colmeia">
+      </a>
+
+      <a href="./pages/productDetails.html?id=4" class="carousel-item">
+        <img src="./images/balcaoCaixa.png" alt="Balcão Caixa">
+      </a>
+
+      <a href="./pages/productDetails.html?id=5" class="carousel-item">
+        <img src="./images/balcaoCaixaRodape.png" alt="Balcão Caixa C/Rodapé">
+      </a>
+
+      <a href="./pages/productDetails.html?id=2" class="carousel-item">
+        <img src="./images/balcaoCaixaVitrine.png" alt="Balcão Caixa Vitrine">
+      </a>
+
+      <a href="./pages/productDetails.html?id=6" class="carousel-item">
+        <img src="./images/balcaoPrateleiras.png" alt="Balcão C/Prateleiras">
+      </a>
+
+      <a href="./pages/productDetails.html?id=1" class="carousel-item">
+        <img src="./images/balcaoVitrine.png" alt="Balcão Vitrine">
+      </a>
+
+    </div>
+    <button class="carousel-next" id="nextBtn">›</button>
+  </div>
+</div>
+
+        <section class="categories-grid">
+  <div class="category-card card-blue" data-category="Araras">
+    <h3>ARARAS</h3>
+    <a href="javascript:void(0)">CLIQUE AQUI <span>→</span></a>
+  </div>
+
+  <div class="category-card card-orange" data-category="Balcões">
+    <h3>BALCÕES</h3>
+    <a href="javascript:void(0)">CLIQUE AQUI <span>→</span></a>
+  </div>
+
+  <div class="category-card card-red" data-category="Caixas">
+    <h3>CAIXAS</h3>
+    <a href="javascript:void(0)">CLIQUE AQUI <span>→</span></a>
+  </div>
+
+  <div class="category-card card-light-blue" data-category="Colmeias">
+    <h3>COLMEIAS</h3>
+    <a href="javascript:void(0)">CLIQUE AQUI <span>→</span></a>
+  </div>
+
+  <div class="category-card card-light-blue" data-category="Expositores">
+    <h3>EXPOSITORES</h3>
+    <a href="javascript:void(0)">CLIQUE AQUI <span>→</span></a>
+  </div>
+
+  <div class="category-card card-red" data-category="Moveis">
+    <h3>MÓVEIS</h3>
+    <a href="javascript:void(0)">CLIQUE AQUI <span>→</span></a>
+  </div>
+</section>
+
+        <main class="product-page">
+          <div class="container-main">
+            <aside class="filters-sidebar">
+              <div class="filter-group">
+                <h4>CATEGORIAS</h4>
+                <ul class="filter-list" id="category-filters">
+                  <li class="filter-item" data-category="Araras">Araras</li>
+                  <li class="filter-item" data-category="Balcões">Balcões</li>
+                  <li class="filter-item" data-category="Vitrines">Vitrines</li>
+                  <li class="filter-item" data-category="Caixas">Caixas</li>
+                  <li class="filter-item" data-category="Colmeias">Colmeias</li>
+                  <li class="filter-item" data-category="Expositores">Expositores</li>
+                </ul>
+              </div>
+
+              <div class="filter-group">
+                <h4>PREÇOS</h4>
+                <div class="price-inputs">
+                  <label>De</label>
+                  <input type="number" id="price-min" placeholder="0">
+                  <label>Até</label>
+                  <input type="number" id="price-max" placeholder="999">
+                  <button class="btn-filter" id="btn-filter-price">Filtrar</button>
+                </div>
+              </div>
+
+              <div class="filter-group">
+                <h4>Tamanho (Altura)</h4>
+                <select id="size-select" class="filter-dropdown">
+                  <option value="">Todos os tamanhos</option>
+                  <option value="1.85m">Móveis de 1.85m</option>
+                  <option value="1.10m">Balcões de 1.10m</option>
+                  <option value="1.00m">Balcões de 1.00m</option>
+                </select>
+              </div>
+
+              <button id="clear-filters" class="btn-clear">Limpar Filtros</button>
+            </aside>
+
+            <section class="products-content">
+              <div class="products-header">
+                <select id="sort-products">
+                  <option value="relevance">Ordenar por: Relevância</option>
+                  <option value="price-asc">Menor Preço</option>
+                  <option value="price-desc">Maior Preço</option>
+                </select>
+              </div>
+              <div class="products-grid" id="products-grid"></div>
+            </section>
+          </div>
+          
+          <div class="pagination-container">
+            <button class="page-btn btn-prev" onclick="paginaAnterior()">Anterior</button>
+            <div class="page-numbers"></div>
+            <button class="page-btn btn-next" onclick="proximaPagina()">Próximo</button>
+          </div>
+        </main>
+
+        <footer class="main-footer">
+          <div class="footer-container">
+            <div class="footer-column">
+              <h3>Endereço</h3>
+              <ul class="footer-info">
+                <li>
+                  <i class="location-icon"></i>
+                  <a href="#">Av. Boqueirão 804, Canoas, RS, 92410-350</a>
+                </li>
+                <li>
+                  <i class="phone-icon"></i>
+                  <span>(51) 99603-4579<br>(51) 3032-1020<br>(51) 3032-1414</span>
+                </li>
+                <li class="instagram-icon">
+                  <img src="./images/instagramIcon.png" alt="Instagram">
+                  <a href="https://www.instagram.com/expositoresbueno/">@expositoresbueno</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="footer-column">
+              <h3>HORÁRIO DE ATENDIMENTO</h3>
+              <table class="schedule-table">
+
+                <tr><td>Segunda-Feira</td><td>08:30 às 18:00</td></tr>
+                <tr><td>Terça-Feira</td><td>08:30 às 18:00</td></tr>
+                <tr><td>Quarta-Feira</td><td>08:30 às 18:00</td></tr>
+                <tr><td>Quinta-Feira</td><td>08:30 às 18:00</td></tr>
+                <tr><td>Sexta-Feira</td><td>08:30 às 18:00</td></tr>
+                <tr><td>Sábado</td><td>Fechado</td></tr>
+                <tr><td>Domingo</td><td>Fechado</td></tr>
+              </table>
+            </div>
+
+            <div class="footer-column">
+        <h3>QUEM SOMOS</h3>
+        <ul class="footer-info">
+          <li>
+            <a href="./pages/about.html">Nossa História</a>
+          </li>
+        </ul>
+      </div>
+          </div>
+
+          <div class="footer-bottom">
+            <p>BUENO INDÚSTRIA E COMÉRCIO DE EXPOSITORES LTDA</p>
+            <p>CNPJ 40.494.084.0001.81</p>
+            <p>Av. Boqueirão 804, Canoas, RS, 92410-350</p>
+          </div>
+          <p class="copy">© Expositores Bueno — Todos os direitos reservados</p>
+        </footer>
+      </div>
+
+
+<script type="module" src="./scripts/index.js"></script>
+
+<a href="https://wa.me/5551996034579"
+   class="whatsapp-float"
+   target="_blank"
+   aria-label="WhatsApp">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<!-- Overlay -->
+<div class="cart-overlay" id="cart-overlay"></div>
+
+<div class="cart-drawer" id="cart-drawer">
+
+  <div class="cart-header">
+    <h3>Meu Carrinho</h3>
+    <button id="close-cart" style="background:none; border:none; font-size:24px; cursor:pointer;">&times;</button>
+  </div>
+
+  <div class="cart-items" id="cart-items"></div>
+
+  <div class="cart-footer">
+    <div style="display: flex; justify-content: space-between; margin-bottom: 15px; font-weight: bold; font-size: 18px;">
+      <span>Total:</span>
+      <span id="cart-total">R$ 0,00</span>
+    </div>
+    <button class="btn-clear-cart" style="background: none; border: 1px solid #ccc; color: #666; padding: 5px 10px; cursor: pointer; margin-bottom: 10px; width: 100%; font-size: 13px;">
+    🗑 Limpar Carrinho
+  </button>
+    <button class="checkout-btn" id="finish-order">Finalizar Pedido via WhatsApp</button>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,128 @@
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+
+h1, h2, h3 {
+  font-weight: 600;
+}
+
+.menu a {
+  font-weight: 500;
+}
+
+.card h4 {
+  font-weight: 600;
+}
+
+.card p {
+  font-weight: 400;
+}
+/* ==========================================================================
+   Detalhes dos Produtos
+   ========================================================================== */
+
+/* ==========================================================================
+   LAYOUT PRINCIPAL (DIVISÃO 50/50)
+   ========================================================================== */
+.product-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Divide a tela em duas metades iguais */
+  gap: 50px; /* Espaço generoso entre a foto e o texto */
+  max-width: 1200px;
+  margin: 40px auto;
+  align-items: start;
+}
+
+/* Controla o tamanho da imagem para não explodir na tela */
+.product-image-section img {
+  width: 100%;
+  max-height: 600px;
+  object-fit: contain; /* Garante que a imagem inteira apareça sem cortar */
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* ==========================================================================
+   TEXTOS E BOTÃO DA COLUNA DIREITA
+   ========================================================================== */
+.product-info-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-description-side {
+  margin: 30px 0;
+  padding-top: 20px;
+  border-top: 1px solid #eeeeee;
+}
+
+.product-description-side p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555555;
+}
+
+/* Estilo do Botão Gigante do WhatsApp */
+.btn-whatsapp-large {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background-color: #25D366; /* Verde oficial do WhatsApp */
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 18px 35px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  width: fit-content; /* O botão abraça o texto */
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+.btn-whatsapp-large i {
+  font-size: 1.5rem;
+}
+
+.btn-whatsapp-large:hover {
+  background-color: #1EBE5D;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+}
+
+/* Responsividade: Se a tela for de celular, coloca um debaixo do outro */
+@media (max-width: 768px) {
+  .product-layout {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .btn-whatsapp-large {
+    width: 100%; /* No celular o botão ocupa a largura toda */
+  }
+}
+
+/* ================= WHATSAPP FLOAT ================= */
+.whatsapp-float {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 55px;
+  height: 55px;
+  background: #25d366;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  z-index: 999;
+}
+
+.whatsapp-float:hover {
+  background: #1ebe5d;
+}

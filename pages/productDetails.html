@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A Expositores Bueno fabrica expositores e displays para lojas, vitrines e comércios. Soluções sob medida, diversos modelos e orçamento via WhatsApp." />
+    <meta name="author" content="Expositores Bueno" />
+    <link rel="stylesheet" href="../styles/index.css" />
+    <link rel="stylesheet" href="../styles/productDetail.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Expositores Bueno | Detalhes Produtos</title>
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <div class="header-top">
+          <div class="header-top-left">
+            <img src="../images/callPhone.png" alt="Telefone" />
+            <a href="https://wa.me/5551996034579" style="color: white; text-decoration: none;">Ligue agora +55 (51) 99603-4579</a>
+          </div>
+        </div>
+
+        <div class="header-main">
+          <div class="header-logo">
+            <img src="../images/expo-bueno-logo.jpg" alt="Expositores Bueno" />
+          </div>
+          <div class="header-search">
+            <select id="search-category">
+              <option value="Todos">Todos os produtos</option>
+              <option value="Araras">Araras</option>
+              <option value="Manequins">Manequins</option>
+              <option value="Cabides">Cabides</option>
+            </select>
+            <input type="text" id="search-input" placeholder="Buscar produtos" />
+            <button id="search-btn" aria-label="Buscar">🔍</button>
+          </div>
+          <div class="cart-icon">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="cart-count">0</span>
+          </div>
+        </div>
+
+        <nav class="header-nav">
+          <ul>
+            <li><a href="/index.html">INÍCIO</a></li>
+
+            <li class="has-dropdown">
+              <a href="javascript:void(0)">MAIS VENDIDOS ▾</a>
+              <ul class="dropdown-menu">
+                <li><a href="#" data-filter="BALCÃO CAIXA COM VITRINE">Balcão Caixa c/ Vitrine</a></li>
+                <li><a href="#" data-filter="ARMÁRIO COLMEIA">Armário Colmeia</a></li>
+                <li><a href="#" data-filter="MÓVEL COM PRATELEIRAS">Móvel c/ Prateleiras</a></li>
+                <li><a href="#" data-filter="ARARA DE MDF COM COLMEIA">Arara c/ Colmeia</a></li>
+              </ul>
+            </li>
+
+            <li class="has-dropdown">
+              <a href="./projetos3D.html">PROJETOS 3D</a>
+            </li>
+
+            <li class="has-dropdown">
+              <a href="./instalacoes.html">INSTALAÇÕES</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <div class="content-container">
+        <nav class="breadcrumb">
+          <div class="breadcrumb-content">
+            <a href="index.html" class="breadcrumb-link">
+              <img src="../images/homeVector.png" alt="Homepage" class="home-icon">
+              Homepage
+            </a>
+            <span class="breadcrumb-separator">>></span>
+            <span class="breadcrumb-current">Detalhes Produtos</span>
+          </div>
+        </nav>
+
+        <main class="product-container">
+          <div class="product-layout">
+
+            <div class="product-image-section">
+              <img id="main-product-img" src="" alt="Imagem do Produto">
+            </div>
+
+            <div class="product-info-section">
+              <h1 id="product-title">Carregando...</h1>
+              <span id="product-category" class="badge-category"></span>
+
+              <div class="price-container">
+                <span class="currency">R$</span>
+                <span id="product-price" class="price-value">0,00</span>
+              </div>
+
+              <div class="product-description-side">
+                <p id="product-desc"></p>
+              </div>
+
+              <div class="purchase-actions">
+                <button id="add-to-cart-btn" class="btn-whatsapp-large" data-id="" style="border: none; cursor: pointer; width: 100%;">
+                  Adicionar ao Carrinho
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </main>
+        <div class="cart-overlay" id="cart-overlay"></div>
+          <div class="cart-drawer" id="cart-drawer">
+            <div class="cart-header">
+              <h2>Seu Carrinho</h2>
+              <button id="close-cart">✕</button>
+            </div>
+            <div class="cart-items" id="cart-items"></div>
+            <div class="cart-footer">
+              <div class="cart-total">Total: <span id="cart-total">R$ 0,00</span></div>
+              <button class="checkout-btn">Finalizar Pedido</button>
+            </div>
+          </div>
+
+      <footer class="main-footer">
+        <div class="footer-container">
+          <div class="footer-column">
+            <h3>Endereço</h3>
+            <ul class="footer-info">
+              <li>
+                <i class="location-icon"></i>
+                <a href="#">Av. Boqueirão 804, Canoas, RS, 92410-350</a>
+              </li>
+              <li>
+                <i class="phone-icon"></i>
+                <span>(51) 99603-4579<br>(51) 3032-1020<br>(51) 3032-1414</span>
+              </li>
+              <li>
+                <i class="instagram-icon"></i>
+                <a href="https://www.instagram.com/expositoresbueno/">@expositoresbueno</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>HORÁRIO DE ATENDIMENTO</h3>
+            <table class="schedule-table">
+              <tr><td>Segunda- Feira</td><td>08:30 às 18:00</td></tr>
+              <tr><td>Terça-Feira</td><td>08:30 às 18:00</td></tr>
+              <tr><td>Quarta-Feira</td><td>08:30 às 18:00</td></tr>
+              <tr><td>Quinta-Feira</td><td>08:30 às 18:00</td></tr>
+              <tr><td>Sexta-Feira</td><td>08:30 às 18:00</td></tr>
+              <tr><td>Sábado</td><td>Fechado</td></tr>
+              <tr><td>Domingo</td><td>Fechado</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>BUENO INDÚSTRIA E COMÉRCIO DE EXPOSITORES LTDA</p>
+          <p>CNPJ 40.494.084.0001.81</p>
+          <p>Av. Boqueirão 804, Canoas, RS, 92410-350</p>
+        </div>
+      </footer>
+    </div>
+    <script type="module" src="../scripts/index.js"></script>
+    <script type="module" src="../scripts/productDetails.js"></script>
+
+    <!-- WhatsApp flutuante -->
+    <a
+      href="https://wa.me/5551996034579"
+      class="whatsapp-float"
+      target="_blank"
+      aria-label="WhatsApp"
+    >
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+  </body>
+</html>

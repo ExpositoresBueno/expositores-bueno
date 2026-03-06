@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "categoria": ["Balcões", "Caixas"],
+    "nome": "BALCÃO CAIXA C/ RODAPÉ",
+    "preco": 449.00,
+    "tamanho": "1.10m",
+    "dimensoes": "1.10/1.00m Altura x 55cm Largura x 40cm Profundidade",
+    "img": "./images/cards/balcaoCaixaComRodape.jpg",
+    "descricao": "Balcão compacto com rodapé e gaveta. Ideal para otimizar espaços pequenos com baixo custo.",
+    "tags": ["balcao", "balcoes", "caixa", "rodape", "atendimento", "compacto", "gaveta", "movel", "moveis"]
+  },
+  {
+    "id": 2,
+    "categoria": ["Balcões", "Caixas", "Vitrines", "Farmácia"],
+    "nome": "BALCÃO CAIXA COM VITRINE (BRANCO)",
+    "preco": 815.00,
+    "tamanho": "1.10m",
+    "dimensoes": "1.10/1.00m Altura x 1.15m Largura x 40cm Profundidade",
+    "img": "./images/cards/balcaoCaixaComVitrineBranco.jpg",
+    "descricao": "O campeão de vendas: balcão caixa com ampla vitrine frontal. Perfeito para Farmácias e Lojas variadas.",
+    "tags": ["balcao", "balcoes", "caixa", "vitrine", "branco", "atendimento", "farmacia", "vidro", "expositor", "movel", "moveis"]
+  },
+  {
+    "id": 3,
+    "categoria": ["Balcões", "Vitrines", "Farmácia", "Expositores"],
+    "nome": "BALCÃO VITRINE",
+    "preco": 800.00,
+    "tamanho": "1.00m",
+    "dimensoes": "1.00m Altura x 1.00m Largura x 40cm Profundidade",
+    "img": "./images/cards/balcaoVitrine.jpg",
+    "descricao": "Vitrine expositora com opção de prateleiras em MDF ou Vidro. Essencial para exibir medicamentos ou joias.",
+    "tags": ["balcao", "balcoes", "vitrine", "vidro", "prateleira", "farmacia", "medicamento", "joia", "expositor", "movel", "moveis"]
+  },
+  {
+    "id": 4,
+    "categoria": ["Balcões", "Caixas"],
+    "nome": "BALCÃO CAIXA",
+    "preco": 800.00,
+    "tamanho": "1.10m",
+    "dimensoes": "1.10/1.00m Altura x 1.00m Largura x 40cm Profundidade",
+    "img": "./images/cards/balcaoCaixa.jpg",
+    "descricao": "Balcão de atendimento fechado, focado em segurança e organização interna para o operador.",
+    "tags": ["balcao", "balcoes", "caixa", "atendimento", "fechado", "seguranca", "simples", "movel", "moveis"]
+  },
+  {
+    "id": 5,
+    "categoria": ["Colmeias", "Expositores", "Armários", "Pet Shop"],
+    "nome": "ARMÁRIO COLMEIA",
+    "preco": 699.00,
+    "tamanho": "1.85m",
+    "dimensoes": "1.85m Altura x 90cm Largura x 30cm Profundidade",
+    "img": "./images/cards/armarioColmeia.jpg",
+    "descricao": "Expositor vertical com nichos. Ótimo para Pet Shops (rações/acessórios) e lojas de roupas.",
+    "tags": ["armario", "colmeia", "nicho", "nichos", "estante", "expositor", "pet shop", "roupa", "camiseta", "movel", "moveis"]
+  },
+  {
+    "id": 6,
+    "categoria": ["Expositores", "Prateleiras", "Móvel", "Movel", "Moveis"],
+    "nome": "MÓVEL COM PRATELEIRAS",
+    "preco": 560.00,
+    "tamanho": "1.85m",
+    "dimensoes": "1.85m Altura x 90cm Largura x 30cm Profundidade",
+    "img": "./images/cards/movelComPrateleiras.jpg",
+    "descricao": "Estante versátil com prateleiras abertas. Item obrigatório para Farmácias e Pet Shops.",
+    "tags": ["movel", "moveis", "estante", "prateleira", "prateleiras", "gondola", "farmacia", "pet shop", "aberto"]
+  },
+  {
+    "id": 7,
+    "categoria": ["Araras", "Colmeias", "Expositores"],
+    "nome": "ARARA DE MDF COM COLMEIA",
+    "preco": 459.00,
+    "tamanho": "1.85m",
+    "dimensoes": "1.85m Altura x 90cm Largura x 30cm Profundidade",
+    "img": "./images/cards/araraMDFColmeia.jpg",
+    "descricao": "Modelo híbrido com cabideiro superior e nichos na base, aproveitando 100% do espaço vertical.",
+    "tags": ["arara", "araras", "mdf", "colmeia", "cabideiro", "cabide", "nicho", "nichos", "roupa", "loja", "movel", "moveis"]
+  },
+  {
+    "id": 8,
+    "categoria": ["Araras", "Colmeias", "Expositores"],
+    "nome": "ARARA DE MDF COM COLMEIA LATERAL",
+    "preco": 459.00,
+    "tamanho": "1.85m",
+    "dimensoes": "1.85m Altura x 90cm Largura x 30cm Profundidade",
+    "img": "./images/cards/araraMDFColmeia2.jpg",
+    "descricao": "Modelo premium com coluna lateral de nichos. Organização completa para looks e acessórios.",
+    "tags": ["arara", "araras", "mdf", "colmeia", "lateral", "cabideiro", "cabide", "nicho", "premium", "roupa", "loja", "movel", "moveis"]
+  },
+  {
+    "id": 9,
+    "categoria": ["Balcões", "Caixas", "Vitrines", "Linha Premium"],
+    "nome": "BALCÃO CAIXA COM VITRINE (PRETO)",
+    "preco": 910.00,
+    "tamanho": "1.10m",
+    "dimensoes": "1.10/1.00m Altura x 1.15m Largura x 40cm Profundidade",
+    "img": "./images/cards/balcaoCaixaComVitrinePreto.jpg",
+    "descricao": "Acabamento sofisticado na cor preta, ideal para boutiques e lojas modernas.",
+    "tags": ["balcao", "balcoes", "caixa", "vitrine", "preto", "escura", "atendimento", "premium", "boutique", "movel", "moveis"]
+  },
+  {
+    "id": 10,
+    "categoria": ["Nichos", "Expositores", "Acessórios"],
+    "nome": "KIT DE NICHOS",
+    "preco": 99.00, 
+    "tamanho": "Padrão",
+    "dimensoes": "Diversas (P, M e G)",
+    "img": "./images/cards/kitNichos.jpg",
+    "descricao": "Conjunto de 3 nichos em MDF. Ideal para otimizar espaço nas paredes e dar destaque a produtos pequenos e decorações.",
+    "tags": ["kit", "nicho", "nichos", "parede", "cubo", "quadrado", "decoracao", "acessorio", "mdf", "trio", "movel", "moveis"]
+  }
+]
