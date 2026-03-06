@@ -1287,6 +1287,125 @@ body {
     object-fit: cover !important;
   }
 }
+/* ===== AJUSTE MOBILE SEÇÕES INTERNAS GPT ===== */
+@media (max-width: 768px) {
+  /* Banner / hero das páginas internas */
+  .hero,
+  .hero-banner,
+  .banner-interno,
+  .page-banner,
+  .projeto-banner,
+  .instalacoes-banner {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: auto !important;
+    height: auto !important;
+    overflow: hidden !important;
+  }
+
+  .hero img,
+  .hero-banner img,
+  .banner-interno img,
+  .page-banner img,
+  .projeto-banner img,
+  .instalacoes-banner img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: cover !important;
+    display: block !important;
+  }
+
+  .hero h1,
+  .hero-banner h1,
+  .banner-interno h1,
+  .page-banner h1,
+  .projeto-banner h1,
+  .instalacoes-banner h1 {
+    font-size: 42px !important;
+    line-height: 1.05 !important;
+    word-break: break-word !important;
+  }
+
+  .hero h2,
+  .hero-banner h2,
+  .banner-interno h2,
+  .page-banner h2,
+  .projeto-banner h2,
+  .instalacoes-banner h2 {
+    font-size: 20px !important;
+    line-height: 1.2 !important;
+  }
+
+  .hero p,
+  .hero-banner p,
+  .banner-interno p,
+  .page-banner p,
+  .projeto-banner p,
+  .instalacoes-banner p {
+    font-size: 16px !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Cards de vantagens / benefícios / segmentos */
+  .advantages,
+  .vantagens,
+  .benefits,
+  .beneficios,
+  .cards-vantagens,
+  .cards-beneficios,
+  .segmentos,
+  .segment-cards,
+  .cards-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 15px !important;
+  }
+
+  .advantages .card,
+  .vantagens .card,
+  .benefits .card,
+  .beneficios .card,
+  .cards-vantagens .card,
+  .cards-beneficios .card,
+  .segmentos .card,
+  .segment-cards .card,
+  .cards-grid .card {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    padding: 24px 18px !important;
+  }
+
+  .advantages .card h3,
+  .vantagens .card h3,
+  .benefits .card h3,
+  .beneficios .card h3,
+  .cards-vantagens .card h3,
+  .cards-beneficios .card h3,
+  .segmentos .card h3,
+  .segment-cards .card h3,
+  .cards-grid .card h3 {
+    font-size: 18px !important;
+    line-height: 1.25 !important;
+  }
+
+  .advantages .card p,
+  .vantagens .card p,
+  .benefits .card p,
+  .beneficios .card p,
+  .cards-vantagens .card p,
+  .cards-beneficios .card p,
+  .segmentos .card p,
+  .segment-cards .card p,
+  .cards-grid .card p {
+    font-size: 15px !important;
+    line-height: 1.45 !important;
+  }
+}
+/* ===== FIM AJUSTE MOBILE SEÇÕES INTERNAS GPT ===== */
 /* ===== FIM AJUSTE FINAL MOBILE GPT ===== */
 /* ===== FIM AJUSTE SEÇÃO ALGUNS PRODUTOS MOBILE ===== */
 /* ===== FIM AJUSTE MOBILE EXTRA GPT ===== */
