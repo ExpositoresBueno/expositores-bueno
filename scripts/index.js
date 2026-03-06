@@ -304,7 +304,7 @@ function renderizarCarrinho() {
   const totalElement = document.getElementById("cart-total");
   const cart = getCart();
 
-  if (!cartItemsContainer) return;
+  if (!cartItemsContainer || !totalElement) return;
 
   cartItemsContainer.innerHTML = "";
 
@@ -322,21 +322,62 @@ function renderizarCarrinho() {
     cartItemsContainer.innerHTML += `
       <div class="cart-item">
         <img src="${item.img}" alt="${item.nome}">
-        <div>
+        <div class="cart-item-info">
           <h4>${item.nome}</h4>
           <p>Qtd: ${item.quantidade}</p>
           <p>R$ ${(item.preco * item.quantidade).toFixed(2).replace(".", ",")}</p>
         </div>
+        <button class="btn-remove-item" data-id="${item.id}">✕</button>
       </div>
     `;
   });
 
   totalElement.textContent = "R$ " + total.toFixed(2).replace(".", ",");
+
+  cartItemsContainer.innerHTML += `
+    <button class="btn-clear-cart">🗑 Limpar Carrinho</button>
+  `;
+}
+
+function removerItemDoCarrinho(id) {
+  let cart = getCart();
+
+  cart = cart.filter((item) => item.id !== id);
+
+  saveCart(cart);
+  atualizarContadorCarrinho();
+  renderizarCarrinho();
+}
+
+function limparCarrinho() {
+  saveCart([]);
+  atualizarContadorCarrinho();
+  renderizarCarrinho();
 }
 
 /* ==========================================================================
    EVENTOS
    ========================================================================== */
+
+document.addEventListener("click", function (e) {
+  // Remover item individual
+  const btnRemove = e.target.closest(".btn-remove-item");
+  if (btnRemove) {
+    const id = parseInt(btnRemove.dataset.id);
+    removerItemDoCarrinho(id);
+    return;
+  }
+
+  // Limpar carrinho
+  const btnClear = e.target.closest(".btn-clear-cart");
+  if (btnClear) {
+    if (confirm("Tem certeza que deseja limpar o carrinho?")) {
+      limparCarrinho();
+    }
+    return;
+  }
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   atualizarContadorCarrinho();
   carregarCatalogo();
@@ -469,7 +510,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (produto) {
       addToCart(produto);
-      alert("Produto adicionado ao carrinho!");
     }
   });
 });
@@ -533,5 +573,52 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Rola a tela automaticamente para mostrar o resultado
     setTimeout(acionarBusca, 500);
+  }
+});
+
+/* ==========================================================================
+   INTEGRAÇÃO COM WHATSAPP
+   ========================================================================== */
+
+function finalizarPedidoWhatsApp() {
+  const cart = getCart(); // Puxa os itens do localStorage
+
+  if (cart.length === 0) {
+    alert("Seu carrinho está vazio!");
+    return;
+  }
+
+  const numeroWhatsApp = "5551996034579"; // Número da empresa extraído do seu HTML
+  let mensagem = "Olá! Gostaria de fazer um pedido:\n\n";
+  let total = 0;
+
+  // Monta a lista de produtos
+  cart.forEach((item) => {
+    const subtotal = item.preco * item.quantidade;
+    total += subtotal;
+
+    mensagem += `*${item.nome}*\n`;
+    mensagem += `Qtd: ${item.quantidade} x R$ ${item.preco.toFixed(2).replace(".", ",")}\n`;
+    mensagem += `Subtotal: R$ ${subtotal.toFixed(2).replace(".", ",")}\n`;
+    mensagem += `--------------------------\n`;
+  });
+
+  mensagem += `\n*Valor Total: R$ ${total.toFixed(2).replace(".", ",")}*`;
+
+  // Codifica o texto para ser usado em uma URL
+  const mensagemCodificada = encodeURIComponent(mensagem);
+
+  // Abre o WhatsApp em uma nova aba
+  window.open(
+    `https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`,
+    "_blank",
+  );
+}
+
+// Vincula a função ao botão quando o documento carregar
+document.addEventListener("DOMContentLoaded", () => {
+  const btnFinalizar = document.getElementById("finish-order");
+  if (btnFinalizar) {
+    btnFinalizar.addEventListener("click", finalizarPedidoWhatsApp);
   }
 });

@@ -59,9 +59,9 @@
             <button id="search-btn" aria-label="Buscar">🔍</button>
           </div>
           <div class="cart-icon">
-  <i class="fa-solid fa-cart-shopping"></i>
-  <span id="cart-count">0</span>
-</div>
+            <i class="fa-solid fa-cart-shopping"></i>
+        <span id="cart-count">0</span>
+        </div>
         </div>
 
        <nav class="header-nav">
@@ -138,7 +138,7 @@
     </div>
     <button class="carousel-next" id="nextBtn">›</button>
   </div>
-</section>
+</div>
 
         <section class="categories-grid">
   <div class="category-card card-blue" data-category="Araras">
@@ -283,30 +283,36 @@
         </footer>
       </div>
 
-      <script type="module" src="./scripts/index.js"></script>
 
-      <a href="https://wa.me/5551996034579" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
-        <i class="fa-brands fa-whatsapp"></i>
-      </a>
-    </div>
-  <!-- Overlay -->
+<script type="module" src="./scripts/index.js"></script>
+
+<a href="https://wa.me/5551996034579"
+   class="whatsapp-float"
+   target="_blank"
+   aria-label="WhatsApp">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<!-- Overlay -->
 <div class="cart-overlay" id="cart-overlay"></div>
 
-<!-- Carrinho Lateral -->
 <div class="cart-drawer" id="cart-drawer">
+
   <div class="cart-header">
-    <h2>Seu Carrinho</h2>
-    <button id="close-cart">✕</button>
+    <h3>Meu Carrinho</h3>
+    <button id="close-cart" style="background:none; border:none; font-size:24px; cursor:pointer;">&times;</button>
   </div>
 
   <div class="cart-items" id="cart-items"></div>
 
   <div class="cart-footer">
-    <div class="cart-total">
-      Total: <span id="cart-total">R$ 0,00</span>
+    <div style="display: flex; justify-content: space-between; margin-bottom: 15px; font-weight: bold; font-size: 18px;">
+      <span>Total:</span>
+      <span id="cart-total">R$ 0,00</span>
     </div>
-    <button class="checkout-btn">Finalizar Pedido</button>
+    <button class="checkout-btn" id="finish-order">Finalizar Pedido via WhatsApp</button>
   </div>
+
 </div>
-  </body>
+</body>
 </html>
