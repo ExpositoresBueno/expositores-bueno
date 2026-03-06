@@ -1247,6 +1247,47 @@ body {
     font-size: 30px !important;
   }
 }
+/* ===== AJUSTE FINAL MOBILE GPT ===== */
+@media (max-width: 768px) {
+  .cart-icon {
+    right: 8px !important;
+    top: 165px !important;
+    width: 46px !important;
+    height: 46px !important;
+    padding: 8px !important;
+  }
+
+  .cart-icon i {
+    font-size: 20px !important;
+  }
+
+  #cart-count {
+    top: -6px !important;
+    right: -6px !important;
+    font-size: 11px !important;
+  }
+
+  .carousel-container {
+    overflow: hidden !important;
+  }
+
+  .carousel-wrapper {
+    display: block !important;
+  }
+
+  .carousel-item {
+    width: 100% !important;
+  }
+
+  .carousel-item img,
+  .carousel-slide img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    object-fit: cover !important;
+  }
+}
+/* ===== FIM AJUSTE FINAL MOBILE GPT ===== */
 /* ===== FIM AJUSTE SEÇÃO ALGUNS PRODUTOS MOBILE ===== */
 /* ===== FIM AJUSTE MOBILE EXTRA GPT ===== */
 /* =====  IM AJUSTE MOBILE TESTE GPT ===== */
