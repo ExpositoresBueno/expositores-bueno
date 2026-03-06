@@ -55,15 +55,16 @@
     "tags": ["armario", "colmeia", "nicho", "nichos", "estante", "expositor", "pet shop", "roupa", "camiseta", "movel", "moveis"]
   },
   {
-    "id": 6,
-    "categoria": ["Expositores", "Prateleiras", "Móvel", "Movel", "Moveis"],
-    "nome": "MÓVEL COM PRATELEIRAS",
-    "preco": 560.00,
-    "tamanho": "1.85m",
-    "dimensoes": "1.85m Altura x 90cm Largura x 30cm Profundidade",
-    "img": "./images/cards/movelComPrateleiras.jpg",
-    "descricao": "Estante versátil com prateleiras abertas. Item obrigatório para Farmácias e Pet Shops.",
-    "tags": ["movel", "moveis", "estante", "prateleira", "prateleiras", "gondola", "farmacia", "pet shop", "aberto"]
+   {
+  "id": 6,
+  "categoria": ["Expositores", "Prateleiras", "Móvel", "Movel", "Moveis"],
+  "nome": "MÓVEL COM PRATELEIRAS",
+  "preco": 560.00,
+  "tamanho": "1.80m",
+  "dimensoes": "1.80m Altura x 90cm Largura x 30cm Profundidade",
+  "img": "./images/cards/movelPrateleira.jpg",
+  "descricao": "Estante versátil com prateleiras abertas. Item obrigatório para Farmácias e Pet Shops.\n\nAltura: 1.80m\nLargura: 90cm\nProfundidade: 30cm.",
+  "tags": ["movel", "moveis", "estante", "prateleira", "prateleiras", "gondola", "farmacia", "pet shop", "aberto"]
   },
   {
     "id": 7,
