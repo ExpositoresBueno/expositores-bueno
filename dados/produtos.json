@@ -110,16 +110,20 @@
     "tags": ["balcao", "balcoes", "caixa", "vitrine", "preto", "escura", "atendimento", "premium", "boutique", "movel", "moveis"]
   },
   {
-    "id": 10,
-    "categoria": ["Nichos", "Expositores", "Acessórios"],
-    "nome": "KIT DE NICHOS",
-    "preco": 99.00, 
-    "tamanho": "Padrão",
-    "dimensoes": "Diversas (P, M e G)",
-    "img": "./images/cards/kitNichos.jpg",
-    "descricao": "Conjunto de 3 nichos em MDF. Ideal para otimizar espaço nas paredes e dar destaque a produtos pequenos e decorações.",
-    "tags": ["kit", "nicho", "nichos", "parede", "cubo", "quadrado", "decoracao", "acessorio", "mdf", "trio", "movel", "moveis"]
-  },
+  "id": 10,
+  "categoria": ["Gôndolas", "Expositores", "Móveis de Centro", "Moveis"],
+  "nome": "GÔNDOLA 8 CANTOS",
+  "preco": 899.00,
+  "tamanho": "1.20m",
+  "dimensoes": "1.20m Altura x 90cm Largura x 90cm Profundidade",
+  "img": "./images/8cantos (2).jpeg",
+  "galeria": [
+    "./images/8cantos (1).jpeg",
+    "./images/8cantos (3).jpeg"
+  ],
+  "descricao": "Gôndola central de 8 cantos em MDF, ideal para exposição de produtos no centro da loja, com ótimo aproveitamento de espaço e visual organizado.\n\nAltura: 1.20m\nLargura: 90cm\nProfundidade: 90cm.",
+  "tags": ["gondola", "gondolas", "8 cantos", "central", "mdf", "expositor", "movel de centro", "moveis", "loja", "bazar", "conveniencia", "farmacia"]
+   },
     {
     "id": 11,
     "categoria": ["Gôndolas", "Expositores", "Móveis de Centro", "Moveis"],
