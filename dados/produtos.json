@@ -169,5 +169,17 @@
   ],
   "descricao": "Armário vestiário em MDF com 8 portas, ideal para organização de pertences em lojas, fábricas e ambientes de apoio. Cada porta acompanha 2 chaves.\n\nAltura: 1.80m\nLargura: 60cm\nProfundidade: 30cm.",
   "tags": ["armario", "vestiario", "8 portas", "mdf", "portas", "chave", "organizacao", "loja", "fabrica", "movel", "moveis"]
-}
+},
+  {
+  "id": 14,
+  "categoria": ["Gôndolas", "Painel Canaletado", "Expositores", "Moveis"],
+  "nome": "GÔNDOLA CANALETADA",
+  "preco": 490.00,
+  "tamanho": "1.10m",
+  "dimensoes": "1.10m Altura x 90cm Largura x 60cm Profundidade",
+  "img": "./images/gondolapaine (2).jpeg",
+  "descricao": "Gôndola canaletada em MDF, ideal para exposição de produtos com uso de ganchos e acessórios, trazendo organização e aproveitamento inteligente do espaço.\n\nAltura: 1.10m\nLargura: 90cm\nProfundidade: 60cm.",
+  "tags": ["gondola", "gondolas", "caneletada", "canaletada", "painel canaletado", "mdf", "expositor", "gancho", "loja", "bazar", "conveniencia", "farmacia"]
+ }
+  
 ]
