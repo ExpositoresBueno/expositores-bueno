@@ -119,5 +119,21 @@
     "img": "./images/cards/kitNichos.jpg",
     "descricao": "Conjunto de 3 nichos em MDF. Ideal para otimizar espaço nas paredes e dar destaque a produtos pequenos e decorações.",
     "tags": ["kit", "nicho", "nichos", "parede", "cubo", "quadrado", "decoracao", "acessorio", "mdf", "trio", "movel", "moveis"]
-  }
+  },
+  {
+  "id": 11,
+  "categoria": ["Gôndolas", "Expositores", "Móveis de Centro", "Moveis"],
+  "nome": "GÔNDOLA CENTRAL",
+  "preco": 990.00,
+  "tamanho": "1.20m",
+  "dimensoes": "1.20m Altura x 1.40m Largura x 80cm Profundidade",
+  "img": "./images/gondoval (2).jpeg",
+  "galeria": [
+    "./images/gondoval (1).jpeg",
+    "./images/gondoval (3).jpeg",
+    "./images/gondoval (4).jpeg"
+  ],
+  "descricao": "Gôndola central em MDF, ideal para exposição de produtos no centro da loja, aproveitando bem o espaço e melhorando a visualização dos itens.\n\nAltura: 1.20m\nLargura: 1.40m\nProfundidade: 80cm.",
+  "tags": ["gondola", "gondolas", "central", "mdf", "expositor", "movel de centro", "moveis", "loja", "bazar", "conveniencia", "farmacia"]
+},
 ]
