@@ -33,10 +33,69 @@ document.addEventListener('DOMContentLoaded', async () => {
       document.getElementById('product-price').innerText = produtoSelecionado.preco.toFixed(2).replace('.', ',');
       document.getElementById('product-desc').innerText = produtoSelecionado.descricao || "Descrição não disponível.";
       
-      // Ajusta o caminho da imagem (de ./ para ../)
-      const imgElement = document.getElementById('main-product-img');
-      if (imgElement) {
-        imgElement.src = produtoSelecionado.img.replace('./', '../');
+      // Monta galeria horizontal (com arraste e botões)
+      const galleryTrack = document.getElementById('product-gallery-track');
+      const btnPrev = document.getElementById('gallery-prev');
+      const btnNext = document.getElementById('gallery-next');
+
+      const imagensGaleria = [produtoSelecionado.img, ...(produtoSelecionado.galeria || [])]
+        .filter(Boolean)
+        .map(img => img.replace('./', '../'));
+
+      if (galleryTrack && imagensGaleria.length > 0) {
+        const imagensUnicas = [...new Set(imagensGaleria)];
+
+        galleryTrack.innerHTML = imagensUnicas
+          .map((imgSrc, index) => `
+            <div class="product-gallery-slide">
+              <img src="${imgSrc}" alt="${produtoSelecionado.nome} - foto ${index + 1}" loading="lazy">
+            </div>
+          `)
+          .join('');
+
+        let slideAtual = 0;
+        const totalSlides = imagensUnicas.length;
+
+        const atualizarControles = () => {
+          if (btnPrev) btnPrev.disabled = slideAtual === 0;
+          if (btnNext) btnNext.disabled = slideAtual === totalSlides - 1;
+        };
+
+        const irParaSlide = (indice) => {
+          const slides = galleryTrack.querySelectorAll('.product-gallery-slide');
+          if (!slides[indice]) return;
+
+          slideAtual = indice;
+          galleryTrack.scrollTo({
+            left: slides[indice].offsetLeft,
+            behavior: 'smooth'
+          });
+          atualizarControles();
+        };
+
+        if (btnPrev) {
+          btnPrev.addEventListener('click', () => {
+            if (slideAtual > 0) irParaSlide(slideAtual - 1);
+          });
+        }
+
+        if (btnNext) {
+          btnNext.addEventListener('click', () => {
+            if (slideAtual < totalSlides - 1) irParaSlide(slideAtual + 1);
+          });
+        }
+
+        galleryTrack.addEventListener('scroll', () => {
+          const larguraSlide = galleryTrack.clientWidth;
+          if (!larguraSlide) return;
+          const novoIndice = Math.round(galleryTrack.scrollLeft / larguraSlide);
+          if (novoIndice !== slideAtual) {
+            slideAtual = novoIndice;
+            atualizarControles();
+          }
+        }, { passive: true });
+
+        atualizarControles();
       }
 
       // Ajusta a categoria no badge
