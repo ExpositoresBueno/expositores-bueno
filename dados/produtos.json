@@ -41,7 +41,10 @@
     "dimensoes": "1.10/1.00m Altura x 1.00m Largura x 40cm Profundidade",
     "img": "./images/cards/balcaoCaixa.jpg",
     "descricao": "Balcão de atendimento fechado, focado em segurança e organização interna para o operador.",
-    "tags": ["balcao", "balcoes", "caixa", "atendimento", "fechado", "seguranca", "simples", "movel", "moveis"]
+    "tags": ["balcao", "balcoes", "caixa", "atendimento", "fechado", "seguranca", "simples", "movel", "moveis"],
+    "galeria": [
+      "./images/V-colmeiaaparador.mp4"
+    ]
   },
   {
     "id": 5,

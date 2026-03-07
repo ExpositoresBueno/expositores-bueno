@@ -3,6 +3,37 @@
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', async () => {
+  const extensoesVideo = ['.mp4', '.webm', '.ogg', '.mov'];
+
+  const normalizarItemGaleria = (item, fallbackAlt) => {
+    if (!item) return null;
+
+    if (typeof item === 'string') {
+      return {
+        src: item,
+        tipo: null,
+        alt: fallbackAlt,
+      };
+    }
+
+    if (typeof item === 'object' && item.src) {
+      return {
+        src: item.src,
+        tipo: item.tipo || null,
+        alt: item.alt || fallbackAlt,
+      };
+    }
+
+    return null;
+  };
+
+  const detectarTipoMidia = (item) => {
+    if (item.tipo === 'video') return 'video';
+    if (item.tipo === 'imagem') return 'imagem';
+
+    const srcLimpo = item.src.split('?')[0].toLowerCase();
+    return extensoesVideo.some((ext) => srcLimpo.endsWith(ext)) ? 'video' : 'imagem';
+  };
   
   // 1. Extrai o ID do produto da URL (ex: ?id=1)
   const urlParams = new URLSearchParams(window.location.search);
@@ -38,23 +69,43 @@ document.addEventListener('DOMContentLoaded', async () => {
       const btnPrev = document.getElementById('gallery-prev');
       const btnNext = document.getElementById('gallery-next');
 
-      const imagensGaleria = [produtoSelecionado.img, ...(produtoSelecionado.galeria || [])]
+      const itensGaleria = [produtoSelecionado.img, ...(produtoSelecionado.galeria || [])]
+        .map((item, index) => normalizarItemGaleria(item, `${produtoSelecionado.nome} - mídia ${index + 1}`))
         .filter(Boolean)
-        .map(img => img.replace('./', '../'));
+        .map((item) => ({
+          ...item,
+          src: item.src.replace('./', '../'),
+          tipoMidia: detectarTipoMidia(item),
+        }));
 
-      if (galleryTrack && imagensGaleria.length > 0) {
-        const imagensUnicas = [...new Set(imagensGaleria)];
+      if (galleryTrack && itensGaleria.length > 0) {
+        const midiasUnicas = [];
+        const sources = new Set();
 
-        galleryTrack.innerHTML = imagensUnicas
-          .map((imgSrc, index) => `
+        itensGaleria.forEach((item) => {
+          if (sources.has(item.src)) return;
+          sources.add(item.src);
+          midiasUnicas.push(item);
+        });
+
+        galleryTrack.innerHTML = midiasUnicas
+          .map((item, index) => `
             <div class="product-gallery-slide">
-              <img src="${imgSrc}" alt="${produtoSelecionado.nome} - foto ${index + 1}" loading="lazy">
+              <div class="product-gallery-media">
+                ${item.tipoMidia === 'video'
+                  ? `<video controls preload="metadata" playsinline>
+                       <source src="${item.src}" type="video/mp4">
+                       Seu navegador não suporta vídeo.
+                     </video>`
+                  : `<img src="${item.src}" alt="${item.alt || `${produtoSelecionado.nome} - foto ${index + 1}`}" loading="lazy">`
+                }
+              </div>
             </div>
           `)
           .join('');
 
         let slideAtual = 0;
-        const totalSlides = imagensUnicas.length;
+        const totalSlides = midiasUnicas.length;
 
         const atualizarControles = () => {
           if (btnPrev) btnPrev.disabled = slideAtual === 0;
