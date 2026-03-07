@@ -2110,3 +2110,22 @@ body {
     min-height: 220px;
   }
 }
+
+/* ==========================================================================
+   HOTFIX — POSIÇÃO DO CARRINHO PRÓXIMO AO WHATSAPP
+   ========================================================================== */
+.cart-icon {
+  position: fixed !important;
+  right: 20px !important;
+  bottom: 96px !important;
+  top: auto !important;
+  z-index: 2400 !important;
+}
+
+@media (max-width: 768px) {
+  .cart-icon {
+    right: 12px !important;
+    bottom: 86px !important;
+    top: auto !important;
+  }
+}
