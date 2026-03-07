@@ -33,18 +33,15 @@
     "tags": ["balcao", "balcoes", "vitrine", "vidro", "prateleira", "farmacia", "medicamento", "joia", "expositor", "movel", "moveis"]
   },
   {
-    "id": 4,
-    "categoria": ["Balcões", "Caixas"],
-    "nome": "BALCÃO CAIXA",
-    "preco": 815.00,
-    "tamanho": "1.10m",
-    "dimensoes": "1.10/1.00m Altura x 1.00m Largura x 40cm Profundidade",
-    "img": "./images/cards/balcaoCaixa.jpg",
-    "descricao": "Balcão de atendimento fechado, focado em segurança e organização interna para o operador.",
-    "tags": ["balcao", "balcoes", "caixa", "atendimento", "fechado", "seguranca", "simples", "movel", "moveis"],
-    "galeria": [
-      "./images/V-colmeiaaparador.mp4"
-    ]
+  "id": 4,
+  "categoria": ["Balcões", "Caixas"],
+  "nome": "BALCÃO CAIXA",
+  "preco": 815.00,
+  "tamanho": "1.10m",
+  "dimensoes": "1.10/1.00m Altura x 1.00m Largura x 40cm Profundidade",
+  "img": "./images/cards/balcaoCaixa.jpg",
+  "descricao": "Balcão de atendimento fechado, focado em segurança e organização interna para o operador.",
+  "tags": ["balcao", "balcoes", "caixa", "atendimento", "fechado", "seguranca", "simples", "movel", "moveis"]
   },
   {
     "id": 5,
@@ -168,7 +165,8 @@
   "dimensoes": "1.80m Altura x 60cm Largura x 30cm Profundidade",
   "img": "./images/8P (1).jpeg",
   "galeria": [
-    "./images/8P (2).jpeg"
+    "./images/8P (2).jpeg",
+    "./images/V-vestiarios.mp4"
   ],
   "descricao": "Armário vestiário em MDF com 8 portas, ideal para organização de pertences em lojas, fábricas e ambientes de apoio. Cada porta acompanha 2 chaves.\n\nAltura: 1.80m\nLargura: 60cm\nProfundidade: 30cm.",
   "tags": ["armario", "vestiario", "8 portas", "mdf", "portas", "chave", "organizacao", "loja", "fabrica", "movel", "moveis"]
