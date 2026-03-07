@@ -378,3 +378,166 @@ h1, h2, h3 {
   background-color: rgba(0,0,0,0.8);
   color: #ffb03a;
 }
+/* ==========================================================================
+   FASE 2 — REFINO VISUAL CONSERVADOR (PROJETOS 3D)
+   ========================================================================== */
+:root {
+  --p2-bg: #ffffff;
+  --p2-soft: #f7f8fa;
+  --p2-text: #243042;
+  --p2-muted: #5f6b7a;
+  --p2-orange: #f08a24;
+  --p2-orange-dark: #da7818;
+  --p2-line: #e7ebf0;
+  --p2-shadow: 0 8px 24px rgba(17, 24, 39, 0.08);
+}
+
+.section-intro,
+.section-advantages,
+.projects-gallery {
+  background-color: var(--p2-bg);
+}
+
+.section-intro p {
+  color: var(--p2-text);
+  line-height: 1.8;
+}
+
+.section-advantages {
+  border-top: 1px solid var(--p2-line);
+  border-bottom: 1px solid var(--p2-line);
+}
+
+.title-orange,
+.section-advantages h2 {
+  color: var(--p2-orange) !important;
+}
+
+.adv-item {
+  background: #fff;
+  border: 1px solid var(--p2-line);
+  border-radius: 14px;
+  box-shadow: var(--p2-shadow);
+}
+
+.adv-item h3 {
+  color: var(--p2-text);
+}
+
+.adv-item p {
+  color: var(--p2-muted);
+}
+
+.link-wa-image img {
+  filter: drop-shadow(0 8px 16px rgba(37, 211, 102, 0.24));
+}
+
+.gallery-grid {
+  gap: 22px;
+}
+
+.gallery-image-wrapper {
+  border: 1px solid var(--p2-line);
+  border-radius: 14px;
+  box-shadow: var(--p2-shadow);
+}
+
+.image-overlay span {
+  border-color: var(--p2-orange);
+}
+
+.whatsapp-float {
+  width: 60px;
+  height: 60px;
+  font-size: 30px;
+  border: 3px solid #fff;
+  box-shadow: 0 12px 28px rgba(37, 211, 102, 0.4);
+}
+
+@media (max-width: 992px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .section-intro,
+  .section-advantages,
+  .projects-gallery {
+    padding: 42px 0;
+  }
+
+  .grid-advantages {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .adv-item {
+    padding: 20px 16px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .image-overlay span {
+    font-size: 0.85rem;
+    padding: 8px 14px;
+  }
+
+  .whatsapp-float {
+    width: 56px;
+    height: 56px;
+    font-size: 27px;
+    right: 14px;
+    bottom: 14px;
+  }
+}
+
+/* ==========================================================================
+   FASE 2 — AJUSTE FINAL CONSERVADOR
+   ========================================================================== */
+.content-limit {
+  max-width: 1160px;
+}
+
+.gallery-image-wrapper {
+  min-height: 210px;
+}
+
+@media (max-width: 768px) {
+  .banner-hero-3d {
+    min-height: 230px;
+  }
+
+  .gallery-image-wrapper {
+    min-height: 0;
+  }
+}
+
+/* ==========================================================================
+   FASE 3 — POLIMENTO VISUAL FINAL
+   ========================================================================== */
+.section-intro p,
+.adv-item p {
+  text-wrap: pretty;
+}
+
+.gallery-image-wrapper img {
+  will-change: transform;
+}
+
+#modal-caption {
+  letter-spacing: 0.3px;
+}
+
+.modal-content-wrapper {
+  width: min(1100px, 92vw);
+}
+
+@media (max-width: 768px) {
+  #modal-caption {
+    font-size: 1rem;
+  }
+}

@@ -241,3 +241,178 @@ h1, h2, h3 {
     padding: 40px 0;
   }
 }
+
+/* ==========================================================================
+   FASE 2 — REFINO VISUAL CONSERVADOR (SOBRE)
+   ========================================================================== */
+:root {
+  --p2-bg: #ffffff;
+  --p2-soft: #f7f8fa;
+  --p2-text: #243042;
+  --p2-muted: #5f6b7a;
+  --p2-orange: #f08a24;
+  --p2-orange-dark: #da7818;
+  --p2-line: #e7ebf0;
+  --p2-shadow: 0 8px 24px rgba(17, 24, 39, 0.08);
+}
+
+.banner-sobre img {
+  height: min(70vh, 560px);
+  object-fit: cover;
+}
+
+.sobre-empresa {
+  background: var(--p2-bg);
+  color: var(--p2-text);
+  padding: 64px 0;
+}
+
+.sobre-empresa h2 {
+  color: var(--p2-orange);
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+
+.sobre-empresa p,
+.lista-sobre {
+  font-size: 1.04rem;
+  line-height: 1.8;
+  color: var(--p2-text);
+}
+
+.lista-sobre {
+  padding-left: 20px;
+}
+
+.lista-sobre li {
+  margin-bottom: 12px;
+}
+
+.diferenciais {
+  background: var(--p2-soft);
+  border-top: 1px solid var(--p2-line);
+  border-bottom: 1px solid var(--p2-line);
+}
+
+.diferenciais h3 {
+  color: var(--p2-orange);
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+}
+
+.card {
+  background: #fff;
+  border: 1px solid var(--p2-line);
+  border-radius: 14px;
+  box-shadow: var(--p2-shadow);
+}
+
+.card i {
+  color: var(--p2-orange);
+}
+
+.card h4 {
+  color: var(--p2-text);
+}
+
+.card p {
+  color: var(--p2-muted);
+  line-height: 1.6;
+}
+
+.whatsapp-float {
+  width: 60px;
+  height: 60px;
+  font-size: 30px;
+  border: 3px solid #fff;
+  box-shadow: 0 12px 28px rgba(37, 211, 102, 0.4);
+}
+
+@media (max-width: 768px) {
+  .banner-sobre img {
+    height: 42vh;
+  }
+
+  .sobre-empresa {
+    padding: 42px 0;
+  }
+
+  .sobre-empresa h2 {
+    margin-bottom: 18px;
+  }
+
+  .sobre-empresa p,
+  .lista-sobre {
+    font-size: 0.98rem;
+    line-height: 1.65;
+  }
+
+  .cards-diferenciais {
+    margin-bottom: 30px;
+  }
+
+  .whatsapp-float {
+    width: 56px;
+    height: 56px;
+    font-size: 27px;
+    right: 14px;
+    bottom: 14px;
+  }
+}
+
+/* ==========================================================================
+   FASE 2 — AJUSTE FINAL CONSERVADOR
+   ========================================================================== */
+.sobre-empresa .container,
+.diferenciais .container {
+  max-width: 1180px;
+}
+
+.sobre-empresa strong,
+.sobre-empresa b {
+  color: #1f2937;
+}
+
+.cards-diferenciais {
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .diferenciais {
+    padding: 40px 0;
+  }
+
+  .card {
+    padding: 24px 16px;
+  }
+}
+
+/* ==========================================================================
+   FASE 3 — POLIMENTO VISUAL FINAL
+   ========================================================================== */
+.sobre-empresa p,
+.lista-sobre li {
+  text-wrap: pretty;
+}
+
+.sobre-empresa .container {
+  border-radius: 14px;
+}
+
+.cards-diferenciais .card {
+  min-height: 250px;
+}
+
+.cards-diferenciais .card h4 {
+  min-height: 44px;
+}
+
+@media (max-width: 768px) {
+  .cards-diferenciais .card {
+    min-height: 0;
+  }
+
+  .cards-diferenciais .card h4 {
+    min-height: 0;
+  }
+}

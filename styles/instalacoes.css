@@ -212,3 +212,182 @@ body, html {
     }
     .niche-content { grid-template-columns: 1fr; }
 }
+/* ==========================================================================
+   FASE 2 — REFINO VISUAL CONSERVADOR (INSTALAÇÕES)
+   ========================================================================== */
+:root {
+  --p2-bg: #ffffff;
+  --p2-soft: #f7f8fa;
+  --p2-text: #243042;
+  --p2-muted: #5f6b7a;
+  --p2-orange: #f08a24;
+  --p2-orange-dark: #da7818;
+  --p2-line: #e7ebf0;
+  --p2-shadow: 0 8px 24px rgba(17, 24, 39, 0.08);
+}
+
+.installations-container {
+  padding: 54px 20px;
+}
+
+.hero-overlay-full {
+  background: linear-gradient(to right, rgba(10, 16, 30, 0.76) 0%, rgba(10, 16, 30, 0.22) 70%, transparent 100%);
+}
+
+.hero-text-content h1 {
+  font-size: clamp(1.9rem, 4.3vw, 3rem);
+}
+
+.hero-text-content p {
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+}
+
+.niche-box {
+  background: var(--p2-bg);
+  border: 1px solid var(--p2-line);
+  border-bottom: 4px solid var(--p2-orange);
+  border-radius: 14px;
+  box-shadow: var(--p2-shadow);
+}
+
+.niche-box i {
+  color: var(--p2-orange);
+}
+
+.niche-box h2 {
+  color: var(--p2-text);
+}
+
+.niche-box p {
+  color: var(--p2-muted);
+  line-height: 1.7;
+}
+
+.cta-installations {
+  background: var(--p2-soft);
+  border: 1px solid var(--p2-line);
+}
+
+.cta-installations h2 {
+  color: var(--p2-orange);
+}
+
+.cta-installations p {
+  color: var(--p2-muted);
+}
+
+.btn-whatsapp-large {
+  border: 2px solid #ffffff;
+  box-shadow: 0 10px 24px rgba(37, 211, 102, 0.28);
+}
+
+.whatsapp-float {
+  width: 60px;
+  height: 60px;
+  font-size: 30px;
+  border: 3px solid #fff;
+  box-shadow: 0 12px 28px rgba(37, 211, 102, 0.4);
+}
+
+@media (max-width: 992px) {
+  .niche-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-installations-full {
+    height: 320px;
+  }
+
+  .hero-overlay-full {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .hero-text-content {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  .installations-container {
+    padding: 36px 16px;
+  }
+
+  .niche-box {
+    padding: 28px 20px;
+  }
+
+  .cta-installations {
+    padding: 42px 16px;
+  }
+
+  .btn-whatsapp-large {
+    width: 100%;
+    max-width: 360px;
+    padding: 12px 16px;
+    font-size: 1rem;
+  }
+
+  .whatsapp-float {
+    width: 56px;
+    height: 56px;
+    font-size: 27px;
+    right: 14px;
+    bottom: 14px;
+  }
+}
+
+/* ==========================================================================
+   FASE 2 — AJUSTE FINAL CONSERVADOR
+   ========================================================================== */
+.installations-container {
+  max-width: 1160px;
+}
+
+.niche-box {
+  min-height: 260px;
+}
+
+.cta-installations {
+  margin-top: 28px;
+}
+
+@media (max-width: 768px) {
+  .hero-text-content h1 {
+    letter-spacing: 1px;
+  }
+
+  .niche-box {
+    min-height: auto;
+  }
+}
+
+/* ==========================================================================
+   FASE 3 — POLIMENTO VISUAL FINAL
+   ========================================================================== */
+.hero-text-content {
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.35);
+}
+
+.niche-content {
+  align-items: stretch;
+}
+
+.niche-box h2 {
+  min-height: 38px;
+}
+
+.cta-installations {
+  box-shadow: 0 8px 24px rgba(17, 24, 39, 0.08);
+}
+
+@media (max-width: 768px) {
+  .niche-box h2 {
+    min-height: 0;
+  }
+
+  .cta-installations_text {
+    font-size: 0.95rem;
+  }
+}
