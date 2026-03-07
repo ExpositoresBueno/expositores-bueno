@@ -82,15 +82,21 @@
     "tags": ["arara", "araras", "mdf", "colmeia", "cabideiro", "cabide", "nicho", "nichos", "roupa", "loja", "movel", "moveis"]
   },
   {
-    "id": 8,
-    "categoria": ["Araras", "Colmeias", "Expositores"],
-    "nome": "ARARA DE MDF COM COLMEIA LATERAL",
-    "preco": 459.00,
-    "tamanho": "1.85m",
-    "dimensoes": "1.85m Altura x 90cm Largura x 30cm Profundidade",
-    "img": "./images/cards/araraMDFColmeia2.jpg",
-    "descricao": "Modelo premium com coluna lateral de nichos. Organização completa para looks e acessórios.",
-    "tags": ["arara", "araras", "mdf", "colmeia", "lateral", "cabideiro", "cabide", "nicho", "premium", "roupa", "loja", "movel", "moveis"]
+  "id": 8,
+  "categoria": ["Araras", "Colmeias", "Expositores"],
+  "nome": "ARARA DE MDF COM COLMEIA LATERAL",
+  "preco": 459.00,
+  "tamanho": "1.80m",
+  "dimensoes": "1.80m Altura x 90cm Largura x 30cm Profundidade",
+  "img": "./images/cards/araraMDFColmeia2.jpg",
+  "galeria": [
+    "./images/nicholat (1).jpeg",
+    "./images/nicholat (2).jpeg",
+    "./images/nicholat (3).jpeg",
+    "./images/nicholat (4).jpeg"
+  ],
+  "descricao": "Modelo premium com coluna lateral de nichos. Organização completa para looks e acessórios.\n\nAltura: 1.80m\nLargura: 90cm\nProfundidade: 30cm.",
+  "tags": ["arara", "araras", "mdf", "colmeia", "lateral", "cabideiro", "cabide", "nicho", "premium", "roupa", "loja", "movel", "moveis"]
   },
   {
     "id": 9,
