@@ -191,5 +191,21 @@
   "img": "./images/quadradaMad (2).jpeg",
   "descricao": "Gôndola quadrada madeirada em MDF, com prateleiras engrossuradas, ideal para exposição de produtos no centro da loja com visual mais robusto e sofisticado.\n\nAltura: 1.20m\nLargura: 90cm\nProfundidade: 90cm.",
   "tags": ["gondola", "gondolas", "quadrada", "madeirada", "mdf", "prateleiras engrossuradas", "movel de centro", "expositor", "loja", "bazar", "conveniencia", "farmacia"]
+ },
+  {
+  "id": 16,
+  "categoria": ["Balcões", "Caixas", "Recepção", "Linha Premium"],
+  "nome": "BALCÃO CAIXA COM RIPADO",
+  "preco": 3750.00,
+  "tamanho": "1.00m",
+  "dimensoes": "2.50m Comprimento x 1.20m Parte do L x 1.00m Altura x 40cm Profundidade",
+  "img": "./images/cxripado (2).jpeg",
+  "galeria": [
+    "./images/cxripado (1).jpeg",
+    "./images/cxripado (3).jpeg",
+    "./images/cxripado (4).jpeg"
+  ],
+  "descricao": "Balcão de recepção em L com detalhe ripado e iluminação em LED, ideal para lojas e ambientes que buscam um visual mais sofisticado e moderno.\n\nComprimento: 2.50m\nParte do L: 1.20m\nAltura: 1.00m\nProfundidade: 40cm.",
+  "tags": ["balcao", "balcoes", "caixa", "recepcao", "ripado", "led", "balcao em l", "premium", "atendimento", "loja", "movel", "moveis"]
  }
 ]
