@@ -1501,3 +1501,349 @@ body {
 /* ===== FIM AJUSTE SEÇÃO ALGUNS PRODUTOS MOBILE ===== */
 /* ===== FIM AJUSTE MOBILE EXTRA GPT ===== */
 /* =====  IM AJUSTE MOBILE TESTE GPT ===== */
+/* ==========================================================================
+   FASE 1 — REFINO VISUAL CONSERVADOR (HOME + HEADER + WHATSAPP + MOBILE)
+   ========================================================================== */
+:root {
+  --phase1-bg: #ffffff;
+  --phase1-soft: #f7f8fa;
+  --phase1-text: #243042;
+  --phase1-orange: #f08a24;
+  --phase1-orange-hover: #da7818;
+  --phase1-line: #e7ebf0;
+  --phase1-shadow: 0 8px 24px rgba(17, 24, 39, 0.08);
+}
+
+body {
+  background-color: var(--phase1-bg);
+  color: var(--phase1-text);
+}
+
+.header-top {
+  background-color: #2697e7;
+  padding: 10px 4%;
+}
+
+.header-top-left {
+  padding: 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.header-main {
+  background-color: var(--phase1-bg);
+  border-bottom: 1px solid var(--phase1-line);
+  grid-template-columns: auto minmax(280px, 620px) auto;
+}
+
+.header-logo {
+  justify-self: start;
+}
+
+.header-logo img {
+  height: 70px;
+  border: 1px solid var(--phase1-line);
+  box-shadow: 0 4px 14px rgba(30, 169, 255, 0.12);
+}
+
+.header-search {
+  border: 1px solid #d9e1ea;
+  border-radius: 999px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.header-search button {
+  color: var(--phase1-orange);
+}
+
+.header-nav ul {
+  justify-content: center;
+  gap: 26px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.header-nav ul li:first-child a,
+.header-nav li a:hover,
+.dropdown-menu li a:hover {
+  color: var(--phase1-orange);
+}
+
+.dropdown-menu {
+  border-bottom: 3px solid var(--phase1-orange);
+}
+
+.dropdown-menu li a:hover {
+  background-color: #fff5ea;
+}
+
+.breadcrumb {
+  background-color: var(--phase1-soft);
+}
+
+.breadcrumb-content {
+  border-radius: 10px;
+  border-color: var(--phase1-line);
+}
+
+.carousel-section,
+.product-page {
+  background-color: var(--phase1-soft);
+}
+
+.carousel-container,
+.product-card,
+.category-card {
+  border: 1px solid var(--phase1-line);
+  box-shadow: var(--phase1-shadow);
+}
+
+.category-card {
+  border-radius: 14px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.category-card:hover,
+.product-card:hover {
+  transform: translateY(-4px);
+}
+
+.filter-dropdown:hover,
+.filter-dropdown:focus,
+.filter-item:hover {
+  color: var(--phase1-orange-hover);
+  border-color: var(--phase1-orange);
+}
+
+.btn-filter,
+.page-num.active {
+  background-color: var(--phase1-orange);
+  border-color: var(--phase1-orange);
+}
+
+.btn-filter:hover {
+  background-color: var(--phase1-orange-hover);
+}
+
+.btn-clear,
+.category-badge {
+  color: #fff;
+  border-color: var(--phase1-orange);
+  background-color: var(--phase1-orange);
+}
+
+.btn-add-cart:hover {
+  background: #ffe3cb;
+}
+
+.cart-icon {
+  right: 20px;
+  top: auto;
+  bottom: 96px;
+  background-color: var(--phase1-orange);
+  box-shadow: 0 10px 22px rgba(240, 138, 36, 0.35);
+}
+
+.cart-icon:hover {
+  background-color: var(--phase1-orange-hover);
+}
+
+#cart-count {
+  background: #ef4444;
+}
+
+.whatsapp-float {
+  right: 18px;
+  bottom: 18px;
+  width: 62px;
+  height: 62px;
+  font-size: 30px;
+  border: 3px solid #ffffff;
+  box-shadow: 0 12px 28px rgba(37, 211, 102, 0.4);
+  z-index: 2500;
+}
+
+.whatsapp-float:hover {
+  background: #1ebe5d;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 992px) {
+  .header-main {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 12px 16px;
+  }
+
+  .header-logo,
+  .header-search {
+    justify-self: center;
+  }
+
+  .header-search {
+    width: 100%;
+  }
+
+  .header-nav ul {
+    gap: 14px;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-top {
+    padding: 10px 12px;
+  }
+
+  .header-top-left {
+    font-size: 12px;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  .header-logo img {
+    max-height: 62px;
+  }
+
+  .header-search {
+    border-radius: 12px;
+    min-height: 44px;
+  }
+
+  .header-search select,
+  .header-search input {
+    font-size: 13px;
+  }
+
+  .header-nav ul {
+    gap: 10px 12px;
+    padding: 10px 12px;
+  }
+
+  .header-nav li a {
+    font-size: 11px;
+  }
+
+  .breadcrumb-content {
+    padding: 12px;
+  }
+
+  .carousel-container {
+    height: 180px;
+  }
+
+  .products-grid {
+    gap: 18px;
+  }
+
+  .product-card {
+    min-height: 420px;
+  }
+
+  .product-info {
+    padding: 14px;
+  }
+
+  .cart-icon {
+    width: 50px;
+    height: 50px;
+    right: 12px;
+    bottom: 86px;
+    padding: 10px;
+  }
+
+  .cart-icon i {
+    font-size: 22px;
+  }
+
+  .whatsapp-float {
+    width: 60px;
+    height: 60px;
+    font-size: 28px;
+    right: 12px;
+    bottom: 14px;
+  }
+}
+
+/* ==========================================================================
+   FASE 3 — POLIMENTO VISUAL FINAL (HOME)
+   ========================================================================== */
+:root {
+  --p3-text: #1f2937;
+  --p3-muted: #667085;
+  --p3-orange: #f08a24;
+  --p3-orange-soft: #fff3e6;
+  --p3-line: #e5eaf0;
+}
+
+body {
+  color: var(--p3-text);
+}
+
+.header-search input::placeholder {
+  color: #94a3b8;
+}
+
+.breadcrumb-link,
+.price-label,
+.footer-info li,
+.copy {
+  color: var(--p3-muted);
+}
+
+.carousel-section > div:first-child {
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  color: var(--p3-text);
+}
+
+.category-card h3 {
+  font-size: 15px;
+  letter-spacing: 1.2px;
+}
+
+.product-card h3 {
+  line-height: 1.35;
+}
+
+.product-info {
+  gap: 10px;
+}
+
+.category-badge {
+  letter-spacing: 0.4px;
+}
+
+.page-btn,
+.page-num {
+  border-color: var(--p3-line);
+}
+
+.page-btn:hover,
+.page-num:hover:not(.active) {
+  background-color: var(--p3-orange-soft);
+  border-color: #f7c08f;
+}
+
+.main-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+@media (max-width: 768px) {
+  .header-search {
+    min-height: 44px;
+  }
+
+  .products-header {
+    justify-content: center;
+  }
+
+  .products-header select {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .pagination-container {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}

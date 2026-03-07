@@ -126,3 +126,173 @@ h1, h2, h3 {
 .whatsapp-float:hover {
   background: #1ebe5d;
 }
+/* ==========================================================================
+   FASE 2 — REFINO VISUAL CONSERVADOR (DETALHE DO PRODUTO)
+   ========================================================================== */
+:root {
+  --p2-bg: #ffffff;
+  --p2-soft: #f7f8fa;
+  --p2-text: #243042;
+  --p2-muted: #5f6b7a;
+  --p2-orange: #f08a24;
+  --p2-orange-dark: #da7818;
+  --p2-line: #e7ebf0;
+  --p2-shadow: 0 8px 24px rgba(17, 24, 39, 0.08);
+}
+
+.product-container {
+  background: var(--p2-soft);
+  padding: 26px 18px 40px;
+}
+
+.product-layout {
+  background: #fff;
+  border: 1px solid var(--p2-line);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: var(--p2-shadow);
+}
+
+.product-image-section img {
+  background-color: #fff;
+  border: 1px solid var(--p2-line);
+  border-radius: 12px;
+}
+
+#product-title {
+  color: var(--p2-text);
+  line-height: 1.25;
+}
+
+.badge-category,
+#product-category {
+  display: inline-block;
+  margin: 10px 0 16px;
+  background: #fff5ea;
+  color: var(--p2-orange-dark);
+  border: 1px solid #fbd8b8;
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+.price-container {
+  margin: 8px 0 10px;
+}
+
+.price-value,
+#product-price {
+  color: var(--p2-orange-dark);
+}
+
+.product-description-side {
+  border-top: 1px solid var(--p2-line);
+}
+
+.product-description-side p {
+  color: var(--p2-muted);
+}
+
+.btn-whatsapp-large {
+  border: 2px solid #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 24px rgba(37, 211, 102, 0.28);
+}
+
+.whatsapp-float {
+  width: 60px;
+  height: 60px;
+  font-size: 30px;
+  border: 3px solid #fff;
+  box-shadow: 0 12px 28px rgba(37, 211, 102, 0.4);
+}
+
+@media (max-width: 992px) {
+  .product-layout {
+    gap: 28px;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-container {
+    padding: 16px 12px 28px;
+  }
+
+  .product-layout {
+    border-radius: 12px;
+    padding: 16px;
+    gap: 22px;
+  }
+
+  .product-description-side p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .btn-whatsapp-large {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 1rem;
+  }
+
+  .whatsapp-float {
+    width: 56px;
+    height: 56px;
+    font-size: 27px;
+    right: 14px;
+    bottom: 14px;
+  }
+}
+
+/* ==========================================================================
+   FASE 2 — AJUSTE FINAL CONSERVADOR
+   ========================================================================== */
+.product-layout {
+  max-width: 1140px;
+}
+
+.product-info-section {
+  gap: 8px;
+}
+
+.purchase-actions {
+  margin-top: 6px;
+}
+
+@media (max-width: 768px) {
+  .product-image-section img {
+    max-height: 420px;
+  }
+}
+
+/* ==========================================================================
+   FASE 3 — POLIMENTO VISUAL FINAL
+   ========================================================================== */
+.product-image-section {
+  align-self: start;
+}
+
+#product-title {
+  text-wrap: balance;
+}
+
+.price-container {
+  align-items: baseline;
+  gap: 6px;
+}
+
+.product-description-side {
+  margin-top: 22px;
+}
+
+.product-description-side p {
+  text-wrap: pretty;
+}
+
+@media (max-width: 768px) {
+  .product-description-side {
+    margin-top: 14px;
+  }
+}
