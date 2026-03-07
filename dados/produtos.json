@@ -1,134 +1,305 @@
 [
   {
     "id": 1,
-    "categoria": ["Balcões", "Caixas"],
+    "categoria": [
+      "Balcões",
+      "Caixas"
+    ],
     "nome": "BALCÃO CAIXINHA",
-    "preco": 449.00,
+    "preco": 449.0,
     "tamanho": "1.10m",
     "dimensoes": "1.10/1.00m Altura x 55cm Largura x 40cm Profundidade",
     "img": "./images/cards/balcaoCaixaComRodape.jpg",
     "descricao": "Balcão compacto com rodapé e gaveta. Ideal para otimizar espaços pequenos com baixo custo.",
-    "tags": ["balcao", "balcoes", "caixa", "rodape", "atendimento", "compacto", "gaveta", "movel", "moveis"]
+    "tags": [
+      "balcao",
+      "balcoes",
+      "caixa",
+      "rodape",
+      "atendimento",
+      "compacto",
+      "gaveta",
+      "movel",
+      "moveis"
+    ]
   },
   {
     "id": 2,
-    "categoria": ["Balcões", "Caixas", "Vitrines", "Farmácia"],
+    "categoria": [
+      "Balcões",
+      "Caixas",
+      "Vitrines",
+      "Farmácia"
+    ],
     "nome": "BALCÃO CAIXA COM VITRINE (BRANCO)",
-    "preco": 815.00,
+    "preco": 815.0,
     "tamanho": "1.10m",
     "dimensoes": "1.10/1.00m Altura x 1.15m Largura x 40cm Profundidade",
     "img": "./images/cards/balcaoCaixaComVitrineBranco.jpg",
     "descricao": "O campeão de vendas: balcão caixa com ampla vitrine frontal. Perfeito para Farmácias e Lojas variadas.",
-    "tags": ["balcao", "balcoes", "caixa", "vitrine", "branco", "atendimento", "farmacia", "vidro", "expositor", "movel", "moveis"]
+    "tags": [
+      "balcao",
+      "balcoes",
+      "caixa",
+      "vitrine",
+      "branco",
+      "atendimento",
+      "farmacia",
+      "vidro",
+      "expositor",
+      "movel",
+      "moveis"
+    ]
   },
   {
     "id": 3,
-    "categoria": ["Balcões", "Vitrines", "Farmácia", "Expositores"],
+    "categoria": [
+      "Balcões",
+      "Vitrines",
+      "Farmácia",
+      "Expositores"
+    ],
     "nome": "BALCÃO VITRINE",
-    "preco": 800.00,
+    "preco": 800.0,
     "tamanho": "1.00m",
     "dimensoes": "1.00m Altura x 1.00m Largura x 40cm Profundidade",
     "img": "./images/cards/balcaoVitrine.jpg",
     "descricao": "Vitrine expositora com opção de prateleiras em MDF ou Vidro. Essencial para exibir medicamentos ou joias.",
-    "tags": ["balcao", "balcoes", "vitrine", "vidro", "prateleira", "farmacia", "medicamento", "joia", "expositor", "movel", "moveis"]
+    "tags": [
+      "balcao",
+      "balcoes",
+      "vitrine",
+      "vidro",
+      "prateleira",
+      "farmacia",
+      "medicamento",
+      "joia",
+      "expositor",
+      "movel",
+      "moveis"
+    ]
   },
   {
     "id": 4,
-    "categoria": ["Balcões", "Caixas"],
+    "categoria": [
+      "Balcões",
+      "Caixas"
+    ],
     "nome": "BALCÃO CAIXA",
-    "preco": 815.00,
+    "preco": 815.0,
     "tamanho": "1.10m",
     "dimensoes": "1.10/1.00m Altura x 1.00m Largura x 40cm Profundidade",
     "img": "./images/cards/balcaoCaixa.jpg",
     "descricao": "Balcão de atendimento fechado, focado em segurança e organização interna para o operador.",
-    "tags": ["balcao", "balcoes", "caixa", "atendimento", "fechado", "seguranca", "simples", "movel", "moveis"]
+    "tags": [
+      "balcao",
+      "balcoes",
+      "caixa",
+      "atendimento",
+      "fechado",
+      "seguranca",
+      "simples",
+      "movel",
+      "moveis"
+    ],
+    "galeria": [
+      "./images/videobalcao.mp4"
+    ]
   },
   {
     "id": 5,
-    "categoria": ["Colmeias", "Expositores", "Armários", "Pet Shop"],
+    "categoria": [
+      "Colmeias",
+      "Expositores",
+      "Armários",
+      "Pet Shop"
+    ],
     "nome": "ARMÁRIO COLMEIA",
-    "preco": 699.00,
+    "preco": 699.0,
     "tamanho": "1.85m",
     "dimensoes": "1.85m Altura x 90cm Largura x 30cm Profundidade",
     "img": "./images/cards/armarioColmeia.jpg",
     "descricao": "Expositor vertical com nichos. Ótimo para Pet Shops (rações/acessórios) e lojas de roupas.",
-    "tags": ["armario", "colmeia", "nicho", "nichos", "estante", "expositor", "pet shop", "roupa", "camiseta", "movel", "moveis"]
+    "tags": [
+      "armario",
+      "colmeia",
+      "nicho",
+      "nichos",
+      "estante",
+      "expositor",
+      "pet shop",
+      "roupa",
+      "camiseta",
+      "movel",
+      "moveis"
+    ]
   },
   {
-  "id": 6,
-  "categoria": ["Expositores", "Prateleiras", "Móvel", "Movel", "Moveis"],
-  "nome": "MÓVEL COM PRATELEIRAS",
-  "preco": 560.00,
-  "tamanho": "1.80m",
-  "dimensoes": "1.80m Altura x 90cm Largura x 30cm Profundidade",
-  "img": "./images/cards/movelPrateleira.jpg",
-  "galeria": [
-    "./images/movelprat (1).jpeg",
-    "./images/movelprat (2).jpeg",
-    "./images/movelprat (3).jpeg"
-  ],
-  "descricao": "Estante versátil com prateleiras abertas. Item obrigatório para Farmácias e Pet Shops.\n\nAltura: 1.80m\nLargura: 90cm\nProfundidade: 30cm.",
-  "tags": ["movel", "moveis", "estante", "prateleira", "prateleiras", "gondola", "farmacia", "pet shop", "aberto"]
+    "id": 6,
+    "categoria": [
+      "Expositores",
+      "Prateleiras",
+      "Móvel",
+      "Movel",
+      "Moveis"
+    ],
+    "nome": "MÓVEL COM PRATELEIRAS",
+    "preco": 560.0,
+    "tamanho": "1.80m",
+    "dimensoes": "1.80m Altura x 90cm Largura x 30cm Profundidade",
+    "img": "./images/cards/movelPrateleira.jpg",
+    "galeria": [
+      "./images/movelprat (1).jpeg",
+      "./images/movelprat (2).jpeg",
+      "./images/movelprat (3).jpeg"
+    ],
+    "descricao": "Estante versátil com prateleiras abertas. Item obrigatório para Farmácias e Pet Shops.\n\nAltura: 1.80m\nLargura: 90cm\nProfundidade: 30cm.",
+    "tags": [
+      "movel",
+      "moveis",
+      "estante",
+      "prateleira",
+      "prateleiras",
+      "gondola",
+      "farmacia",
+      "pet shop",
+      "aberto"
+    ]
   },
   {
     "id": 7,
-    "categoria": ["Araras", "Colmeias", "Expositores"],
+    "categoria": [
+      "Araras",
+      "Colmeias",
+      "Expositores"
+    ],
     "nome": "ARARA DE MDF COM COLMEIA",
-    "preco": 459.00,
+    "preco": 459.0,
     "tamanho": "1.85m",
     "dimensoes": "1.85m Altura x 90cm Largura x 30cm Profundidade",
     "img": "./images/cards/araraMDFColmeia.jpg",
     "descricao": "Modelo híbrido com cabideiro superior e nichos na base, aproveitando 100% do espaço vertical.",
-    "tags": ["arara", "araras", "mdf", "colmeia", "cabideiro", "cabide", "nicho", "nichos", "roupa", "loja", "movel", "moveis"]
+    "tags": [
+      "arara",
+      "araras",
+      "mdf",
+      "colmeia",
+      "cabideiro",
+      "cabide",
+      "nicho",
+      "nichos",
+      "roupa",
+      "loja",
+      "movel",
+      "moveis"
+    ]
   },
   {
-  "id": 8,
-  "categoria": ["Araras", "Colmeias", "Expositores"],
-  "nome": "ARARA DE MDF COM COLMEIA LATERAL",
-  "preco": 459.00,
-  "tamanho": "1.80m",
-  "dimensoes": "1.80m Altura x 90cm Largura x 30cm Profundidade",
-  "img": "./images/cards/araraMDFColmeia2.jpg",
-  "galeria": [
-    "./images/nicholat (1).jpeg",
-    "./images/nicholat (2).jpeg",
-    "./images/nicholat (3).jpeg",
-    "./images/nicholat (4).jpeg"
-  ],
-  "descricao": "Modelo premium com coluna lateral de nichos. Organização completa para looks e acessórios.\n\nAltura: 1.80m\nLargura: 90cm\nProfundidade: 30cm.",
-  "tags": ["arara", "araras", "mdf", "colmeia", "lateral", "cabideiro", "cabide", "nicho", "premium", "roupa", "loja", "movel", "moveis"]
+    "id": 8,
+    "categoria": [
+      "Araras",
+      "Colmeias",
+      "Expositores"
+    ],
+    "nome": "ARARA DE MDF COM COLMEIA LATERAL",
+    "preco": 459.0,
+    "tamanho": "1.80m",
+    "dimensoes": "1.80m Altura x 90cm Largura x 30cm Profundidade",
+    "img": "./images/cards/araraMDFColmeia2.jpg",
+    "galeria": [
+      "./images/nicholat (1).jpeg",
+      "./images/nicholat (2).jpeg",
+      "./images/nicholat (3).jpeg",
+      "./images/nicholat (4).jpeg"
+    ],
+    "descricao": "Modelo premium com coluna lateral de nichos. Organização completa para looks e acessórios.\n\nAltura: 1.80m\nLargura: 90cm\nProfundidade: 30cm.",
+    "tags": [
+      "arara",
+      "araras",
+      "mdf",
+      "colmeia",
+      "lateral",
+      "cabideiro",
+      "cabide",
+      "nicho",
+      "premium",
+      "roupa",
+      "loja",
+      "movel",
+      "moveis"
+    ]
   },
   {
     "id": 9,
-    "categoria": ["Balcões", "Caixas", "Vitrines", "Linha Premium"],
+    "categoria": [
+      "Balcões",
+      "Caixas",
+      "Vitrines",
+      "Linha Premium"
+    ],
     "nome": "BALCÃO CAIXA COM VITRINE (PRETO)",
-    "preco": 910.00,
+    "preco": 910.0,
     "tamanho": "1.10m",
     "dimensoes": "1.10/1.00m Altura x 1.15m Largura x 40cm Profundidade",
     "img": "./images/cards/balcaoCaixaComVitrinePreto.jpg",
     "descricao": "Acabamento sofisticado na cor preta, ideal para boutiques e lojas modernas.",
-    "tags": ["balcao", "balcoes", "caixa", "vitrine", "preto", "escura", "atendimento", "premium", "boutique", "movel", "moveis"]
+    "tags": [
+      "balcao",
+      "balcoes",
+      "caixa",
+      "vitrine",
+      "preto",
+      "escura",
+      "atendimento",
+      "premium",
+      "boutique",
+      "movel",
+      "moveis"
+    ]
   },
   {
-  "id": 10,
-  "categoria": ["Gôndolas", "Expositores", "Móveis de Centro", "Moveis"],
-  "nome": "GÔNDOLA 8 CANTOS",
-  "preco": 899.00,
-  "tamanho": "1.20m",
-  "dimensoes": "1.20m Altura x 90cm Largura x 90cm Profundidade",
-  "img": "./images/8cantos (2).jpeg",
-  "galeria": [
-    "./images/8cantos (1).jpeg",
-    "./images/8cantos (3).jpeg"
-  ],
-  "descricao": "Gôndola central de 8 cantos em MDF, ideal para exposição de produtos no centro da loja, com ótimo aproveitamento de espaço e visual organizado.\n\nAltura: 1.20m\nLargura: 90cm\nProfundidade: 90cm.",
-  "tags": ["gondola", "gondolas", "8 cantos", "central", "mdf", "expositor", "movel de centro", "moveis", "loja", "bazar", "conveniencia", "farmacia"]
-   },
-    {
+    "id": 10,
+    "categoria": [
+      "Gôndolas",
+      "Expositores",
+      "Móveis de Centro",
+      "Moveis"
+    ],
+    "nome": "GÔNDOLA 8 CANTOS",
+    "preco": 899.0,
+    "tamanho": "1.20m",
+    "dimensoes": "1.20m Altura x 90cm Largura x 90cm Profundidade",
+    "img": "./images/8cantos (2).jpeg",
+    "galeria": [
+      "./images/8cantos (1).jpeg",
+      "./images/8cantos (3).jpeg"
+    ],
+    "descricao": "Gôndola central de 8 cantos em MDF, ideal para exposição de produtos no centro da loja, com ótimo aproveitamento de espaço e visual organizado.\n\nAltura: 1.20m\nLargura: 90cm\nProfundidade: 90cm.",
+    "tags": [
+      "gondola",
+      "gondolas",
+      "8 cantos",
+      "central",
+      "mdf",
+      "expositor",
+      "movel de centro",
+      "moveis",
+      "loja",
+      "bazar",
+      "conveniencia",
+      "farmacia"
+    ]
+  },
+  {
     "id": 11,
-    "categoria": ["Gôndolas", "Expositores", "Móveis de Centro", "Moveis"],
+    "categoria": [
+      "Gôndolas",
+      "Expositores",
+      "Móveis de Centro",
+      "Moveis"
+    ],
     "nome": "GÔNDOLA CENTRAL",
-    "preco": 990.00,
+    "preco": 990.0,
     "tamanho": "1.20m",
     "dimensoes": "1.20m Altura x 1.40m Largura x 80cm Profundidade",
     "img": "./images/gondoval (2).jpeg",
@@ -138,48 +309,111 @@
       "./images/gondoval (4).jpeg"
     ],
     "descricao": "Gôndola central em MDF, ideal para exposição de produtos no centro da loja, aproveitando bem o espaço e melhorando a visualização dos itens.\n\nAltura: 1.20m\nLargura: 1.40m\nProfundidade: 80cm.",
-    "tags": ["gondola", "gondolas", "central", "mdf", "expositor", "movel de centro", "moveis", "loja", "bazar", "conveniencia", "farmacia"]
+    "tags": [
+      "gondola",
+      "gondolas",
+      "central",
+      "mdf",
+      "expositor",
+      "movel de centro",
+      "moveis",
+      "loja",
+      "bazar",
+      "conveniencia",
+      "farmacia"
+    ]
   },
   {
-  "id": 12,
-  "categoria": ["Expositores", "Móveis para Vitrine", "Moveis", "Vitrines"],
-  "nome": "MÓVEL PARA VITRINE",
-  "preco": 1590.00,
-  "tamanho": "1.10m",
-  "dimensoes": "1.10m Altura x 1.50m Largura",
-  "img": "./images/vitmad (2).jpeg",
-  "galeria": [
-    "./images/vitmad (1).jpeg",
-    "./images/vitmad (3).jpeg",
-    "./images/vitmad (4).jpeg"
-  ],
-  "descricao": "Móvel para vitrine em MDF, ideal para destacar produtos com visual moderno e exposição em níveis.\n\nAltura: 1.10m\nLargura: 1.50m",
-  "tags": ["movel", "moveis", "vitrine", "movel para vitrine", "mdf", "expositor", "loja", "bazar", "roupa", "calcado", "mostruario"]
+    "id": 12,
+    "categoria": [
+      "Expositores",
+      "Móveis para Vitrine",
+      "Moveis",
+      "Vitrines"
+    ],
+    "nome": "MÓVEL PARA VITRINE",
+    "preco": 1590.0,
+    "tamanho": "1.10m",
+    "dimensoes": "1.10m Altura x 1.50m Largura",
+    "img": "./images/vitmad (2).jpeg",
+    "galeria": [
+      "./images/vitmad (1).jpeg",
+      "./images/vitmad (3).jpeg",
+      "./images/vitmad (4).jpeg"
+    ],
+    "descricao": "Móvel para vitrine em MDF, ideal para destacar produtos com visual moderno e exposição em níveis.\n\nAltura: 1.10m\nLargura: 1.50m",
+    "tags": [
+      "movel",
+      "moveis",
+      "vitrine",
+      "movel para vitrine",
+      "mdf",
+      "expositor",
+      "loja",
+      "bazar",
+      "roupa",
+      "calcado",
+      "mostruario"
+    ]
   },
   {
-  "id": 13,
-  "categoria": ["Armários", "Vestiário", "Expositores", "Moveis"],
-  "nome": "ARMÁRIO VESTIÁRIO 8 PORTAS",
-  "preco": 1040.00,
-  "tamanho": "1.80m",
-  "dimensoes": "1.80m Altura x 60cm Largura x 30cm Profundidade",
-  "img": "./images/8P (1).jpeg",
-  "galeria": [
-    "./images/8P (2).jpeg"
-  ],
-  "descricao": "Armário vestiário em MDF com 8 portas, ideal para organização de pertences em lojas, fábricas e ambientes de apoio. Cada porta acompanha 2 chaves.\n\nAltura: 1.80m\nLargura: 60cm\nProfundidade: 30cm.",
-  "tags": ["armario", "vestiario", "8 portas", "mdf", "portas", "chave", "organizacao", "loja", "fabrica", "movel", "moveis"]
-},
+    "id": 13,
+    "categoria": [
+      "Armários",
+      "Vestiário",
+      "Expositores",
+      "Moveis"
+    ],
+    "nome": "ARMÁRIO VESTIÁRIO 8 PORTAS",
+    "preco": 1040.0,
+    "tamanho": "1.80m",
+    "dimensoes": "1.80m Altura x 60cm Largura x 30cm Profundidade",
+    "img": "./images/8P (1).jpeg",
+    "galeria": [
+      "./images/8P (2).jpeg"
+    ],
+    "descricao": "Armário vestiário em MDF com 8 portas, ideal para organização de pertences em lojas, fábricas e ambientes de apoio. Cada porta acompanha 2 chaves.\n\nAltura: 1.80m\nLargura: 60cm\nProfundidade: 30cm.",
+    "tags": [
+      "armario",
+      "vestiario",
+      "8 portas",
+      "mdf",
+      "portas",
+      "chave",
+      "organizacao",
+      "loja",
+      "fabrica",
+      "movel",
+      "moveis"
+    ]
+  },
   {
-  "id": 14,
-  "categoria": ["Gôndolas", "Painel Canaletado", "Expositores", "Moveis"],
-  "nome": "GÔNDOLA CANALETADA",
-  "preco": 490.00,
-  "tamanho": "1.10m",
-  "dimensoes": "1.10m Altura x 90cm Largura x 60cm Profundidade",
-  "img": "./images/gondolapaine (2).jpeg",
-  "descricao": "Gôndola canaletada em MDF, ideal para exposição de produtos com uso de ganchos e acessórios, trazendo organização e aproveitamento inteligente do espaço.\n\nAltura: 1.10m\nLargura: 90cm\nProfundidade: 60cm.",
-  "tags": ["gondola", "gondolas", "caneletada", "canaletada", "painel canaletado", "mdf", "expositor", "gancho", "loja", "bazar", "conveniencia", "farmacia"]
- }
-  
+    "id": 14,
+    "categoria": [
+      "Gôndolas",
+      "Painel Canaletado",
+      "Expositores",
+      "Moveis"
+    ],
+    "nome": "GÔNDOLA CANALETADA",
+    "preco": 490.0,
+    "tamanho": "1.10m",
+    "dimensoes": "1.10m Altura x 90cm Largura x 60cm Profundidade",
+    "img": "./images/gondolapaine (2).jpeg",
+    "descricao": "Gôndola canaletada em MDF, ideal para exposição de produtos com uso de ganchos e acessórios, trazendo organização e aproveitamento inteligente do espaço.\n\nAltura: 1.10m\nLargura: 90cm\nProfundidade: 60cm.",
+    "tags": [
+      "gondola",
+      "gondolas",
+      "caneletada",
+      "canaletada",
+      "painel canaletado",
+      "mdf",
+      "expositor",
+      "gancho",
+      "loja",
+      "bazar",
+      "conveniencia",
+      "farmacia"
+    ]
+  }
 ]

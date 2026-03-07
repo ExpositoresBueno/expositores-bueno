@@ -33,10 +33,108 @@ document.addEventListener('DOMContentLoaded', async () => {
       document.getElementById('product-price').innerText = produtoSelecionado.preco.toFixed(2).replace('.', ',');
       document.getElementById('product-desc').innerText = produtoSelecionado.descricao || "Descrição não disponível.";
       
-      // Ajusta o caminho da imagem (de ./ para ../)
-      const imgElement = document.getElementById('main-product-img');
-      if (imgElement) {
-        imgElement.src = produtoSelecionado.img.replace('./', '../');
+      // Monta galeria horizontal (imagens + vídeos, com arraste e botões)
+      const galleryTrack = document.getElementById('product-gallery-track');
+      const btnPrev = document.getElementById('gallery-prev');
+      const btnNext = document.getElementById('gallery-next');
+
+      const mapearMidia = (item, indice) => {
+        if (!item) return null;
+
+        if (typeof item === 'string') {
+          return {
+            src: item.replace('./', '../'),
+            tipo: /\.(mp4|webm|ogg)$/i.test(item) ? 'video' : 'imagem',
+            alt: `${produtoSelecionado.nome} - mídia ${indice + 1}`
+          };
+        }
+
+        if (typeof item === 'object' && item.src) {
+          const tipoPorExtensao = /\.(mp4|webm|ogg)$/i.test(item.src) ? 'video' : 'imagem';
+          return {
+            src: item.src.replace('./', '../'),
+            tipo: item.tipo === 'video' ? 'video' : tipoPorExtensao,
+            alt: item.alt || `${produtoSelecionado.nome} - mídia ${indice + 1}`
+          };
+        }
+
+        return null;
+      };
+
+      const midias = [produtoSelecionado.img, ...(produtoSelecionado.galeria || [])]
+        .map((item, indice) => mapearMidia(item, indice))
+        .filter(Boolean)
+        .filter((item, indice, arr) => indice === arr.findIndex(el => el.src === item.src));
+
+      if (galleryTrack && midias.length > 0) {
+        galleryTrack.innerHTML = midias
+          .map((midia, index) => {
+            if (midia.tipo === 'video') {
+              return `
+                <div class="product-gallery-slide">
+                  <div class="product-gallery-media">
+                    <video controls preload="metadata" playsinline>
+                      <source src="${midia.src}" type="video/mp4">
+                      Seu navegador não suporta vídeo.
+                    </video>
+                  </div>
+                </div>
+              `;
+            }
+
+            return `
+              <div class="product-gallery-slide">
+                <div class="product-gallery-media">
+                  <img src="${midia.src}" alt="${midia.alt}" loading="lazy">
+                </div>
+              </div>
+            `;
+          })
+          .join('');
+
+        let slideAtual = 0;
+        const totalSlides = midias.length;
+
+        const atualizarControles = () => {
+          if (btnPrev) btnPrev.disabled = slideAtual === 0;
+          if (btnNext) btnNext.disabled = slideAtual === totalSlides - 1;
+        };
+
+        const irParaSlide = (indice) => {
+          const slides = galleryTrack.querySelectorAll('.product-gallery-slide');
+          if (!slides[indice]) return;
+
+          slideAtual = indice;
+          galleryTrack.scrollTo({
+            left: slides[indice].offsetLeft,
+            behavior: 'smooth'
+          });
+          atualizarControles();
+        };
+
+        if (btnPrev) {
+          btnPrev.addEventListener('click', () => {
+            if (slideAtual > 0) irParaSlide(slideAtual - 1);
+          });
+        }
+
+        if (btnNext) {
+          btnNext.addEventListener('click', () => {
+            if (slideAtual < totalSlides - 1) irParaSlide(slideAtual + 1);
+          });
+        }
+
+        galleryTrack.addEventListener('scroll', () => {
+          const larguraSlide = galleryTrack.clientWidth;
+          if (!larguraSlide) return;
+          const novoIndice = Math.round(galleryTrack.scrollLeft / larguraSlide);
+          if (novoIndice !== slideAtual) {
+            slideAtual = novoIndice;
+            atualizarControles();
+          }
+        }, { passive: true });
+
+        atualizarControles();
       }
 
       // Ajusta a categoria no badge
