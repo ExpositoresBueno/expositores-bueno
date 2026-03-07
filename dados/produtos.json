@@ -155,5 +155,19 @@
   ],
   "descricao": "Móvel para vitrine em MDF, ideal para destacar produtos com visual moderno e exposição em níveis.\n\nAltura: 1.10m\nLargura: 1.50m",
   "tags": ["movel", "moveis", "vitrine", "movel para vitrine", "mdf", "expositor", "loja", "bazar", "roupa", "calcado", "mostruario"]
- }
+  },
+  {
+  "id": 13,
+  "categoria": ["Armários", "Vestiário", "Expositores", "Moveis"],
+  "nome": "ARMÁRIO VESTIÁRIO 8 PORTAS",
+  "preco": 1040.00,
+  "tamanho": "1.80m",
+  "dimensoes": "1.80m Altura x 60cm Largura x 30cm Profundidade",
+  "img": "./images/8P (1).jpeg",
+  "galeria": [
+    "./images/8P (2).jpeg"
+  ],
+  "descricao": "Armário vestiário em MDF com 8 portas, ideal para organização de pertences em lojas, fábricas e ambientes de apoio. Cada porta acompanha 2 chaves.\n\nAltura: 1.80m\nLargura: 60cm\nProfundidade: 30cm.",
+  "tags": ["armario", "vestiario", "8 portas", "mdf", "portas", "chave", "organizacao", "loja", "fabrica", "movel", "moveis"]
+}
 ]
