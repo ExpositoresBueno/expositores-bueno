@@ -180,6 +180,16 @@
   "img": "./images/gondolapaine (2).jpeg",
   "descricao": "Gôndola canaletada em MDF, ideal para exposição de produtos com uso de ganchos e acessórios, trazendo organização e aproveitamento inteligente do espaço.\n\nAltura: 1.10m\nLargura: 90cm\nProfundidade: 60cm.",
   "tags": ["gondola", "gondolas", "caneletada", "canaletada", "painel canaletado", "mdf", "expositor", "gancho", "loja", "bazar", "conveniencia", "farmacia"]
+ },
+  {
+  "id": 15,
+  "categoria": ["Gôndolas", "Expositores", "Móveis de Centro", "Moveis"],
+  "nome": "GÔNDOLA QUADRADA MADEIRADA",
+  "preco": 1590.00,
+  "tamanho": "1.20m",
+  "dimensoes": "1.20m Altura x 90cm Largura x 90cm Profundidade",
+  "img": "./images/quadradaMad (2).jpeg",
+  "descricao": "Gôndola quadrada madeirada em MDF, com prateleiras engrossuradas, ideal para exposição de produtos no centro da loja com visual mais robusto e sofisticado.\n\nAltura: 1.20m\nLargura: 90cm\nProfundidade: 90cm.",
+  "tags": ["gondola", "gondolas", "quadrada", "madeirada", "mdf", "prateleiras engrossuradas", "movel de centro", "expositor", "loja", "bazar", "conveniencia", "farmacia"]
  }
-  
 ]
