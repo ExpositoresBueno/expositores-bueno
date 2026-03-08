@@ -287,13 +287,45 @@ body {
   transition: color 0.2s;
 }
 
-.header-nav ul li:first-child a {
-  color: #30a9ff;
-}
 
 .header-nav li a:hover {
   color: #30a9ff;
 }
+
+.header-nav a.active {
+  color: var(--brand-orange-600);
+}
+
+/* Notificação Toast Delicada */
+.toast-notificacao {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #30a9ff; /* Azul do seu tema */
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: slideIn 0.4s ease, fadeOut 0.4s ease 2.5s forwards;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; pointer-events: none; }
+}
+
 
 /* ==========================================================================
    LÓGICA DO MENU DROPDOWN
@@ -1628,7 +1660,6 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
-.header-nav ul li:first-child a,
 .header-nav li a:hover,
 .dropdown-menu li a:hover {
   color: var(--phase1-orange);
@@ -1964,7 +1995,6 @@ body {
   background: var(--surface-card);
 }
 
-.header-nav ul li:first-child a,
 .header-nav li a:hover,
 .dropdown-menu li a:hover {
   color: var(--brand-orange-600);

@@ -157,7 +157,6 @@ function renderizarProdutos(lista) {
           <h3>${prod.nome}</h3>
           <div class="product-footer">
             <div class="price-container">
-              <span class="price-label">A partir de</span>
               <span class="price-value">R$ ${prod.preco.toFixed(2).replace(".", ",")}</span>
               <button class="btn-add-cart" data-id="${prod.id}">
                 <img class="carrinho_card" src="${cartIconPath}">
@@ -217,6 +216,8 @@ function addToCart(produto) {
   }
   saveCart(cart);
   atualizarContadorCarrinho();
+
+  mostrarAvisoCarrinho(produto.nome);
 }
 
 function atualizarContadorCarrinho() {
@@ -351,6 +352,27 @@ document.addEventListener("click", (e) => {
     container.style.display = "none";
   }
 });
+
+function mostrarAvisoCarrinho(nomeProduto) {
+  // Remove avisos antigos se o usuário clicar muito rápido
+  const avisoAntigo = document.querySelector(".toast-notificacao");
+  if (avisoAntigo) avisoAntigo.remove();
+
+  const toast = document.createElement("div");
+  toast.className = "toast-notificacao";
+  toast.innerHTML = `
+        <i class="fa-solid fa-circle-check"></i>
+        <span><strong>${nomeProduto}</strong> adicionado ao carrinho!</span>
+    `;
+
+  document.body.appendChild(toast);
+
+  // Remove do HTML após 3 segundos (tempo da animação do CSS)
+  setTimeout(() => {
+    if (toast) toast.remove();
+  }, 3000);
+}
+
 /* ==========================================================================
    5. INICIALIZAÇÃO UNIFICADA
    ========================================================================== */
