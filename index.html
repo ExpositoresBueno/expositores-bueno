@@ -14,6 +14,8 @@
     <meta property="og:image" content="https://www.expositoresbueno.com.br/img/og-image.jpg" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+    <link rel="icon" type="image/png" href="./images/favicon.png">
+
     <link rel="stylesheet" href="./styles/index.css" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
@@ -34,7 +36,9 @@
 
         <div class="header-main">
           <div class="header-logo">
+            <a href="index.html" style="text-decoration: none;">
             <img src="./images/expo-bueno-logo.jpg" alt="Expositores Bueno" />
+            </a>
           </div>
 
           <div class="header-search">
@@ -59,7 +63,7 @@
             <button id="search-btn" aria-label="Buscar">🔍</button>
             <div id="search-suggestions" class="search-suggestions"></div>
           </div>
-          
+
           <div class="cart-icon">
             <i class="fa-solid fa-cart-shopping"></i>
             <span id="cart-count">0</span>
@@ -94,7 +98,7 @@
       <div class="content-container">
         <nav class="breadcrumb">
           <div class="breadcrumb-content">
-            <a href="/" class="breadcrumb-link">
+            <a href="./index.html" class="breadcrumb-link">
               <img src="./images/homeVector.png" alt="Homepage" class="home-icon">
               Homepage
             </a>
@@ -198,7 +202,7 @@
               <div class="products-grid" id="products-grid"></div>
             </section>
           </div>
-          
+
           <div class="pagination-container">
             <button class="page-btn btn-prev" onclick="paginaAnterior()">Anterior</button>
             <div class="page-numbers"></div>
@@ -287,7 +291,7 @@
       <span id="cart-total">R$ 0,00</span>
     </div>
     <button class="btn-clear-cart" style="background: none; border: 1px solid #ccc; color: #666; padding: 5px 10px; cursor: pointer; margin-bottom: 10px; width: 100%; font-size: 13px;">
-    🗑 Limpar Carrinho
+     Limpar Carrinho
   </button>
     <button class="checkout-btn" id="finish-order">Finalizar Pedido via WhatsApp</button>
   </div>

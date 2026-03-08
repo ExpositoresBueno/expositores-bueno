@@ -404,7 +404,7 @@ body {
 }
 
 /* O texto "Alguns dos nossos produtos" agora também fica no centro */
-.carousel-section > p, 
+.carousel-section > p,
 .carousel-section > div:first-child {
     margin-bottom: 20px;
     font-weight: 600;
@@ -421,7 +421,7 @@ body {
     background-color: #fff;
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1); 
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
 }
 
 .carousel-wrapper {
@@ -476,7 +476,7 @@ body {
 }
 
 .carousel-prev:hover, .carousel-next:hover {
-  
+
     transform: translateY(-50%) scale(1.1); /* Efeito de zoom ao passar o mouse */
     color: #ff5000;
 }
