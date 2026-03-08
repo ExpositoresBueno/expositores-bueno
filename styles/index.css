@@ -328,7 +328,7 @@ body {
   display: block;
   font-size: 13px;
   color: #444;
-  text-transform: none; /* Mantém o texto mais amigável */
+  text-transform: none;
   font-weight: 500;
 }
 
@@ -341,7 +341,7 @@ body {
 /* MOSTRAR O MENU AO PASSAR O MOUSE */
 .has-dropdown:hover .dropdown-menu {
   display: block!important;
-  animation: fadeIn 0.2s ease-in; /* Pequena animação de entrada */
+  animation: fadeIn 0.2s ease-in;
 }
 
 
@@ -1069,6 +1069,41 @@ body {
   cursor: pointer;
 }
 
+
+/* Estilização do botão de remover */
+.btn-remove-item {
+    background: none;
+    border: none;
+    color: #999;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 5px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+
+.btn-remove-item:hover {
+    color: #e74c3c;
+    transform: scale(1.1);
+}
+
+.cart-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.btn-remove-item {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
 
 /* Responsividade para Celular */
 @media (max-width: 768px) {
