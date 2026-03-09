@@ -205,5 +205,150 @@
   ],
   "descricao": "Balcão de recepção em L com detalhe ripado e iluminação em LED, ideal para lojas e ambientes que buscam um visual mais sofisticado e moderno.\n\nComprimento: 2.50m\nParte do L: 1.20m\nAltura: 1.00m\nProfundidade: 40cm.",
   "tags": ["balcao", "balcoes", "caixa", "recepcao", "ripado", "led", "balcao em l", "premium", "atendimento", "loja", "movel", "moveis"]
+ },
+ {
+  "id": 17,
+  "categoria": ["Expositores", "Móveis de Apoio", "Moveis"],
+  "nome": "CARRINHO AUXILIAR",
+  "preco": 389.00,
+  "tamanho": "80cm",
+  "dimensoes": "80cm Altura x 40cm Largura x 30cm Profundidade",
+  "img": "./images/carrinho (4).jpeg",
+  "galeria": [
+    "./images/carrinho (1).jpeg",
+    "./images/carrinho (3).jpeg",
+    "./images/carrinho (4).jpeg"
+  ],
+  "descricao": "Carrinho auxiliar em MDF, ideal para apoiar produtos e organizar o atendimento com praticidade no dia a dia da loja.\n\nAltura: 80cm\nLargura: 40cm\nProfundidade: 30cm.",
+  "tags": ["carrinho", "auxiliar", "movel de apoio", "mdf", "organizador", "expositor", "loja", "movel", "moveis"]
+ },
+ {
+  "id": 18,
+  "categoria": ["Expositores", "Móveis para Vitrine", "Moveis", "Vitrines"],
+  "nome": "MÓVEL PARA VITRINE EM S",
+  "preco": 689.00,
+  "tamanho": "1.80m",
+  "dimensoes": "1.80m Altura x 90cm Largura x 30cm Profundidade",
+  "img": "./images/VIT (3).jpg",
+  "galeria": [
+    "./images/VIT (1).jpg",
+    "./images/VIT (2).jpg",
+    "./images/VIT (3).jpg",
+    "./images/VIT (4).jpg"
+  ],
+  "descricao": "Móvel para vitrine em S, ideal para destacar produtos com exposição organizada e visual moderno.\n\nAltura: 1.80m\nLargura: 90cm\nProfundidade: 30cm.",
+  "tags": ["movel", "moveis", "vitrine", "vitrine em s", "mdf", "expositor", "loja", "mostruario"]
+ }
+,
+ {
+  "id": 19,
+  "categoria": ["Expositores", "Prateleiras", "Moveis"],
+  "nome": "MÓVEL PRATELEIRA INCLINADA",
+  "preco": 629.00,
+  "tamanho": "1.80m",
+  "dimensoes": "1.80m Altura x 90cm Largura x 30cm Profundidade",
+  "img": "./images/prat (2).jpeg",
+  "galeria": [
+    "./images/prat (2).jpeg",
+    "./images/prat (3).jpeg",
+    "./images/prat (1).jpeg"
+  ],
+  "descricao": "Móvel com prateleiras inclinadas, ideal para exposição prática e organizada de produtos no dia a dia da loja.\n\nAltura: 1.80m\nLargura: 90cm\nProfundidade: 30cm.",
+  "tags": ["movel", "moveis", "prateleira", "prateleiras inclinadas", "expositor", "mdf", "loja", "organizador"]
+ }
+,
+ {
+  "id": 20,
+  "categoria": ["Expositores", "Móveis de Apoio", "Moveis"],
+  "nome": "MÓVEL ESCADA",
+  "preco": 240.00,
+  "tamanho": "90cm",
+  "dimensoes": "90cm Altura x 90cm Largura x 30cm Profundidade",
+  "img": "./images/escadinha (2).jpeg",
+  "galeria": [
+    "./images/escadinha (2).jpeg",
+    "./images/escadinha (1).jpeg"
+  ],
+  "descricao": "Móvel escada em MDF, ideal para exposição de produtos com visual prático e organizado em diferentes setores da loja.\n\nAltura: 90cm\nLargura: 90cm\nProfundidade: 30cm.",
+  "tags": ["movel", "moveis", "escada", "escadinha", "expositor", "mdf", "loja", "organizador"]
+ }
+,
+ {
+  "id": 21,
+  "categoria": ["Expositores", "Painel Canaletado", "Moveis"],
+  "nome": "MÓVEL PAINEL CANALETADO",
+  "preco": 620.00,
+  "tamanho": "1.80m",
+  "dimensoes": "1.80m Altura x 90cm Largura x 30cm Profundidade",
+  "img": "./images/MOVELPAINEL (2).jpeg",
+  "galeria": [
+    "./images/MOVELPAINEL (3).jpeg",
+    "./images/MOVELPAINEL (1).jpeg",
+    "./images/MOVELPAINEL (2).jpeg"
+  ],
+  "descricao": "Móvel painel canaletado em MDF, ideal para exposição versátil com ganchos e acessórios, mantendo a organização e boa visualização dos produtos.\n\nAltura: 1.80m\nLargura: 90cm\nProfundidade: 30cm.",
+  "tags": ["movel", "moveis", "painel canaletado", "canaletado", "expositor", "mdf", "loja", "organizador"]
+ }
+,
+ {
+  "id": 22,
+  "categoria": ["Expositores", "Painel Canaletado", "Moveis"],
+  "nome": "MÓVEL PAINEL COM NICHO LATERAL",
+  "preco": 750.00,
+  "tamanho": "1.80m",
+  "dimensoes": "1.80m Altura x 90cm Largura x 30cm Profundidade",
+  "img": "./images/painel.nicholat.jpeg",
+  "galeria": [
+    "./images/painel.nicholat.jpeg"
+  ],
+  "descricao": "Móvel painel com nicho lateral em MDF, ideal para organizar e destacar produtos com visual funcional e moderno.\n\nAltura: 1.80m\nLargura: 90cm\nProfundidade: 30cm.",
+  "tags": ["movel", "moveis", "painel", "nicho lateral", "expositor", "mdf", "loja", "organizador"]
+ },
+ {
+  "id": 23,
+  "categoria": ["Expositores", "Painel Canaletado", "Moveis"],
+  "nome": "MÓVEL PAINEL CANALETADO COM 9 NICHOS",
+  "preco": 750.00,
+  "tamanho": "1.80m",
+  "dimensoes": "1.80m Altura x 90cm Largura x 30cm Profundidade",
+  "img": "./images/painel9nichos.jpeg",
+  "galeria": [
+    "./images/painel9nichos.jpeg"
+  ],
+  "descricao": "Móvel painel canaletado com 9 nichos, ideal para exposição organizada e melhor aproveitamento vertical do espaço.\n\nAltura: 1.80m\nLargura: 90cm\nProfundidade: 30cm.",
+  "tags": ["movel", "moveis", "painel canaletado", "9 nichos", "expositor", "mdf", "loja", "organizador"]
+ },
+ {
+  "id": 24,
+  "categoria": ["Expositores", "Painel Canaletado", "Moveis"],
+  "nome": "MÓVEL PAINEL CANALETADO COM 6 NICHOS",
+  "preco": 750.00,
+  "tamanho": "1.80m",
+  "dimensoes": "1.80m Altura x 90cm Largura x 30cm Profundidade",
+  "img": "./images/painel6nichos.jpeg",
+  "galeria": [
+    "./images/painel6nichos.jpeg"
+  ],
+  "descricao": "Móvel painel canaletado com 6 nichos, ideal para exposição prática com organização e boa visualização dos produtos.\n\nAltura: 1.80m\nLargura: 90cm\nProfundidade: 30cm.",
+  "tags": ["movel", "moveis", "painel canaletado", "6 nichos", "expositor", "mdf", "loja", "organizador"]
+ }
+,
+ {
+  "id": 25,
+  "categoria": ["Araras", "Expositores", "Kits", "Moveis"],
+  "nome": "KIT CABIDEIROS 60CM",
+  "preco": 899.00,
+  "tamanho": "1.80m",
+  "dimensoes": "1.80m Altura x 60cm Largura x 30cm Profundidade (unitário) | 1.80m Altura x 1.80m Largura x 30cm Profundidade (kit)",
+  "img": "./images/kit60cm (2).jpeg",
+  "galeria": [
+    "./images/kit60cm (2).jpeg",
+    "./images/kit60cm (3).jpeg",
+    "./images/kit60cm (4).jpeg",
+    "./images/kit60cm (5).jpeg",
+    "./images/kit60cm (1).jpeg"
+  ],
+  "descricao": "Kit com 3 móveis cabideiros de 60cm, ideal para montar uma parede expositora completa com ótimo aproveitamento de espaço. Valor do kit completo e único: R$ 899,00, em até 4x sem juros ou à vista, sem alteração de preço.\n\nMedidas unitárias:\nAltura: 1.80m\nLargura: 60cm\nProfundidade: 30cm.\n\nMedidas totais do kit:\nAltura: 1.80m\nLargura: 1.80m\nProfundidade: 30cm.",
+  "tags": ["kit", "cabideiro", "cabideiros", "60cm", "arara", "expositor", "movel", "moveis", "loja"]
  }
 ]
