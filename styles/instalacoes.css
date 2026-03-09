@@ -395,3 +395,134 @@ body, html {
     font-size: 0.95rem;
   }
 }
+
+/* ==========================================================================
+   CARROSSEL AUTOMÁTICO DE OBRAS FINALIZADAS
+   ========================================================================== */
+.projects-carousel-section {
+  margin-top: 44px;
+}
+
+.projects-carousel-header {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.projects-carousel-header h2 {
+  color: var(--p2-orange);
+  margin-bottom: 6px;
+}
+
+.projects-carousel-header p {
+  margin: 0;
+  color: var(--p2-muted);
+}
+
+.projects-carousel {
+  border: 1px solid var(--p2-line);
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: var(--p2-shadow);
+  cursor: pointer;
+}
+
+
+.projects-carousel {
+  scrollbar-width: none;
+}
+
+.projects-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.projects-track {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: max-content;
+  padding: 14px;
+}
+
+.project-card {
+  flex: 0 0 clamp(220px, 28vw, 360px);
+  aspect-ratio: 4 / 3;
+  padding: 0;
+  border: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 16px rgba(17, 24, 39, 0.14);
+  transition: transform 0.25s ease;
+  cursor: zoom-in;
+  background: #000;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+}
+
+.project-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+
+.projects-carousel-empty {
+  margin: 12px 0 0;
+  text-align: center;
+  color: var(--p2-muted);
+  font-size: 0.98rem;
+}
+
+.projects-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(7, 12, 22, 0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 2500;
+}
+
+.projects-lightbox.is-open {
+  display: flex;
+}
+
+.projects-lightbox img {
+  width: min(100%, 1080px);
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.projects-lightbox-close {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 0;
+  background: #fff;
+  color: #111;
+  font-size: 1.7rem;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .projects-carousel-section {
+    margin-top: 32px;
+  }
+
+  .projects-track {
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .project-card {
+    flex-basis: 68vw;
+  }
+}

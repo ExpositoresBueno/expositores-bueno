@@ -155,6 +155,26 @@
           </div>
         </section>
 
+        <section class="projects-carousel-section" aria-label="Obras já finalizadas">
+          <div class="projects-carousel-header">
+            <h2>Obras já finalizadas</h2>
+            <p>Confira alguns ambientes entregues pela nossa equipe.</p>
+          </div>
+
+          <div class="projects-carousel" id="projects-carousel" aria-live="polite">
+            <div class="projects-track" id="projects-track" data-base-name="lojasprontas" data-max-images="30"></div>
+          </div>
+
+          <p class="projects-carousel-empty" id="projects-carousel-empty" hidden>
+            As fotos de obras finalizadas serão adicionadas em breve.
+          </p>
+
+          <div class="projects-lightbox" id="projects-lightbox" aria-hidden="true">
+            <button class="projects-lightbox-close" id="projects-lightbox-close" type="button" aria-label="Fechar imagem ampliada">×</button>
+            <img id="projects-lightbox-image" src="" alt="Imagem ampliada de obra finalizada">
+          </div>
+        </section>
+
         <section class="cta-installations">
           <h2>Quer um projeto personalizado para sua loja?</h2>
           <p>Nossa equipe planeja e instala todo o mobiliário para você.</p>
@@ -236,6 +256,7 @@
       </div>
 
       <script type="module" src="../scripts/index.js"></script>
+      <script type="module" src="../scripts/instalacoesCarousel.js"></script>
 
       <a href="https://wa.me/5551996034579" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
