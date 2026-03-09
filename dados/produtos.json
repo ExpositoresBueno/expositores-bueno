@@ -116,10 +116,9 @@
   "preco": 899.00,
   "tamanho": "1.20m",
   "dimensoes": "1.20m Altura x 90cm Largura x 90cm Profundidade",
-  "img": "./images/8cantos (2).jpeg",
+  "img": "./images/8cantos (3).jpeg",
   "galeria": [
-    "./images/8cantos (1).jpeg",
-    "./images/8cantos (3).jpeg"
+    "./images/8cantos (1).jpeg"
   ],
   "descricao": "Gôndola central de 8 cantos em MDF, ideal para exposição de produtos no centro da loja, com ótimo aproveitamento de espaço e visual organizado.\n\nAltura: 1.20m\nLargura: 90cm\nProfundidade: 90cm.",
   "tags": ["gondola", "gondolas", "8 cantos", "central", "mdf", "expositor", "movel de centro", "moveis", "loja", "bazar", "conveniencia", "farmacia"]
@@ -131,9 +130,8 @@
     "preco": 990.00,
     "tamanho": "1.20m",
     "dimensoes": "1.20m Altura x 1.40m Largura x 80cm Profundidade",
-    "img": "./images/gondoval (2).jpeg",
+    "img": "./images/gondoval (1).jpeg",
     "galeria": [
-      "./images/gondoval (1).jpeg",
       "./images/gondoval (3).jpeg",
       "./images/gondoval (4).jpeg"
     ],
@@ -147,9 +145,8 @@
   "preco": 1590.00,
   "tamanho": "1.10m",
   "dimensoes": "1.10m Altura x 1.50m Largura",
-  "img": "./images/vitmad (2).jpeg",
+  "img": "./images/vitmad (1).jpeg",
   "galeria": [
-    "./images/vitmad (1).jpeg",
     "./images/vitmad (3).jpeg",
     "./images/vitmad (4).jpeg"
   ],
