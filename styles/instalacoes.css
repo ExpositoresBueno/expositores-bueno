@@ -258,6 +258,10 @@ body, html {
   color: var(--p2-text);
 }
 
+.niche-box-full {
+  grid-column: 1 / -1;
+}
+
 .niche-box p {
   color: var(--p2-muted);
   line-height: 1.7;
