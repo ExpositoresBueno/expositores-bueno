@@ -1,0 +1,145 @@
+.reviews-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 36px 20px 60px;
+}
+
+.reviews-hero {
+  background: linear-gradient(135deg, #0d2345, #1f4b84);
+  color: #fff;
+  border-radius: 14px;
+  padding: 40px 32px;
+  margin-bottom: 28px;
+}
+
+.reviews-badge {
+  display: inline-block;
+  font-size: 13px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 20px;
+  padding: 6px 12px;
+  margin-bottom: 14px;
+}
+
+.reviews-hero h1 {
+  font-size: 34px;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+.reviews-hero p {
+  max-width: 760px;
+  color: rgba(255, 255, 255, 0.92);
+  margin-bottom: 22px;
+}
+
+.reviews-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffc107;
+  color: #0b2447;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 10px;
+  padding: 12px 18px;
+  width: fit-content;
+}
+
+
+.reviews-content {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 20px;
+}
+
+.reviews-summary-card {
+  background-color: #fff;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(9, 41, 76, 0.08);
+  padding: 24px;
+  align-self: start;
+}
+
+.reviews-summary-card h2 {
+  font-size: 22px;
+  color: #0b2447;
+  margin-bottom: 8px;
+}
+
+.rating-stars {
+  color: #f4b400;
+  font-size: 28px;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.rating-note {
+  color: #4f5d73;
+  line-height: 1.5;
+}
+
+.reviews-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.review-card {
+  background-color: #fff;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(9, 41, 76, 0.08);
+  padding: 20px;
+}
+
+
+.review-header h3 {
+  color: #0b2447;
+  font-size: 22px;
+  margin-bottom: 4px;
+}
+
+.review-meta {
+  color: #6b778c;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.review-stars {
+  color: #f4b400;
+  font-size: 20px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.review-text {
+  color: #1d2f4f;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.review-author {
+  color: #4f5d73;
+  font-weight: 600;
+}
+
+.reviews-list .reviews-button {
+  grid-column: 1 / -1;
+  justify-self: start;
+}
+
+@media (max-width: 900px) {
+  .reviews-content {
+    grid-template-columns: 1fr;
+  }
+
+  .reviews-list {
+    grid-template-columns: 1fr;
+  }
+
+  .reviews-hero h1 {
+    font-size: 28px;
+  }
+}
