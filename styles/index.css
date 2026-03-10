@@ -530,20 +530,20 @@ body {
 
 /* Procure a classe .category-card no seu CSS e adicione a propriedade cursor */
 .category-card {
-  padding: 40px 25px;
+  padding: 26px 25px;
   border-radius: 8px;
   color: #ffffff;
   font-family: 'Segoe UI', sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 180px;
+  min-height: 130px;
   cursor: pointer; /* NOVA LINHA: Transforma o mouse em uma "mãozinha" no card todo */
 }
 
 .category-card h3 {
   font-size: 14px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   letter-spacing: 1px;
 }
 
@@ -1343,8 +1343,8 @@ body {
   }
 
   .category-card {
-    min-height: 150px;
-    padding: 28px 20px;
+    min-height: 118px;
+    padding: 22px 18px;
   }
 
   .product-page {
