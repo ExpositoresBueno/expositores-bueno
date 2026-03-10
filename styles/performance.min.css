@@ -1,0 +1,1 @@
+img.lazy-image{opacity:.001;transition:opacity .45s ease;will-change:opacity}img.lazy-loaded,img:not(.lazy-image){opacity:1}picture>img{display:block}
