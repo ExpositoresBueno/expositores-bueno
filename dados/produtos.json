@@ -950,5 +950,403 @@
     "permiteVariacaoCor": "sim",
     "id": 32,
     "precoAvista": 2600.0
+  },
+  {
+    "id": 33,
+    "categoria": [
+      "Balcões",
+      "Caixas",
+      "Recepção",
+      "Moveis"
+    ],
+    "nome": "BALCÃO CAIXA EM L",
+    "preco": 1900.0,
+    "tamanho": "1.00m",
+    "dimensoes": "1.00m Altura x 1.80m Comprimento x 1.20m Parte do L x 40cm Profundidade",
+    "img": "./images/balcaoCaixa.png",
+    "galeria": [
+      "./images/balcaoCaixa.png"
+    ],
+    "descricao": "Balcão caixa em L, branco com detalhes em carvalho Munique. Ideal para recepção e atendimento em lojas.\n\nAltura: 1.00m\nComprimento: 1.80m\nParte do L: 1.20m\nProfundidade: 40cm.\n\nSomente alteração de cores, sem alteração de medidas.",
+    "tags": [
+      "balcao",
+      "balcao em l",
+      "caixa",
+      "recepcao",
+      "atendimento",
+      "carvalho munique",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 34,
+    "categoria": [
+      "Gôndolas",
+      "Expositores",
+      "Móveis de Centro",
+      "Moveis"
+    ],
+    "nome": "GÔNDOLA RETANGULAR",
+    "preco": 875.0,
+    "tamanho": "1.20m",
+    "dimensoes": "1.20m Altura x 1.40m Largura x 80cm Profundidade",
+    "img": "./images/gretangular (1).jpg",
+    "galeria": [
+      "./images/gretangular (1).jpg"
+    ],
+    "descricao": "Gôndola retangular em MDF para centro de loja, com excelente aproveitamento de exposição.\n\nAltura: 1.20m\nLargura: 1.40m (medida alterável)\nProfundidade: 80cm.",
+    "tags": [
+      "gondola",
+      "gondolas",
+      "retangular",
+      "mdf",
+      "movel de centro",
+      "expositor",
+      "loja",
+      "bazar",
+      "conveniencia",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "sim",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 35,
+    "categoria": [
+      "Gôndolas",
+      "Expositores",
+      "Móveis de Centro",
+      "Moveis"
+    ],
+    "nome": "GÔNDOLA QUADRADA",
+    "preco": 805.0,
+    "tamanho": "1.20m",
+    "dimensoes": "1.20m Altura x 90cm Largura x 90cm Profundidade",
+    "img": "./images/gretangular (1).jpg",
+    "galeria": [
+      "./images/gretangular (1).jpg"
+    ],
+    "descricao": "Gôndola quadrada para centro de loja, ideal para exposição em todos os lados com circulação livre.\n\nAltura: 1.20m\nLargura: 90cm\nProfundidade: 90cm.\n\nCom opções de cores e alterações nas medidas.",
+    "tags": [
+      "gondola",
+      "gondolas",
+      "quadrada",
+      "expositor",
+      "movel de centro",
+      "loja",
+      "bazar",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "sim",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 36,
+    "categoria": [
+      "Expositores",
+      "Móveis de Apoio",
+      "Moveis"
+    ],
+    "nome": "MESA MANICURE EM L COM ARMÁRIO AUXILIAR",
+    "preco": 1000.0,
+    "tamanho": "80cm",
+    "dimensoes": "80cm Altura x 1.00m Largura x 1.00m Comprimento x 40cm Profundidade",
+    "img": "./images/mesamanicure (3).jpeg",
+    "galeria": [
+      "./images/mesamanicure (3).jpeg"
+    ],
+    "descricao": "Mesa manicure em L com armário auxiliar, pensada para rotina de salão com organização e praticidade.\n\nAltura: 80cm\nLargura: 1.00m\nComprimento: 1.00m\nProfundidade: 40cm.\n\nSomente opção de cores, sem alterações de medidas.",
+    "tags": [
+      "mesa manicure",
+      "manicure em l",
+      "armario auxiliar",
+      "salão",
+      "beleza",
+      "atendimento",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 37,
+    "categoria": [
+      "Expositores",
+      "Móveis de Apoio",
+      "Moveis"
+    ],
+    "nome": "MESA EM L COM 4 GAVETAS + GAVETA NO TAMPO COM VIDRO",
+    "preco": 1120.0,
+    "tamanho": "80cm",
+    "dimensoes": "80cm Altura x 1.20m Largura x 80cm Comprimento x 40cm Profundidade",
+    "img": "./images/manicuregaveta (2).jpeg",
+    "galeria": [
+      "./images/manicuregaveta (2).jpeg"
+    ],
+    "descricao": "Mesa em L com 4 gavetas + 1 gaveta no tampo com vidro, ideal para atendimento e organização de itens de uso diário.\n\nAltura: 80cm\nLargura: 1.20m\nComprimento: 80cm\nProfundidade: 40cm.\n\nSomente alteração de cores, sem alteração de medidas.",
+    "tags": [
+      "mesa em l",
+      "gavetas",
+      "tampo vidro",
+      "manicure",
+      "salão",
+      "organizador",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 38,
+    "categoria": [
+      "Expositores",
+      "Móveis de Apoio",
+      "Moveis"
+    ],
+    "nome": "MESA COM PORTA E GAVETA",
+    "preco": 620.0,
+    "tamanho": "80cm",
+    "dimensoes": "80cm Altura x 1.00m Largura x 40cm Profundidade",
+    "img": "./images/Mani (1).jpeg",
+    "galeria": [
+      "./images/Mani (1).jpeg"
+    ],
+    "descricao": "Mesa com porta e gaveta para apoio de atendimento, com design compacto e funcional para ambientes comerciais.\n\nAltura: 80cm\nLargura: 1.00m\nProfundidade: 40cm.\n\nSomente alteração de cores, sem alteração de medidas.",
+    "tags": [
+      "mesa",
+      "porta",
+      "gaveta",
+      "manicure",
+      "apoio",
+      "atendimento",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 39,
+    "categoria": [
+      "Araras",
+      "Expositores",
+      "Moveis"
+    ],
+    "nome": "ARARA COM NICHO",
+    "preco": 420.0,
+    "tamanho": "1.20m",
+    "dimensoes": "1.20m Altura x 1.10m Largura x 30cm Profundidade",
+    "img": "./images/araracnicho (1).jpg",
+    "galeria": [
+      "./images/araracnicho (1).jpg"
+    ],
+    "descricao": "Arara com nicho em MDF para exposição de roupas e acessórios.\n\nAltura: 1.20m\nLargura: 1.10m (usada para cálculo)\nProfundidade: 30cm.\n\nPode alterar medidas e cores.",
+    "tags": [
+      "arara",
+      "nicho",
+      "cabideiro",
+      "roupas",
+      "expositor",
+      "loja",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "sim",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 40,
+    "categoria": [
+      "Araras",
+      "Expositores",
+      "Moveis"
+    ],
+    "nome": "ARARA CASAQUEIRA",
+    "preco": 780.0,
+    "tamanho": "1.20m",
+    "dimensoes": "1.20m Altura x 1.20m Largura x 50cm Profundidade",
+    "img": "./images/casaqueira (1).jpg",
+    "galeria": [
+      "./images/casaqueira (1).jpg"
+    ],
+    "descricao": "Arara casaqueira reforçada para exposição de peças mais volumosas.\n\nAltura: 1.20m\nLargura: 1.20m\nProfundidade: 50cm.\n\nPode alterar medidas e cores.",
+    "tags": [
+      "arara",
+      "casaqueira",
+      "cabideiro",
+      "roupas",
+      "expositor",
+      "loja",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "sim",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 41,
+    "categoria": [
+      "Araras",
+      "Expositores",
+      "Moveis"
+    ],
+    "nome": "ARARA SIMPLES",
+    "preco": 340.0,
+    "tamanho": "1.20m",
+    "dimensoes": "1.20m Altura x 1.10m Largura x 30cm Profundidade",
+    "img": "./images/semnicho (1).jpeg",
+    "galeria": [
+      "./images/semnicho (1).jpeg"
+    ],
+    "descricao": "Arara simples para exposição prática de roupas em lojas e showrooms.\n\nAltura: 1.20m\nLargura: 1.10m\nProfundidade: 30cm.\n\nPode alterar medidas e cores.",
+    "tags": [
+      "arara",
+      "simples",
+      "cabideiro",
+      "roupas",
+      "expositor",
+      "loja",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "sim",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 42,
+    "categoria": [
+      "Balcões",
+      "Caixas",
+      "Vitrines",
+      "Moveis"
+    ],
+    "nome": "BALCÃO CAIXINHA RETO COM VITRINE",
+    "preco": 515.0,
+    "tamanho": "1.00m",
+    "dimensoes": "1.00m Altura x 55cm Largura x 40cm Profundidade",
+    "img": "./images/caixinhacvit (3).jpg",
+    "galeria": [
+      "./images/caixinhacvit (1).jpg",
+      "./images/caixinhacvit (2).jpg",
+      "./images/caixinhacvit (3).jpg",
+      "./images/caixinhacvit (4).jpg"
+    ],
+    "descricao": "Balcão caixinha reto com vitrine. Acompanha 2 prateleiras de vidro e 1 gaveta caixa, ideal para atendimento com exposição frontal.\n\nAltura: 1.00m\nLargura: 55cm (usada para cálculo)\nProfundidade: 40cm.\n\nPode alterar cor e valor.",
+    "tags": [
+      "balcao",
+      "caixinha",
+      "reto",
+      "vitrine",
+      "caixa",
+      "prateleiras de vidro",
+      "gaveta caixa",
+      "atendimento",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "sim",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 43,
+    "categoria": [
+      "Caixas",
+      "Móveis de Apoio",
+      "Moveis"
+    ],
+    "nome": "GAVETA PARA DINHEIRO",
+    "preco": 175.0,
+    "tamanho": "15cm",
+    "dimensoes": "15cm Altura x 55cm Largura x 40cm Profundidade",
+    "img": "./images/gavetacaixa (1).jpg",
+    "galeria": [
+      "./images/gavetacaixa (1).jpg",
+      "./images/gavetacaixa (2).jpg",
+      "./images/gavetacaixa (3).jpg"
+    ],
+    "descricao": "Gaveta para dinheiro, ideal para composição de balcões de caixa com segurança e organização.\n\nAltura: 15cm\nLargura: 55cm\nProfundidade: 40cm.",
+    "tags": [
+      "gaveta",
+      "dinheiro",
+      "caixa",
+      "balcao",
+      "atendimento",
+      "organizacao",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "nao"
+  },
+  {
+    "id": 44,
+    "categoria": [
+      "Balcões",
+      "Caixas",
+      "Vitrines",
+      "Moveis"
+    ],
+    "nome": "BALCÃO CAIXINHA COM VITRINE (ELEVADO)",
+    "preco": 580.0,
+    "tamanho": "1.00m",
+    "dimensoes": "1.00m Altura x 55cm Largura x 40cm Profundidade",
+    "img": "./images/elevadocvitrine (1).jpeg",
+    "galeria": [
+      "./images/elevadocvitrine (1).jpeg",
+      "./images/elevadocvitrine (2).jpeg"
+    ],
+    "descricao": "Balcão caixinha com vitrine elevado. Acompanha 2 prateleiras de vidro e 1 gaveta caixa para facilitar o atendimento.\n\nAltura: 1.00m\nLargura: 55cm\nProfundidade: 40cm.\n\nPode alterar cor e valor.",
+    "tags": [
+      "balcao",
+      "caixinha",
+      "vitrine",
+      "elevado",
+      "caixa",
+      "prateleiras de vidro",
+      "gaveta caixa",
+      "atendimento",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "sim",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 45,
+    "categoria": [
+      "Balcões",
+      "Vitrines",
+      "Expositores",
+      "Moveis"
+    ],
+    "nome": "BALCÃO VITRINE COM GAVETÃO",
+    "preco": 999.0,
+    "tamanho": "1.00m",
+    "dimensoes": "1.00m Altura x 1.00m Largura x 40cm Profundidade",
+    "img": "./images/vitcomgaveta (2).jpeg",
+    "galeria": [
+      "./images/vitcomgaveta (1).jpeg",
+      "./images/vitcomgaveta (2).jpeg",
+      "./images/vitcomgaveta (3).jpeg"
+    ],
+    "descricao": "Balcão vitrine com 1 gavetão e tampo em vidro. Modelo aberto para os dois lados, ideal para centro de loja.\n\nAltura: 1.00m\nLargura: 1.00m\nProfundidade: 40cm.",
+    "tags": [
+      "balcao",
+      "vitrine",
+      "gavetao",
+      "tampo vidro",
+      "centro de loja",
+      "expositor",
+      "atendimento",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim"
   }
 ]
