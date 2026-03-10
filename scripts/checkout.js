@@ -1,6 +1,7 @@
 const numeroWhatsApp = "5551996034579";
 const DESCONTO_PAGAMENTO_AVISTA = 0.05;
 const PAGAMENTOS_COM_DESCONTO = ["PIX", "DINHEIRO"];
+const CAMPOS_PRECO_AVISTA = ["precoAvista", "preco_a_vista", "precoAVista"];
 const PAGAMENTO_CREDITO = "CARTÃO DE CRÉDITO";
 
 function getCart() {
@@ -62,12 +63,30 @@ function obterMetodoPagamentoSelecionado() {
   return metodo.toUpperCase();
 }
 
+function obterPrecoAvistaItem(item) {
+  for (const campo of CAMPOS_PRECO_AVISTA) {
+    const valor = Number(item?.[campo]);
+    if (Number.isFinite(valor) && valor > 0) return valor;
+  }
+  return null;
+}
+
 function calcularResumo(cart) {
   const subtotal = cart.reduce((acc, item) => acc + item.preco * item.quantidade, 0);
   const metodoPagamento = obterMetodoPagamentoSelecionado();
   const temDesconto = PAGAMENTOS_COM_DESCONTO.includes(metodoPagamento);
-  const desconto = temDesconto ? subtotal * DESCONTO_PAGAMENTO_AVISTA : 0;
-  const totalComDesconto = subtotal - desconto;
+
+  let totalComDesconto = subtotal;
+  if (temDesconto) {
+    totalComDesconto = cart.reduce((acc, item) => {
+      const precoAvistaItem = obterPrecoAvistaItem(item);
+      const precoBase = Number(item.preco) || 0;
+      const precoFinalItem = precoAvistaItem != null ? precoAvistaItem : precoBase * (1 - DESCONTO_PAGAMENTO_AVISTA);
+      return acc + precoFinalItem * item.quantidade;
+    }, 0);
+  }
+
+  const desconto = Math.max(0, subtotal - totalComDesconto);
 
   return {
     subtotal,
@@ -213,7 +232,7 @@ function montarMensagem(cart) {
 
   mensagem += `*Subtotal:* ${formatarReal(subtotal)}\n`;
   if (desconto > 0) {
-    mensagem += `*Desconto (${DESCONTO_PAGAMENTO_AVISTA * 100}%):* -${formatarReal(desconto)}\n`;
+    mensagem += `*Desconto/ajuste à vista:* -${formatarReal(desconto)}\n`;
   }
   mensagem += `*Forma de pagamento:* ${pagamento}\n`;
   mensagem += `*Parcelamento:* ${parcelas}x de ${formatarReal(totalComDesconto / parcelas)} sem juros\n`;
