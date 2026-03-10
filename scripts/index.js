@@ -64,6 +64,10 @@ function removerAcentos(texto) {
     .toLowerCase();
 }
 
+function stringsEquivalentes(a, b) {
+  return removerAcentos(String(a || "")) === removerAcentos(String(b || ""));
+}
+
 function calcularParcelamentoSemJuros(valorTotal) {
   const valor = Number(valorTotal);
   if (!Number.isFinite(valor) || valor <= 0) {
@@ -98,10 +102,15 @@ function aplicarFiltros(filtroManual = null) {
     const categoriasDoProduto = Array.isArray(p.categoria)
       ? p.categoria
       : [p.categoria];
+    const categoriasNormalizadas = categoriasDoProduto.map((categoria) =>
+      removerAcentos(categoria),
+    );
+    const filtroTopoNormalizado = removerAcentos(filtroTopo);
+
     const matchesCatOuNome =
       filtroTopo === "Todos" ||
-      categoriasDoProduto.includes(filtroTopo) ||
-      p.nome === filtroTopo;
+      categoriasNormalizadas.includes(filtroTopoNormalizado) ||
+      stringsEquivalentes(p.nome, filtroTopo);
     const matchesTam = tamanho === "" || p.tamanho === tamanho;
     const matchesPreco = p.preco >= min && p.preco <= max;
 
@@ -164,7 +173,7 @@ function renderizarProdutos(lista) {
     cardDiv.innerHTML = `
         <div class="product-image-container">
           <span class="category-badge">${categoriaPrincipal.toUpperCase()}</span>
-          <img src="${imgPath}" alt="${prod.nome}" class="product-img">
+          <img src="${imgPath}" alt="${prod.nome}" class="product-img" loading="lazy" decoding="async">
         </div>
         <div class="product-info">
           <h3>${prod.nome}</h3>
@@ -176,7 +185,7 @@ function renderizarProdutos(lista) {
             <div class="price-container">
               <span class="price-value">R$ ${prod.preco.toFixed(2).replace(".", ",")}</span>
               <button class="btn-add-cart" data-id="${prod.id}">
-                <img class="carrinho_card" src="${cartIconPath}">
+                <img class="carrinho_card" src="${cartIconPath}" alt="Adicionar ao carrinho" loading="lazy" decoding="async">
               </button>
             </div>
             <p class="installment-preview">${(() => {
@@ -199,9 +208,11 @@ function renderizarProdutos(lista) {
 
 function exibirPagina(lista, pagina) {
   const container = document.querySelector(".page-numbers");
-  const inicio = (pagina - 1) * itensPorPagina;
+  const totalPaginas = Math.max(1, Math.ceil(lista.length / itensPorPagina));
+  paginaAtual = Math.min(Math.max(1, pagina), totalPaginas);
+  const inicio = (paginaAtual - 1) * itensPorPagina;
   renderizarProdutos(lista.slice(inicio, inicio + itensPorPagina));
-  if (container) atualizarBotoesPaginacao(lista.length, pagina);
+  if (container) atualizarBotoesPaginacao(lista.length, paginaAtual);
 }
 
 function atualizarBotoesPaginacao(totalItens, pagina) {
@@ -216,6 +227,8 @@ function atualizarBotoesPaginacao(totalItens, pagina) {
 }
 
 window.irParaPagina = (n) => exibirPagina(listaFiltrada, n);
+window.paginaAnterior = () => exibirPagina(listaFiltrada, paginaAtual - 1);
+window.proximaPagina = () => exibirPagina(listaFiltrada, paginaAtual + 1);
 
 /* ==========================================================================
    4. CARRINHO E WHATSAPP
@@ -403,6 +416,19 @@ document.addEventListener("click", (e) => {
     container.style.display = "none";
   }
 });
+
+if (searchInput) {
+  searchInput.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter") return;
+    e.preventDefault();
+    aplicarFiltros();
+  });
+}
+
+const searchBtn = document.getElementById("search-btn");
+if (searchBtn) {
+  searchBtn.addEventListener("click", () => aplicarFiltros());
+}
 
 function mostrarAvisoCarrinho(nomeProduto) {
   // Remove avisos antigos se o usuário clicar muito rápido
