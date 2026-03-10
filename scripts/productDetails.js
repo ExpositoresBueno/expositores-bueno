@@ -136,6 +136,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       const priceElement = document.getElementById('product-price');
       const installmentsValueElement = document.getElementById('installments-value');
       const installmentsPlanElement = document.getElementById('installments-plan');
+      const inputQuantidade = document.getElementById('detail-quantity-input') || document.getElementById('quantity-input');
       const colorSection = document.getElementById('color-selector');
       const budgetSection = document.getElementById('budget-calculator');
       let valorAtualProduto = Number(produtoSelecionado.preco);
@@ -150,6 +151,11 @@ document.addEventListener('DOMContentLoaded', async () => {
       };
       const calcularPrecoComCor = (precoBranco) => Number(precoBranco) * obterMultiplicadorCor();
 
+      const obterQuantidadeAtual = () => {
+        if (!inputQuantidade) return 1;
+        return Math.max(1, parseInt(inputQuantidade.value, 10) || 1);
+      };
+
       const atualizarParcelamento = (valorBase) => {
         if (!installmentsValueElement || !installmentsPlanElement) return;
         const { parcelas, valorParcela } = calcularParcelamentoSemJuros(valorBase);
@@ -157,12 +163,17 @@ document.addEventListener('DOMContentLoaded', async () => {
         installmentsPlanElement.innerText = `${parcelas}x de ${formatarMoeda(valorParcela)} sem juros`;
       };
 
-      const atualizarPrecoPrincipal = () => {
+      const atualizarPrecoExibicao = () => {
         if (!priceElement) return;
+        const valorTotal = valorAtualProduto * obterQuantidadeAtual();
+        priceElement.innerText = formatarNumero(valorTotal);
+        atualizarParcelamento(valorTotal);
+      };
+
+      const atualizarPrecoPrincipal = () => {
         const precoComCor = calcularPrecoComCor(produtoSelecionado.preco);
         valorAtualProduto = precoComCor;
-        priceElement.innerText = formatarNumero(precoComCor);
-        atualizarParcelamento(precoComCor);
+        atualizarPrecoExibicao();
       };
 
       atualizarPrecoPrincipal();
@@ -270,7 +281,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (!Number.isFinite(larguraDesejada) || larguraDesejada <= 0) {
               resultadoOrcamento.innerText = 'Informe uma largura válida maior que zero.';
               resultadoOrcamento.classList.add('error');
-              atualizarParcelamento(calcularPrecoComCor(produtoSelecionado.preco));
+              valorAtualProduto = calcularPrecoComCor(produtoSelecionado.preco);
+              atualizarPrecoExibicao();
               return;
             }
 
@@ -281,7 +293,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             resultadoOrcamento.classList.remove('error');
             resultadoOrcamento.innerText = `Valor estimado para ${formatarMetros(larguraDesejada)}m (${nomeCor[corSelecionada]}): ${formatarMoeda(valorFinal)}. Este valor será usado ao adicionar no carrinho.`;
             valorAtualProduto = valorFinal;
-            atualizarParcelamento(valorAtualProduto);
+            atualizarPrecoExibicao();
           };
 
           btnCalcular.addEventListener('click', calcularValor);
@@ -376,12 +388,12 @@ document.addEventListener('DOMContentLoaded', async () => {
          LÓGICA DO BOTÃO "ADICIONAR AO CARRINHO"
          ========================================================================== */
       const btnAddToCart = document.getElementById('add-to-cart-btn');
-      const inputQuantidade = document.getElementById('detail-quantity-input') || document.getElementById('quantity-input');
 
       if (inputQuantidade) {
         inputQuantidade.addEventListener('input', () => {
           const valor = parseInt(inputQuantidade.value, 10);
           inputQuantidade.value = Number.isNaN(valor) || valor < 1 ? '1' : String(valor);
+          atualizarPrecoExibicao();
         });
       }
 
