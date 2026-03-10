@@ -217,14 +217,15 @@ function getCartItemKey(item) {
 }
 
 function addToCart(produto) {
+  const quantidade = Math.max(1, parseInt(produto.quantidade, 10) || 1);
   const cart = getCart();
   const cartKey = getCartItemKey(produto);
   const existente = cart.find((item) => getCartItemKey(item) === cartKey);
 
   if (existente) {
-    existente.quantidade += 1;
+    existente.quantidade += quantidade;
   } else {
-    cart.push({ ...produto, cartKey, quantidade: 1 });
+    cart.push({ ...produto, cartKey, quantidade });
   }
 
   saveCart(cart);
