@@ -97,6 +97,10 @@
 
                 <button id="gallery-next" class="gallery-nav-btn" type="button" aria-label="Próxima imagem">❯</button>
               </div>
+
+              <div class="product-description-side">
+                <p id="product-desc"></p>
+              </div>
             </div>
 
             <div class="product-info-section">
@@ -108,6 +112,10 @@
                 <span id="product-price" class="price-value">0,00</span>
               </div>
 
+              <div class="product-quantity-detail">
+                <label for="detail-quantity-input">Quantidade</label>
+                <input id="detail-quantity-input" class="quantity-input-detail" type="number" min="1" value="1" step="1" inputmode="numeric">
+              </div>
 
               <section class="color-selector" id="color-selector">
                 <h2>Cores</h2>
@@ -149,15 +157,13 @@
                 </p>
               </section>
 
-              <div class="product-description-side">
-                <p id="product-desc"></p>
-              </div>
+              <section class="installments-box" id="installments-box" aria-live="polite">
+                <h2>Parcelamento sem juros</h2>
+                <p class="installments-value" id="installments-value">Valor R$ 0,00.</p>
+                <p class="installments-plan" id="installments-plan">1x de R$ 0,00</p>
+              </section>
 
               <div class="purchase-actions">
-                <div class="product-quantity-detail">
-                  <label for="detail-quantity-input">Quantidade</label>
-                  <input id="detail-quantity-input" class="quantity-input-detail" type="number" min="1" value="1" step="1" inputmode="numeric">
-                </div>
                 <button id="add-to-cart-btn" class="btn-whatsapp-large" data-id="" style="border: none; cursor: pointer; width: 100%;">
                   Adicionar ao Carrinho
                 </button>

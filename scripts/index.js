@@ -64,6 +64,19 @@ function removerAcentos(texto) {
     .toLowerCase();
 }
 
+function calcularParcelamentoSemJuros(valorTotal) {
+  const valor = Number(valorTotal);
+  if (!Number.isFinite(valor) || valor <= 0) {
+    return { parcelas: 1, valorParcela: 0 };
+  }
+
+  const parcelasMaximasPorValor = Math.floor(valor / 200);
+  const parcelas = Math.min(12, Math.max(1, parcelasMaximasPorValor));
+  const valorParcela = valor / parcelas;
+
+  return { parcelas, valorParcela };
+}
+
 function aplicarFiltros(filtroManual = null) {
   const termo = searchInput ? removerAcentos(searchInput.value.trim()) : "";
   const filtroTopo =
@@ -166,6 +179,10 @@ function renderizarProdutos(lista) {
                 <img class="carrinho_card" src="${cartIconPath}">
               </button>
             </div>
+            <p class="installment-preview">${(() => {
+              const parcelamento = calcularParcelamentoSemJuros(prod.preco);
+              return `${parcelamento.parcelas}x de ${parcelamento.valorParcela.toFixed(2).replace('.', ',')} sem juros`;
+            })()}</p>
           </div>
         </div>`;
 

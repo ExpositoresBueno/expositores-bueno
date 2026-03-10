@@ -260,6 +260,32 @@ h1, h2, h3 {
 
 
 
+
+.installments-box {
+  margin-top: 8px;
+  border: 1px solid var(--p2-line);
+  border-radius: 12px;
+  padding: 14px 16px;
+  background: #ffffff;
+}
+
+.installments-box h2 {
+  font-size: 1.05rem;
+  margin: 0 0 8px;
+  color: var(--p2-text);
+}
+
+.installments-value,
+.installments-plan {
+  margin: 0;
+  font-weight: 600;
+  color: var(--p2-text);
+}
+
+.installments-plan {
+  margin-top: 2px;
+}
+
 .color-selector {
   margin-top: 8px;
   border: 1px solid var(--p2-line);
