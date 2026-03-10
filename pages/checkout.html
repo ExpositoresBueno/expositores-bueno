@@ -24,16 +24,23 @@
 
           <label for="payment-method">Forma de pagamento</label>
           <select id="payment-method">
-            <option value="Pix">Pix</option>
-            <option value="Boleto">Boleto</option>
-            <option value="Cartão de crédito">Cartão de crédito</option>
-            <option value="Cartão de débito">Cartão de débito</option>
-            <option value="Dinheiro">Dinheiro</option>
+            <option value="PIX">PIX</option>
+            <option value="DINHEIRO">DINHEIRO</option>
+            <option value="CARTÃO DE DÉBITO">CARTÃO DE DÉBITO</option>
+            <option value="CARTÃO DE CRÉDITO">CARTÃO DE CRÉDITO</option>
           </select>
 
           <label for="installments">Parcelamento</label>
           <select id="installments"></select>
 
+          <div class="summary-line">
+            <span>Subtotal:</span>
+            <strong id="checkout-subtotal">R$ 0,00</strong>
+          </div>
+          <div class="summary-line">
+            <span>Desconto:</span>
+            <strong id="checkout-discount">R$ 0,00</strong>
+          </div>
           <div class="summary-line">
             <span>Total da compra:</span>
             <strong id="checkout-total">R$ 0,00</strong>
