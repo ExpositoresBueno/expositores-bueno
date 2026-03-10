@@ -209,11 +209,15 @@ function saveCart(cart) {
 function getCartItemKey(item) {
   if (item.cartKey) return item.cartKey;
 
+  const corKey = item.corOrcada
+    ? String(item.corOrcada).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "")
+    : "branco";
+
   if (item.larguraOrcada) {
-    return `${item.id}-${Number(item.larguraOrcada).toFixed(2)}`;
+    return `${item.id}-${Number(item.larguraOrcada).toFixed(2)}-${corKey}`;
   }
 
-  return String(item.id);
+  return `${item.id}-${corKey}`;
 }
 
 function addToCart(produto) {

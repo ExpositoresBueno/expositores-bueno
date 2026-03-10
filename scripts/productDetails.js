@@ -334,7 +334,7 @@ document.addEventListener('DOMContentLoaded', async () => {
          LÓGICA DO BOTÃO "ADICIONAR AO CARRINHO"
          ========================================================================== */
       const btnAddToCart = document.getElementById('add-to-cart-btn');
-      const inputQuantidade = document.getElementById('quantity-input');
+      const inputQuantidade = document.getElementById('detail-quantity-input') || document.getElementById('quantity-input');
 
       if (inputQuantidade) {
         inputQuantidade.addEventListener('input', () => {
