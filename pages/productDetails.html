@@ -104,7 +104,22 @@
             </div>
 
             <div class="product-info-section">
-              <h1 id="product-title">Carregando...</h1>
+              <div class="product-title-row">
+                <h1 id="product-title">Carregando...</h1>
+                <div class="share-inline-wrap">
+                  <button id="share-product-btn" class="share-inline-btn" type="button" aria-label="Compartilhar produto" title="Compartilhar produto">
+                    <i class="fa-solid fa-share-nodes" aria-hidden="true"></i>
+                  </button>
+                  <div id="share-inline-menu" class="share-inline-menu" aria-label="Opções de compartilhamento" hidden>
+                    <button id="share-whatsapp-btn" class="share-inline-option" type="button" aria-label="Compartilhar no WhatsApp" title="Compartilhar no WhatsApp">
+                      <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                    </button>
+                    <button id="share-copy-btn" class="share-inline-option" type="button" aria-label="Copiar link do produto" title="Copiar link do produto">
+                      <i class="fa-solid fa-link" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
               <span id="product-category" class="badge-category"></span>
 
               <div class="price-container">
@@ -167,6 +182,7 @@
                 <button id="add-to-cart-btn" class="btn-whatsapp-large" data-id="" style="border: none; cursor: pointer; width: 100%;">
                   Adicionar ao Carrinho
                 </button>
+
               </div>
 
             </div>

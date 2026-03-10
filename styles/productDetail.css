@@ -236,6 +236,70 @@ h1, h2, h3 {
   line-height: 1.25;
 }
 
+.product-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.share-inline-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.share-inline-btn {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--p2-line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--p2-text);
+  cursor: pointer;
+}
+
+.share-inline-menu {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid var(--p2-line);
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: var(--p2-shadow);
+  z-index: 3;
+}
+
+.share-inline-option {
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--p2-line);
+  border-radius: 999px;
+  background: #fff;
+  cursor: pointer;
+}
+
+#share-whatsapp-btn {
+  color: #1b8f4a;
+}
+
+#share-copy-btn {
+  color: #2d3f58;
+}
+
+.share-inline-option.copied {
+  background: #e8fff0;
+  border-color: #9ad8b2;
+}
+
+.share-inline-option.copy-error {
+  background: #ffefef;
+  border-color: #efb0b0;
+}
+
+
 .badge-category,
 #product-category {
   display: inline-block;
@@ -486,6 +550,7 @@ h1, h2, h3 {
 .purchase-actions {
   margin-top: 6px;
 }
+
 
 @media (max-width: 768px) {
   .product-gallery {

@@ -70,6 +70,31 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const formatarMetros = (valor) => formatarNumero(valor);
 
+  const obterLinkCompartilhamento = (idProduto) => {
+    const urlAtual = new URL(window.location.href);
+    if (idProduto) {
+      urlAtual.searchParams.set('id', idProduto);
+    }
+    return urlAtual.toString();
+  };
+
+  const copiarTexto = async (texto) => {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(texto);
+      return;
+    }
+
+    const textArea = document.createElement('textarea');
+    textArea.value = texto;
+    textArea.setAttribute('readonly', '');
+    textArea.style.position = 'absolute';
+    textArea.style.left = '-9999px';
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textArea);
+  };
+
   const calcularParcelamentoSemJuros = (valorTotal) => {
     const valor = Number(valorTotal);
     if (!Number.isFinite(valor) || valor <= 0) {
@@ -340,6 +365,55 @@ document.addEventListener('DOMContentLoaded', async () => {
       const breadcrumb = document.querySelector('.breadcrumb-current');
       if (breadcrumb) breadcrumb.innerText = produtoSelecionado.nome;
       document.title = `Expositores Bueno | ${produtoSelecionado.nome}`;
+
+      const btnShareToggle = document.getElementById('share-product-btn');
+      const shareMenu = document.getElementById('share-inline-menu');
+      const btnShareWhatsapp = document.getElementById('share-whatsapp-btn');
+      const btnShareCopy = document.getElementById('share-copy-btn');
+      const linkCompartilhamento = obterLinkCompartilhamento(produtoSelecionado.id);
+
+
+      const fecharMenuCompartilhar = () => {
+        if (!shareMenu) return;
+        shareMenu.hidden = true;
+      };
+
+      if (btnShareToggle && shareMenu) {
+        btnShareToggle.addEventListener('click', (event) => {
+          event.stopPropagation();
+          shareMenu.hidden = !shareMenu.hidden;
+        });
+
+        shareMenu.addEventListener('click', (event) => {
+          event.stopPropagation();
+        });
+
+        document.addEventListener('click', fecharMenuCompartilhar);
+      }
+
+      if (btnShareWhatsapp) {
+        btnShareWhatsapp.addEventListener('click', () => {
+          const texto = `Olá! Confira este produto da Expositores Bueno: ${produtoSelecionado.nome} - ${linkCompartilhamento}`;
+          const urlWhatsapp = `https://wa.me/?text=${encodeURIComponent(texto)}`;
+          window.open(urlWhatsapp, '_blank', 'noopener,noreferrer');
+          fecharMenuCompartilhar();
+        });
+      }
+
+      if (btnShareCopy) {
+        btnShareCopy.addEventListener('click', async () => {
+          try {
+            await copiarTexto(linkCompartilhamento);
+            btnShareCopy.classList.add('copied');
+            setTimeout(() => btnShareCopy.classList.remove('copied'), 800);
+            fecharMenuCompartilhar();
+          } catch (erroCopia) {
+            console.error('Erro ao copiar link do produto:', erroCopia);
+            btnShareCopy.classList.add('copy-error');
+            setTimeout(() => btnShareCopy.classList.remove('copy-error'), 800);
+          }
+        });
+      }
 
       const montarProdutoParaCarrinho = () => {
         const corNome = permiteVariacaoCor ? (nomeCor[corSelecionada] || 'Branco') : 'Branco';
