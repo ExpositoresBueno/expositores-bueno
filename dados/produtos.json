@@ -963,10 +963,11 @@
     "preco": 1900.0,
     "tamanho": "1.00m",
     "dimensoes": "1.00m Altura x 1.80m Comprimento x 1.20m Parte do L x 40cm Profundidade",
-    "img": "./images/Lbranco (3).jpg",
+    "img": "./images/balcaoL (3).jpeg",
     "galeria": [
-      "./images/Lbranco (2).jpg",
-      "./images/Lbranco (3).jpg"
+      "./images/balcaoL (1).jpeg",
+      "./images/balcaoL (2).jpeg",
+      "./images/balcaoL (3).jpeg"
     ],
     "descricao": "Balcão caixa em L, branco com detalhes em carvalho Munique. Ideal para recepção e atendimento em lojas.\n\nAltura: 1.00m\nComprimento: 1.80m\nParte do L: 1.20m\nProfundidade: 40cm.",
     "tags": [
