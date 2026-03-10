@@ -1,0 +1,21 @@
+Top 20 heaviest files
+24777606 ./images/12pvideo.MOV
+7283407 ./images/kit2600.mp4
+5268645 ./images/3balcoes1499.mp4
+4972038 ./images/3moveis1299.mp4
+2742087 ./images/V-vestiarios.mp4
+2143875 ./images/WhatsApp Video 2026-03-07 at 09.41.10.mp4
+1605989 ./images/V-colmeiaaparador.mp4
+1536393 ./images/videobalcao.mp4
+1314466 ./images/12pvideocorreto.mp4
+1207632 ./images/lojasprontas (20).jpeg
+687250 ./images/WhatsApp Video 2026-03-07 at 09.41.04.mp4
+458764 ./images/homeVector.png
+397936 ./images/projeto-3.jpg
+377611 ./images/projeto-2.jpg
+375889 ./images/lojasprontas (21).jpeg
+352898 ./images/projeto-5.jpg
+347004 ./images/lojasprontas (10).jpeg
+323552 ./images/lojasprontas (7).jpeg
+317854 ./images/lojasprontas (2).jpeg
+312157 ./images/projeto-1.jpg

@@ -1,0 +1,14 @@
+styles/checkout.css: selectors=22, possibly_unused=14
+ sample: #243042 #25d366 #5f6b7a #d6dde8 #e8edf4 #eef2f8 #f2f6fc #f5f7fb #fff .3fr .checkout-item .empty-state .qty-btn .quantity-control
+styles/about.css: selectors=49, possibly_unused=38
+ sample: #1e88e5 #1ebe5d #1f2937 #243042 #25d366 #555 #5f6b7a #da7818 #e7ebf0 #f08a24 #f6f6f6 #f7f8fa #f9a825 #ffb030 #fff #ffffff .04rem .08 .12 .2 .2s .2vw .3 .4 .4vw
+styles/avaliacoes.css: selectors=28, possibly_unused=15
+ sample: #0b2447 #0d2345 #1d2f4f #1f4b84 #4f5d73 #f4b400 #ffc107 #fff .08 .18 .2 .5 .6 .6px .92
+styles/projetos3D.css: selectors=70, possibly_unused=43
+ sample: #000 #1ebe5d #243042 #25d366 #333333 #555 #5f6b7a #da7818 #e7ebf0 #ebebeb #eeeeee #f08a24 #f7f8fa #f9f9f9 #ffb03a #fff #ffffff .08 .1 .175 .1rem .24 .275 .2rem .3
+styles/instalacoes.css: selectors=65, possibly_unused=44
+ sample: #000 #007bff #111 #128C7E #243042 #25D366 #333 #555 #5f6b7a #da7818 #e7ebf0 #e9ecef #f08a24 #f7f8fa #f8f9fa #fff #ffffff .05 .08 .1 .14 .1rem .22 .25s .28
+styles/productDetail.css: selectors=86, possibly_unused=48
+ sample: #1EBE5D #1b8f4a #1ebe5d #243042 #25D366 #25d366 #2d3f58 #555555 #5f6b7a #9ad8b2 #c0392b #d7dde5 #da7818 #e7ebf0 #e8fff0 #eeeeee #efb0b0 #f08a24 #f7f8fa #fbd8b8 #ffefef #fff #fff5ea #fffdf9 #ffffff
+styles/index.css: selectors=209, possibly_unused=145
+ sample: #0088ee #0f3e75 #16324f #1ebe5d #1f2937 #1f5fa8 #222 #243042 #25d366 #2697e7 #2f7fd1 #30a9ff #333 #36597d #3db2ff #3e4a61 #3fa9f5 #444 #555 #666 #667085 #777 #94a3b8 #999 #ccc

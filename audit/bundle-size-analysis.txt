@@ -1,0 +1,16 @@
+JS files by size
+24318 scripts/index.js
+19683 scripts/productDetails.js
+9297 scripts/checkout.js
+4281 scripts/instalacoesCarousel.js
+4204 scripts/projetos3D.js
+2890 scripts/orcamentos.js
+
+CSS files by size
+42092 styles/index.css
+11283 styles/projetos3D.css
+10789 styles/productDetail.css
+10364 styles/instalacoes.css
+6725 styles/about.css
+2147 styles/avaliacoes.css
+1948 styles/checkout.css

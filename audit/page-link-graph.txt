@@ -1,0 +1,21 @@
+all pages
+index.html
+pages/about.html
+pages/avaliacoes.html
+pages/checkout.html
+pages/instalacoes.html
+pages/orcamentos.html
+pages/productDetails.html
+pages/projetos3D.html
+
+linked html targets
+index.html
+pages/about.html
+pages/avaliacoes.html
+pages/index.html
+pages/instalacoes.html
+pages/pages/about.html
+pages/pages/avaliacoes.html
+pages/pages/instalacoes.html
+pages/pages/projetos3D.html
+pages/projetos3D.html

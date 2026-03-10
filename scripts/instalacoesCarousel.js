@@ -5,7 +5,7 @@ const lightbox = document.getElementById('projects-lightbox');
 const lightboxImage = document.getElementById('projects-lightbox-image');
 const lightboxClose = document.getElementById('projects-lightbox-close');
 
-const EXTENSIONS_PRIORITY = ['webp', 'jpg', 'jpeg'];
+const EXTENSIONS_PRIORITY = ['jpeg', 'jpg', 'webp'];
 
 const createCardElement = (sources, index) => {
   if (!Array.isArray(sources) || sources.length === 0) return null;
