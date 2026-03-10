@@ -68,6 +68,26 @@ function stringsEquivalentes(a, b) {
   return removerAcentos(String(a || "")) === removerAcentos(String(b || ""));
 }
 
+const formatadorMoedaBR = new Intl.NumberFormat("pt-BR", {
+  style: "currency",
+  currency: "BRL",
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+});
+
+const formatadorNumeroBR = new Intl.NumberFormat("pt-BR", {
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+});
+
+function formatarMoedaBR(valor) {
+  return formatadorMoedaBR.format(Number(valor) || 0);
+}
+
+function formatarNumeroBR(valor) {
+  return formatadorNumeroBR.format(Number(valor) || 0);
+}
+
 function calcularParcelamentoSemJuros(valorTotal) {
   const valor = Number(valorTotal);
   if (!Number.isFinite(valor) || valor <= 0) {
@@ -183,14 +203,14 @@ function renderizarProdutos(lista) {
           </div>
           <div class="product-footer">
             <div class="price-container">
-              <span class="price-value">R$ ${prod.preco.toFixed(2).replace(".", ",")}</span>
+              <span class="price-value">${formatarMoedaBR(prod.preco)}</span>
               <button class="btn-add-cart" data-id="${prod.id}">
                 <img class="carrinho_card" src="${cartIconPath}" alt="Adicionar ao carrinho" loading="lazy" decoding="async">
               </button>
             </div>
             <p class="installment-preview">${(() => {
               const parcelamento = calcularParcelamentoSemJuros(prod.preco);
-              return `${parcelamento.parcelas}x de ${parcelamento.valorParcela.toFixed(2).replace('.', ',')} sem juros`;
+              return `${parcelamento.parcelas}x de ${formatarMoedaBR(parcelamento.valorParcela)} sem juros`;
             })()}</p>
           </div>
         </div>`;
@@ -300,7 +320,7 @@ function renderizarCarrinho() {
     const imgPath = isPaginaInterna ? item.img.replace("./", "../") : item.img;
 
     const larguraInfo = item.larguraOrcada
-      ? `<p>Largura: ${Number(item.larguraOrcada).toFixed(2).replace(".", ",")}m</p>`
+      ? `<p>Largura: ${formatarNumeroBR(item.larguraOrcada)}m</p>`
       : "";
     const corInfo = item.corOrcada ? `<p>Cor: ${item.corOrcada}</p>` : "";
 
@@ -312,14 +332,14 @@ function renderizarCarrinho() {
           ${corInfo}
           ${larguraInfo}
           <p>Qtd: ${item.quantidade}</p>
-          <p>R$ ${(item.preco * item.quantidade).toFixed(2).replace(".", ",")}</p>
+          <p>${formatarMoedaBR(item.preco * item.quantidade)}</p>
         </div>
         <button class="btn-remove-item" data-cart-key="${getCartItemKey(item)}" title="Remover item">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>`;
   });
-  totalElement.textContent = "R$ " + total.toFixed(2).replace(".", ",");
+  totalElement.textContent = formatarMoedaBR(total);
 }
 function limparCarrinho() {
   if (confirm("Deseja realmente remover todos os itens do carrinho?")) {
@@ -343,14 +363,14 @@ function finalizarPedidoWhatsApp() {
   cart.forEach((item) => {
     total += item.preco * item.quantidade;
     const larguraInfo = item.larguraOrcada
-      ? `\n  Largura: ${Number(item.larguraOrcada).toFixed(2).replace(".", ",")}m`
+      ? `\n  Largura: ${formatarNumeroBR(item.larguraOrcada)}m`
       : "";
     const corInfo = item.corOrcada ? `\n  Cor: ${item.corOrcada}` : "";
 
-    mensagem += `• *${item.nome}*\n  Qtd: ${item.quantidade} x R$ ${item.preco.toFixed(2).replace(".", ",")}${corInfo}${larguraInfo}\n\n`;
+    mensagem += `• *${item.nome}*\n  Qtd: ${item.quantidade} x ${formatarMoedaBR(item.preco)}${corInfo}${larguraInfo}\n\n`;
   });
 
-  mensagem += `*Valor Total: R$ ${total.toFixed(2).replace(".", ",")}*`;
+  mensagem += `*Valor Total: ${formatarMoedaBR(total)}*`;
   window.open(
     `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`,
     "_blank",
