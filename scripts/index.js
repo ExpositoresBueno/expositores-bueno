@@ -344,6 +344,21 @@ function finalizarPedidoWhatsApp() {
   );
 }
 
+function irParaFinalizacao() {
+  const cart = getCart();
+  if (cart.length === 0) {
+    alert("Seu carrinho está vazio!");
+    return;
+  }
+
+  const isPaginaInterna = window.location.pathname.includes("/pages/");
+  const destino = isPaginaInterna
+    ? "./checkout.html"
+    : "./pages/checkout.html";
+
+  window.location.href = destino;
+}
+
 /* ==========================================================================
    FUNÇÃO DE SUGESTÕES
    ========================================================================== */
@@ -504,7 +519,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const btnFinalizar = document.querySelector(".checkout-btn");
   if (btnFinalizar)
-    btnFinalizar.addEventListener("click", finalizarPedidoWhatsApp);
+    btnFinalizar.addEventListener("click", irParaFinalizacao);
 
   // --- RECONECTANDO SEUS FILTROS ORIGINAIS ---
   document
