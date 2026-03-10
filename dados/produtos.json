@@ -963,10 +963,11 @@
     "preco": 1900.0,
     "tamanho": "1.00m",
     "dimensoes": "1.00m Altura x 1.80m Comprimento x 1.20m Parte do L x 40cm Profundidade",
-    "img": "./images/Lbranco (3).jpg",
+    "img": "./images/balcaoL (3).jpeg",
     "galeria": [
-      "./images/Lbranco (2).jpg",
-      "./images/Lbranco (3).jpg"
+      "./images/balcaoL (1).jpeg",
+      "./images/balcaoL (2).jpeg",
+      "./images/balcaoL (3).jpeg"
     ],
     "descricao": "Balcão caixa em L, branco com detalhes em carvalho Munique. Ideal para recepção e atendimento em lojas.\n\nAltura: 1.00m\nComprimento: 1.80m\nParte do L: 1.20m\nProfundidade: 40cm.",
     "tags": [
@@ -994,10 +995,11 @@
     "preco": 875.0,
     "tamanho": "1.20m",
     "dimensoes": "1.20m Altura x 1.40m Largura x 80cm Profundidade",
-    "img": "./images/gretangular (1).jpg",
+    "img": "./images/RETANGULAR (2).jpg",
     "galeria": [
-      "./images/gretangular (1).jpg",
-      "./images/gretangular (2).jpg"
+      "./images/RETANGULAR (2).jpg",
+      "./images/RETANGULAR (3).jpg",
+      "./images/RETANGULAR (1).jpg"
     ],
     "descricao": "Gôndola retangular em MDF para centro de loja, com excelente aproveitamento de exposição.\n\nAltura: 1.20m\nLargura: 1.40m \nProfundidade: 80cm.",
     "tags": [
@@ -1029,7 +1031,8 @@
     "dimensoes": "1.20m Altura x 90cm Largura x 90cm Profundidade",
     "img": "./images/gquadrada (1).jpg",
     "galeria": [
-      "./images/gquadrada (1).jpg"
+      "./images/gquadrada (1).jpg",
+      "./images/gquadrada (2).jpg"
     ],
     "descricao": "Gôndola quadrada para centro de loja, ideal para exposição em todos os lados com circulação livre.\n\nAltura: 1.20m\nLargura: 90cm\nProfundidade: 90cm.",
     "tags": [
@@ -1056,12 +1059,11 @@
     "preco": 1000.0,
     "tamanho": "80cm",
     "dimensoes": "80cm Altura x 1.00m Largura x 1.00m Comprimento x 40cm Profundidade",
-    "img": "./images/mesamanicure (2).jpeg",
+    "img": "./images/AUX (3).jpeg",
     "galeria": [
-      "./images/mesamanicure (3).jpeg",
-      "./images/mesamanicure (4).jpeg",
-      "./images/mesamanicure (1).jpeg",
-      "./images/mesamanicure (2).jpeg"
+      "./images/AUX (1).jpeg",
+      "./images/AUX (2).jpeg",
+      "./images/AUX (3).jpeg"
     ],
     "descricao": "Mesa manicure em L com armário auxiliar, pensada para rotina de salão com organização e praticidade.\n\nAltura: 80cm\nLargura: 1.00m\nComprimento: 1.00m\nProfundidade: 40cm.",
     "tags": [
@@ -1088,12 +1090,11 @@
     "preco": 1120.0,
     "tamanho": "80cm",
     "dimensoes": "80cm Altura x 1.20m Largura x 80cm Comprimento x 40cm Profundidade",
-    "img": "./images/manicuregaveta (4).jpeg",
+    "img": "./images/4GAVETAS (3).jpeg",
     "galeria": [
-      "./images/manicuregaveta (2).jpeg",
-      "./images/manicuregaveta (3).jpeg",
-      "./images/manicuregaveta (4).jpeg",
-      "./images/manicuregaveta (1).jpeg"
+      "./images/4GAVETAS (1).jpeg",
+      "./images/4GAVETAS (2).jpeg",
+      "./images/4GAVETAS (3).jpeg"
     ],
     "descricao": "Mesa em L com 4 gavetas + 1 gaveta no tampo com vidro, ideal para atendimento e organização de itens de uso diário.\n\nAltura: 80cm\nLargura: 1.20m\nComprimento: 80cm\nProfundidade: 40cm.",
     "tags": [
@@ -1122,9 +1123,7 @@
     "dimensoes": "80cm Altura x 1.00m Largura x 40cm Profundidade",
     "img": "./images/Mani (1).jpeg",
     "galeria": [
-      "./images/Mani (1).jpeg",
-      "./images/Mani (2).jpeg",
-      "./images/Mani (3).jpeg"
+      "./images/Mani (1).jpeg"
     ],
     "descricao": "Mesa com porta e gaveta para apoio de atendimento, com design compacto e funcional para ambientes comerciais.\n\nAltura: 80cm\nLargura: 1.00m\nProfundidade: 40cm.",
     "tags": [
@@ -1151,12 +1150,10 @@
     "preco": 420.0,
     "tamanho": "1.20m",
     "dimensoes": "1.20m Altura x 1.10m Largura x 30cm Profundidade",
-    "img": "./images/araracnicho (1).jpeg",
+    "img": "./images/araracnicho (2).jpg",
     "galeria": [
       "./images/araracnicho (1).jpg",
-      "./images/araracnicho (2).jpeg",
       "./images/araracnicho (2).jpg",
-      "./images/araracnicho (3).jpeg",
       "./images/araracnicho (1).jpeg"
     ],
     "descricao": "Arara com nicho em MDF para exposição de roupas e acessórios.\n\nAltura: 1.20m\nLargura: 1.10m \nProfundidade: 30cm.",
@@ -1186,8 +1183,8 @@
     "dimensoes": "1.20m Altura x 1.20m Largura x 50cm Profundidade",
     "img": "./images/casaqueira (2).jpg",
     "galeria": [
+      "./images/casaqueira (1).jpeg",
       "./images/casaqueira (1).jpg",
-      "./images/casaqueira (2).jpeg",
       "./images/casaqueira (2).jpg",
       "./images/casaqueira (3).jpeg"
     ],
