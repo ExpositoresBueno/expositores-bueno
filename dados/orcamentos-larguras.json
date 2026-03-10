@@ -15,12 +15,12 @@
     "id": 2,
     "nome": "BALCÃO CAIXA COM VITRINE (BRANCO)",
     "larguraBase": 1.15,
-    "precoBase": 815,
+    "precoBase": 875,
     "permiteOrcamentoMedida": "sim",
     "orcamentos": {
-      "1.20": 850.43,
-      "2.67": 1892.22,
-      "0.60": 425.22
+      "1.20": 913.04,
+      "2.67": 2031.52,
+      "0.60": 456.52
     }
   },
   {
