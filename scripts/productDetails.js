@@ -52,9 +52,23 @@ document.addEventListener('DOMContentLoaded', async () => {
     return null;
   };
 
-  const formatarMoeda = (valor) => valor.toFixed(2).replace('.', ',');
+  const formatadorMoedaBR = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
 
-  const formatarMetros = (valor) => Number(valor).toFixed(2).replace('.', ',');
+  const formatadorNumeroBR = new Intl.NumberFormat('pt-BR', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+
+  const formatarMoeda = (valor) => formatadorMoedaBR.format(Number(valor) || 0);
+
+  const formatarNumero = (valor) => formatadorNumeroBR.format(Number(valor) || 0);
+
+  const formatarMetros = (valor) => formatarNumero(valor);
 
   const calcularParcelamentoSemJuros = (valorTotal) => {
     const valor = Number(valorTotal);
@@ -139,15 +153,15 @@ document.addEventListener('DOMContentLoaded', async () => {
       const atualizarParcelamento = (valorBase) => {
         if (!installmentsValueElement || !installmentsPlanElement) return;
         const { parcelas, valorParcela } = calcularParcelamentoSemJuros(valorBase);
-        installmentsValueElement.innerText = `Valor R$ ${formatarMoeda(Number(valorBase) || 0)}.`;
-        installmentsPlanElement.innerText = `${parcelas}x de ${formatarMoeda(valorParcela)}`;
+        installmentsValueElement.innerText = `Valor ${formatarMoeda(Number(valorBase) || 0)}.`;
+        installmentsPlanElement.innerText = `${parcelas}x de ${formatarMoeda(valorParcela)} sem juros`;
       };
 
       const atualizarPrecoPrincipal = () => {
         if (!priceElement) return;
         const precoComCor = calcularPrecoComCor(produtoSelecionado.preco);
         valorAtualProduto = precoComCor;
-        priceElement.innerText = formatarMoeda(precoComCor);
+        priceElement.innerText = formatarNumero(precoComCor);
         atualizarParcelamento(precoComCor);
       };
 
@@ -265,7 +279,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const valorFinal = calcularPrecoComCor(valorBrancoMedida);
 
             resultadoOrcamento.classList.remove('error');
-            resultadoOrcamento.innerText = `Valor estimado para ${formatarMetros(larguraDesejada)}m (${nomeCor[corSelecionada]}): R$ ${formatarMoeda(valorFinal)}. Este valor será usado ao adicionar no carrinho.`;
+            resultadoOrcamento.innerText = `Valor estimado para ${formatarMetros(larguraDesejada)}m (${nomeCor[corSelecionada]}): ${formatarMoeda(valorFinal)}. Este valor será usado ao adicionar no carrinho.`;
             valorAtualProduto = valorFinal;
             atualizarParcelamento(valorAtualProduto);
           };

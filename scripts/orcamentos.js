@@ -1,7 +1,19 @@
 const largurasDesejadas = [1.2, 2.67, 0.6];
 
-const formatarMoeda = (valor) => `R$ ${Number(valor).toFixed(2).replace('.', ',')}`;
-const formatarMetros = (valor) => `${Number(valor).toFixed(2).replace('.', ',')}m`;
+const formatadorMoedaBR = new Intl.NumberFormat('pt-BR', {
+  style: 'currency',
+  currency: 'BRL',
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+});
+
+const formatadorNumeroBR = new Intl.NumberFormat('pt-BR', {
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+});
+
+const formatarMoeda = (valor) => formatadorMoedaBR.format(Number(valor) || 0);
+const formatarMetros = (valor) => `${formatadorNumeroBR.format(Number(valor) || 0)}m`;
 const opcaoAtiva = (valor) => String(valor ?? 'sim').toLowerCase() !== 'nao';
 
 const obterLarguraEmMetros = (textoDimensoes = '') => {

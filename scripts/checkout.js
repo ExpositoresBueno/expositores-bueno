@@ -7,6 +7,17 @@ function getCart() {
   return JSON.parse(localStorage.getItem("cart")) || [];
 }
 
+const formatadorMoedaBR = new Intl.NumberFormat("pt-BR", {
+  style: "currency",
+  currency: "BRL",
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+});
+
+const formatadorNumeroBR = new Intl.NumberFormat("pt-BR", {
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+});
 function saveCart(cart) {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
@@ -24,7 +35,11 @@ function getCartItemKey(item) {
 }
 
 function formatarReal(valor) {
-  return `R$ ${Number(valor).toFixed(2).replace(".", ",")}`;
+  return formatadorMoedaBR.format(Number(valor) || 0);
+}
+
+function formatarNumeroBR(valor) {
+  return formatadorNumeroBR.format(Number(valor) || 0);
 }
 
 function calcularParcelamentoSemJuros(valorTotal) {
@@ -91,7 +106,7 @@ function renderizarItens(cart) {
 
   cart.forEach((item) => {
     const larguraInfo = item.larguraOrcada
-      ? `<p>Largura: ${Number(item.larguraOrcada).toFixed(2).replace(".", ",")}m</p>`
+      ? `<p>Largura: ${formatarNumeroBR(item.larguraOrcada)}m</p>`
       : "";
     const corInfo = item.corOrcada ? `<p>Cor: ${item.corOrcada}</p>` : "";
 
@@ -189,7 +204,7 @@ function montarMensagem(cart) {
 
   cart.forEach((item) => {
     const larguraInfo = item.larguraOrcada
-      ? `\n  Largura: ${Number(item.larguraOrcada).toFixed(2).replace(".", ",")}m`
+      ? `\n  Largura: ${formatarNumeroBR(item.larguraOrcada)}m`
       : "";
     const corInfo = item.corOrcada ? `\n  Cor: ${item.corOrcada}` : "";
 
