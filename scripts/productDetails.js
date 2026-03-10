@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             <div class="product-gallery-slide">
               <div class="product-gallery-media">
                 ${item.tipoMidia === 'video'
-                  ? `<video controls preload="metadata" playsinline>
+                  ? `<video controls controlsList="nodownload nofullscreen noplaybackrate" disablePictureInPicture preload="metadata" playsinline oncontextmenu="return false;">
                        <source src="${item.src}" type="video/mp4">
                        Seu navegador não suporta vídeo.
                      </video>`
