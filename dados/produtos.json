@@ -883,7 +883,7 @@
       "Moveis"
     ],
     "nome": "KIT 3 BALCÕES",
-    "preco": 1499.0,
+    "preco": 1700.0,
     "tamanho": "Kit completo",
     "dimensoes": "Kit com 1 caixa + 1 cantoneira + 1 balcão vitrine",
     "img": "./images/kit3b (1).jpg",
@@ -896,7 +896,7 @@
       "./images/kit3b (6).jpg",
       "./images/3balcoes1499.mp4"
     ],
-    "descricao": "Kit promocional com 3 balcões: 1 balcão caixa, 1 cantoneira e 1 balcão vitrine. Valor à vista já promocional: R$ 1.499,00 (sem aplicação adicional de desconto). Valor parcelado: R$ 1.700,00. Somente opção de cores, sem opção de medidas.",
+    "descricao": "Kit promocional com 3 balcões: 1 balcão caixa, 1 cantoneira e 1 balcão vitrine. Valor parcelado: R$ 1.700,00. Valor à vista final: R$ 1.499,00 (sem desconto adicional). Somente opção de cores, sem opção de medidas.",
     "tags": [
       "kit",
       "3 balcoes",
@@ -909,7 +909,8 @@
     ],
     "permiteOrcamentoMedida": "nao",
     "permiteVariacaoCor": "sim",
-    "id": 31
+    "id": 31,
+    "precoAvista": 1499.0
   },
   {
     "categoria": [
@@ -919,7 +920,7 @@
       "Moveis"
     ],
     "nome": "KIT 6 MÓVEIS",
-    "preco": 2600.0,
+    "preco": 3148.0,
     "tamanho": "Kit completo",
     "dimensoes": "Kit com 3 balcões + 3 móveis de parede (2 cabideiros e 1 prateleira)",
     "img": "./images/kit2600.jpeg",
@@ -928,7 +929,7 @@
       "./images/kit26002.jpeg",
       "./images/kit2600.mp4"
     ],
-    "descricao": "Kit com 6 móveis, sendo 3 balcões + 3 móveis de parede (2 cabideiros e 1 prateleira). Valor à vista: R$ 2.600,00. Valor parcelado: R$ 3.148,00. Somente opção de cores, sem opção de tamanhos.",
+    "descricao": "Kit com 6 móveis, sendo 3 balcões + 3 móveis de parede (2 cabideiros e 1 prateleira). Valor parcelado: R$ 3.148,00. Valor à vista final: R$ 2.600,00 (sem desconto adicional). Somente opção de cores, sem opção de tamanhos.",
     "tags": [
       "kit",
       "6 moveis",
@@ -941,6 +942,7 @@
     ],
     "permiteOrcamentoMedida": "nao",
     "permiteVariacaoCor": "sim",
-    "id": 32
+    "id": 32,
+    "precoAvista": 2600.0
   }
 ]
