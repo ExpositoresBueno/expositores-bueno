@@ -332,7 +332,8 @@
       "Armários",
       "Vestiário",
       "Expositores",
-      "Moveis"
+      "Moveis",
+      "Armários Vestiários"
     ],
     "nome": "ARMÁRIO VESTIÁRIO 8 PORTAS",
     "preco": 1040.0,
@@ -725,7 +726,8 @@
       "Armários",
       "Vestiários",
       "Expositores",
-      "Moveis"
+      "Moveis",
+      "Armários Vestiários"
     ],
     "nome": "ARMÁRIO VESTIÁRIO 12 PORTAS",
     "preco": 1560.0,
@@ -755,7 +757,8 @@
       "Armários",
       "Vestiários",
       "Expositores",
-      "Moveis"
+      "Moveis",
+      "Armários Vestiários"
     ],
     "nome": "ARMÁRIO VESTIÁRIO 5 PORTAS",
     "preco": 650.0,
@@ -786,7 +789,8 @@
       "Armários",
       "Vestiários",
       "Expositores",
-      "Moveis"
+      "Moveis",
+      "Armários Vestiários"
     ],
     "nome": "ARMÁRIO VESTIÁRIO 3 PORTAS",
     "preco": 390.0,
@@ -818,7 +822,8 @@
       "Armários",
       "Vestiários",
       "Expositores",
-      "Moveis"
+      "Moveis",
+      "Armários Vestiários"
     ],
     "nome": "ARMÁRIO VESTIÁRIO 20 PORTAS",
     "preco": 2600.0,
@@ -849,7 +854,8 @@
       "Armários",
       "Vestiários",
       "Expositores",
-      "Moveis"
+      "Moveis",
+      "Armários Vestiários"
     ],
     "nome": "ARMÁRIO VESTIÁRIO 10 PORTAS",
     "preco": 1300.0,
