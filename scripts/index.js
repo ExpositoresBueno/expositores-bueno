@@ -226,12 +226,19 @@ function renderizarProdutos(lista) {
   });
 }
 
-function exibirPagina(lista, pagina) {
+function rolarParaTopoDosProdutos() {
+  if (!grid) return;
+  const topoDaGrade = grid.getBoundingClientRect().top + window.scrollY;
+  window.scrollTo({ top: Math.max(0, topoDaGrade - 24), behavior: "smooth" });
+}
+
+function exibirPagina(lista, pagina, { rolarParaTopo = false } = {}) {
   const container = document.querySelector(".page-numbers");
   const totalPaginas = Math.max(1, Math.ceil(lista.length / itensPorPagina));
   paginaAtual = Math.min(Math.max(1, pagina), totalPaginas);
   const inicio = (paginaAtual - 1) * itensPorPagina;
   renderizarProdutos(lista.slice(inicio, inicio + itensPorPagina));
+  if (rolarParaTopo) rolarParaTopoDosProdutos();
   if (container) atualizarBotoesPaginacao(lista.length, paginaAtual);
 }
 
@@ -246,9 +253,12 @@ function atualizarBotoesPaginacao(totalItens, pagina) {
   }
 }
 
-window.irParaPagina = (n) => exibirPagina(listaFiltrada, n);
-window.paginaAnterior = () => exibirPagina(listaFiltrada, paginaAtual - 1);
-window.proximaPagina = () => exibirPagina(listaFiltrada, paginaAtual + 1);
+window.irParaPagina = (n) =>
+  exibirPagina(listaFiltrada, n, { rolarParaTopo: true });
+window.paginaAnterior = () =>
+  exibirPagina(listaFiltrada, paginaAtual - 1, { rolarParaTopo: true });
+window.proximaPagina = () =>
+  exibirPagina(listaFiltrada, paginaAtual + 1, { rolarParaTopo: true });
 
 /* ==========================================================================
    4. CARRINHO E WHATSAPP
