@@ -749,5 +749,198 @@
     ],
     "permiteOrcamentoMedida": "nao",
     "permiteVariacaoCor": "sim"
+  },
+  {
+    "categoria": [
+      "Armários",
+      "Vestiários",
+      "Expositores",
+      "Moveis"
+    ],
+    "nome": "ARMÁRIO VESTIÁRIO 5 PORTAS",
+    "preco": 650.0,
+    "tamanho": "1.60m",
+    "dimensoes": "1.60m Altura x 40cm Largura x 30cm Profundidade",
+    "img": "./images/vestiario5p (1).jpeg",
+    "galeria": [
+      "./images/vestiario5p (1).jpeg",
+      "./images/vestiario5p (2).jpeg"
+    ],
+    "descricao": "Armário vestiário com 5 portas, ideal para organização de pertences em espaços compactos. Somente opção de cores, sem alteração de medidas.\n\nAltura: 1.60m\nLargura: 40cm\nProfundidade: 30cm.",
+    "tags": [
+      "armario",
+      "vestiario",
+      "5 portas",
+      "organizador",
+      "mdf",
+      "expositor",
+      "loja",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim",
+    "id": 27
+  },
+  {
+    "categoria": [
+      "Armários",
+      "Vestiários",
+      "Expositores",
+      "Moveis"
+    ],
+    "nome": "ARMÁRIO VESTIÁRIO 3 PORTAS",
+    "preco": 390.0,
+    "tamanho": "95cm",
+    "dimensoes": "95cm Altura x 40cm Largura x 30cm Profundidade",
+    "img": "./images/vestiario3p (1).jpeg",
+    "galeria": [
+      "./images/vestiario3p (1).jpeg",
+      "./images/vestiario3p (2).jpeg",
+      "./images/vestiario3p (3).jpeg"
+    ],
+    "descricao": "Armário vestiário com 3 portas, ideal para pequenos ambientes e organização funcional. Somente opção de cores, sem alteração de medidas.\n\nAltura: 95cm\nLargura: 40cm\nProfundidade: 30cm.",
+    "tags": [
+      "armario",
+      "vestiario",
+      "3 portas",
+      "organizador",
+      "mdf",
+      "expositor",
+      "loja",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim",
+    "id": 28
+  },
+  {
+    "categoria": [
+      "Armários",
+      "Vestiários",
+      "Expositores",
+      "Moveis"
+    ],
+    "nome": "ARMÁRIO VESTIÁRIO 20 PORTAS",
+    "preco": 2600.0,
+    "tamanho": "2.00m",
+    "dimensoes": "2.00m Altura x 2.00m Largura x 30cm Profundidade",
+    "img": "./images/20P (1).jpeg",
+    "galeria": [
+      "./images/20P (1).jpeg",
+      "./images/20P (2).jpeg"
+    ],
+    "descricao": "Armário vestiário com 20 portas, ideal para ambientes com maior demanda de organização. Somente opção de cores, sem alteração de medidas.\n\nAltura: 2.00m\nLargura: 2.00m\nProfundidade: 30cm.",
+    "tags": [
+      "armario",
+      "vestiario",
+      "20 portas",
+      "organizador",
+      "mdf",
+      "expositor",
+      "empresa",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim",
+    "id": 29
+  },
+  {
+    "categoria": [
+      "Armários",
+      "Vestiários",
+      "Expositores",
+      "Moveis"
+    ],
+    "nome": "ARMÁRIO VESTIÁRIO 10 PORTAS",
+    "preco": 1300.0,
+    "tamanho": "1.80m",
+    "dimensoes": "1.80m Altura x 60cm Largura x 30cm Profundidade",
+    "img": "./images/10portas (1).jpg",
+    "galeria": [
+      "./images/10portas (1).jpg",
+      "./images/10portas (2).jpg"
+    ],
+    "descricao": "Armário vestiário com 10 portas, ideal para organização de pertences em lojas e áreas de apoio. Somente opção de cores, sem alteração de medidas.\n\nAltura: 1.80m\nLargura: 60cm\nProfundidade: 30cm.",
+    "tags": [
+      "armario",
+      "vestiario",
+      "10 portas",
+      "organizador",
+      "mdf",
+      "expositor",
+      "loja",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim",
+    "id": 30
+  },
+  {
+    "categoria": [
+      "Kits",
+      "Balcões",
+      "Expositores",
+      "Moveis"
+    ],
+    "nome": "KIT 3 BALCÕES",
+    "preco": 1499.0,
+    "tamanho": "Kit completo",
+    "dimensoes": "Kit com 1 caixa + 1 cantoneira + 1 balcão vitrine",
+    "img": "./images/kit3b (1).jpg",
+    "galeria": [
+      "./images/kit3b (1).jpg",
+      "./images/kit3b (2).jpg",
+      "./images/kit3b (3).jpg",
+      "./images/kit3b (4).jpg",
+      "./images/kit3b (5).jpg",
+      "./images/kit3b (6).jpg",
+      "./images/3balcoes1499.mp4"
+    ],
+    "descricao": "Kit promocional com 3 balcões: 1 balcão caixa, 1 cantoneira e 1 balcão vitrine. Valor à vista já promocional: R$ 1.499,00 (sem aplicação adicional de desconto). Valor parcelado: R$ 1.700,00. Somente opção de cores, sem opção de medidas.",
+    "tags": [
+      "kit",
+      "3 balcoes",
+      "balcao caixa",
+      "cantoneira",
+      "balcao vitrine",
+      "promocional",
+      "loja",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim",
+    "id": 31
+  },
+  {
+    "categoria": [
+      "Kits",
+      "Expositores",
+      "Araras",
+      "Moveis"
+    ],
+    "nome": "KIT 6 MÓVEIS",
+    "preco": 2600.0,
+    "tamanho": "Kit completo",
+    "dimensoes": "Kit com 3 balcões + 3 móveis de parede (2 cabideiros e 1 prateleira)",
+    "img": "./images/kit2600.jpeg",
+    "galeria": [
+      "./images/kit2600.jpeg",
+      "./images/kit26002.jpeg",
+      "./images/kit2600.mp4"
+    ],
+    "descricao": "Kit com 6 móveis, sendo 3 balcões + 3 móveis de parede (2 cabideiros e 1 prateleira). Valor à vista: R$ 2.600,00. Valor parcelado: R$ 3.148,00. Somente opção de cores, sem opção de tamanhos.",
+    "tags": [
+      "kit",
+      "6 moveis",
+      "balcoes",
+      "cabideiros",
+      "prateleira",
+      "promocional",
+      "loja",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim",
+    "id": 32
   }
 ]
