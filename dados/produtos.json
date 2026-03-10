@@ -1123,9 +1123,7 @@
     "dimensoes": "80cm Altura x 1.00m Largura x 40cm Profundidade",
     "img": "./images/Mani (1).jpeg",
     "galeria": [
-      "./images/Mani (1).jpeg",
-      "./images/Mani (2).jpeg",
-      "./images/Mani (3).jpeg"
+      "./images/Mani (1).jpeg"
     ],
     "descricao": "Mesa com porta e gaveta para apoio de atendimento, com design compacto e funcional para ambientes comerciais.\n\nAltura: 80cm\nLargura: 1.00m\nProfundidade: 40cm.",
     "tags": [
