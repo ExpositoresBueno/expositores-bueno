@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finalizar Pedido | Expositores Bueno</title>
+    <link rel="stylesheet" href="../styles/checkout.css" />
+  </head>
+  <body>
+    <main class="checkout-page">
+      <header class="checkout-header">
+        <h1>Finalização do pedido</h1>
+        <p>Revise os itens, escolha o pagamento e confirme seus dados antes de enviar no WhatsApp.</p>
+      </header>
+
+      <section class="checkout-layout">
+        <div class="checkout-card">
+          <h2>Itens do carrinho</h2>
+          <div id="checkout-items" class="checkout-items"></div>
+        </div>
+
+        <aside class="checkout-card">
+          <h2>Resumo e pagamento</h2>
+
+          <label for="payment-method">Forma de pagamento</label>
+          <select id="payment-method">
+            <option value="Pix">Pix</option>
+            <option value="Boleto">Boleto</option>
+            <option value="Cartão de crédito">Cartão de crédito</option>
+            <option value="Cartão de débito">Cartão de débito</option>
+            <option value="Dinheiro">Dinheiro</option>
+          </select>
+
+          <label for="installments">Parcelamento</label>
+          <select id="installments"></select>
+
+          <div class="summary-line">
+            <span>Total da compra:</span>
+            <strong id="checkout-total">R$ 0,00</strong>
+          </div>
+          <div class="summary-line">
+            <span>Valor por parcela:</span>
+            <strong id="installment-value">R$ 0,00</strong>
+          </div>
+
+          <h3>Dados do cliente</h3>
+          <label for="client-name">Nome</label>
+          <input id="client-name" type="text" placeholder="Seu nome" required />
+
+          <label for="client-city">Cidade</label>
+          <input id="client-city" type="text" placeholder="Sua cidade" required />
+
+          <button id="send-whatsapp" class="checkout-btn">Enviar pedido no WhatsApp</button>
+          <a class="back-link" href="../index.html">← Voltar para produtos</a>
+        </aside>
+      </section>
+    </main>
+
+    <script type="module" src="../scripts/checkout.js"></script>
+  </body>
+</html>
