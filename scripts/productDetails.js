@@ -165,11 +165,26 @@ document.addEventListener('DOMContentLoaded', async () => {
          LÓGICA DO BOTÃO "ADICIONAR AO CARRINHO"
          ========================================================================== */
       const btnAddToCart = document.getElementById('add-to-cart-btn');
+      const inputQuantidade = document.getElementById('detail-quantity-input');
+
+      if (inputQuantidade) {
+        inputQuantidade.addEventListener('input', () => {
+          const valor = parseInt(inputQuantidade.value, 10);
+          inputQuantidade.value = Number.isNaN(valor) || valor < 1
+            ? '1'
+            : String(valor);
+        });
+      }
+
       if (btnAddToCart) {
         btnAddToCart.addEventListener('click', () => {
           // Chama as funções globais definidas no index.js
           if (typeof window.addToCart === 'function') {
-            window.addToCart(produtoSelecionado);
+            const quantidade = inputQuantidade
+              ? Math.max(1, parseInt(inputQuantidade.value, 10) || 1)
+              : 1;
+
+            window.addToCart({ ...produtoSelecionado, quantidade });
             
             // Abre visualmente a gaveta do carrinho lateral
             const drawer = document.getElementById('cart-drawer');
