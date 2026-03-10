@@ -967,7 +967,7 @@
     "galeria": [
       "./images/balcaoCaixa.png"
     ],
-    "descricao": "Balcão caixa em L, branco com detalhes em carvalho Munique. Ideal para recepção e atendimento em lojas.\n\nAltura: 1.00m\nComprimento: 1.80m\nParte do L: 1.20m\nProfundidade: 40cm.\n\nSomente alteração de cores, sem alteração de medidas.",
+    "descricao": "Balcão caixa em L, branco com detalhes em carvalho Munique. Ideal para recepção e atendimento em lojas.\n\nAltura: 1.00m\nComprimento: 1.80m\nParte do L: 1.20m\nProfundidade: 40cm.",
     "tags": [
       "balcao",
       "balcao em l",
@@ -997,7 +997,7 @@
     "galeria": [
       "./images/gretangular (1).jpg"
     ],
-    "descricao": "Gôndola retangular em MDF para centro de loja, com excelente aproveitamento de exposição.\n\nAltura: 1.20m\nLargura: 1.40m (medida alterável)\nProfundidade: 80cm.",
+    "descricao": "Gôndola retangular em MDF para centro de loja, com excelente aproveitamento de exposição.\n\nAltura: 1.20m\nLargura: 1.40m \nProfundidade: 80cm.",
     "tags": [
       "gondola",
       "gondolas",
@@ -1029,7 +1029,7 @@
     "galeria": [
       "./images/gretangular (1).jpg"
     ],
-    "descricao": "Gôndola quadrada para centro de loja, ideal para exposição em todos os lados com circulação livre.\n\nAltura: 1.20m\nLargura: 90cm\nProfundidade: 90cm.\n\nCom opções de cores e alterações nas medidas.",
+    "descricao": "Gôndola quadrada para centro de loja, ideal para exposição em todos os lados com circulação livre.\n\nAltura: 1.20m\nLargura: 90cm\nProfundidade: 90cm.",
     "tags": [
       "gondola",
       "gondolas",
@@ -1058,7 +1058,7 @@
     "galeria": [
       "./images/mesamanicure (3).jpeg"
     ],
-    "descricao": "Mesa manicure em L com armário auxiliar, pensada para rotina de salão com organização e praticidade.\n\nAltura: 80cm\nLargura: 1.00m\nComprimento: 1.00m\nProfundidade: 40cm.\n\nSomente opção de cores, sem alterações de medidas.",
+    "descricao": "Mesa manicure em L com armário auxiliar, pensada para rotina de salão com organização e praticidade.\n\nAltura: 80cm\nLargura: 1.00m\nComprimento: 1.00m\nProfundidade: 40cm.",
     "tags": [
       "mesa manicure",
       "manicure em l",
@@ -1087,7 +1087,7 @@
     "galeria": [
       "./images/manicuregaveta (2).jpeg"
     ],
-    "descricao": "Mesa em L com 4 gavetas + 1 gaveta no tampo com vidro, ideal para atendimento e organização de itens de uso diário.\n\nAltura: 80cm\nLargura: 1.20m\nComprimento: 80cm\nProfundidade: 40cm.\n\nSomente alteração de cores, sem alteração de medidas.",
+    "descricao": "Mesa em L com 4 gavetas + 1 gaveta no tampo com vidro, ideal para atendimento e organização de itens de uso diário.\n\nAltura: 80cm\nLargura: 1.20m\nComprimento: 80cm\nProfundidade: 40cm.",
     "tags": [
       "mesa em l",
       "gavetas",
@@ -1116,7 +1116,7 @@
     "galeria": [
       "./images/Mani (1).jpeg"
     ],
-    "descricao": "Mesa com porta e gaveta para apoio de atendimento, com design compacto e funcional para ambientes comerciais.\n\nAltura: 80cm\nLargura: 1.00m\nProfundidade: 40cm.\n\nSomente alteração de cores, sem alteração de medidas.",
+    "descricao": "Mesa com porta e gaveta para apoio de atendimento, com design compacto e funcional para ambientes comerciais.\n\nAltura: 80cm\nLargura: 1.00m\nProfundidade: 40cm.",
     "tags": [
       "mesa",
       "porta",
@@ -1145,7 +1145,7 @@
     "galeria": [
       "./images/araracnicho (1).jpg"
     ],
-    "descricao": "Arara com nicho em MDF para exposição de roupas e acessórios.\n\nAltura: 1.20m\nLargura: 1.10m (usada para cálculo)\nProfundidade: 30cm.\n\nPode alterar medidas e cores.",
+    "descricao": "Arara com nicho em MDF para exposição de roupas e acessórios.\n\nAltura: 1.20m\nLargura: 1.10m \nProfundidade: 30cm.",
     "tags": [
       "arara",
       "nicho",
@@ -1174,7 +1174,7 @@
     "galeria": [
       "./images/casaqueira (1).jpg"
     ],
-    "descricao": "Arara casaqueira reforçada para exposição de peças mais volumosas.\n\nAltura: 1.20m\nLargura: 1.20m\nProfundidade: 50cm.\n\nPode alterar medidas e cores.",
+    "descricao": "Arara casaqueira reforçada para exposição de peças mais volumosas.\n\nAltura: 1.20m\nLargura: 1.20m\nProfundidade: 50cm.",
     "tags": [
       "arara",
       "casaqueira",
@@ -1203,7 +1203,7 @@
     "galeria": [
       "./images/semnicho (1).jpeg"
     ],
-    "descricao": "Arara simples para exposição prática de roupas em lojas e showrooms.\n\nAltura: 1.20m\nLargura: 1.10m\nProfundidade: 30cm.\n\nPode alterar medidas e cores.",
+    "descricao": "Arara simples para exposição prática de roupas em lojas e showrooms.\n\nAltura: 1.20m\nLargura: 1.10m\nProfundidade: 30cm.",
     "tags": [
       "arara",
       "simples",
@@ -1236,7 +1236,7 @@
       "./images/caixinhacvit (3).jpg",
       "./images/caixinhacvit (4).jpg"
     ],
-    "descricao": "Balcão caixinha reto com vitrine. Acompanha 2 prateleiras de vidro e 1 gaveta caixa, ideal para atendimento com exposição frontal.\n\nAltura: 1.00m\nLargura: 55cm (usada para cálculo)\nProfundidade: 40cm.\n\nPode alterar cor e valor.",
+    "descricao": "Balcão caixinha reto com vitrine. Acompanha 2 prateleiras de vidro e 1 gaveta caixa, ideal para atendimento com exposição frontal.\n\nAltura: 1.00m\nLargura: 55cm \nProfundidade: 40cm.",
     "tags": [
       "balcao",
       "caixinha",
@@ -1300,7 +1300,7 @@
       "./images/elevadocvitrine (1).jpeg",
       "./images/elevadocvitrine (2).jpeg"
     ],
-    "descricao": "Balcão caixinha com vitrine elevado. Acompanha 2 prateleiras de vidro e 1 gaveta caixa para facilitar o atendimento.\n\nAltura: 1.00m\nLargura: 55cm\nProfundidade: 40cm.\n\nPode alterar cor e valor.",
+    "descricao": "Balcão caixinha com vitrine elevado. Acompanha 2 prateleiras de vidro e 1 gaveta caixa para facilitar o atendimento.\n\nAltura: 1.00m\nLargura: 55cm\nProfundidade: 40cm.",
     "tags": [
       "balcao",
       "caixinha",
