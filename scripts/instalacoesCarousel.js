@@ -7,32 +7,33 @@ const lightboxClose = document.getElementById('projects-lightbox-close');
 
 const EXTENSIONS_PRIORITY = ['webp', 'jpg', 'jpeg'];
 
-const imageExists = (src) =>
-  new Promise((resolve) => {
-    const probe = new Image();
-    probe.onload = () => resolve(true);
-    probe.onerror = () => resolve(false);
-    probe.src = src;
-  });
+const createCardElement = (sources, index) => {
+  if (!Array.isArray(sources) || sources.length === 0) return null;
 
-const pickExistingSource = async (sources) => {
-  for (const src of sources) {
-    // eslint-disable-next-line no-await-in-loop
-    const exists = await imageExists(src);
-    if (exists) return src;
-  }
-  return null;
-};
-
-const createCardElement = (src, index) => {
   const card = document.createElement('button');
   card.className = 'project-card';
   card.type = 'button';
   card.setAttribute('aria-label', `Ampliar obra finalizada ${index}`);
 
   const image = document.createElement('img');
-  image.src = src;
+  image.src = sources[0];
   image.alt = `Obra finalizada ${index}`;
+  image.loading = index <= 6 ? 'eager' : 'lazy';
+  image.decoding = 'async';
+  if (index <= 2) {
+    image.fetchPriority = 'high';
+  }
+
+  let fallbackIndex = 1;
+  image.addEventListener('error', () => {
+    if (fallbackIndex >= sources.length) {
+      card.remove();
+      return;
+    }
+
+    image.src = sources[fallbackIndex];
+    fallbackIndex += 1;
+  });
 
   card.appendChild(image);
   return card;
@@ -126,31 +127,24 @@ const initCarousel = () => {
   startAutoplay();
 };
 
-const bootstrapProjectsGallery = async () => {
+const bootstrapProjectsGallery = () => {
   if (!carousel || !track) return;
 
   const baseName = track.dataset.baseName || 'lojasprontas';
   const maxImages = Number(track.dataset.maxImages || 30);
   const candidates = createCandidateSources(baseName, maxImages);
 
-  const foundSources = [];
+  track.innerHTML = '';
+  candidates.forEach((sources, index) => {
+    const card = createCardElement(sources, index + 1);
+    if (card) track.appendChild(card);
+  });
 
-  for (const sourceOptions of candidates) {
-    // eslint-disable-next-line no-await-in-loop
-    const source = await pickExistingSource(sourceOptions);
-    if (source) foundSources.push(source);
-  }
-
-  if (foundSources.length === 0) {
+  if (!track.querySelector('.project-card')) {
     carousel.hidden = true;
     emptyState?.removeAttribute('hidden');
     return;
   }
-
-  track.innerHTML = '';
-  foundSources.forEach((src, index) => {
-    track.appendChild(createCardElement(src, index + 1));
-  });
 
   initCarousel();
 };
