@@ -815,6 +815,36 @@ body {
   min-height: 40px;
 }
 
+.product-quantity {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.product-quantity label {
+  font-size: 0.75rem;
+  color: #777;
+  font-weight: 600;
+}
+
+.quantity-input {
+  width: 100%;
+  max-width: 110px;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.quantity-input:focus {
+  outline: none;
+  border-color: #ff7a45;
+  box-shadow: 0 0 0 2px rgba(255, 122, 69, 0.2);
+}
+
 /* Rodapé do card contendo preço e botão de compra */
 .product-footer {
   display: flex;

@@ -365,6 +365,35 @@ h1, h2, h3 {
   color: var(--p2-muted);
 }
 
+.product-quantity-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.product-quantity-detail label {
+  font-size: 0.85rem;
+  color: var(--p2-muted);
+  font-weight: 600;
+}
+
+.quantity-input-detail {
+  width: 130px;
+  border: 1px solid var(--p2-line);
+  border-radius: 8px;
+  padding: 9px 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--p2-text);
+}
+
+.quantity-input-detail:focus {
+  outline: none;
+  border-color: var(--p2-orange);
+  box-shadow: 0 0 0 2px rgba(240, 138, 36, 0.22);
+}
+
 .btn-whatsapp-large {
   border: 2px solid #ffffff;
   border-radius: 12px;

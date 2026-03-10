@@ -155,6 +155,10 @@ function renderizarProdutos(lista) {
         </div>
         <div class="product-info">
           <h3>${prod.nome}</h3>
+          <div class="product-quantity" data-quantity-container>
+            <label for="quantity-${prod.id}">Quantidade</label>
+            <input id="quantity-${prod.id}" class="quantity-input" type="number" min="1" value="1" step="1" inputmode="numeric">
+          </div>
           <div class="product-footer">
             <div class="price-container">
               <span class="price-value">R$ ${prod.preco.toFixed(2).replace(".", ",")}</span>
@@ -166,7 +170,7 @@ function renderizarProdutos(lista) {
         </div>`;
 
     cardDiv.addEventListener("click", (e) => {
-      if (e.target.closest(".btn-add-cart")) return;
+      if (e.target.closest(".btn-add-cart") || e.target.closest(".product-quantity")) return;
       const destino = isPaginaInterna
         ? "./productDetails.html"
         : "./pages/productDetails.html";
@@ -589,8 +593,26 @@ document.addEventListener("DOMContentLoaded", () => {
       e.stopPropagation();
       const id = parseInt(btnAdd.dataset.id);
       const produto = produtos.find((p) => p.id === id);
-      if (produto) addToCart(produto);
+      const card = btnAdd.closest(".product-card");
+      const inputQuantidade = card
+        ? card.querySelector(".quantity-input")
+        : null;
+      const quantidade = inputQuantidade
+        ? Math.max(1, parseInt(inputQuantidade.value, 10) || 1)
+        : 1;
+
+      if (produto) addToCart({ ...produto, quantidade });
     }
+  });
+
+  document.addEventListener("input", (e) => {
+    const inputQuantidade = e.target.closest(".quantity-input");
+    if (!inputQuantidade) return;
+
+    const valorLimpo = parseInt(inputQuantidade.value, 10);
+    inputQuantidade.value = Number.isNaN(valorLimpo) || valorLimpo < 1
+      ? "1"
+      : String(valorLimpo);
   });
 });
 
