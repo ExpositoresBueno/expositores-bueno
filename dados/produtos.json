@@ -718,5 +718,36 @@
     ],
     "permiteOrcamentoMedida": "nao",
     "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 26,
+    "categoria": [
+      "Armários",
+      "Vestiários",
+      "Expositores",
+      "Moveis"
+    ],
+    "nome": "ARMÁRIO VESTIÁRIO 12 PORTAS",
+    "preco": 1560.0,
+    "tamanho": "1.80m",
+    "dimensoes": "1.80m Altura x 90cm Largura x 30cm Profundidade",
+    "img": "./images/12p.jpg",
+    "galeria": [
+      "./images/12p.jpg",
+      "./images/12pvideo.MOV"
+    ],
+    "descricao": "Armário vestiário com 12 portas, ideal para organização de pertences em empresas, escolas e academias.\n\nAltura: 1.80m\nLargura: 90cm\nProfundidade: 30cm.",
+    "tags": [
+      "armario",
+      "vestiario",
+      "12 portas",
+      "organizador",
+      "expositor",
+      "mdf",
+      "loja",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim"
   }
 ]
