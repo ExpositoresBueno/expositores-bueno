@@ -56,6 +56,19 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const formatarMetros = (valor) => Number(valor).toFixed(2).replace('.', ',');
 
+  const calcularParcelamentoSemJuros = (valorTotal) => {
+    const valor = Number(valorTotal);
+    if (!Number.isFinite(valor) || valor <= 0) {
+      return { parcelas: 1, valorParcela: 0 };
+    }
+
+    const parcelasMaximasPorValor = Math.floor(valor / 200);
+    const parcelas = Math.min(12, Math.max(1, parcelasMaximasPorValor));
+    const valorParcela = valor / parcelas;
+
+    return { parcelas, valorParcela };
+  };
+
   const multiplicadoresCor = {
     branco: 1,
     preto: 1.3,
@@ -107,8 +120,11 @@ document.addEventListener('DOMContentLoaded', async () => {
       document.getElementById('product-desc').innerText = produtoSelecionado.descricao || "Descrição não disponível.";
 
       const priceElement = document.getElementById('product-price');
+      const installmentsValueElement = document.getElementById('installments-value');
+      const installmentsPlanElement = document.getElementById('installments-plan');
       const colorSection = document.getElementById('color-selector');
       const budgetSection = document.getElementById('budget-calculator');
+      let valorAtualProduto = Number(produtoSelecionado.preco);
       const colorInputs = document.querySelectorAll('input[name="product-color"]');
       const permiteVariacaoCor = opcaoAtiva(produtoSelecionado.permiteVariacaoCor);
       const permiteOrcamentoMedida = opcaoAtiva(produtoSelecionado.permiteOrcamentoMedida);
@@ -120,10 +136,19 @@ document.addEventListener('DOMContentLoaded', async () => {
       };
       const calcularPrecoComCor = (precoBranco) => Number(precoBranco) * obterMultiplicadorCor();
 
+      const atualizarParcelamento = (valorBase) => {
+        if (!installmentsValueElement || !installmentsPlanElement) return;
+        const { parcelas, valorParcela } = calcularParcelamentoSemJuros(valorBase);
+        installmentsValueElement.innerText = `Valor R$ ${formatarMoeda(Number(valorBase) || 0)}.`;
+        installmentsPlanElement.innerText = `${parcelas}x de ${formatarMoeda(valorParcela)}`;
+      };
+
       const atualizarPrecoPrincipal = () => {
         if (!priceElement) return;
         const precoComCor = calcularPrecoComCor(produtoSelecionado.preco);
+        valorAtualProduto = precoComCor;
         priceElement.innerText = formatarMoeda(precoComCor);
+        atualizarParcelamento(precoComCor);
       };
 
       atualizarPrecoPrincipal();
@@ -231,6 +256,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (!Number.isFinite(larguraDesejada) || larguraDesejada <= 0) {
               resultadoOrcamento.innerText = 'Informe uma largura válida maior que zero.';
               resultadoOrcamento.classList.add('error');
+              atualizarParcelamento(calcularPrecoComCor(produtoSelecionado.preco));
               return;
             }
 
@@ -240,6 +266,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             resultadoOrcamento.classList.remove('error');
             resultadoOrcamento.innerText = `Valor estimado para ${formatarMetros(larguraDesejada)}m (${nomeCor[corSelecionada]}): R$ ${formatarMoeda(valorFinal)}. Este valor será usado ao adicionar no carrinho.`;
+            valorAtualProduto = valorFinal;
+            atualizarParcelamento(valorAtualProduto);
           };
 
           btnCalcular.addEventListener('click', calcularValor);

@@ -848,14 +848,23 @@ body {
 /* Rodapé do card contendo preço e botão de compra */
 .product-footer {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
   margin-top: 10px;
 }
 
 .price-container {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.installment-preview {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #666;
+  font-weight: 600;
 }
 
 .price-label {
