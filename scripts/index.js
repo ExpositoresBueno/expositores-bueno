@@ -206,14 +206,27 @@ function saveCart(cart) {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
+function getCartItemKey(item) {
+  if (item.cartKey) return item.cartKey;
+
+  if (item.larguraOrcada) {
+    return `${item.id}-${Number(item.larguraOrcada).toFixed(2)}`;
+  }
+
+  return String(item.id);
+}
+
 function addToCart(produto) {
   const cart = getCart();
-  const existente = cart.find((item) => item.id === produto.id);
+  const cartKey = getCartItemKey(produto);
+  const existente = cart.find((item) => getCartItemKey(item) === cartKey);
+
   if (existente) {
     existente.quantidade += 1;
   } else {
-    cart.push({ ...produto, quantidade: 1 });
+    cart.push({ ...produto, cartKey, quantidade: 1 });
   }
+
   saveCart(cart);
   atualizarContadorCarrinho();
 
@@ -247,15 +260,22 @@ function renderizarCarrinho() {
     total += item.preco * item.quantidade;
     const imgPath = isPaginaInterna ? item.img.replace("./", "../") : item.img;
 
+    const larguraInfo = item.larguraOrcada
+      ? `<p>Largura: ${Number(item.larguraOrcada).toFixed(2).replace(".", ",")}m</p>`
+      : "";
+    const corInfo = item.corOrcada ? `<p>Cor: ${item.corOrcada}</p>` : "";
+
     cartItemsContainer.innerHTML += `
       <div class="cart-item">
         <img src="${imgPath}" alt="${item.nome}">
         <div class="cart-item-info">
           <h4>${item.nome}</h4>
+          ${corInfo}
+          ${larguraInfo}
           <p>Qtd: ${item.quantidade}</p>
           <p>R$ ${(item.preco * item.quantidade).toFixed(2).replace(".", ",")}</p>
         </div>
-        <button class="btn-remove-item" data-id="${item.id}" title="Remover item">
+        <button class="btn-remove-item" data-cart-key="${getCartItemKey(item)}" title="Remover item">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>`;
@@ -283,7 +303,12 @@ function finalizarPedidoWhatsApp() {
 
   cart.forEach((item) => {
     total += item.preco * item.quantidade;
-    mensagem += `• *${item.nome}*\n  Qtd: ${item.quantidade} x R$ ${item.preco.toFixed(2).replace(".", ",")}\n\n`;
+    const larguraInfo = item.larguraOrcada
+      ? `\n  Largura: ${Number(item.larguraOrcada).toFixed(2).replace(".", ",")}m`
+      : "";
+    const corInfo = item.corOrcada ? `\n  Cor: ${item.corOrcada}` : "";
+
+    mensagem += `• *${item.nome}*\n  Qtd: ${item.quantidade} x R$ ${item.preco.toFixed(2).replace(".", ",")}${corInfo}${larguraInfo}\n\n`;
   });
 
   mensagem += `*Valor Total: R$ ${total.toFixed(2).replace(".", ",")}*`;
@@ -548,8 +573,8 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("click", (e) => {
     const btnRemove = e.target.closest(".btn-remove-item");
     if (btnRemove) {
-      const id = parseInt(btnRemove.dataset.id);
-      saveCart(getCart().filter((i) => i.id !== id));
+      const cartKey = btnRemove.dataset.cartKey;
+      saveCart(getCart().filter((item) => getCartItemKey(item) !== cartKey));
       atualizarContadorCarrinho();
       renderizarCarrinho();
     }

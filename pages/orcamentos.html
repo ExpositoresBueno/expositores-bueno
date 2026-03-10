@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expositores Bueno | Orçamentos por Largura</title>
+    <link rel="stylesheet" href="../styles/index.css" />
+    <style>
+      body { font-family: Poppins, Arial, sans-serif; background:#f7f8fa; }
+      .orcamento-page { max-width: 1320px; margin: 30px auto; background:#fff; border:1px solid #e7ebf0; border-radius: 12px; padding: 20px; }
+      h1 { margin-top: 0; color:#243042; }
+      .subtitle { color:#5f6b7a; margin-bottom:16px; }
+      .table-wrap { overflow:auto; }
+      table { width:100%; border-collapse: collapse; min-width: 980px; }
+      th, td { border:1px solid #e7ebf0; padding:10px; text-align:left; vertical-align: top; }
+      th { background:#fff5ea; color:#da7818; }
+      .id-cell { font-weight:700; }
+      .money { font-weight:700; color:#243042; }
+      .ok { color:#1f7a39; }
+      .warn { color:#c0392b; font-weight:700; }
+    </style>
+  </head>
+  <body>
+    <main class="orcamento-page">
+      <h1>Orçamentos por largura (todos os produtos)</h1>
+      <p class="subtitle">Cálculo: <strong>valor base ÷ largura base × largura desejada</strong>. Larguras solicitadas: 1,20m / 2,67m / 0,60m.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Produto</th>
+              <th>Largura Base</th>
+              <th>Preço Base</th>
+              <th>Orçamento 1,20m</th>
+              <th>Orçamento 2,67m</th>
+              <th>Orçamento 0,60m</th>
+            </tr>
+          </thead>
+          <tbody id="orcamento-body"></tbody>
+        </table>
+      </div>
+    </main>
+
+    <script type="module" src="../scripts/orcamentos.js"></script>
+  </body>
+</html>
