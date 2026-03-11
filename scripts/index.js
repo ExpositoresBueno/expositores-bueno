@@ -56,6 +56,7 @@ const sizeSelect = document.getElementById("size-select");
 const inputMin = document.getElementById("price-min");
 const inputMax = document.getElementById("price-max");
 const sortSelect = document.getElementById("sort-products");
+const possuiGridProdutos = Boolean(document.getElementById("products-grid"));
 
 function removerAcentos(texto) {
   return texto
@@ -466,13 +467,31 @@ if (searchInput) {
   searchInput.addEventListener("keydown", (e) => {
     if (e.key !== "Enter") return;
     e.preventDefault();
-    aplicarFiltros();
+    executarBuscaTopo();
   });
 }
 
 const searchBtn = document.getElementById("search-btn");
 if (searchBtn) {
-  searchBtn.addEventListener("click", () => aplicarFiltros());
+  searchBtn.addEventListener("click", () => executarBuscaTopo());
+}
+
+function executarBuscaTopo() {
+  if (possuiGridProdutos) {
+    aplicarFiltros();
+    return;
+  }
+
+  const termo = encodeURIComponent(searchInput ? searchInput.value.trim() : "");
+  const categoria = encodeURIComponent(
+    searchCategoryTop ? searchCategoryTop.value : "Todos",
+  );
+
+  const destinoBase = window.location.pathname.includes("/pages/")
+    ? "../index.html"
+    : "./index.html";
+
+  window.location.href = `${destinoBase}?busca=${termo}&categoria=${categoria}`;
 }
 
 function mostrarAvisoCarrinho(nomeProduto) {
@@ -503,6 +522,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const cartFloating = document.querySelector(".cart-icon");
 
   atualizarContadorCarrinho();
+
+  const parametrosUrl = new URLSearchParams(window.location.search);
+  const buscaUrl = parametrosUrl.get("busca");
+  const categoriaUrl = parametrosUrl.get("categoria");
+
+  if (searchInput && buscaUrl) {
+    searchInput.value = buscaUrl;
+  }
+
+  if (searchCategoryTop && categoriaUrl) {
+    const optionExists = [...searchCategoryTop.options].some(
+      (opcao) => opcao.value === categoriaUrl,
+    );
+    searchCategoryTop.value = optionExists ? categoriaUrl : "Todos";
+  }
+
   carregarCatalogo();
 
   // --- LÓGICA DO MENU DROPDOWN (MAIS VENDIDOS) ---
