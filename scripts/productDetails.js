@@ -28,15 +28,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   };
 
 
-  const obterLarguraEmMetros = (textoDimensoes = '') => {
+  const obterDimensaoEmMetros = (textoDimensoes = '', chaves = []) => {
     const texto = String(textoDimensoes).toLowerCase().replace(/,/g, '.');
 
-    const patterns = [
-      /x\s*([\d.]+)\s*(m|cm)\s*largura/i,
-      /([\d.]+)\s*(m|cm)\s*largura/i,
-      /x\s*([\d.]+)\s*(m|cm)\s*parte\s*do\s*l/i,
-      /([\d.]+)\s*(m|cm)\s*parte\s*do\s*l/i,
-    ];
+    const patterns = chaves.flatMap((chave) => ([
+      new RegExp(`x\\s*([\\d.]+)\\s*(m|cm)\\s*${chave}`, 'i'),
+      new RegExp(`([\\d.]+)\\s*(m|cm)\\s*${chave}`, 'i'),
+    ]));
 
     for (const regex of patterns) {
       const match = texto.match(regex);
@@ -51,6 +49,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     return null;
   };
+
+  const obterLarguraEmMetros = (textoDimensoes = '') => obterDimensaoEmMetros(textoDimensoes, ['largura', 'parte\\s*do\\s*l']);
+  const obterAlturaEmMetros = (textoDimensoes = '') => obterDimensaoEmMetros(textoDimensoes, ['altura']);
+  const obterProfundidadeEmMetros = (textoDimensoes = '') => obterDimensaoEmMetros(textoDimensoes, ['profundidade']);
 
   const formatadorMoedaBR = new Intl.NumberFormat('pt-BR', {
     style: 'currency',
@@ -288,45 +290,136 @@ document.addEventListener('DOMContentLoaded', async () => {
         atualizarControles();
       }
 
-      // Calculadora de orçamento por largura
+      // Calculadora de orçamento por medidas (largura, altura e profundidade)
       const btnCalcular = document.getElementById('calculate-budget-btn');
       const inputLargura = document.getElementById('desired-width');
+      const inputAltura = document.getElementById('desired-height');
+      const inputProfundidade = document.getElementById('desired-depth');
       const resultadoOrcamento = document.getElementById('budget-result');
-      const larguraBase = obterLarguraEmMetros(produtoSelecionado.dimensoes);
+      const botoesReset = document.querySelectorAll('[data-reset-dimension]');
 
-      if (budgetSection && btnCalcular && inputLargura && resultadoOrcamento) {
-        if (!larguraBase || !permiteOrcamentoMedida) {
+      const dimensoesBase = {
+        largura: obterLarguraEmMetros(produtoSelecionado.dimensoes),
+        altura: obterAlturaEmMetros(produtoSelecionado.dimensoes),
+        profundidade: obterProfundidadeEmMetros(produtoSelecionado.dimensoes),
+      };
+
+      const dimensoesConfig = [
+        { chave: 'largura', nome: 'Largura', input: inputLargura, base: dimensoesBase.largura },
+        { chave: 'altura', nome: 'Altura', input: inputAltura, base: dimensoesBase.altura },
+        { chave: 'profundidade', nome: 'Profundidade', input: inputProfundidade, base: dimensoesBase.profundidade },
+      ];
+
+      const existeAlgumaBase = dimensoesConfig.some((dim) => Number.isFinite(dim.base) && dim.base > 0);
+
+      const atualizarEstadoCamposMedidas = () => {
+        dimensoesConfig.forEach((dim) => {
+          const row = document.querySelector(`[data-dimension-row="${dim.chave}"]`);
+          if (!dim.input || !row) return;
+
+          const possuiBase = Number.isFinite(dim.base) && dim.base > 0;
+          const botaoReset = row.querySelector('[data-reset-dimension]');
+
+          if (!possuiBase) {
+            row.classList.add('disabled');
+            dim.input.disabled = true;
+            dim.input.placeholder = 'Não disponível';
+            if (botaoReset) botaoReset.disabled = true;
+          } else {
+            row.classList.remove('disabled');
+            dim.input.disabled = false;
+            dim.input.placeholder = `Padrão: ${formatarMetros(dim.base)}m`;
+            if (botaoReset) botaoReset.disabled = false;
+          }
+        });
+      };
+
+      const obterValorMedidaDigitada = (valorTexto) => {
+        const normalizado = String(valorTexto ?? '').trim().replace(',', '.');
+        if (!normalizado) return null;
+
+        const valor = parseFloat(normalizado);
+        if (!Number.isFinite(valor) || valor <= 0) return NaN;
+        return valor;
+      };
+
+      const todasMedidasNoPadrao = () => dimensoesConfig.every((dim) => {
+        if (!Number.isFinite(dim.base) || dim.base <= 0) return true;
+        const valorDigitado = obterValorMedidaDigitada(dim.input?.value);
+        if (Number.isNaN(valorDigitado)) return false;
+        if (valorDigitado === null) return true;
+        return Math.abs(valorDigitado - dim.base) < 0.0001;
+      });
+
+      const calcularValor = () => {
+        const precoBaseBranco = Number(produtoSelecionado.preco);
+        let fatorMedidas = 1;
+        const medidasAplicadas = [];
+
+        for (const dim of dimensoesConfig) {
+          if (!Number.isFinite(dim.base) || dim.base <= 0) continue;
+
+          const valorDigitado = obterValorMedidaDigitada(dim.input?.value);
+          if (Number.isNaN(valorDigitado)) {
+            resultadoOrcamento.innerText = `Informe uma ${dim.chave} válida maior que zero.`;
+            resultadoOrcamento.classList.add('error');
+            valorAtualProduto = calcularPrecoComCor(produtoSelecionado.preco);
+            atualizarPrecoExibicao();
+            return;
+          }
+
+          const valorEfetivo = valorDigitado ?? dim.base;
+          fatorMedidas *= (valorEfetivo / dim.base);
+          medidasAplicadas.push(`${dim.nome}: ${formatarMetros(valorEfetivo)}m`);
+        }
+
+        const valorBrancoMedida = precoBaseBranco * fatorMedidas;
+        const valorFinal = calcularPrecoComCor(valorBrancoMedida);
+
+        resultadoOrcamento.classList.remove('error');
+        if (todasMedidasNoPadrao()) {
+          resultadoOrcamento.innerText = `Medidas no padrão (${nomeCor[corSelecionada]}): ${formatarMoeda(calcularPrecoComCor(precoBaseBranco))}.`;
+          valorAtualProduto = calcularPrecoComCor(precoBaseBranco);
+          atualizarPrecoExibicao();
+          return;
+        }
+
+        resultadoOrcamento.innerText = `Valor estimado (${medidasAplicadas.join(' • ')}) (${nomeCor[corSelecionada]}): ${formatarMoeda(valorFinal)}. Este valor será usado ao adicionar no carrinho.`;
+        valorAtualProduto = valorFinal;
+        atualizarPrecoExibicao();
+      };
+
+      if (budgetSection && btnCalcular && inputLargura && inputAltura && inputProfundidade && resultadoOrcamento) {
+        if (!permiteOrcamentoMedida || !existeAlgumaBase) {
           budgetSection.style.display = 'none';
         } else {
-          const precoBaseBranco = Number(produtoSelecionado.preco);
-
-          const calcularValor = () => {
-            const larguraDesejada = parseFloat(String(inputLargura.value).replace(',', '.'));
-
-            if (!Number.isFinite(larguraDesejada) || larguraDesejada <= 0) {
-              resultadoOrcamento.innerText = 'Informe uma largura válida maior que zero.';
-              resultadoOrcamento.classList.add('error');
-              valorAtualProduto = calcularPrecoComCor(produtoSelecionado.preco);
-              atualizarPrecoExibicao();
-              return;
-            }
-
-            const valorPorMetro = precoBaseBranco / larguraBase;
-            const valorBrancoMedida = valorPorMetro * larguraDesejada;
-            const valorFinal = calcularPrecoComCor(valorBrancoMedida);
-
-            resultadoOrcamento.classList.remove('error');
-            resultadoOrcamento.innerText = `Valor estimado para ${formatarMetros(larguraDesejada)}m (${nomeCor[corSelecionada]}): ${formatarMoeda(valorFinal)}. Este valor será usado ao adicionar no carrinho.`;
-            valorAtualProduto = valorFinal;
-            atualizarPrecoExibicao();
-          };
+          atualizarEstadoCamposMedidas();
 
           btnCalcular.addEventListener('click', calcularValor);
-          inputLargura.addEventListener('keydown', (event) => {
-            if (event.key === 'Enter') {
-              event.preventDefault();
+
+          [inputLargura, inputAltura, inputProfundidade].forEach((input) => {
+            input.addEventListener('keydown', (event) => {
+              if (event.key === 'Enter') {
+                event.preventDefault();
+                calcularValor();
+              }
+            });
+
+            input.addEventListener('input', () => {
+              if (todasMedidasNoPadrao()) {
+                calcularValor();
+              }
+            });
+          });
+
+          botoesReset.forEach((botao) => {
+            botao.addEventListener('click', () => {
+              const chave = botao.dataset.resetDimension;
+              const dim = dimensoesConfig.find((item) => item.chave === chave);
+              if (!dim || !dim.input) return;
+              dim.input.value = '';
               calcularValor();
-            }
+            });
           });
 
           if (permiteVariacaoCor && colorInputs.length > 0) {
@@ -334,14 +427,14 @@ document.addEventListener('DOMContentLoaded', async () => {
               input.addEventListener('change', () => {
                 corSelecionada = input.value;
                 atualizarPrecoPrincipal();
-                if (inputLargura.value) calcularValor();
+                calcularValor();
               });
             });
           }
         }
       }
 
-      if (permiteVariacaoCor && colorInputs.length > 0 && (!budgetSection || !larguraBase || !permiteOrcamentoMedida)) {
+      if (permiteVariacaoCor && colorInputs.length > 0 && (!budgetSection || !existeAlgumaBase || !permiteOrcamentoMedida)) {
         colorInputs.forEach((input) => {
           input.addEventListener('change', () => {
             corSelecionada = input.value;
@@ -419,7 +512,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const corNome = permiteVariacaoCor ? (nomeCor[corSelecionada] || 'Branco') : 'Branco';
         const corKey = permiteVariacaoCor ? (corSelecionada || 'branco') : 'branco';
 
-        if (!larguraBase || !permiteOrcamentoMedida) {
+        if (!existeAlgumaBase || !permiteOrcamentoMedida) {
           const precoSemMedida = calcularPrecoComCor(produtoSelecionado.preco);
           return {
             ...produtoSelecionado,
@@ -430,31 +523,30 @@ document.addEventListener('DOMContentLoaded', async () => {
           };
         }
 
-        const larguraDigitada = parseFloat(String(inputLargura?.value || '').replace(',', '.'));
+        let fatorMedidas = 1;
+        const medidasNome = [];
+        const medidasOrcadas = {};
 
-        if (!Number.isFinite(larguraDigitada) || larguraDigitada <= 0) {
-          const precoSemMedida = calcularPrecoComCor(produtoSelecionado.preco);
-          return {
-            ...produtoSelecionado,
-            preco: Number(precoSemMedida.toFixed(2)),
-            ...(permiteVariacaoCor ? { corOrcada: corNome } : {}),
-            cartKey: `${produtoSelecionado.id}-${corKey}`,
-            nome: permiteVariacaoCor ? `${produtoSelecionado.nome} (${corNome})` : produtoSelecionado.nome
-          };
+        for (const dim of dimensoesConfig) {
+          if (!Number.isFinite(dim.base) || dim.base <= 0) continue;
+
+          const valorDigitado = obterValorMedidaDigitada(dim.input?.value);
+          const valorEfetivo = Number.isFinite(valorDigitado) ? valorDigitado : dim.base;
+          fatorMedidas *= (valorEfetivo / dim.base);
+          medidasOrcadas[`${dim.chave}Orcada`] = Number(valorEfetivo.toFixed(2));
+          medidasNome.push(`${dim.nome} ${formatarMetros(valorEfetivo)}m`);
         }
 
-        const valorPorMetro = Number(produtoSelecionado.preco) / larguraBase;
-        const valorBranco = valorPorMetro * larguraDigitada;
+        const valorBranco = Number(produtoSelecionado.preco) * fatorMedidas;
         const valorFinal = calcularPrecoComCor(valorBranco);
-        const larguraFormatada = formatarMetros(larguraDigitada);
 
         return {
           ...produtoSelecionado,
           preco: Number(valorFinal.toFixed(2)),
-          larguraOrcada: Number(larguraDigitada.toFixed(2)),
+          ...medidasOrcadas,
           ...(permiteVariacaoCor ? { corOrcada: corNome } : {}),
-          cartKey: `${produtoSelecionado.id}-${Number(larguraDigitada).toFixed(2)}-${corKey}`,
-          nome: permiteVariacaoCor ? `${produtoSelecionado.nome} (${larguraFormatada}m - ${corNome})` : `${produtoSelecionado.nome} (${larguraFormatada}m)`
+          cartKey: `${produtoSelecionado.id}-${Object.values(medidasOrcadas).join('-')}-${corKey}`,
+          nome: permiteVariacaoCor ? `${produtoSelecionado.nome} (${medidasNome.join(' | ')} - ${corNome})` : `${produtoSelecionado.nome} (${medidasNome.join(' | ')})`
         };
       };
 

@@ -28,9 +28,11 @@ function getCartItemKey(item) {
   if (item.cartKey) return item.cartKey;
 
   const partes = [
-    item.nome || "",
+    item.id != null ? String(item.id) : item.nome || "",
     item.corOrcada || "",
     item.larguraOrcada != null ? String(item.larguraOrcada) : "",
+    item.alturaOrcada != null ? String(item.alturaOrcada) : "",
+    item.profundidadeOrcada != null ? String(item.profundidadeOrcada) : "",
   ];
   return partes.join("|");
 }
@@ -41,6 +43,12 @@ function formatarReal(valor) {
 
 function formatarNumeroBR(valor) {
   return formatadorNumeroBR.format(Number(valor) || 0);
+}
+
+function formatarMedidaCm(valorEmMetros) {
+  const valor = Number(valorEmMetros);
+  if (!Number.isFinite(valor) || valor <= 0) return "";
+  return `${formatarNumeroBR(valor * 100)}cm`;
 }
 
 function calcularParcelamentoSemJuros(valorTotal) {
@@ -125,9 +133,15 @@ function renderizarItens(cart) {
 
   cart.forEach((item) => {
     const larguraInfo = item.larguraOrcada
-      ? `<p>Largura: ${formatarNumeroBR(item.larguraOrcada)}m</p>`
+      ? `<p>Largura: ${formatarMedidaCm(item.larguraOrcada)}</p>`
       : "";
     const corInfo = item.corOrcada ? `<p>Cor: ${item.corOrcada}</p>` : "";
+    const alturaInfo = item.alturaOrcada
+      ? `<p>Altura: ${formatarMedidaCm(item.alturaOrcada)}</p>`
+      : "";
+    const profundidadeInfo = item.profundidadeOrcada
+      ? `<p>Profundidade: ${formatarMedidaCm(item.profundidadeOrcada)}</p>`
+      : "";
 
     container.innerHTML += `
       <article class="checkout-item">
@@ -136,6 +150,8 @@ function renderizarItens(cart) {
           <strong>${item.nome}</strong>
           ${corInfo}
           ${larguraInfo}
+          ${alturaInfo}
+          ${profundidadeInfo}
           <div class="quantity-control">
             <span>Quantidade:</span>
             <button type="button" class="qty-btn" data-cart-key="${getCartItemKey(item)}" data-delta="-1">−</button>
@@ -223,11 +239,17 @@ function montarMensagem(cart) {
 
   cart.forEach((item) => {
     const larguraInfo = item.larguraOrcada
-      ? `\n  Largura: ${formatarNumeroBR(item.larguraOrcada)}m`
+      ? `\n  Largura: ${formatarMedidaCm(item.larguraOrcada)}`
       : "";
     const corInfo = item.corOrcada ? `\n  Cor: ${item.corOrcada}` : "";
+    const alturaInfo = item.alturaOrcada
+      ? `\n  Altura: ${formatarMedidaCm(item.alturaOrcada)}`
+      : "";
+    const profundidadeInfo = item.profundidadeOrcada
+      ? `\n  Profundidade: ${formatarMedidaCm(item.profundidadeOrcada)}`
+      : "";
 
-    mensagem += `• *${item.nome}*\n  Qtd: ${item.quantidade} x ${formatarReal(item.preco)}${corInfo}${larguraInfo}\n  Subtotal: ${formatarReal(item.preco * item.quantidade)}\n\n`;
+    mensagem += `• *${item.nome}*\n  Qtd: ${item.quantidade} x ${formatarReal(item.preco)}${corInfo}${larguraInfo}${alturaInfo}${profundidadeInfo}\n  Subtotal: ${formatarReal(item.preco * item.quantidade)}\n\n`;
   });
 
   mensagem += `*Subtotal:* ${formatarReal(subtotal)}\n`;
