@@ -153,23 +153,39 @@
               </section>
 
               <section class="budget-calculator" id="budget-calculator">
-                <h2>Orçamento por largura</h2>
+                <h2>Orçamento por medidas</h2>
                 <p class="budget-helper">
-                  Informe a largura desejada para estimar o valor deste mesmo móvel em outra medida.
+                  Ajuste largura, altura e profundidade quando quiser. Você pode combinar medidas diferentes ou voltar qualquer campo para o padrão.
                 </p>
-                <label for="desired-width">Largura desejada (em metros)</label>
-                <div class="budget-input-row">
-                  <input
-                    type="number"
-                    id="desired-width"
-                    min="0.1"
-                    step="0.01"
-                    placeholder="Ex.: 1.50"
-                  />
-                  <button type="button" id="calculate-budget-btn">Calcular</button>
+
+                <div class="budget-dimension-row" data-dimension-row="largura">
+                  <label for="desired-width">Largura desejada (em metros)</label>
+                  <div class="budget-input-row">
+                    <input type="number" id="desired-width" min="0.1" step="0.01" placeholder="Ex.: 1.50" />
+                    <button type="button" class="budget-reset-btn" data-reset-dimension="largura">Padrão</button>
+                  </div>
                 </div>
+
+                <div class="budget-dimension-row" data-dimension-row="altura">
+                  <label for="desired-height">Altura desejada (em metros)</label>
+                  <div class="budget-input-row">
+                    <input type="number" id="desired-height" min="0.1" step="0.01" placeholder="Ex.: 1.80" />
+                    <button type="button" class="budget-reset-btn" data-reset-dimension="altura">Padrão</button>
+                  </div>
+                </div>
+
+                <div class="budget-dimension-row" data-dimension-row="profundidade">
+                  <label for="desired-depth">Profundidade desejada (em metros)</label>
+                  <div class="budget-input-row">
+                    <input type="number" id="desired-depth" min="0.1" step="0.01" placeholder="Ex.: 0.40" />
+                    <button type="button" class="budget-reset-btn" data-reset-dimension="profundidade">Padrão</button>
+                  </div>
+                </div>
+
+                <button type="button" id="calculate-budget-btn">Calcular orçamento</button>
+
                 <p class="budget-result" id="budget-result">
-                  Digite uma largura e clique em calcular.
+                  Ajuste qualquer medida e clique em calcular.
                 </p>
               </section>
 

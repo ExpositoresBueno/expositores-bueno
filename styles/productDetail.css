@@ -428,13 +428,7 @@ h1, h2, h3 {
 }
 
 .budget-input-row button {
-  border: none;
-  border-radius: 8px;
-  background: var(--p2-orange-dark);
-  color: #fff;
-  font-weight: 600;
-  padding: 10px 14px;
-  cursor: pointer;
+  white-space: nowrap;
 }
 
 .budget-result {
@@ -445,6 +439,36 @@ h1, h2, h3 {
 
 .budget-result.error {
   color: #c0392b;
+}
+
+
+.budget-dimension-row {
+  margin-bottom: 10px;
+}
+
+.budget-dimension-row.disabled {
+  opacity: 0.55;
+}
+
+.budget-reset-btn {
+  border: 1px solid var(--p2-line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--p2-text);
+  font-weight: 600;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+#calculate-budget-btn {
+  border: none;
+  border-radius: 8px;
+  background: var(--p2-orange-dark);
+  color: #fff;
+  font-weight: 700;
+  padding: 10px 14px;
+  cursor: pointer;
+  margin-top: 6px;
 }
 
 .product-description-side {

@@ -89,6 +89,12 @@ function formatarNumeroBR(valor) {
   return formatadorNumeroBR.format(Number(valor) || 0);
 }
 
+function formatarMedidaCm(valorEmMetros) {
+  const valor = Number(valorEmMetros);
+  if (!Number.isFinite(valor) || valor <= 0) return "";
+  return `${formatarNumeroBR(valor * 100)}cm`;
+}
+
 function calcularParcelamentoSemJuros(valorTotal) {
   const valor = Number(valorTotal);
   if (!Number.isFinite(valor) || valor <= 0) {
@@ -278,8 +284,15 @@ function getCartItemKey(item) {
     ? String(item.corOrcada).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "")
     : "branco";
 
-  if (item.larguraOrcada) {
-    return `${item.id}-${Number(item.larguraOrcada).toFixed(2)}-${corKey}`;
+  const medidas = ["larguraOrcada", "alturaOrcada", "profundidadeOrcada"]
+    .map((campo) => {
+      const valor = Number(item?.[campo]);
+      return Number.isFinite(valor) && valor > 0 ? valor.toFixed(2) : "";
+    })
+    .filter(Boolean);
+
+  if (medidas.length > 0) {
+    return `${item.id}-${medidas.join('-')}-${corKey}`;
   }
 
   return `${item.id}-${corKey}`;
@@ -331,9 +344,15 @@ function renderizarCarrinho() {
     const imgPath = isPaginaInterna ? item.img.replace("./", "../") : item.img;
 
     const larguraInfo = item.larguraOrcada
-      ? `<p>Largura: ${formatarNumeroBR(item.larguraOrcada)}m</p>`
+      ? `<p>Largura: ${formatarMedidaCm(item.larguraOrcada)}</p>`
       : "";
     const corInfo = item.corOrcada ? `<p>Cor: ${item.corOrcada}</p>` : "";
+    const alturaInfo = item.alturaOrcada
+      ? `<p>Altura: ${formatarMedidaCm(item.alturaOrcada)}</p>`
+      : "";
+    const profundidadeInfo = item.profundidadeOrcada
+      ? `<p>Profundidade: ${formatarMedidaCm(item.profundidadeOrcada)}</p>`
+      : "";
 
     cartItemsContainer.innerHTML += `
       <div class="cart-item">
@@ -342,6 +361,8 @@ function renderizarCarrinho() {
           <h4>${item.nome}</h4>
           ${corInfo}
           ${larguraInfo}
+          ${alturaInfo}
+          ${profundidadeInfo}
           <p>Qtd: ${item.quantidade}</p>
           <p>${formatarMoedaBR(item.preco * item.quantidade)}</p>
         </div>
@@ -374,11 +395,17 @@ function finalizarPedidoWhatsApp() {
   cart.forEach((item) => {
     total += item.preco * item.quantidade;
     const larguraInfo = item.larguraOrcada
-      ? `\n  Largura: ${formatarNumeroBR(item.larguraOrcada)}m`
+      ? `\n  Largura: ${formatarMedidaCm(item.larguraOrcada)}`
       : "";
     const corInfo = item.corOrcada ? `\n  Cor: ${item.corOrcada}` : "";
+    const alturaInfo = item.alturaOrcada
+      ? `\n  Altura: ${formatarMedidaCm(item.alturaOrcada)}`
+      : "";
+    const profundidadeInfo = item.profundidadeOrcada
+      ? `\n  Profundidade: ${formatarMedidaCm(item.profundidadeOrcada)}`
+      : "";
 
-    mensagem += `• *${item.nome}*\n  Qtd: ${item.quantidade} x ${formatarMoedaBR(item.preco)}${corInfo}${larguraInfo}\n\n`;
+    mensagem += `• *${item.nome}*\n  Qtd: ${item.quantidade} x ${formatarMoedaBR(item.preco)}${corInfo}${larguraInfo}${alturaInfo}${profundidadeInfo}\n\n`;
   });
 
   mensagem += `*Valor Total: ${formatarMoedaBR(total)}*`;
