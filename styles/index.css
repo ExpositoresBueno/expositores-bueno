@@ -983,6 +983,7 @@ body {
   text-transform: uppercase;
   margin-bottom: 20px;
   font-weight: 700;
+  text-align: center;
 }
 
 /* Listas de Informação */
@@ -1005,12 +1006,32 @@ body {
   min-width: 16px;
 }
 
-.footer-phone-list span a {
-  color: #fff;
-  text-decoration: none;
+.footer-phone-list {
+  align-items: center;
 }
 
-.footer-phone-list span a:hover {
+.footer-phone-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-phone-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.footer-phone-link i {
+  color: #25d366;
+  font-size: 14px;
+}
+
+.footer-phone-link:hover {
   text-decoration: underline;
 }
 
@@ -1201,6 +1222,10 @@ body {
 
   .footer-info li {
     justify-content: center;
+  }
+
+  .footer-phone-links {
+    align-items: center;
   }
 
   .schedule-table {
