@@ -1,65 +1,20 @@
-(() => {
-  const GOOGLE_ADS_ID = 'AW-SEU_ID';
-  const GOOGLE_ADS_LABEL = 'SEU_LABEL';
-  const DEDUPE_WINDOW_MS = 800;
+document.addEventListener("click", function (e) {
+  const link = e.target.closest("a[href]");
+  if (!link) return;
 
-  const isWhatsAppUrl = (rawUrl) => {
-    if (!rawUrl) return false;
+  const url = link.href;
 
-    try {
-      const parsed = new URL(rawUrl, window.location.origin);
-      const host = parsed.hostname.replace(/^www\./, '');
-      return host === 'wa.me' || host === 'api.whatsapp.com';
-    } catch {
-      return false;
-    }
-  };
-
-  const shouldTrackNow = (urlKey) => {
+  if (url.includes("wa.me") || url.includes("api.whatsapp.com")) {
     const now = Date.now();
-    const last = window.__googleAdsWhatsAppLastEvent || { time: 0, key: '' };
-    if (last.key === urlKey && now - last.time < DEDUPE_WINDOW_MS) return false;
+    const lastEventAt = window.__googleAdsConversionLastEventAt || 0;
 
-    window.__googleAdsWhatsAppLastEvent = { time: now, key: urlKey };
-    return true;
-  };
+    if (now - lastEventAt < 1200) return;
+    window.__googleAdsConversionLastEventAt = now;
 
-  const sendConversion = (urlKey) => {
-    if (!shouldTrackNow(urlKey)) return;
-    if (typeof window.gtag !== 'function') return;
-
-    window.gtag('event', 'conversion', {
-      send_to: `${GOOGLE_ADS_ID}/${GOOGLE_ADS_LABEL}`,
-    });
-  };
-
-  const handleDocumentClick = (event) => {
-    const anchor = event.target.closest('a[href]');
-    if (!anchor) return;
-
-    const href = anchor.getAttribute('href');
-    if (!isWhatsAppUrl(href)) return;
-
-    sendConversion(`click:${href}`);
-  };
-
-  const bindWindowOpenTracking = () => {
-    if (window.__googleAdsWindowOpenPatched) return;
-
-    const nativeOpen = window.open;
-    window.open = function patchedOpen(url, ...rest) {
-      if (isWhatsAppUrl(url)) {
-        sendConversion(`open:${String(url)}`);
-      }
-      return nativeOpen.call(this, url, ...rest);
-    };
-
-    window.__googleAdsWindowOpenPatched = true;
-  };
-
-  if (!window.__googleAdsWhatsAppTrackingBound) {
-    document.addEventListener('click', handleDocumentClick, true);
-    bindWindowOpenTracking();
-    window.__googleAdsWhatsAppTrackingBound = true;
+    if (typeof gtag === "function") {
+      gtag("event", "conversion", {
+        send_to: "AW-327475264/CONVERSAO_WHATSAPP",
+      });
+    }
   }
-})();
+});
