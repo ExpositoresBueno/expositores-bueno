@@ -58,6 +58,18 @@ const inputMax = document.getElementById("price-max");
 const sortSelect = document.getElementById("sort-products");
 const possuiGridProdutos = Boolean(document.getElementById("products-grid"));
 
+const ORDEM_PADRAO_CATEGORIAS = [
+  "Balcões",
+  "Araras",
+  "Armários Vestiários",
+  "Vitrines",
+  "Caixas",
+  "Colmeias",
+  "Expositores",
+  "Gôndolas",
+  "Kits",
+];
+
 function removerAcentos(texto) {
   return texto
     .normalize("NFD")
@@ -67,6 +79,29 @@ function removerAcentos(texto) {
 
 function stringsEquivalentes(a, b) {
   return removerAcentos(String(a || "")) === removerAcentos(String(b || ""));
+}
+
+function obterPrioridadeCategoria(produto) {
+  const categorias = Array.isArray(produto.categoria)
+    ? produto.categoria
+    : [produto.categoria];
+
+  const prioridades = categorias.map((categoria) => {
+    const indice = ORDEM_PADRAO_CATEGORIAS.findIndex((categoriaBase) =>
+      stringsEquivalentes(categoriaBase, categoria),
+    );
+    return indice === -1 ? Number.MAX_SAFE_INTEGER : indice;
+  });
+
+  return Math.min(...prioridades);
+}
+
+function ordenarPorSequenciaPadrao(a, b) {
+  const prioridadeA = obterPrioridadeCategoria(a);
+  const prioridadeB = obterPrioridadeCategoria(b);
+
+  if (prioridadeA !== prioridadeB) return prioridadeA - prioridadeB;
+  return a.id - b.id;
 }
 
 const formatadorMoedaBR = new Intl.NumberFormat("pt-BR", {
@@ -148,7 +183,7 @@ function aplicarFiltros(filtroManual = null) {
   if (criterio === "price-asc") listaFiltrada.sort((a, b) => a.preco - b.preco);
   else if (criterio === "price-desc")
     listaFiltrada.sort((a, b) => b.preco - a.preco);
-  else listaFiltrada.sort((a, b) => a.id - b.id);
+  else listaFiltrada.sort(ordenarPorSequenciaPadrao);
 
   paginaAtual = 1;
   exibirPagina(listaFiltrada, 1);
