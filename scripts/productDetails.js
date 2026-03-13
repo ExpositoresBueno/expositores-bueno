@@ -28,12 +28,21 @@ document.addEventListener('DOMContentLoaded', async () => {
   };
 
 
+  const converterParaMetros = (valor, unidade = 'm') => {
+    if (!Number.isFinite(valor) || valor <= 0) return null;
+
+    const unidadeNormalizada = String(unidade || 'm').toLowerCase();
+    if (unidadeNormalizada === 'mm') return valor / 1000;
+    if (unidadeNormalizada === 'cm') return valor / 100;
+    return valor;
+  };
+
   const obterDimensaoEmMetros = (textoDimensoes = '', chaves = []) => {
     const texto = String(textoDimensoes).toLowerCase().replace(/,/g, '.');
 
     const patterns = chaves.flatMap((chave) => ([
-      new RegExp(`x\\s*([\\d.]+)\\s*(m|cm)\\s*${chave}`, 'i'),
-      new RegExp(`([\\d.]+)\\s*(m|cm)\\s*${chave}`, 'i'),
+      new RegExp(`x\\s*([\\d.]+)\\s*(m|cm|mm)\\s*${chave}`, 'i'),
+      new RegExp(`([\\d.]+)\\s*(m|cm|mm)\\s*${chave}`, 'i'),
     ]));
 
     for (const regex of patterns) {
@@ -43,8 +52,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       const valor = parseFloat(match[1]);
       const unidade = (match[2] || '').toLowerCase();
 
-      if (!Number.isFinite(valor) || valor <= 0) continue;
-      return unidade === 'cm' ? valor / 100 : valor;
+      const valorEmMetros = converterParaMetros(valor, unidade);
+      if (!valorEmMetros) continue;
+      return valorEmMetros;
     }
 
     return null;
@@ -335,12 +345,19 @@ document.addEventListener('DOMContentLoaded', async () => {
       };
 
       const obterValorMedidaDigitada = (valorTexto) => {
-        const normalizado = String(valorTexto ?? '').trim().replace(',', '.');
+        const normalizado = String(valorTexto ?? '').trim().toLowerCase().replace(',', '.');
         if (!normalizado) return null;
 
-        const valor = parseFloat(normalizado);
+        const match = normalizado.match(/^([\d.]+)\s*(mm|cm|m|milimetros?|milímetros?|centimetros?|centímetros?|metros?)?$/i);
+        if (!match) return NaN;
+
+        const valor = parseFloat(match[1]);
         if (!Number.isFinite(valor) || valor <= 0) return NaN;
-        return valor;
+
+        const unidadeInformada = (match[2] || 'm').toLowerCase();
+        const unidade = unidadeInformada.startsWith('mil') ? 'mm' : unidadeInformada.startsWith('cent') ? 'cm' : unidadeInformada.startsWith('metro') ? 'm' : unidadeInformada;
+        const valorEmMetros = converterParaMetros(valor, unidade);
+        return valorEmMetros ?? NaN;
       };
 
       const todasMedidasNoPadrao = () => dimensoesConfig.every((dim) => {
