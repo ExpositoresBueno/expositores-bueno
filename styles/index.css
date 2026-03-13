@@ -2325,6 +2325,7 @@ body {
 .whatsapp-float {
   right: 20px;
   bottom: 20px;
+  width: auto;
   min-width: 64px;
   height: 64px;
   border-radius: 999px;
