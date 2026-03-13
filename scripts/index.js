@@ -53,6 +53,10 @@ const grid = document.getElementById("products-grid");
 const searchInput = document.getElementById("search-input");
 const searchCategoryTop = document.getElementById("search-category");
 const sizeSelect = document.getElementById("size-select");
+const typeSelect = document.getElementById("type-select");
+const heightSelect = document.getElementById("height-select");
+const widthSelect = document.getElementById("width-select");
+const materialSelect = document.getElementById("material-select");
 const inputMin = document.getElementById("price-min");
 const inputMax = document.getElementById("price-max");
 const sortSelect = document.getElementById("sort-products");
@@ -143,11 +147,68 @@ function calcularParcelamentoSemJuros(valorTotal) {
   return { parcelas, valorParcela };
 }
 
+function extrairDimensoes(dimensoes = "") {
+  const alturaMatch = dimensoes.match(/([\d.,]+)m\s*Altura/i);
+  const larguraMatch = dimensoes.match(/([\d.,]+)cm\s*Largura/i);
+  const material = /mdf/i.test(dimensoes)
+    ? "MDF"
+    : /metal|ferro|aço/i.test(dimensoes)
+      ? "Metal"
+      : "Misto";
+
+  return {
+    altura: alturaMatch ? `${alturaMatch[1]}m` : "",
+    largura: larguraMatch ? `${larguraMatch[1]}cm` : "",
+    material,
+  };
+}
+
+function preencherSelectFiltro(selectEl, valores = [], placeholder = "Todos") {
+  if (!selectEl) return;
+  selectEl.innerHTML = `<option value="">${placeholder}</option>`;
+  [...new Set(valores.filter(Boolean))]
+    .sort((a, b) => removerAcentos(a).localeCompare(removerAcentos(b)))
+    .forEach((valor) => {
+      const option = document.createElement("option");
+      option.value = valor;
+      option.textContent = valor;
+      selectEl.appendChild(option);
+    });
+}
+
+function inicializarFiltrosAvancados() {
+  const tipos = [];
+  const alturas = [];
+  const larguras = [];
+  const materiais = [];
+
+  produtos.forEach((produto) => {
+    const categorias = Array.isArray(produto.categoria)
+      ? produto.categoria
+      : [produto.categoria];
+    tipos.push(...categorias);
+
+    const { altura, largura, material } = extrairDimensoes(produto.dimensoes);
+    if (altura) alturas.push(altura);
+    if (largura) larguras.push(largura);
+    materiais.push(material);
+  });
+
+  preencherSelectFiltro(typeSelect, tipos, "Todos os tipos");
+  preencherSelectFiltro(heightSelect, alturas, "Todas as alturas");
+  preencherSelectFiltro(widthSelect, larguras, "Todas as larguras");
+  preencherSelectFiltro(materialSelect, materiais, "Todos os materiais");
+}
+
 function aplicarFiltros(filtroManual = null) {
   const termo = searchInput ? removerAcentos(searchInput.value.trim()) : "";
   const filtroTopo =
     filtroManual || (searchCategoryTop ? searchCategoryTop.value : "Todos");
   const tamanho = sizeSelect ? sizeSelect.value : "";
+  const tipo = typeSelect ? typeSelect.value : "";
+  const altura = heightSelect ? heightSelect.value : "";
+  const largura = widthSelect ? widthSelect.value : "";
+  const material = materialSelect ? materialSelect.value : "";
   const min = parseFloat(inputMin ? inputMin.value : 0) || 0;
   const max = parseFloat(inputMax ? inputMax.value : Infinity) || Infinity;
 
@@ -175,8 +236,15 @@ function aplicarFiltros(filtroManual = null) {
       stringsEquivalentes(p.nome, filtroTopo);
     const matchesTam = tamanho === "" || p.tamanho === tamanho;
     const matchesPreco = p.preco >= min && p.preco <= max;
+    const infoDimensao = extrairDimensoes(p.dimensoes);
+    const matchesTipo =
+      tipo === "" || categoriasDoProduto.some((cat) => stringsEquivalentes(cat, tipo));
+    const matchesAltura = altura === "" || infoDimensao.altura === altura;
+    const matchesLargura = largura === "" || infoDimensao.largura === largura;
+    const matchesMaterial = material === "" || infoDimensao.material === material;
 
-    return matchesNomeOuTag && matchesCatOuNome && matchesTam && matchesPreco;
+    return matchesNomeOuTag && matchesCatOuNome && matchesTam && matchesPreco
+      && matchesTipo && matchesAltura && matchesLargura && matchesMaterial;
   });
 
   const criterio = sortSelect ? sortSelect.value : "relevance";
@@ -203,6 +271,7 @@ async function carregarCatalogo() {
     if (!resposta.ok) throw new Error("Arquivo JSON não encontrado!");
 
     produtos = await resposta.json();
+    inicializarFiltrosAvancados();
     aplicarFiltros();
   } catch (erro) {
     console.error("Falha ao carregar o catálogo:", erro);
@@ -239,10 +308,6 @@ function renderizarProdutos(lista) {
         </div>
         <div class="product-info">
           <h3>${prod.nome}</h3>
-          <div class="product-quantity" data-quantity-container>
-            <label for="quantity-${prod.id}">Quantidade</label>
-            <input id="quantity-${prod.id}" class="quantity-input" type="number" min="1" value="1" step="1" inputmode="numeric">
-          </div>
           <div class="product-footer">
             <div class="price-container">
               <span class="price-value">${formatarMoedaBR(prod.preco)}</span>
@@ -254,11 +319,16 @@ function renderizarProdutos(lista) {
               const parcelamento = calcularParcelamentoSemJuros(prod.preco);
               return `${parcelamento.parcelas}x de ${formatarMoedaBR(parcelamento.valorParcela)} sem juros`;
             })()}</p>
+            <ul class="product-trust-list">
+              <li><i class="fa-solid fa-check"></i><span>Parcelamento sem juros</span></li>
+              <li><i class="fa-solid fa-check"></i><span>Entrega em todo RS</span></li>
+              <li><i class="fa-solid fa-check"></i><span>Produção própria</span></li>
+            </ul>
           </div>
         </div>`;
 
     cardDiv.addEventListener("click", (e) => {
-      if (e.target.closest(".btn-add-cart") || e.target.closest(".product-quantity")) return;
+      if (e.target.closest(".btn-add-cart")) return;
       const destino = isPaginaInterna
         ? "./productDetails.html"
         : "./pages/productDetails.html";
@@ -719,6 +789,10 @@ document.addEventListener("DOMContentLoaded", () => {
   if (searchCategoryTop)
     searchCategoryTop.addEventListener("change", () => aplicarFiltros());
   if (sizeSelect) sizeSelect.addEventListener("change", () => aplicarFiltros());
+  if (typeSelect) typeSelect.addEventListener("change", () => aplicarFiltros());
+  if (heightSelect) heightSelect.addEventListener("change", () => aplicarFiltros());
+  if (widthSelect) widthSelect.addEventListener("change", () => aplicarFiltros());
+  if (materialSelect) materialSelect.addEventListener("change", () => aplicarFiltros());
   if (sortSelect) sortSelect.addEventListener("change", () => aplicarFiltros());
 
   const btnFilterPrice = document.getElementById("btn-filter-price");
@@ -738,6 +812,10 @@ document.addEventListener("DOMContentLoaded", () => {
       // 2. Resetando os selects para o valor inicial
       if (searchCategoryTop) searchCategoryTop.value = "Todos";
       if (sizeSelect) sizeSelect.value = "";
+      if (typeSelect) typeSelect.value = "";
+      if (heightSelect) heightSelect.value = "";
+      if (widthSelect) widthSelect.value = "";
+      if (materialSelect) materialSelect.value = "";
       if (sortSelect) sortSelect.value = "relevance";
 
       // 3. Aplicando os filtros vazios para atualizar a lista
@@ -778,26 +856,8 @@ document.addEventListener("DOMContentLoaded", () => {
       e.stopPropagation();
       const id = parseInt(btnAdd.dataset.id);
       const produto = produtos.find((p) => p.id === id);
-      const card = btnAdd.closest(".product-card");
-      const inputQuantidade = card
-        ? card.querySelector(".quantity-input")
-        : null;
-      const quantidade = inputQuantidade
-        ? Math.max(1, parseInt(inputQuantidade.value, 10) || 1)
-        : 1;
-
-      if (produto) addToCart({ ...produto, quantidade });
+      if (produto) addToCart({ ...produto, quantidade: 1 });
     }
-  });
-
-  document.addEventListener("input", (e) => {
-    const inputQuantidade = e.target.closest(".quantity-input");
-    if (!inputQuantidade) return;
-
-    const valorLimpo = parseInt(inputQuantidade.value, 10);
-    inputQuantidade.value = Number.isNaN(valorLimpo) || valorLimpo < 1
-      ? "1"
-      : String(valorLimpo);
   });
 });
 
