@@ -30,10 +30,10 @@ const obterLarguraEmMetros = (textoDimensoes = '') => {
   const texto = String(textoDimensoes).toLowerCase().replace(/,/g, '.');
 
   const patterns = [
-    /x\s*([\d.]+)\s*(m|cm)\s*largura/i,
-    /([\d.]+)\s*(m|cm)\s*largura/i,
-    /x\s*([\d.]+)\s*(m|cm)\s*parte\s*do\s*l/i,
-    /([\d.]+)\s*(m|cm)\s*parte\s*do\s*l/i,
+    /x\s*([\d.]+)\s*(m|cm|mm)\s*largura/i,
+    /([\d.]+)\s*(m|cm|mm)\s*largura/i,
+    /x\s*([\d.]+)\s*(m|cm|mm)\s*parte\s*do\s*l/i,
+    /([\d.]+)\s*(m|cm|mm)\s*parte\s*do\s*l/i,
   ];
 
   for (const regex of patterns) {
@@ -44,7 +44,9 @@ const obterLarguraEmMetros = (textoDimensoes = '') => {
     const unidade = (match[2] || '').toLowerCase();
 
     if (!Number.isFinite(valor) || valor <= 0) continue;
-    return unidade === 'cm' ? valor / 100 : valor;
+    if (unidade === 'mm') return valor / 1000;
+    if (unidade === 'cm') return valor / 100;
+    return valor;
   }
 
   return null;
