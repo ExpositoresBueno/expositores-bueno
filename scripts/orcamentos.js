@@ -16,6 +16,16 @@ const formatarMoeda = (valor) => formatadorMoedaBR.format(Number(valor) || 0);
 const formatarMetros = (valor) => `${formatadorNumeroBR.format(Number(valor) || 0)}m`;
 const opcaoAtiva = (valor) => String(valor ?? 'sim').toLowerCase() !== 'nao';
 
+const extrairMaiorValorNumerico = (trecho = '') => {
+  const numeros = String(trecho)
+    .split('/')
+    .map((item) => parseFloat(item))
+    .filter((item) => Number.isFinite(item) && item > 0);
+
+  if (numeros.length === 0) return NaN;
+  return Math.max(...numeros);
+};
+
 const obterLarguraEmMetros = (textoDimensoes = '') => {
   const texto = String(textoDimensoes).toLowerCase().replace(/,/g, '.');
 
@@ -30,7 +40,7 @@ const obterLarguraEmMetros = (textoDimensoes = '') => {
     const match = texto.match(regex);
     if (!match) continue;
 
-    const valor = parseFloat(match[1]);
+    const valor = extrairMaiorValorNumerico(match[1]);
     const unidade = (match[2] || '').toLowerCase();
 
     if (!Number.isFinite(valor) || valor <= 0) continue;

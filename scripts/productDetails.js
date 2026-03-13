@@ -28,6 +28,14 @@ document.addEventListener('DOMContentLoaded', async () => {
   };
 
 
+  const extrairMaiorValorNumerico = (trecho = '') => {
+    const numeros = String(trecho)
+      .split('/')
+      .map((item) => parseFloat(item))
+      .filter((item) => Number.isFinite(item) && item > 0);
+
+    if (numeros.length === 0) return NaN;
+    return Math.max(...numeros);
   const converterParaMetros = (valor, unidade = 'm') => {
     if (!Number.isFinite(valor) || valor <= 0) return null;
 
@@ -49,7 +57,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       const match = texto.match(regex);
       if (!match) continue;
 
-      const valor = parseFloat(match[1]);
+      const valor = extrairMaiorValorNumerico(match[1]);
       const unidade = (match[2] || '').toLowerCase();
 
       const valorEmMetros = converterParaMetros(valor, unidade);
@@ -406,6 +414,33 @@ document.addEventListener('DOMContentLoaded', async () => {
         atualizarPrecoExibicao();
       };
 
+      const calcularPrecoPorMedidas = () => {
+        let fatorMedidas = 1;
+        const medidasNome = [];
+        const medidasOrcadas = {};
+
+        for (const dim of dimensoesConfig) {
+          if (!Number.isFinite(dim.base) || dim.base <= 0) continue;
+
+          const valorDigitado = obterValorMedidaDigitada(dim.input?.value);
+          if (Number.isNaN(valorDigitado)) {
+            return { erro: `Informe uma ${dim.chave} válida maior que zero.` };
+          }
+
+          const valorEfetivo = Number.isFinite(valorDigitado) ? valorDigitado : dim.base;
+          fatorMedidas *= (valorEfetivo / dim.base);
+          medidasOrcadas[`${dim.chave}Orcada`] = Number(valorEfetivo.toFixed(2));
+          medidasNome.push(`${dim.nome} ${formatarMetros(valorEfetivo)}m`);
+        }
+
+        const valorBranco = Number(produtoSelecionado.preco) * fatorMedidas;
+        return {
+          valorFinal: calcularPrecoComCor(valorBranco),
+          medidasNome,
+          medidasOrcadas,
+        };
+      };
+
       if (budgetSection && btnCalcular && inputLargura && inputAltura && inputProfundidade && resultadoOrcamento) {
         if (!permiteOrcamentoMedida || !existeAlgumaBase) {
           budgetSection.style.display = 'none';
@@ -540,22 +575,16 @@ document.addEventListener('DOMContentLoaded', async () => {
           };
         }
 
-        let fatorMedidas = 1;
-        const medidasNome = [];
-        const medidasOrcadas = {};
-
-        for (const dim of dimensoesConfig) {
-          if (!Number.isFinite(dim.base) || dim.base <= 0) continue;
-
-          const valorDigitado = obterValorMedidaDigitada(dim.input?.value);
-          const valorEfetivo = Number.isFinite(valorDigitado) ? valorDigitado : dim.base;
-          fatorMedidas *= (valorEfetivo / dim.base);
-          medidasOrcadas[`${dim.chave}Orcada`] = Number(valorEfetivo.toFixed(2));
-          medidasNome.push(`${dim.nome} ${formatarMetros(valorEfetivo)}m`);
+        const resultadoCalculo = calcularPrecoPorMedidas();
+        if (resultadoCalculo.erro) {
+          if (resultadoOrcamento) {
+            resultadoOrcamento.innerText = resultadoCalculo.erro;
+            resultadoOrcamento.classList.add('error');
+          }
+          return null;
         }
 
-        const valorBranco = Number(produtoSelecionado.preco) * fatorMedidas;
-        const valorFinal = calcularPrecoComCor(valorBranco);
+        const { valorFinal, medidasNome, medidasOrcadas } = resultadoCalculo;
 
         return {
           ...produtoSelecionado,
@@ -588,8 +617,11 @@ document.addEventListener('DOMContentLoaded', async () => {
               ? Math.max(1, parseInt(inputQuantidade.value, 10) || 1)
               : 1;
 
+            const produtoBaseCarrinho = montarProdutoParaCarrinho();
+            if (!produtoBaseCarrinho) return;
+
             const produtoParaCarrinho = {
-              ...montarProdutoParaCarrinho(),
+              ...produtoBaseCarrinho,
               quantidade,
             };
 
