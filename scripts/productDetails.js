@@ -36,6 +36,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (numeros.length === 0) return NaN;
     return Math.max(...numeros);
+  };
+
   const converterParaMetros = (valor, unidade = 'm') => {
     if (!Number.isFinite(valor) || valor <= 0) return null;
 
