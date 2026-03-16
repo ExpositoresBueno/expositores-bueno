@@ -5,7 +5,7 @@
 }
 
 .reviews-hero {
-  background: linear-gradient(135deg, #0d2345, #1f4b84);
+  background: linear-gradient(135deg, #1F6FA8, #2E8BC6);
   color: #fff;
   border-radius: 14px;
   padding: 40px 32px;
@@ -39,8 +39,8 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  background-color: #ffc107;
-  color: #0b2447;
+  background-color: #F9A63A;
+  color: #1F6FA8;
   font-weight: 600;
   text-decoration: none;
   border-radius: 10px;
@@ -65,19 +65,19 @@
 
 .reviews-summary-card h2 {
   font-size: 22px;
-  color: #0b2447;
+  color: #1F6FA8;
   margin-bottom: 8px;
 }
 
 .rating-stars {
-  color: #f4b400;
+  color: #F7941D;
   font-size: 28px;
   letter-spacing: 2px;
   margin-bottom: 8px;
 }
 
 .rating-note {
-  color: #4f5d73;
+  color: #5f6b7a;
   line-height: 1.5;
 }
 
@@ -95,20 +95,20 @@
 }
 
 .review-stars {
-  color: #f4b400;
+  color: #F7941D;
   font-size: 20px;
   letter-spacing: 2px;
   margin-bottom: 10px;
 }
 
 .review-text {
-  color: #1d2f4f;
+  color: #1F6FA8;
   line-height: 1.6;
   margin-bottom: 12px;
 }
 
 .review-author {
-  color: #4f5d73;
+  color: #5f6b7a;
   font-weight: 600;
 }
 
