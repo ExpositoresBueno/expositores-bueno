@@ -1542,34 +1542,29 @@
     "id": 51,
     "categoria": [
       "Balcões",
-      "Caixas",
-      "Recepção",
       "Moveis"
     ],
-    "nome": "BALCÃO CAIXA EM L BRANCO",
-    "preco": 2700.0,
-    "tamanho": "1.00m",
-    "dimensoes": "1.00m Altura x 1.80m Comprimento x 1.00m Parte do L x 40cm Profundidade",
-    "img": "./images/Lbranco (1).jpg",
+    "nome": "Balcão caixa com detalhes madeirado",
+    "preco": 2999.0,
+    "tamanho": "1,00m x 2,00m x 0,40m",
+    "dimensoes": "Altura: 1,00 m | Largura: 2,00 m | Profundidade: 40 cm",
+    "img": "./images/caixareto (1).jpg",
     "galeria": [
-      "./images/Lbranco (1).jpg",
-      "./images/Lbranco (2).jpg",
-      "./images/Lbranco (3).jpg"
+      "./images/caixareto (1).jpg",
+      "./images/caixareto (2).jpg",
+      "./images/caixareto (3).jpg"
     ],
-    "descricao": "Balcão caixa em formato L, desenvolvido para lojas que precisam de um ponto de atendimento organizado, funcional e com boa área de trabalho.\n\nFabricado em MDF branco, com detalhe frontal em padrão amadeirado Carvalho Malva, trazendo um visual moderno e profissional para o ambiente da loja.\n\nO balcão possui amplo espaço interno para organização, gaveta com divisória para dinheiro e área de apoio para computador ou sistema de caixa, facilitando o atendimento no dia a dia.\n\nIdeal para lojas de roupas, farmácias, eletrônicos, variedades e comércios em geral.\n\nMedidas:\nAltura: 1,00 m\nComprimento: 1,80 m\nParte do L: 1,00 m\nProfundidade: 40 cm",
+    "descricao": "Balcão caixa desenvolvido para proporcionar organização, praticidade no atendimento e visual moderno para a loja.\n\nFabricado em MDF branco, com detalhe frontal em padrão amadeirado Carvalho Malva, que valoriza o ambiente e cria um acabamento mais elegante no ponto de atendimento.\n\nPossui amplo espaço interno para trabalho, permitindo acomodar computador, sistema de caixa e organização de itens do dia a dia. Conta também com gaveta com divisória para dinheiro, facilitando o controle no momento das vendas.\n\nIndicado para lojas de roupas, farmácias, eletrônicos, variedades e comércios em geral.\n\nMedidas:\nAltura: 1,00 m\nLargura: 2,00 m\nProfundidade: 40 cm",
     "tags": [
-      "balcao",
-      "balcao em l",
-      "caixa",
-      "recepcao",
-      "atendimento",
-      "mdf branco",
+      "balcao caixa",
+      "balcao atendimento",
+      "balcao madeirado",
       "carvalho malva",
       "gaveta caixa",
-      "loja",
-      "moveis"
+      "moveis loja",
+      "comercio"
     ],
-    "permiteOrcamentoMedida": "nao",
+    "permiteOrcamentoMedida": "sim",
     "permiteVariacaoCor": "sim"
   }
 ]
