@@ -64,14 +64,28 @@ const possuiGridProdutos = Boolean(document.getElementById("products-grid"));
 
 const ORDEM_PADRAO_CATEGORIAS = [
   "Balcões",
-  "Araras",
+  "Armários",
   "Armários Vestiários",
+  "Vestiários",
+  "Vestiário",
+  "Expositores",
+  "Araras",
   "Vitrines",
   "Caixas",
   "Colmeias",
-  "Expositores",
   "Gôndolas",
+  "Painel Canaletado",
+  "Mesa de Manicure",
   "Kits",
+  "Móveis de Apoio",
+  "Móveis de Centro",
+  "Móveis para Vitrine",
+  "Moveis",
+  "Movel",
+  "Móvel",
+  "Recepção",
+  "Farmácia",
+  "Prateleiras",
 ];
 
 function removerAcentos(texto) {
@@ -86,18 +100,13 @@ function stringsEquivalentes(a, b) {
 }
 
 function obterPrioridadeCategoria(produto) {
-  const categorias = Array.isArray(produto.categoria)
-    ? produto.categoria
-    : [produto.categoria];
+  const categorias = Array.isArray(produto.categoria) ? produto.categoria : [produto.categoria];
+  const categoriaPrincipal = categorias[0];
+  const indice = ORDEM_PADRAO_CATEGORIAS.findIndex((categoriaBase) =>
+    stringsEquivalentes(categoriaBase, categoriaPrincipal),
+  );
 
-  const prioridades = categorias.map((categoria) => {
-    const indice = ORDEM_PADRAO_CATEGORIAS.findIndex((categoriaBase) =>
-      stringsEquivalentes(categoriaBase, categoria),
-    );
-    return indice === -1 ? Number.MAX_SAFE_INTEGER : indice;
-  });
-
-  return Math.min(...prioridades);
+  return indice === -1 ? Number.MAX_SAFE_INTEGER : indice;
 }
 
 function ordenarPorSequenciaPadrao(a, b) {
