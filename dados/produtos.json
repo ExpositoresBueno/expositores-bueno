@@ -1383,7 +1383,7 @@
       "./images/kitlojaroupa (2).jpg",
       "./images/kitlojaroupa (3).jpg"
     ],
-    "descricao": "Kit completo para montagem de loja de roupas.\n\nContém:\n\n• 4 Cabideiros Duplo\n• 1 Móvel Colmeia\n• 1 Arara Casaqueira\n• 1 Balcão Caixa 1m\n• 1 Provador de Parede\n• 1 Painel Canaletado com Testeira e Base\n\nIdeal para montar uma loja organizada, funcional e pronta para receber clientes.\n\n**Por se tratar de um kit completo com desconto aplicado, o valor é válido para pagamento à vista ou parcelado em até 4x no máximo.**",
+    "descricao": "Kit completo para montagem de loja de roupas.\n\nContém:\n\n• 4 Cabideiros Duplo\n• 1 Móvel Colmeia\n• 1 Arara Casaqueira\n• 1 Balcão Caixa 1m\n• 1 Provador de Parede\n• 1 Painel Canaletado com Testeira e Base\n\nIdeal para montar uma loja organizada, funcional e pronta para receber clientes.",
     "tags": [
       "kit",
       "kit loja de roupas",
@@ -1454,7 +1454,7 @@
       "./images/Lojamadeirada (1).jpg",
       "./images/Lojamadeirada (2).jpg"
     ],
-    "descricao": "Projeto completo desenvolvido para lojas que precisam de grande capacidade de exposição, organização visual e circulação confortável para clientes. Ideal para tabacarias, lojas de conveniência, acessórios, vape, headshop ou produtos variados.\n\nO layout utiliza expositores de parede com prateleiras de vidro, proporcionando melhor visualização dos produtos e valorizando itens expostos. No centro da loja, as gôndolas em metal com MDF criam pontos estratégicos de exposição para aumentar o giro de mercadorias.\n\nA combinação de balcões e vitrines permite exposição segura de produtos de maior valor, além de manter um fluxo de atendimento organizado no caixa.\n\nO kit inclui:\n\n• 12 móveis de parede com prateleiras de vidro\n• 1 painel canaletado com testeira e rodapé\n• 3 móveis para vitrine\n• 1 balcão caixa com vitrine\n• 1 balcão cantoneira\n• 1 balcão vitrine\n• 3 gôndolas centrais em estrutura metálica com MDF\n\nValor total: R$ 26.900,00.\n\nEsse valor já considera o acabamento madeirado. Para opção de cores, é necessário calcular o valor final conforme a combinação escolhida.\n\nSem opção de medidas.",
+    "descricao": "Projeto completo desenvolvido para lojas que precisam de grande capacidade de exposição, organização visual e circulação confortável para clientes. Ideal para tabacarias, lojas de conveniência, acessórios, vape, headshop ou produtos variados.\n\nO layout utiliza expositores de parede com prateleiras de vidro, proporcionando melhor visualização dos produtos e valorizando itens expostos. No centro da loja, as gôndolas em metal com MDF criam pontos estratégicos de exposição para aumentar o giro de mercadorias.\n\nA combinação de balcões e vitrines permite exposição segura de produtos de maior valor, além de manter um fluxo de atendimento organizado no caixa.\n\nO kit inclui:\n\n• 12 móveis de parede com prateleiras de vidro\n• 1 painel canaletado com testeira e rodapé\n• 3 móveis para vitrine\n• 1 balcão caixa com vitrine\n• 1 balcão cantoneira\n• 1 balcão vitrine\n• 3 gôndolas centrais em estrutura metálica com MDF\n\nValor total: R$ 26.900,00.\n\nEsse valor já considera o acabamento madeirado.",
     "tags": [
       "kit",
       "kit tabacaria",
@@ -1471,6 +1471,6 @@
       "moveis"
     ],
     "permiteOrcamentoMedida": "nao",
-    "permiteVariacaoCor": "sim"
+    "permiteVariacaoCor": "nao"
   }
 ]
