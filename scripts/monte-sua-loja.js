@@ -138,6 +138,13 @@ const galleryManifest = {
     "../images/Lojas de roupas/485181731_1127213776088716_6285770033549850498_n.jpg",
     "../images/Lojas de roupas/485309782_1127213956088698_1848017636439920924_n.jpg"
   ],
+  "Oticas": [
+    "../images/Oticas/(1).jpg",
+    "../images/Oticas/(2).jpg",
+    "../images/Oticas/(3).jpg",
+    "../images/Oticas/(4).jpg",
+    "../images/Oticas/(5).jpg"
+  ],
   "Lojas": [
     "../images/Lojas/(1).jpg",
     "../images/Lojas/(10).jpg",
