@@ -224,6 +224,14 @@
           aria-label="Visualização ampliada de foto histórica"
         >
           <button
+            class="history-lightbox-next"
+            id="history-lightbox-next"
+            type="button"
+            aria-label="Próxima foto histórica"
+          >
+            &#8250;
+          </button>
+          <button
             class="history-lightbox-close"
             id="history-lightbox-close"
             type="button"
@@ -231,7 +239,9 @@
           >
             &times;
           </button>
-          <img id="history-lightbox-image" src="" alt="" />
+          <div class="history-lightbox-image-wrap">
+            <img id="history-lightbox-image" src="" alt="" />
+          </div>
         </div>
 
         <p class="history-carousel-empty" id="history-carousel-empty" hidden>

@@ -31,6 +31,7 @@ const HISTORIA_FILES = [
 const lightbox = document.getElementById('history-lightbox');
 const lightboxImage = document.getElementById('history-lightbox-image');
 const lightboxClose = document.getElementById('history-lightbox-close');
+const lightboxNext = document.getElementById('history-lightbox-next');
 
 const createCardElement = (source, index) => {
   if (!source) return null;
@@ -101,7 +102,7 @@ const initCarousel = () => {
 
   let animationFrame = null;
   let lastFrameTime = 0;
-  const speedPxPerSecond = 42;
+  const speedPxPerSecond = 84;
 
   const duplicatedCards = originalCards.map((card) => {
     const clone = card.cloneNode(true);
@@ -111,14 +112,49 @@ const initCarousel = () => {
   });
 
 
-  const openLightbox = (card) => {
+  let currentCardIndex = -1;
+
+  const updateLightboxImage = (index) => {
+    const card = originalCards[index];
+    if (!card || !lightboxImage) return;
+
     const image = card.querySelector('img');
-    if (!image || !lightbox || !lightboxImage) return;
+    if (!image) return;
 
     lightboxImage.src = image.src;
     lightboxImage.alt = image.alt;
+    currentCardIndex = index;
+  };
+
+  const openLightbox = (card) => {
+    if (!lightbox || !lightboxImage) return;
+
+    const image = card.querySelector('img');
+    if (!image) return;
+
+    let cardIndex = originalCards.indexOf(card);
+    if (cardIndex < 0) {
+      cardIndex = originalCards.findIndex((originalCard) => {
+        const originalImage = originalCard.querySelector('img');
+        return originalImage?.src === image.src;
+      });
+    }
+
+    if (cardIndex < 0) return;
+
+    updateLightboxImage(cardIndex);
     lightbox.classList.add('is-open');
     lightbox.setAttribute('aria-hidden', 'false');
+  };
+
+  const showNextImage = () => {
+    if (!originalCards.length) return;
+
+    const nextIndex = currentCardIndex < 0
+      ? 0
+      : (currentCardIndex + 1) % originalCards.length;
+
+    updateLightboxImage(nextIndex);
   };
 
   const closeLightbox = () => {
@@ -169,6 +205,7 @@ const initCarousel = () => {
   });
 
   lightboxClose?.addEventListener('click', closeLightbox);
+  lightboxNext?.addEventListener('click', showNextImage);
 
   lightbox?.addEventListener('click', (event) => {
     if (event.target === lightbox) closeLightbox();
@@ -176,6 +213,10 @@ const initCarousel = () => {
 
   window.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') closeLightbox();
+
+    if (event.key === 'ArrowRight' && lightbox?.classList.contains('is-open')) {
+      showNextImage();
+    }
   });
 
   document.addEventListener('visibilitychange', () => {
