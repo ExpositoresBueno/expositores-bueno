@@ -1566,5 +1566,37 @@
     ],
     "permiteOrcamentoMedida": "sim",
     "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 52,
+    "categoria": [
+      "Balcões",
+      "Caixas",
+      "Expositores",
+      "Moveis"
+    ],
+    "nome": "Balcão caixa em L com painel e prateleiras",
+    "preco": 3300.0,
+    "tamanho": "1,00m x 1,50m x 1,50m x 0,40m",
+    "dimensoes": "Altura: 1,00 m | Comprimento: 1,50 m | Parte do L: 1,50 m | Profundidade: 40 cm",
+    "img": "./images/Lcompainel (1).jpg",
+    "galeria": [
+      "./images/Lcompainel (1).jpg",
+      "./images/Lcompainel (2).jpg"
+    ],
+    "descricao": "Balcão de atendimento em formato L, projetado para oferecer organização, funcionalidade e maior exposição de produtos no ponto de venda.\n\nO modelo conta com painel canaletado em uma das laterais, permitindo a instalação de ganchos e acessórios para exposição de produtos. Na parte frontal possui prateleiras inclinadas, ideais para exposição de balas, doces, pequenos itens e produtos de impulso, aumentando as vendas no caixa.\n\nFabricado em MDF, o balcão possui amplo espaço interno para organização de materiais, sistema de caixa e itens utilizados no atendimento.\n\nIndicado para mercados, lojas de conveniência, farmácias, lojas de variedades e comércios em geral.\n\nMedidas:\nAltura: 1,00 m\nComprimento: 1,50 m\nParte do L: 1,50 m\nProfundidade: 40 cm",
+    "tags": [
+      "balcao caixa",
+      "balcao em l",
+      "painel canaletado",
+      "prateleiras inclinadas",
+      "balcao atendimento",
+      "mercado",
+      "conveniencia",
+      "farmacia",
+      "moveis loja"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim"
   }
 ]
