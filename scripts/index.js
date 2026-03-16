@@ -675,11 +675,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- LÓGICA DO MENU DROPDOWN (MAIS VENDIDOS) ---
   document.querySelectorAll(".dropdown-menu a").forEach((link) => {
     link.addEventListener("click", (e) => {
-      e.preventDefault(); // Impede o pulo da página por ser um link
-
       const filtro = link.getAttribute("data-filter");
 
-      if (filtro && searchCategoryTop) {
+      if (!filtro) return;
+      e.preventDefault(); // Mantém na página apenas para links de filtro
+
+      if (searchCategoryTop) {
         // 1. Verifica se o filtro existe nas opções do select do topo
         const optionExists = [...searchCategoryTop.options].some(
           (o) => o.value === filtro,

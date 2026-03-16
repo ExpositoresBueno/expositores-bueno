@@ -526,3 +526,12 @@ body, html {
     flex-basis: 68vw;
   }
 }
+
+.niche-box-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.niche-box-link:hover {
+  text-decoration: none;
+}
