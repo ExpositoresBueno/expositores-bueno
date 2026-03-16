@@ -1513,7 +1513,7 @@
       "Moveis"
     ],
     "nome": "FARMÁCIA COMPLETA – VIDRO + MDF",
-    "preco": 18900.00,
+    "preco": 18900.0,
     "tamanho": "Projeto completo",
     "dimensoes": "Projeto completo sem alteração de cores e sem alteração de medidas",
     "img": "./images/farmacia1 (1).jfif",
@@ -1541,36 +1541,35 @@
   {
     "id": 51,
     "categoria": [
-      "Colmeias",
-      "Expositores",
-      "Móvel",
-      "Movel",
+      "Balcões",
+      "Caixas",
+      "Recepção",
       "Moveis"
     ],
-    "nome": "MÓVEL COLMEIA INTERCALADO",
-    "preco": 699.0,
-    "tamanho": "1.80m",
-    "dimensoes": "1.80m Altura x 90cm Largura x 30cm Profundidade",
-    "img": "./images/cards/intercalado (1).jpeg",
+    "nome": "BALCÃO CAIXA EM L BRANCO",
+    "preco": 2700.0,
+    "tamanho": "1.00m",
+    "dimensoes": "1.00m Altura x 1.80m Comprimento x 1.00m Parte do L x 40cm Profundidade",
+    "img": "./images/Lbranco (1).jpg",
     "galeria": [
-      "./images/intercalado (1).jpeg",
-      "./images/intercalado (2).jpeg",
-      "./images/intercalado (3).jpeg"
+      "./images/Lbranco (1).jpg",
+      "./images/Lbranco (2).jpg",
+      "./images/Lbranco (3).jpg"
     ],
-    "descricao": "Móvel expositor com nichos em formato colmeia intercalada, ideal para organização e exposição de diversos tipos de produtos. O modelo permite acomodar itens de diferentes tamanhos, mantendo a loja visualmente organizada e facilitando o acesso aos produtos.\n\nFabricado em MDF, é uma ótima opção para lojas de roupas, acessórios, variedades, cosméticos e comércios em geral.\n\nSeu formato vertical aproveita bem o espaço da parede, oferecendo boa capacidade de exposição sem ocupar muito espaço na loja.",
+    "descricao": "Balcão caixa em formato L, desenvolvido para lojas que precisam de um ponto de atendimento organizado, funcional e com boa área de trabalho.\n\nFabricado em MDF branco, com detalhe frontal em padrão amadeirado Carvalho Malva, trazendo um visual moderno e profissional para o ambiente da loja.\n\nO balcão possui amplo espaço interno para organização, gaveta com divisória para dinheiro e área de apoio para computador ou sistema de caixa, facilitando o atendimento no dia a dia.\n\nIdeal para lojas de roupas, farmácias, eletrônicos, variedades e comércios em geral.\n\nMedidas:\nAltura: 1,00 m\nComprimento: 1,80 m\nParte do L: 1,00 m\nProfundidade: 40 cm",
     "tags": [
-      "movel colmeia",
-      "colmeia intercalada",
-      "nicho",
-      "nichos",
-      "expositor",
-      "mdf",
-      "loja de roupas",
-      "acessorios",
-      "cosmeticos",
+      "balcao",
+      "balcao em l",
+      "caixa",
+      "recepcao",
+      "atendimento",
+      "mdf branco",
+      "carvalho malva",
+      "gaveta caixa",
+      "loja",
       "moveis"
     ],
-    "permiteOrcamentoMedida": "sim",
+    "permiteOrcamentoMedida": "nao",
     "permiteVariacaoCor": "sim"
   }
 ]
