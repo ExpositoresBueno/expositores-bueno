@@ -1502,5 +1502,40 @@
     "permiteOrcamentoMedida": "nao",
     "permiteVariacaoCor": "nao",
     "maxParcelasSemJuros": 4
+  },
+  {
+    "id": 50,
+    "categoria": [
+      "Kits",
+      "Expositores",
+      "Balcões",
+      "Farmácia",
+      "Moveis"
+    ],
+    "nome": "FARMÁCIA COMPLETA – VIDRO + MDF",
+    "preco": 0.0,
+    "tamanho": "Projeto completo",
+    "dimensoes": "Projeto completo sem alteração de cores e sem alteração de medidas",
+    "img": "./images/farmacia1 (1).jfif",
+    "galeria": [
+      "./images/farmacia1 (1).jfif",
+      "./images/farmacia1 (2).jfif",
+      "./images/farmacia1 (3).jfif"
+    ],
+    "descricao": "Projeto desenvolvido para farmácia com foco em organização, visibilidade de produtos e fluxo eficiente de atendimento.\n\nA estrutura inclui:\n\n• Estantes modulares em vidro para exposição de medicamentos\n• Balcões de atendimento e caixa em MDF\n• Mobiliário planejado para otimizar o espaço da loja\n• Layout pensado para circulação de clientes e operação da equipe\n\nO projeto permite alta capacidade de exposição de produtos, mantendo o ambiente limpo, organizado e profissional.",
+    "tags": [
+      "farmacia completa",
+      "farmacia",
+      "vidro",
+      "mdf",
+      "estantes modulares",
+      "balcao de atendimento",
+      "balcao caixa",
+      "layout loja",
+      "expositor",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "nao"
   }
 ]
