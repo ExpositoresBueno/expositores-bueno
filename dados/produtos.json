@@ -1537,5 +1537,40 @@
     ],
     "permiteOrcamentoMedida": "nao",
     "permiteVariacaoCor": "nao"
+  },
+  {
+    "id": 51,
+    "categoria": [
+      "Colmeias",
+      "Expositores",
+      "Móvel",
+      "Movel",
+      "Moveis"
+    ],
+    "nome": "MÓVEL COLMEIA INTERCALADO",
+    "preco": 699.0,
+    "tamanho": "1.80m",
+    "dimensoes": "1.80m Altura x 90cm Largura x 30cm Profundidade",
+    "img": "./images/cards/intercalado (1).jpeg",
+    "galeria": [
+      "./images/intercalado (1).jpeg",
+      "./images/intercalado (2).jpeg",
+      "./images/intercalado (3).jpeg"
+    ],
+    "descricao": "Móvel expositor com nichos em formato colmeia intercalada, ideal para organização e exposição de diversos tipos de produtos. O modelo permite acomodar itens de diferentes tamanhos, mantendo a loja visualmente organizada e facilitando o acesso aos produtos.\n\nFabricado em MDF, é uma ótima opção para lojas de roupas, acessórios, variedades, cosméticos e comércios em geral.\n\nSeu formato vertical aproveita bem o espaço da parede, oferecendo boa capacidade de exposição sem ocupar muito espaço na loja.",
+    "tags": [
+      "movel colmeia",
+      "colmeia intercalada",
+      "nicho",
+      "nichos",
+      "expositor",
+      "mdf",
+      "loja de roupas",
+      "acessorios",
+      "cosmeticos",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "sim",
+    "permiteVariacaoCor": "sim"
   }
 ]
