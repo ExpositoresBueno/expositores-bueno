@@ -1471,6 +1471,42 @@
       "moveis"
     ],
     "permiteOrcamentoMedida": "nao",
-    "permiteVariacaoCor": "nao"
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 49,
+    "categoria": [
+      "Kits",
+      "Expositores",
+      "Balcões",
+      "Moveis"
+    ],
+    "nome": "KIT LOJA COM BALCÃO CAIXA VITRINE",
+    "preco": 2950.0,
+    "tamanho": "Kit completo",
+    "dimensoes": "Somente opção de cores, sem opção de medidas",
+    "img": "./images/kitlojacvideo (1).jpeg",
+    "galeria": [
+      "./images/kitlojacvideo (1).jpeg",
+      "./images/kitlojacvideo (2).jpeg",
+      "./images/kitlojacvideo (3).jpeg",
+      "./images/kitlojacvideo (1).mp4"
+    ],
+    "descricao": "Kit compacto e funcional desenvolvido para montagem de lojas pequenas e médias, oferecendo boa organização, exposição de produtos e um espaço de atendimento prático.\n\nA estrutura combina móveis modulados de parede para exposição de roupas ou produtos, uma cantoneira alta para melhor aproveitamento do canto da loja e um balcão caixa com vitrine, ideal para atendimento e exposição de itens menores ou de maior valor.\n\nEsse conjunto cria um ambiente organizado, facilitando a circulação dos clientes e valorizando a apresentação dos produtos.\n\nValor do kit: R$ 2.950,00.\nParcelamento em até 4x sem juros.\nNo PIX ou dinheiro, o valor permanece o mesmo (sem desconto).\n\nO KIT INCLUI:\n\n• 4 móveis modulados para exposição\n• 1 cantoneira alta\n• 1 balcão caixa com vitrine\n\nSomente opção de cores, sem opção de medidas.",
+    "tags": [
+      "kit",
+      "kit loja",
+      "balcao caixa vitrine",
+      "cantoneira",
+      "modulados",
+      "expositores",
+      "loja pequena",
+      "loja media",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim",
+    "maxParcelasSemJuros": 4,
+    "naoAplicarDescontoAvista": true
   }
 ]
