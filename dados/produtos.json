@@ -1513,7 +1513,7 @@
       "Moveis"
     ],
     "nome": "FARMÁCIA COMPLETA – VIDRO + MDF",
-    "preco": 18900.00,
+    "preco": 18900.0,
     "tamanho": "Projeto completo",
     "dimensoes": "Projeto completo sem alteração de cores e sem alteração de medidas",
     "img": "./images/farmacia1 (1).jfif",
@@ -1537,5 +1537,34 @@
     ],
     "permiteOrcamentoMedida": "nao",
     "permiteVariacaoCor": "nao"
+  },
+  {
+    "id": 51,
+    "categoria": [
+      "Balcões",
+      "Moveis"
+    ],
+    "nome": "Balcão caixa com detalhes madeirado",
+    "preco": 2999.0,
+    "tamanho": "1,00m x 2,00m x 0,40m",
+    "dimensoes": "Altura: 1,00 m | Largura: 2,00 m | Profundidade: 40 cm",
+    "img": "./images/caixareto (1).jpg",
+    "galeria": [
+      "./images/caixareto (1).jpg",
+      "./images/caixareto (2).jpg",
+      "./images/caixareto (3).jpg"
+    ],
+    "descricao": "Balcão caixa desenvolvido para proporcionar organização, praticidade no atendimento e visual moderno para a loja.\n\nFabricado em MDF branco, com detalhe frontal em padrão amadeirado Carvalho Malva, que valoriza o ambiente e cria um acabamento mais elegante no ponto de atendimento.\n\nPossui amplo espaço interno para trabalho, permitindo acomodar computador, sistema de caixa e organização de itens do dia a dia. Conta também com gaveta com divisória para dinheiro, facilitando o controle no momento das vendas.\n\nIndicado para lojas de roupas, farmácias, eletrônicos, variedades e comércios em geral.\n\nMedidas:\nAltura: 1,00 m\nLargura: 2,00 m\nProfundidade: 40 cm",
+    "tags": [
+      "balcao caixa",
+      "balcao atendimento",
+      "balcao madeirado",
+      "carvalho malva",
+      "gaveta caixa",
+      "moveis loja",
+      "comercio"
+    ],
+    "permiteOrcamentoMedida": "sim",
+    "permiteVariacaoCor": "sim"
   }
 ]
