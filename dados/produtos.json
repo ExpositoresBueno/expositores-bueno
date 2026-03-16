@@ -1632,5 +1632,38 @@
     ],
     "permiteOrcamentoMedida": "nao",
     "permiteVariacaoCor": "nao"
+  },
+  {
+    "id": 54,
+    "categoria": [
+      "Balcões",
+      "Caixas",
+      "Expositores",
+      "Moveis"
+    ],
+    "nome": "Balcão Caixa em L – Preto com Detalhe Madeirado",
+    "preco": 3770.0,
+    "tamanho": "1,10m/1,00m x 2,00m x 1,00m x 0,40m",
+    "dimensoes": "Altura: 1,10 m e 1,00 m | Comprimento: 2,00 m | Parte do L: 1,00 m | Profundidade: 40 cm",
+    "img": "./images/Balcaolpreto (1).jpg",
+    "galeria": [
+      "./images/Balcaolpreto (1).jpg",
+      "./images/Balcaolpreto (2).jpg"
+    ],
+    "descricao": "Balcão de atendimento em formato L, com acabamento em MDF preto e detalhes frontais em padrão madeirado, proporcionando um visual moderno e sofisticado para o ambiente da loja.\n\nO modelo possui nível duplo de altura, facilitando o atendimento ao cliente e a organização interna do caixa. Conta também com amplo espaço interno com prateleiras, ideal para acomodar computador, sistema de caixa, documentos e materiais de uso diário.\n\nIndicado para lojas de roupas, eletrônicos, cosméticos, acessórios e comércios em geral que buscam um balcão funcional e com design diferenciado.\n\nMedidas:\nComprimento: 2,00 m\nParte do L: 1,00 m\nProfundidade: 40 cm\nAltura da parte baixa: 1,00 m\nAltura da parte alta: 1,10 m",
+    "tags": [
+      "balcao caixa",
+      "balcao em l",
+      "preto",
+      "detalhe madeirado",
+      "balcao atendimento",
+      "prateleiras internas",
+      "loja roupas",
+      "eletronicos",
+      "cosmeticos",
+      "moveis loja"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "nao"
   }
 ]
