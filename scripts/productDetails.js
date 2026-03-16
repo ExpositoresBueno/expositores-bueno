@@ -310,6 +310,53 @@ document.addEventListener('DOMContentLoaded', async () => {
         atualizarControles();
       }
 
+      const lightbox = document.getElementById('image-lightbox');
+      const lightboxImage = document.getElementById('lightbox-image');
+      const lightboxClose = document.getElementById('lightbox-close');
+
+      const abrirLightbox = (src, alt = '') => {
+        if (!lightbox || !lightboxImage || !src) return;
+        lightboxImage.src = src;
+        lightboxImage.alt = alt || 'Imagem ampliada do produto';
+        lightbox.hidden = false;
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      };
+
+      const fecharLightbox = () => {
+        if (!lightbox || !lightboxImage) return;
+        lightbox.hidden = true;
+        lightbox.setAttribute('aria-hidden', 'true');
+        lightboxImage.src = '';
+        document.body.style.overflow = '';
+      };
+
+      if (galleryTrack && lightbox) {
+        galleryTrack.addEventListener('click', (event) => {
+          const imagem = event.target.closest('img');
+          if (!imagem) return;
+          abrirLightbox(imagem.src, imagem.alt);
+        });
+      }
+
+      if (lightboxClose) {
+        lightboxClose.addEventListener('click', fecharLightbox);
+      }
+
+      if (lightbox) {
+        lightbox.addEventListener('click', (event) => {
+          if (event.target === lightbox) {
+            fecharLightbox();
+          }
+        });
+      }
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && lightbox && !lightbox.hidden) {
+          fecharLightbox();
+        }
+      });
+
       // Calculadora de orçamento por medidas (largura, altura e profundidade)
       const btnCalcular = document.getElementById('calculate-budget-btn');
       const inputLargura = document.getElementById('desired-width');

@@ -1364,5 +1364,39 @@
     ],
     "permiteOrcamentoMedida": "nao",
     "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 46,
+    "categoria": [
+      "Kits",
+      "Expositores",
+      "Araras",
+      "Moveis"
+    ],
+    "nome": "KIT LOJA DE ROUPAS",
+    "preco": 4999.0,
+    "tamanho": "Kit completo",
+    "dimensoes": "Kit completo para montagem de loja de roupas",
+    "img": "./images/kitlojaroupa (1).jpg",
+    "galeria": [
+      "./images/kitlojaroupa (1).jpg",
+      "./images/kitlojaroupa (2).jpg",
+      "./images/kitlojaroupa (3).jpg"
+    ],
+    "descricao": "Kit completo para montagem de loja de roupas.\n\nContém:\n\n• 4 Cabideiros Duplo\n• 1 Móvel Colmeia\n• 1 Arara Casaqueira\n• 1 Balcão Caixa 1m\n• 1 Provador de Parede\n• 1 Painel Canaletado com Testeira e Base\n\nIdeal para montar uma loja organizada, funcional e pronta para receber clientes.\n\n**Por se tratar de um kit completo com desconto aplicado, o valor é válido para pagamento à vista ou parcelado em até 4x no máximo.**",
+    "tags": [
+      "kit",
+      "kit loja de roupas",
+      "cabideiros",
+      "movel colmeia",
+      "arara casaqueira",
+      "balcao caixa",
+      "provador",
+      "painel canaletado",
+      "loja",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim"
   }
 ]
