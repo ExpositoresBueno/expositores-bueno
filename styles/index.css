@@ -859,6 +859,13 @@ body {
   font-weight: 600;
 }
 
+.cash-price {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #0b7a35;
+  font-weight: 700;
+}
+
 .price-label {
   font-size: 0.75rem;
   color: #999;
