@@ -1598,5 +1598,39 @@
     ],
     "permiteOrcamentoMedida": "nao",
     "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 53,
+    "categoria": [
+      "Balcões",
+      "Caixas",
+      "Expositores",
+      "Moveis"
+    ],
+    "nome": "Balcão Caixa em L com Iluminação LED",
+    "preco": 3500.0,
+    "tamanho": "1,10m/1,00m x 1,50m x 1,50m x 0,40m",
+    "dimensoes": "Altura: 1,10 m ou 1,00 m | Comprimento: 1,50 m | Parte do L: 1,50 m | Profundidade: 40 cm",
+    "img": "./images/Premium (1).jpg",
+    "galeria": [
+      "./images/Premium (1).jpg",
+      "./images/Premium (2).jpg",
+      "./images/Premium (3).jpg"
+    ],
+    "descricao": "Balcão de atendimento em formato L, com design moderno e acabamento em dois tons de madeirado, ideal para valorizar o ambiente da loja e criar um ponto de caixa elegante e profissional.\n\nFabricado em MDF 15 mm, o modelo possui detalhes geométricos no painel frontal e iluminação em LED embutida, que destaca o balcão e cria um visual sofisticado no espaço comercial.\n\nO interior conta com amplo espaço para organização, permitindo acomodar computador, sistema de caixa e itens de apoio para o atendimento diário.\n\nIndicado para lojas de roupas, eletrônicos, cosméticos, acessórios e comércios em geral que buscam um balcão diferenciado e moderno.\n\nMedidas:\nAltura: 1,10 m ou 1,00 m\nComprimento: 1,50 m\nParte do L: 1,50 m\nProfundidade: 40 cm",
+    "tags": [
+      "balcao caixa",
+      "balcao em l",
+      "iluminacao led",
+      "balcao atendimento",
+      "mdf 15mm",
+      "madeirado",
+      "loja roupas",
+      "eletronicos",
+      "cosmeticos",
+      "moveis loja"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "nao"
   }
 ]
