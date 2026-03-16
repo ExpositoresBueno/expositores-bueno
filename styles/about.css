@@ -467,10 +467,18 @@ h1, h2, h3 {
 .history-card {
   flex: 0 0 clamp(220px, 28vw, 360px);
   aspect-ratio: 4 / 3;
+  padding: 0;
+  border: 0;
   border-radius: 10px;
   overflow: hidden;
   background: #000;
   box-shadow: 0 5px 16px rgba(17, 24, 39, 0.14);
+  transition: transform 0.25s ease;
+  cursor: zoom-in;
+}
+
+.history-card:hover {
+  transform: translateY(-4px);
 }
 
 .history-card img {
@@ -478,6 +486,43 @@ h1, h2, h3 {
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+
+.history-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(7, 12, 22, 0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 2500;
+}
+
+.history-lightbox.is-open {
+  display: flex;
+}
+
+.history-lightbox img {
+  width: min(100%, 1080px);
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.history-lightbox-close {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 0;
+  background: #fff;
+  color: #111;
+  font-size: 1.7rem;
+  cursor: pointer;
 }
 
 .history-carousel-empty {
