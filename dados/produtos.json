@@ -1513,7 +1513,7 @@
       "Moveis"
     ],
     "nome": "FARMÁCIA COMPLETA – VIDRO + MDF",
-    "preco": 18900.00,
+    "preco": 18900.0,
     "tamanho": "Projeto completo",
     "dimensoes": "Projeto completo sem alteração de cores e sem alteração de medidas",
     "img": "./images/farmacia1 (1).jfif",
@@ -1537,5 +1537,39 @@
     ],
     "permiteOrcamentoMedida": "nao",
     "permiteVariacaoCor": "nao"
+  },
+  {
+    "id": 51,
+    "categoria": [
+      "Balcões",
+      "Caixas",
+      "Recepção",
+      "Moveis"
+    ],
+    "nome": "BALCÃO CAIXA EM L BRANCO",
+    "preco": 2700.0,
+    "tamanho": "1.00m",
+    "dimensoes": "1.00m Altura x 1.80m Comprimento x 1.00m Parte do L x 40cm Profundidade",
+    "img": "./images/Lbranco (1).jpg",
+    "galeria": [
+      "./images/Lbranco (1).jpg",
+      "./images/Lbranco (2).jpg",
+      "./images/Lbranco (3).jpg"
+    ],
+    "descricao": "Balcão caixa em formato L, desenvolvido para lojas que precisam de um ponto de atendimento organizado, funcional e com boa área de trabalho.\n\nFabricado em MDF branco, com detalhe frontal em padrão amadeirado Carvalho Malva, trazendo um visual moderno e profissional para o ambiente da loja.\n\nO balcão possui amplo espaço interno para organização, gaveta com divisória para dinheiro e área de apoio para computador ou sistema de caixa, facilitando o atendimento no dia a dia.\n\nIdeal para lojas de roupas, farmácias, eletrônicos, variedades e comércios em geral.\n\nMedidas:\nAltura: 1,00 m\nComprimento: 1,80 m\nParte do L: 1,00 m\nProfundidade: 40 cm",
+    "tags": [
+      "balcao",
+      "balcao em l",
+      "caixa",
+      "recepcao",
+      "atendimento",
+      "mdf branco",
+      "carvalho malva",
+      "gaveta caixa",
+      "loja",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim"
   }
 ]
