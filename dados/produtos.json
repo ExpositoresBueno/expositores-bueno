@@ -1734,5 +1734,41 @@
     ],
     "permiteOrcamentoMedida": "nao",
     "permiteVariacaoCor": "nao"
+  },
+  {
+    "id": 57,
+    "categoria": [
+      "Kits",
+      "Expositores",
+      "Araras",
+      "Moveis"
+    ],
+    "nome": "Kit Closet Expositor Branco para Loja com Cabideiro, Nichos e Gavetas",
+    "preco": 3370.0,
+    "tamanho": "Kit com 3 módulos",
+    "dimensoes": "Kit com opção de alteração de cor e de medida",
+    "img": "./images/KITCLOSET (1).jpg",
+    "galeria": [
+      "./images/KITCLOSET (1).jpg",
+      "./images/KITCLOSET (2).jpg",
+      "./images/KITCLOSET (3).jpg"
+    ],
+    "descricao": "Conjunto expositor estilo closet aberto, ideal para organização e exposição de roupas em lojas. O kit possui estrutura em MDF branco, com design moderno que valoriza o ambiente e facilita a visualização dos produtos.\n\nO módulo central conta com cabideiros metálicos para roupas, perfeito para peças penduradas como vestidos, camisas e casacos. Nas laterais, o conjunto possui prateleiras amplas para roupas dobradas ou acessórios, além de gavetas inferiores para organização de estoque ou itens menores.\n\nEsse tipo de expositor deixa a loja mais organizada, elegante e prática para o dia a dia.\n\nIdeal para lojas de roupas, boutiques, moda feminina, masculina ou infantil.",
+    "tags": [
+      "kit closet",
+      "kit expositor",
+      "branco",
+      "cabideiro",
+      "nichos",
+      "gavetas",
+      "loja de roupas",
+      "boutique",
+      "moda feminina",
+      "moda masculina",
+      "moda infantil",
+      "moveis loja"
+    ],
+    "permiteOrcamentoMedida": "sim",
+    "permiteVariacaoCor": "sim"
   }
 ]
