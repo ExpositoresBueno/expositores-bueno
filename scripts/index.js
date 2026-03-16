@@ -129,12 +129,31 @@ const formatadorNumeroBR = new Intl.NumberFormat("pt-BR", {
   maximumFractionDigits: 2,
 });
 
+const CAMPOS_PRECO_AVISTA = ["precoAvista", "preco_a_vista", "precoAVista"];
+const DESCONTO_PAGAMENTO_AVISTA = 0.05;
+
 function formatarMoedaBR(valor) {
   return formatadorMoedaBR.format(Number(valor) || 0);
 }
 
 function formatarNumeroBR(valor) {
   return formatadorNumeroBR.format(Number(valor) || 0);
+}
+
+function obterPrecoAvistaProduto(produto) {
+  if (!produto || typeof produto !== "object") return null;
+
+  for (const campo of CAMPOS_PRECO_AVISTA) {
+    const valorCampo = Number(produto[campo]);
+    if (Number.isFinite(valorCampo) && valorCampo > 0) {
+      return valorCampo;
+    }
+  }
+
+  const precoBase = Number(produto.preco);
+  if (!Number.isFinite(precoBase) || precoBase <= 0) return null;
+
+  return precoBase * (1 - DESCONTO_PAGAMENTO_AVISTA);
 }
 
 function formatarMedidaCm(valorEmMetros) {
@@ -314,6 +333,7 @@ function renderizarProdutos(lista) {
       : "./images/carrinho_card.jpg";
 
     const destinoDetalhe = `${destinoDetalheBase}?id=${prod.id}`;
+    const precoAvista = obterPrecoAvistaProduto(prod);
 
     cardDiv.innerHTML = `
       <a href="${destinoDetalhe}" class="product-card-link" aria-label="Abrir produto ${prod.nome}">
@@ -338,6 +358,7 @@ function renderizarProdutos(lista) {
               );
               return `${parcelamento.parcelas}x de ${formatarMoedaBR(parcelamento.valorParcela)} sem juros`;
             })()}</p>
+            ${precoAvista != null ? `<p class="cash-price">A vista ${formatarMoedaBR(precoAvista)}</p>` : ""}
             <ul class="product-trust-list">
               <li><i class="fa-solid fa-check"></i><span>Parcelamento sem juros</span></li>
               <li><i class="fa-solid fa-check"></i><span>Entrega em todo RS</span></li>
