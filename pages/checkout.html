@@ -1,80 +1,132 @@
 <!doctype html>
 <html lang="pt-BR">
   <head>
-    <link rel="stylesheet" href="../styles/performance.min.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Finalizar Pedido | Expositores Bueno</title>
+    <link rel="stylesheet" href="../styles/index.css" />
     <link rel="stylesheet" href="../styles/checkout.css" />
-  
+    <link rel="stylesheet" href="../styles/performance.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-327475264"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() { dataLayer.push(arguments); }
       gtag('js', new Date());
-
       gtag('config', 'AW-327475264');
     </script>
-</head>
+  </head>
   <body>
-    <main class="checkout-page">
-      <header class="checkout-header">
-        <h1>Finalização do pedido</h1>
-        <p>Revise os itens, escolha o pagamento e confirme seus dados antes de enviar no WhatsApp.</p>
-      </header>
-
-      <section class="checkout-layout">
-        <div class="checkout-card">
-          <h2>Itens do carrinho</h2>
-          <div id="checkout-items" class="checkout-items"></div>
+    <div class="page">
+      <header class="header">
+        <div class="header-top">
+          <div class="header-top-left">
+            <img src="../images/callPhone.png" alt="Telefone" />
+            <a href="https://wa.me/5551996034579" class="header-top-link">Ligue agora +55 (51) 99603-4579</a>
+          </div>
         </div>
 
-        <aside class="checkout-card">
-          <h2>Resumo e pagamento</h2>
-
-          <label for="payment-method">Forma de pagamento</label>
-          <select id="payment-method">
-            <option value="PIX">PIX</option>
-            <option value="DINHEIRO">DINHEIRO</option>
-            <option value="CARTÃO DE DÉBITO">CARTÃO DE DÉBITO</option>
-            <option value="CARTÃO DE CRÉDITO">CARTÃO DE CRÉDITO</option>
-          </select>
-
-          <label for="installments">Parcelamento</label>
-          <select id="installments"></select>
-
-          <div class="summary-line">
-            <span>Subtotal:</span>
-            <strong id="checkout-subtotal">R$ 0,00</strong>
-          </div>
-          <div class="summary-line">
-            <span>Desconto:</span>
-            <strong id="checkout-discount">R$ 0,00</strong>
-          </div>
-          <div class="summary-line">
-            <span>Total da compra:</span>
-            <strong id="checkout-total">R$ 0,00</strong>
-          </div>
-          <div class="summary-line">
-            <span>Valor por parcela:</span>
-            <strong id="installment-value">R$ 0,00</strong>
+        <div class="header-main">
+          <div class="header-logo">
+            <a href="/index.html" class="logo-link">
+              <img src="../images/expo-bueno-logo.jpg" alt="Expositores Bueno" />
+            </a>
           </div>
 
-          <h3>Dados do cliente</h3>
-          <label for="client-name">Nome</label>
-          <input id="client-name" type="text" placeholder="Seu nome" required />
+          <div class="header-search">
+            <select id="search-category"><option value="Todos">Todos os produtos</option></select>
+            <input type="text" id="search-input" placeholder="Buscar produtos" />
+            <button id="search-btn" aria-label="Buscar">🔍</button>
+          </div>
 
-          <label for="client-city">Cidade</label>
-          <input id="client-city" type="text" placeholder="Sua cidade" required />
+          <div class="cart-icon"><i class="fa-solid fa-cart-shopping"></i><span id="cart-count">0</span></div>
+          <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menu">☰</button>
+        </div>
 
-          <button id="send-whatsapp" class="checkout-btn">Enviar pedido no WhatsApp</button>
-          <a class="back-link" href="../index.html">← Voltar para produtos</a>
-        </aside>
-      </section>
-    </main>
+        <nav id="site-nav" class="header-nav" aria-label="Menu principal">
+          <ul>
+            <li><a href="/index.html">INÍCIO</a></li>
+            <li class="has-dropdown">
+              <a href="/index.html#products-grid" class="active">MONTE SUA LOJA ▾</a>
+              <ul class="dropdown-menu">
+                <li><a href="/index.html#products-grid" data-filter="BALCÃO CAIXA COM VITRINE">Balcão Caixa c/ Vitrine</a></li>
+                <li><a href="/index.html#products-grid" data-filter="ARMÁRIO COLMEIA">Armário Colmeia</a></li>
+                <li><a href="/index.html#products-grid" data-filter="MÓVEL COM PRATELEIRAS">Móvel c/ Prateleiras</a></li>
+                <li><a href="/index.html#products-grid" data-filter="ARARA DE MDF COM COLMEIA">Arara c/ Colmeia</a></li>
+              </ul>
+            </li>
+            <li><a href="/pages/projetos3D.html">PROJETOS 3D</a></li>
+            <li><a href="/pages/instalacoes.html">INSTALAÇÕES</a></li>
+            <li><a href="/pages/avaliacoes.html">AVALIAÇÕES</a></li>
+            <li><a href="/pages/nossa-loja.html">NOSSA LOJA</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main class="checkout-page">
+        <header class="checkout-header">
+          <h1>Finalização do pedido</h1>
+          <p>Revise os itens, escolha o pagamento e confirme seus dados antes de enviar no WhatsApp.</p>
+        </header>
+
+        <section class="checkout-layout">
+          <div class="checkout-card">
+            <h2>Itens do carrinho</h2>
+            <div id="checkout-items" class="checkout-items"></div>
+          </div>
+
+          <aside class="checkout-card">
+            <h2>Resumo e pagamento</h2>
+            <label for="payment-method">Forma de pagamento</label>
+            <select id="payment-method">
+              <option value="PIX">PIX</option>
+              <option value="DINHEIRO">DINHEIRO</option>
+              <option value="CARTÃO DE DÉBITO">CARTÃO DE DÉBITO</option>
+              <option value="CARTÃO DE CRÉDITO">CARTÃO DE CRÉDITO</option>
+            </select>
+            <label for="installments">Parcelamento</label>
+            <select id="installments"></select>
+            <div class="summary-line"><span>Subtotal:</span><strong id="checkout-subtotal">R$ 0,00</strong></div>
+            <div class="summary-line"><span>Desconto:</span><strong id="checkout-discount">R$ 0,00</strong></div>
+            <div class="summary-line"><span>Total da compra:</span><strong id="checkout-total">R$ 0,00</strong></div>
+            <div class="summary-line"><span>Valor por parcela:</span><strong id="installment-value">R$ 0,00</strong></div>
+            <h3>Dados do cliente</h3>
+            <label for="client-name">Nome</label>
+            <input id="client-name" type="text" placeholder="Seu nome" required />
+            <label for="client-city">Cidade</label>
+            <input id="client-city" type="text" placeholder="Sua cidade" required />
+            <button id="send-whatsapp" class="checkout-btn btn-whatsapp">Enviar pedido no WhatsApp</button>
+            <a class="back-link" href="/index.html">← Voltar para produtos</a>
+          </aside>
+        </section>
+      </main>
+
+      <footer class="main-footer">
+        <div class="footer-container">
+          <div class="footer-column"><h3>Endereço</h3><ul class="footer-info"><li><i class="fa-solid fa-location-dot footer-mini-icon" aria-hidden="true"></i><a target="_blank" href="https://www.google.com/maps/place/Expositores+Bueno/@-29.9038645,-51.1714882,17z">Av. Boqueirão 804, Canoas, RS, 92410-350</a></li></ul></div>
+          <div class="footer-column"><h3>HORÁRIO DE ATENDIMENTO</h3><table class="schedule-table"><tr><td>Segunda-Feira</td><td>08:30 às 18:00</td></tr><tr><td>Sábado</td><td>08:30 às 12:00</td></tr><tr><td>Domingo</td><td>Fechado</td></tr></table></div>
+          <div class="footer-column"><h3>QUEM SOMOS</h3><ul class="footer-info"><li><a href="/pages/about.html">Nossa História</a></li></ul></div>
+        </div>
+        <p class="copy">© Expositores Bueno — Todos os direitos reservados</p>
+      </footer>
+
+      <div class="cart-overlay" id="cart-overlay"></div>
+      <div class="cart-drawer" id="cart-drawer">
+        <div class="cart-header"><h2>Seu Carrinho</h2><button id="close-cart" class="cart-close-btn">&times;</button></div>
+        <div class="cart-items" id="cart-items"></div>
+        <div class="cart-footer">
+          <div class="cart-total">Total: <span id="cart-total">R$ 0,00</span></div>
+          <button class="btn-clear-cart btn-secondary">Limpar Carrinho</button>
+          <button class="checkout-btn">Finalizar Pedido</button>
+        </div>
+      </div>
+    </div>
 
     <script type="module" src="../scripts/checkout.js"></script>
+    <script type="module" src="../scripts/index.js"></script>
     <script type="module" src="../scripts/performance.min.js"></script>
-  <script src="/scripts/google-ads-tracking.js"></script>
-</body>
+    <script src="/scripts/google-ads-tracking.js"></script>
+  </body>
 </html>

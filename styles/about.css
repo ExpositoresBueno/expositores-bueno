@@ -73,9 +73,7 @@ h1, h2, h3 {
 .sobre-empresa h2 {
   font-size: 28px;
   margin-bottom: 20px;
-  font-family: Inter;
-  font-weight: 900;
-  font-style: Bold;
+    font-weight: 900;
   font-size: 45px;
   line-height: 42px;
   letter-spacing: 0px;
@@ -85,9 +83,7 @@ h1, h2, h3 {
 .sobre-empresa p {
   max-width: 900px;
   margin-bottom: 16px;
-  font-family: Inter;
-  font-weight: 500;
-  font-style: Medium;
+    font-weight: 500;
   font-size: 20px;
   line-height: 42px;
   letter-spacing: 0px;
@@ -96,9 +92,7 @@ h1, h2, h3 {
 
 .lista-sobre {
   margin-top: 20px;
-  font-family: Inter;
-  font-weight: 500;
-  font-style: Medium;
+    font-weight: 500;
   font-size: 20px;
   line-height: 42px;
   letter-spacing: 0px;

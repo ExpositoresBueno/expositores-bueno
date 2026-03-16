@@ -22,8 +22,21 @@ setInterval(() => {
   showImage(currentIndex + 1);
 }, 5000);
 
+const siteNav = document.getElementById("site-nav");
+const menuToggle = document.querySelector(".menu-toggle");
+
+if (menuToggle && siteNav) {
+  menuToggle.addEventListener("click", () => {
+    const aberto = siteNav.classList.toggle("mobile-open");
+    menuToggle.setAttribute("aria-expanded", aberto ? "true" : "false");
+  });
+}
+
 document.querySelectorAll(".has-dropdown").forEach((menuPai) => {
+  const linkPrincipal = menuPai.querySelector(":scope > a");
+
   menuPai.addEventListener("mouseenter", function () {
+    if (window.innerWidth <= 768) return;
     const dropdown = this.querySelector(".dropdown-menu");
     if (dropdown) {
       dropdown.style.display = "block";
@@ -32,13 +45,25 @@ document.querySelectorAll(".has-dropdown").forEach((menuPai) => {
       }, 10);
     }
   });
+
   menuPai.addEventListener("mouseleave", function () {
+    if (window.innerWidth <= 768) return;
     const dropdown = this.querySelector(".dropdown-menu");
     if (dropdown) {
       dropdown.style.display = "none";
       dropdown.style.opacity = "0";
     }
   });
+
+  if (linkPrincipal) {
+    linkPrincipal.addEventListener("click", (event) => {
+      if (window.innerWidth > 768) return;
+      const dropdown = menuPai.querySelector(".dropdown-menu");
+      if (!dropdown) return;
+      event.preventDefault();
+      menuPai.classList.toggle("open");
+    });
+  }
 });
 
 /* ==========================================================================

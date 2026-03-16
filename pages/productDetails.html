@@ -29,13 +29,13 @@
         <div class="header-top">
           <div class="header-top-left">
             <img src="../images/callPhone.png" alt="Telefone" />
-            <a href="https://wa.me/5551996034579" style="color: white; text-decoration: none;">Ligue agora +55 (51) 99603-4579</a>
+            <a href="https://wa.me/5551996034579" class="header-top-link">Ligue agora +55 (51) 99603-4579</a>
           </div>
         </div>
 
         <div class="header-main">
           <div class="header-logo">
-            <a href="../index.html" style="text-decoration: none;">
+            <a href="/index.html" class="logo-link">
             <img src="../images/expo-bueno-logo.jpg" alt="Expositores Bueno" />
             </a>
             </div>
@@ -53,36 +53,25 @@
             <i class="fa-solid fa-cart-shopping"></i>
             <span id="cart-count">0</span>
           </div>
+          <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menu">☰</button>
         </div>
 
-        <nav class="header-nav">
+        <nav id="site-nav" class="header-nav" aria-label="Menu principal">
           <ul>
             <li><a href="/index.html">INÍCIO</a></li>
-
             <li class="has-dropdown">
-              <a href="javascript:void(0)">MAIS VENDIDOS ▾</a>
+              <a href="/index.html#products-grid" class="active">MONTE SUA LOJA ▾</a>
               <ul class="dropdown-menu">
-                <li><a href="#" data-filter="BALCÃO CAIXA COM VITRINE">Balcão Caixa c/ Vitrine</a></li>
-                <li><a href="#" data-filter="ARMÁRIO COLMEIA">Armário Colmeia</a></li>
-                <li><a href="#" data-filter="MÓVEL COM PRATELEIRAS">Móvel c/ Prateleiras</a></li>
-                <li><a href="#" data-filter="ARARA DE MDF COM COLMEIA">Arara c/ Colmeia</a></li>
+                <li><a href="/index.html#products-grid" data-filter="BALCÃO CAIXA COM VITRINE">Balcão Caixa c/ Vitrine</a></li>
+                <li><a href="/index.html#products-grid" data-filter="ARMÁRIO COLMEIA">Armário Colmeia</a></li>
+                <li><a href="/index.html#products-grid" data-filter="MÓVEL COM PRATELEIRAS">Móvel c/ Prateleiras</a></li>
+                <li><a href="/index.html#products-grid" data-filter="ARARA DE MDF COM COLMEIA">Arara c/ Colmeia</a></li>
               </ul>
             </li>
-
-            <li class="has-dropdown">
-              <a href="./projetos3D.html">PROJETOS 3D</a>
-            </li>
-
-            <li class="has-dropdown">
-              <a href="./instalacoes.html">INSTALAÇÕES</a>
-            </li>
-
-            <li class="has-dropdown">
-              <a href="./avaliacoes.html">AVALIAÇÕES</a>
-            </li>
-            <li class="has-dropdown">
-              <a href="./nossa-loja.html">NOSSA LOJA</a>
-            </li>
+            <li><a href="/pages/projetos3D.html">PROJETOS 3D</a></li>
+            <li><a href="/pages/instalacoes.html">INSTALAÇÕES</a></li>
+            <li><a href="/pages/avaliacoes.html">AVALIAÇÕES</a></li>
+            <li><a href="/pages/nossa-loja.html">NOSSA LOJA</a></li>
           </ul>
         </nav>
       </header>
@@ -90,7 +79,7 @@
       <div class="content-container">
         <nav class="breadcrumb">
           <div class="breadcrumb-content">
-            <a href="../index.html" class="breadcrumb-link">
+            <a href="/index.html" class="breadcrumb-link">
               <img src="../images/homeVector.png" alt="Homepage" class="home-icon">
               Homepage
             </a>
@@ -209,7 +198,7 @@ Informe as dimensões abaixo e calcule o preço na hora.
               </section>
 
               <div class="purchase-actions">
-                <button id="add-to-cart-btn" class="btn-whatsapp-large" data-id="" style="border: none; cursor: pointer; width: 100%;">
+                <button id="add-to-cart-btn" class="btn-whatsapp-large" data-id="" >
                   Adicionar ao Carrinho
                 </button>
 

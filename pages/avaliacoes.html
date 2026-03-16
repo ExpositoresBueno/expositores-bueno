@@ -27,13 +27,13 @@
         <div class="header-top">
           <div class="header-top-left">
             <img src="../images/callPhone.png" alt="Telefone" />
-            <a href="https://wa.me/5551996034579" style="color: white; text-decoration: none;">Ligue agora +55 (51) 99603-4579</a>
+            <a href="https://wa.me/5551996034579" class="header-top-link">Ligue agora +55 (51) 99603-4579</a>
           </div>
         </div>
 
         <div class="header-main">
           <div class="header-logo">
-            <a href="../index.html" style="text-decoration: none;">
+            <a href="/index.html" class="logo-link">
               <img src="../images/expo-bueno-logo.jpg" alt="Expositores Bueno" />
             </a>
           </div>
@@ -61,39 +61,32 @@
             <i class="fa-solid fa-cart-shopping"></i>
             <span id="cart-count">0</span>
           </div>
+          <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menu">☰</button>
         </div>
 
-        <nav class="header-nav">
+        <nav id="site-nav" class="header-nav" aria-label="Menu principal">
           <ul>
-            <li><a href="../index.html">INÍCIO</a></li>
+            <li><a href="/index.html">INÍCIO</a></li>
             <li class="has-dropdown">
-              <a href="javascript:void(0)">MAIS VENDIDOS ▾</a>
+              <a href="/index.html#products-grid">MONTE SUA LOJA ▾</a>
               <ul class="dropdown-menu">
-                <li><a href="#" data-filter="BALCÃO CAIXA COM VITRINE">Balcão Caixa c/ Vitrine</a></li>
-                <li><a href="#" data-filter="ARMÁRIO COLMEIA">Armário Colmeia</a></li>
-                <li><a href="#" data-filter="MÓVEL COM PRATELEIRAS">Móvel c/ Prateleiras</a></li>
-                <li><a href="#" data-filter="ARARA DE MDF COM COLMEIA">Arara c/ Colmeia</a></li>
+                <li><a href="/index.html#products-grid" data-filter="BALCÃO CAIXA COM VITRINE">Balcão Caixa c/ Vitrine</a></li>
+                <li><a href="/index.html#products-grid" data-filter="ARMÁRIO COLMEIA">Armário Colmeia</a></li>
+                <li><a href="/index.html#products-grid" data-filter="MÓVEL COM PRATELEIRAS">Móvel c/ Prateleiras</a></li>
+                <li><a href="/index.html#products-grid" data-filter="ARARA DE MDF COM COLMEIA">Arara c/ Colmeia</a></li>
               </ul>
             </li>
-            <li class="has-dropdown">
-              <a href="../pages/projetos3D.html">PROJETOS 3D</a>
-            </li>
-            <li class="has-dropdown">
-              <a href="../pages/instalacoes.html">INSTALAÇÕES</a>
-            </li>
-            <li class="has-dropdown">
-              <a href="#" class="active">AVALIAÇÕES</a>
-            </li>
-            <li class="has-dropdown">
-              <a href="../pages/nossa-loja.html">NOSSA LOJA</a>
-            </li>
+            <li><a href="/pages/projetos3D.html">PROJETOS 3D</a></li>
+            <li><a href="/pages/instalacoes.html">INSTALAÇÕES</a></li>
+            <li><a href="/pages/avaliacoes.html" class="active">AVALIAÇÕES</a></li>
+            <li><a href="/pages/nossa-loja.html">NOSSA LOJA</a></li>
           </ul>
         </nav>
       </header>
 
       <nav class="breadcrumb">
         <div class="breadcrumb-content">
-          <a href="../index.html" class="breadcrumb-link">
+          <a href="/index.html" class="breadcrumb-link">
             <img src="../images/homeVector.png" alt="Homepage" class="home-icon">
             Homepage
           </a>
@@ -150,12 +143,12 @@
       <div class="cart-drawer" id="cart-drawer">
         <div class="cart-header">
           <h2>Seu Carrinho</h2>
-          <button id="close-cart" style="background:none; border:none; font-size:24px; cursor:pointer;">&times;</button>
+          <button id="close-cart" class="cart-close-btn">&times;</button>
         </div>
         <div class="cart-items" id="cart-items"></div>
         <div class="cart-footer">
           <div class="cart-total">Total: <span id="cart-total">R$ 0,00</span></div>
-          <button class="btn-clear-cart" style="background: none; border: 1px solid #ccc; color: #666; padding: 5px 10px; cursor: pointer; margin-bottom: 10px; width: 100%; font-size: 13px;">Limpar Carrinho</button>
+          <button class="btn-clear-cart btn-secondary">Limpar Carrinho</button>
           <button class="checkout-btn">Finalizar Pedido</button>
         </div>
       </div>
