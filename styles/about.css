@@ -496,7 +496,7 @@ h1, h2, h3 {
   display: none;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 20px 84px;
   z-index: 2500;
 }
 
@@ -504,11 +504,34 @@ h1, h2, h3 {
   display: flex;
 }
 
+.history-lightbox-image-wrap {
+  width: min(100%, 1200px);
+  display: flex;
+  justify-content: center;
+}
+
 .history-lightbox img {
-  width: min(100%, 1080px);
+  width: min(100%, 1200px);
   max-height: 90vh;
   object-fit: contain;
   border-radius: 10px;
+}
+
+
+.history-lightbox-next {
+  position: absolute;
+  right: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 0;
+  background: #fff;
+  color: #111;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
 }
 
 .history-lightbox-close {
@@ -544,5 +567,15 @@ h1, h2, h3 {
 
   .history-card {
     flex-basis: 68vw;
+  }
+
+  .history-lightbox {
+    padding: 14px 62px 14px 14px;
+  }
+
+  .history-lightbox-next {
+    right: 12px;
+    width: 42px;
+    height: 42px;
   }
 }
