@@ -1472,5 +1472,35 @@
     ],
     "permiteOrcamentoMedida": "nao",
     "permiteVariacaoCor": "nao"
+  },
+  {
+    "id": 49,
+    "categoria": [
+      "Kits",
+      "Expositores",
+      "Balcões",
+      "Moveis"
+    ],
+    "nome": "KIT COMPACTO LOJA FUNCIONAL",
+    "preco": 3800.0,
+    "tamanho": "Kit completo",
+    "dimensoes": "Kit compacto sem opção de medidas",
+    "img": "./images/kit23 (1).jpeg",
+    "galeria": [
+      "./images/kit23 (1).jpeg",
+      "./images/kit23 (2).jpeg"
+    ],
+    "descricao": "Kit compacto e funcional ideal para lojas de roupas, boutiques e pequenos comércios.",
+    "tags": [
+      "kit compacto",
+      "kit loja roupas",
+      "boutique",
+      "balcao caixa vitrine",
+      "cantoneira",
+      "loja"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "nao",
+    "maxParcelasSemJuros": 4
   }
 ]
