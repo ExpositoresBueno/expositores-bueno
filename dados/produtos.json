@@ -1398,5 +1398,42 @@
     ],
     "permiteOrcamentoMedida": "nao",
     "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 47,
+    "categoria": [
+      "Kits",
+      "Balcões",
+      "Expositores",
+      "Moveis"
+    ],
+    "nome": "KIT LOJA",
+    "preco": 7499.0,
+    "tamanho": "Kit completo",
+    "dimensoes": "Kit com 5 móveis prateleira, 2 móveis colmeia, 1 balcão vitrine, 1 balcão cantoneira, 1 balcão caixa com vitrine, 1 gôndola central, 1 expositor em S e 1 painel canaletado",
+    "img": "./images/kitloja6 (1).jpg",
+    "galeria": [
+      "./images/kitloja6 (1).jpg",
+      "./images/kitloja6 (2).jpg",
+      "./images/kitloja6 (3).jpg",
+      "./images/kitloja6 (4).jpg"
+    ],
+    "descricao": "Kit completo para montagem ou renovação de loja, pensado para quem precisa organizar produtos, melhorar exposição e criar um espaço profissional de vendas sem gastar uma fortuna.\n\nEsse conjunto reúne móveis de parede, móveis de apoio e exposição central, criando uma loja equilibrada entre exposição vertical, circulação e destaque de produtos.\n\nO kit inclui:\n\n• 5 Móveis com prateleiras – ideais para exposição organizada de diversos produtos\n\n• 2 Móveis colmeia – excelente para pequenos itens e organização visual\n\n• 1 Balcão vitrine – destaque para produtos de maior valor\n\n• 1 Balcão cantoneira – integração entre balcões e melhor aproveitamento de espaço\n\n• 1 Balcão caixa com vitrine – área de atendimento e fechamento de vendas\n\n• 1 Gôndola central – exposição no centro da loja aumentando a visibilidade\n\n• 1 Expositor em S – ideal para produtos específicos ou destaque promocional\n\n• 1 Painel canaletado – versátil para ganchos e acessórios de exposição",
+    "tags": [
+      "kit",
+      "kit loja",
+      "movel prateleira",
+      "movel colmeia",
+      "balcao vitrine",
+      "balcao cantoneira",
+      "balcao caixa",
+      "gondola central",
+      "expositor em s",
+      "painel canaletado",
+      "loja",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim"
   }
 ]
