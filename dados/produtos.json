@@ -1472,5 +1472,42 @@
     ],
     "permiteOrcamentoMedida": "nao",
     "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 49,
+    "categoria": [
+      "Kits",
+      "Expositores",
+      "Balcões",
+      "Moveis"
+    ],
+    "nome": "KIT COMPACTO LOJA FUNCIONAL",
+    "preco": 3800.0,
+    "tamanho": "Kit completo",
+    "dimensoes": "Kit compacto sem opção de medidas",
+    "img": "./images/kit23 (1).jpeg",
+    "galeria": [
+      "./images/kit23 (1).jpeg",
+      "./images/kit23 (2).jpeg"
+    ],
+    "descricao": "Kit compacto e funcional ideal para lojas de roupas, boutiques, lojas de acessórios ou pequenos comércios que precisam organizar o espaço de forma prática e profissional.\n\nEsse conjunto foi pensado para aproveitar bem o espaço da loja, combinando área de exposição nas paredes com um balcão de atendimento em L, criando um ambiente organizado e confortável para atendimento ao cliente.\n\nOs cabideiros permitem boa exposição de roupas e peças penduradas, enquanto o móvel com prateleiras complementa a organização de produtos dobrados ou acessórios.\n\nO kit inclui:\n\n• 3 cabideiros de 90 cm\n• 1 cabideiro de 60 cm\n• 1 móvel com prateleiras\n• 1 cantoneira alta\n\nKit balcão composto por:\n\n• 1 balcão caixa com vitrine\n• 1 cantoneira\n• 1 balcão vitrine",
+    "tags": [
+      "kit compacto",
+      "kit funcional",
+      "kit loja roupas",
+      "boutique",
+      "cabideiro 90cm",
+      "cabideiro 60cm",
+      "movel com prateleiras",
+      "balcao em l",
+      "balcao caixa com vitrine",
+      "balcao vitrine",
+      "cantoneira",
+      "loja"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim",
+    "naoAplicarDescontoAvista": true,
+    "maxParcelasSemJuros": 4
   }
 ]
