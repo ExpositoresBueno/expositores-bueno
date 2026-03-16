@@ -288,6 +288,9 @@ function renderizarProdutos(lista) {
   }
 
   const isPaginaInterna = window.location.pathname.includes("/pages/");
+  const destinoDetalheBase = isPaginaInterna
+    ? "./productDetails.html"
+    : "./pages/productDetails.html";
 
   lista.forEach((prod) => {
     const cardDiv = document.createElement("div");
@@ -301,7 +304,10 @@ function renderizarProdutos(lista) {
       ? "../images/carrinho_card.jpg"
       : "./images/carrinho_card.jpg";
 
+    const destinoDetalhe = `${destinoDetalheBase}?id=${prod.id}`;
+
     cardDiv.innerHTML = `
+      <a href="${destinoDetalhe}" class="product-card-link" aria-label="Abrir produto ${prod.nome}">
         <div class="product-image-container">
           <span class="category-badge">${categoriaPrincipal.toUpperCase()}</span>
           <img src="${imgPath}" alt="${prod.nome}" class="product-img" loading="lazy" decoding="async">
@@ -325,14 +331,12 @@ function renderizarProdutos(lista) {
               <li><i class="fa-solid fa-check"></i><span>Produção própria</span></li>
             </ul>
           </div>
-        </div>`;
+        </div>
+      </a>`;
 
     cardDiv.addEventListener("click", (e) => {
       if (e.target.closest(".btn-add-cart")) return;
-      const destino = isPaginaInterna
-        ? "./productDetails.html"
-        : "./pages/productDetails.html";
-      window.location.href = `${destino}?id=${prod.id}`;
+      window.location.href = destinoDetalhe;
     });
     grid.appendChild(cardDiv);
   });
@@ -574,10 +578,10 @@ function exibirSugestoes(termo) {
           : `./pages/productDetails.html?id=${prod.id}`;
 
         return `
-        <div class="suggestion-item" onclick="window.location.href='${urlDestino}'">
+        <a class="suggestion-item" href="${urlDestino}" aria-label="Abrir produto ${prod.nome}">
           <img src="${imgPath}" alt="${prod.nome}">
           <span>${prod.nome}</span>
-        </div>
+        </a>
       `;
       })
       .join("");
