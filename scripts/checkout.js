@@ -3,6 +3,9 @@ const DESCONTO_PAGAMENTO_AVISTA = 0.05;
 const PAGAMENTOS_COM_DESCONTO = ["PIX", "DINHEIRO"];
 const CAMPOS_PRECO_AVISTA = ["precoAvista", "preco_a_vista", "precoAVista"];
 const PAGAMENTO_CREDITO = "CARTÃO DE CRÉDITO";
+const NOMES_KITS_SEM_DESCONTO_AVISTA = ["KIT LOJA", "KIT LOJA DE ROUPAS"];
+const MAX_PARCELAS_PADRAO = 12;
+const MAX_PARCELAS_KIT = 4;
 
 function getCart() {
   return JSON.parse(localStorage.getItem("cart")) || [];
@@ -51,14 +54,43 @@ function formatarMedidaCm(valorEmMetros) {
   return `${formatarNumeroBR(valor * 100)}cm`;
 }
 
-function calcularParcelamentoSemJuros(valorTotal) {
+function normalizarTexto(texto = "") {
+  return String(texto)
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .trim()
+    .toUpperCase();
+}
+
+function itemSemDescontoAvista(item) {
+  if (!item) return false;
+
+  if (item.naoAplicarDescontoAvista === true) return true;
+
+  const nomeNormalizado = normalizarTexto(item.nome);
+  return NOMES_KITS_SEM_DESCONTO_AVISTA.some(
+    (nomeKit) => normalizarTexto(nomeKit) === nomeNormalizado,
+  );
+}
+
+function obterLimiteParcelasItem(item) {
+  const limiteConfigurado = Number(item?.maxParcelasSemJuros);
+  if (Number.isFinite(limiteConfigurado) && limiteConfigurado > 0) {
+    return limiteConfigurado;
+  }
+
+  if (itemSemDescontoAvista(item)) return MAX_PARCELAS_KIT;
+  return MAX_PARCELAS_PADRAO;
+}
+
+function calcularParcelamentoSemJuros(valorTotal, limiteParcelas = MAX_PARCELAS_PADRAO) {
   const valor = Number(valorTotal);
   if (!Number.isFinite(valor) || valor <= 0) {
     return { maxParcelas: 1, valorParcelaMinima: 0 };
   }
 
   const parcelasMaximasPorValor = Math.floor(valor / 200);
-  const maxParcelas = Math.min(12, Math.max(1, parcelasMaximasPorValor));
+  const maxParcelas = Math.min(limiteParcelas, Math.max(1, parcelasMaximasPorValor));
 
   return {
     maxParcelas,
@@ -87,6 +119,10 @@ function calcularResumo(cart) {
   let totalComDesconto = subtotal;
   if (temDesconto) {
     totalComDesconto = cart.reduce((acc, item) => {
+      if (itemSemDescontoAvista(item)) {
+        return acc + (Number(item.preco) || 0) * item.quantidade;
+      }
+
       const precoAvistaItem = obterPrecoAvistaItem(item);
       const precoBase = Number(item.preco) || 0;
       const precoFinalItem = precoAvistaItem != null ? precoAvistaItem : precoBase * (1 - DESCONTO_PAGAMENTO_AVISTA);
@@ -191,7 +227,16 @@ function preencherParcelas(totalComDesconto) {
     return;
   }
 
-  const { maxParcelas } = calcularParcelamentoSemJuros(totalComDesconto);
+  const cart = getCart();
+  const limiteParcelasCarrinho = cart.reduce(
+    (menorLimite, item) => Math.min(menorLimite, obterLimiteParcelasItem(item)),
+    MAX_PARCELAS_PADRAO,
+  );
+
+  const { maxParcelas } = calcularParcelamentoSemJuros(
+    totalComDesconto,
+    limiteParcelasCarrinho,
+  );
   for (let parcela = 1; parcela <= maxParcelas; parcela += 1) {
     const valorParcela = totalComDesconto / parcela;
     const option = document.createElement("option");
