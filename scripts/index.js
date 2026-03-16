@@ -134,14 +134,14 @@ function formatarMedidaCm(valorEmMetros) {
   return `${formatarNumeroBR(valor * 100)}cm`;
 }
 
-function calcularParcelamentoSemJuros(valorTotal) {
+function calcularParcelamentoSemJuros(valorTotal, limiteParcelas = 12) {
   const valor = Number(valorTotal);
   if (!Number.isFinite(valor) || valor <= 0) {
     return { parcelas: 1, valorParcela: 0 };
   }
 
   const parcelasMaximasPorValor = Math.floor(valor / 200);
-  const parcelas = Math.min(12, Math.max(1, parcelasMaximasPorValor));
+  const parcelas = Math.min(limiteParcelas, Math.max(1, parcelasMaximasPorValor));
   const valorParcela = valor / parcelas;
 
   return { parcelas, valorParcela };
@@ -322,7 +322,11 @@ function renderizarProdutos(lista) {
               </button>
             </div>
             <p class="installment-preview">${(() => {
-              const parcelamento = calcularParcelamentoSemJuros(prod.preco);
+              const limiteParcelas = Number(prod.maxParcelasSemJuros);
+              const parcelamento = calcularParcelamentoSemJuros(
+                prod.preco,
+                Number.isFinite(limiteParcelas) && limiteParcelas > 0 ? limiteParcelas : 12,
+              );
               return `${parcelamento.parcelas}x de ${formatarMoedaBR(parcelamento.valorParcela)} sem juros`;
             })()}</p>
             <ul class="product-trust-list">
