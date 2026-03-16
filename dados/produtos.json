@@ -462,7 +462,8 @@
     "categoria": [
       "Expositores",
       "Móveis de Apoio",
-      "Moveis"
+      "Moveis",
+      "Mesa de Manicure"
     ],
     "nome": "CARRINHO AUXILIAR",
     "preco": 389.0,
@@ -1052,7 +1053,8 @@
     "categoria": [
       "Expositores",
       "Móveis de Apoio",
-      "Moveis"
+      "Moveis",
+      "Mesa de Manicure"
     ],
     "nome": "MESA MANICURE EM L COM ARMÁRIO AUXILIAR",
     "preco": 1000.0,
@@ -1083,7 +1085,8 @@
     "categoria": [
       "Expositores",
       "Móveis de Apoio",
-      "Moveis"
+      "Moveis",
+      "Mesa de Manicure"
     ],
     "nome": "MESA EM L COM 4 GAVETAS + GAVETA NO TAMPO COM VIDRO",
     "preco": 1120.0,
@@ -1114,7 +1117,8 @@
     "categoria": [
       "Expositores",
       "Móveis de Apoio",
-      "Moveis"
+      "Moveis",
+      "Mesa de Manicure"
     ],
     "nome": "MESA COM PORTA E GAVETA",
     "preco": 620.0,
