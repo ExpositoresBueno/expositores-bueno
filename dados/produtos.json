@@ -1992,5 +1992,40 @@
     ],
     "permiteOrcamentoMedida": "sim",
     "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 65,
+    "categoria": [
+      "Kits",
+      "Expositores",
+      "Gôndolas",
+      "Moveis"
+    ],
+    "nome": "KIT BAZAR COMPLETO PARA LOJA",
+    "preco": 28900.0,
+    "tamanho": "Kit completo",
+    "dimensoes": "Móveis de parede 2.20m Altura x 35cm Profundidade",
+    "img": "./images/bazarcanoas (1).jfif",
+    "galeria": [
+      "./images/bazarcanoas (1).jfif",
+      "./images/bazarcanoas (2).jfif",
+      "./images/bazarcanoas (3).jfif"
+    ],
+    "descricao": "Kit completo para montagem de bazar ou loja de utilidades, desenvolvido para quem precisa estruturar uma loja inteira com móveis padronizados e de alta capacidade de exposição.\n\nO conjunto é totalmente fabricado em MDF e inclui gôndolas centrais com prateleiras reguláveis e painéis canaletados nas laterais, permitindo diferentes formas de exposição de produtos. Os móveis de parede também possuem prateleiras com regulagem de altura, podendo ser ajustadas de 10 em 10 cm conforme a necessidade da loja.\n\nA estrutura foi pensada para comércios maiores, oferecendo grande capacidade de exposição e organização dos produtos, mantendo a loja visualmente limpa, organizada e profissional.\n\nAltura dos móveis de parede: 2,20 m\nProfundidade dos móveis: 35 cm\nPrateleiras com regulagem de altura de 10 em 10 cm.",
+    "tags": [
+      "kit loja",
+      "kit bazar",
+      "moveis para loja",
+      "expositores para loja",
+      "gondolas",
+      "painel canaletado",
+      "loja de utilidades",
+      "loja bazar",
+      "mobilia comercial",
+      "montagem de loja",
+      "moveis comerciais"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim"
   }
 ]
