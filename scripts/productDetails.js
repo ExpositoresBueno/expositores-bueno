@@ -117,14 +117,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.body.removeChild(textArea);
   };
 
-  const calcularParcelamentoSemJuros = (valorTotal) => {
+  const calcularParcelamentoSemJuros = (valorTotal, limiteParcelas = 12) => {
     const valor = Number(valorTotal);
     if (!Number.isFinite(valor) || valor <= 0) {
       return { parcelas: 1, valorParcela: 0 };
     }
 
     const parcelasMaximasPorValor = Math.floor(valor / 200);
-    const parcelas = Math.min(12, Math.max(1, parcelasMaximasPorValor));
+    const parcelas = Math.min(limiteParcelas, Math.max(1, parcelasMaximasPorValor));
     const valorParcela = valor / parcelas;
 
     return { parcelas, valorParcela };
@@ -205,7 +205,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       const atualizarParcelamento = (valorBase) => {
         if (!installmentsValueElement || !installmentsPlanElement) return;
-        const { parcelas, valorParcela } = calcularParcelamentoSemJuros(valorBase);
+        const limiteParcelas = Number(produtoSelecionado.maxParcelasSemJuros);
+        const { parcelas, valorParcela } = calcularParcelamentoSemJuros(
+          valorBase,
+          Number.isFinite(limiteParcelas) && limiteParcelas > 0 ? limiteParcelas : 12,
+        );
         installmentsValueElement.innerText = `Valor ${formatarMoeda(Number(valorBase) || 0)}.`;
         installmentsPlanElement.innerText = `${parcelas}x de ${formatarMoeda(valorParcela)} sem juros`;
       };
