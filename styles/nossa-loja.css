@@ -117,6 +117,22 @@
   font-size: 1.05rem;
 }
 
+
+.history-cta {
+  display: inline-flex;
+  margin-top: 10px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  background: #ff7a00;
+  color: #fff;
+}
+
+.history-cta:hover {
+  background: #d55c00;
+}
+
 .history-tag {
   display: inline-block;
   background: #ff7a00;
