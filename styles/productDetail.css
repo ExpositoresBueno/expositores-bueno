@@ -103,6 +103,10 @@ h1, h2, h3 {
   padding: 20px;
 }
 
+.image-lightbox[hidden] {
+  display: none !important;
+}
+
 .lightbox-image {
   max-width: min(92vw, 1200px);
   max-height: 88vh;
