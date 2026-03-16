@@ -1702,5 +1702,37 @@
     ],
     "permiteOrcamentoMedida": "nao",
     "permiteVariacaoCor": "nao"
+  },
+  {
+    "id": 56,
+    "categoria": [
+      "Kits",
+      "Expositores",
+      "Araras",
+      "Moveis"
+    ],
+    "nome": "Kit Expositor Preto para Loja com Cabideiro e Nichos",
+    "preco": 1650.0,
+    "tamanho": "Kit com 3 módulos",
+    "dimensoes": "Kit padrão sem alteração de cor e sem alteração de medida",
+    "img": "./images/KITMOVEL3PRETO (1).jpg",
+    "galeria": [
+      "./images/KITMOVEL3PRETO (1).jpg",
+      "./images/KITMOVEL3PRETO (2).jpg",
+      "./images/KITMOVEL3PRETO (3).jpg"
+    ],
+    "descricao": "Conjunto expositor ideal para organização e exposição de roupas e acessórios em lojas de varejo. O kit possui estrutura em MDF na cor preta, combinando nichos superiores para exposição de produtos com cabideiros metálicos para pendurar roupas.\n\nO conjunto inclui três módulos que permitem organizar diferentes tipos de mercadorias: peças penduradas, produtos dobrados ou itens decorativos. O design moderno e vertical ajuda a aproveitar melhor o espaço da loja, deixando o ambiente mais organizado e profissional.\n\nIndicado para lojas de roupas, boutiques, lojas de moda e comércios em geral.",
+    "tags": [
+      "kit expositor",
+      "kit preto",
+      "cabideiro",
+      "nichos",
+      "loja de roupas",
+      "boutique",
+      "expositor mdf",
+      "moveis loja"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "nao"
   }
 ]
