@@ -6,7 +6,7 @@
 }
 
 .store-hero {
-  background: linear-gradient(135deg, #1d2f5f, #2d4d98);
+  background: linear-gradient(135deg, #1F6FA8, #2E8BC6);
   color: #fff;
   border-radius: 16px;
   padding: 28px;
@@ -25,7 +25,7 @@
 .store-hero h1 {
   margin: 0 0 10px;
   font-size: 1.9rem;
-  color: #ff9f3f;
+  color: #F9A63A;
 }
 
 .store-hero p {
@@ -67,12 +67,12 @@
 }
 
 .route-btn.waze {
-  background: #33ccff;
-  color: #003a4a;
+  background: #2E8BC6;
+  color: #1F6FA8;
 }
 
 .route-btn.maps {
-  background: #1a73e8;
+  background: #1F6FA8;
 }
 
 .store-history {
@@ -80,7 +80,7 @@
 }
 
 .history-header strong {
-  color: #d55c00;
+  color: #F7941D;
 }
 
 .history-grid {
@@ -98,7 +98,7 @@
 }
 
 .history-card.current {
-  border: 2px solid #ff7a00;
+  border: 2px solid #F7941D;
   box-shadow: 0 8px 24px rgba(255, 122, 0, 0.2);
 }
 
@@ -125,17 +125,17 @@
   border-radius: 8px;
   text-decoration: none;
   font-weight: 600;
-  background: #ff7a00;
+  background: #F7941D;
   color: #fff;
 }
 
 .history-cta:hover {
-  background: #d55c00;
+  background: #F7941D;
 }
 
 .history-tag {
   display: inline-block;
-  background: #ff7a00;
+  background: #F7941D;
   color: #fff;
   border-radius: 999px;
   font-size: 0.78rem;

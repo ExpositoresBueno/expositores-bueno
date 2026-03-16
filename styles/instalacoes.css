@@ -115,7 +115,7 @@ body, html {
     padding: 40px;
     border-radius: 8px;
     text-align: center;
-    border-bottom: 4px solid #007bff;
+    border-bottom: 4px solid #2E8BC6;
     transition: 0.3s;
     cursor: default;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
@@ -128,7 +128,7 @@ body, html {
 
 .niche-box i {
     font-size: 3rem;
-    color: #007bff;
+    color: #2E8BC6;
     margin-bottom: 20px;
 }
 
@@ -220,8 +220,8 @@ body, html {
   --p2-soft: #f7f8fa;
   --p2-text: #243042;
   --p2-muted: #5f6b7a;
-  --p2-orange: #f08a24;
-  --p2-orange-dark: #da7818;
+  --p2-orange: #F7941D;
+  --p2-orange-dark: #F9A63A;
   --p2-line: #e7ebf0;
   --p2-shadow: 0 8px 24px rgba(17, 24, 39, 0.08);
 }

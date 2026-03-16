@@ -50,7 +50,7 @@ body {
   font-size: 22px;
   color: white;
   cursor: pointer;
-  background-color: #30a9ff;
+  background-color: #2E8BC6;
   border-radius: 100px;
   height: 50px;
   width: 50px;
@@ -68,7 +68,7 @@ body {
   position: absolute;
   top: -8px;
   right: -10px;
-  background: #ff7034;
+  background: #F7941D;
   color: white;
   font-size: 12px;
   font-weight: bold;
@@ -83,7 +83,7 @@ body {
 
 /* Faixa superior azul com contatos e links rápidos */
 .header-top {
-  background-color: #30a9ff;
+  background-color: #2E8BC6;
   color: #fff;
   display: flex;
   justify-content: center;
@@ -114,7 +114,7 @@ body {
 
 /* Área principal do cabeçalho: Logo, Busca e Carrinho */
 .header-main {
-  background-color: #30a9ff;
+  background-color: #2E8BC6;
   display: grid;
   grid-template-columns: auto minmax(280px, 1fr) auto;
   align-items: center;
@@ -315,7 +315,7 @@ body {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    background-color: #30a9ff; /* Azul do seu tema */
+    background-color: #2E8BC6; /* Azul do seu tema */
     color: white;
     padding: 12px 24px;
     border-radius: 8px;
@@ -361,7 +361,7 @@ body {
   z-index: 1000;
   list-style: none;
   padding: 10px 0;
-  border-bottom: 3px solid #30a9ff; /* Detalhe azul na base */
+  border-bottom: 3px solid #2E8BC6; /* Detalhe azul na base */
 }
 
 /* Evita que estilos do <ul> principal sobrescrevam o fundo do dropdown */
@@ -389,7 +389,7 @@ body {
 /* Efeito de hover nos itens do dropdown */
 .dropdown-menu li a:hover {
   background-color: #f5f5f5;
-  color: #30a9ff;
+  color: #2E8BC6;
 }
 
 /* MOSTRAR O MENU AO PASSAR O MOUSE */
@@ -514,7 +514,7 @@ body {
     background: rgba(255, 255, 255, 0.7); /* Um pouco mais opaco para destacar */
     border: none;
     border-radius: 50%;
-    color: #ff7034;
+    color: #F7941D;
     font-size: 32px;       /* Tamanho do ícone aumentado */
     cursor: pointer;
     display: flex;
@@ -526,13 +526,13 @@ body {
 .carousel-prev:hover, .carousel-next:hover {
     background: #ffffff;
     transform: translateY(-50%) scale(1.1); /* Efeito de zoom ao passar o mouse */
-    color: #ff5000;
+    color: #F7941D;
 }
 
 .carousel-prev:hover, .carousel-next:hover {
 
     transform: translateY(-50%) scale(1.1); /* Efeito de zoom ao passar o mouse */
-    color: #ff5000;
+    color: #F7941D;
 }
 
 /* Mantendo o distanciamento das bordas */
@@ -579,10 +579,10 @@ body {
   gap: 10px;
 }
 
-.card-blue { background-color: #30a9ff; }
-.card-orange { background-color: #ffb03a; }
-.card-red { background-color: #ff7034; }
-.card-light-blue { background-color: #3db2ff; }
+.card-blue { background-color: #2E8BC6; }
+.card-orange { background-color: #F7941D; }
+.card-red { background-color: #F7941D; }
+.card-light-blue { background-color: #1F6FA8; }
 
 
 /* ==========================================================================
@@ -641,7 +641,7 @@ body {
 }
 
 .filter-dropdown:hover, .filter-dropdown:focus {
-  border-color: #30a9ff; /* Azul padrão do tema ao passar o mouse ou focar */
+  border-color: #2E8BC6; /* Azul padrão do tema ao passar o mouse ou focar */
 }
 
 .filter-group {
@@ -673,7 +673,7 @@ body {
 }
 
 .filter-item:hover {
-  color: #30a9ff;
+  color: #2E8BC6;
   padding-left: 5px;
 }
 
@@ -692,7 +692,7 @@ body {
 }
 
 .btn-filter {
-  background-color: #30a9ff;
+  background-color: #2E8BC6;
   color: white;
   border: none;
   padding: 10px;
@@ -704,14 +704,14 @@ body {
 }
 
 .btn-filter:hover {
-  background-color: #0088ee;
+  background-color: #2E8BC6;
 }
 
 .btn-clear {
   width: 100%;
   background: transparent;
   border: none;
-  color: #ff7034;
+  color: #F7941D;
   padding: 8px;
   border-radius: 4px;
   cursor: pointer;
@@ -809,7 +809,7 @@ body {
   position: absolute;
   top: 15px;
   left: 15px;
-  background: #3fa9f5;
+  background: #2E8BC6;
   color: #fff;
   padding: 5px 12px;
   border-radius: 6px;
@@ -892,7 +892,7 @@ body {
 }
 
 .btn-add-cart:hover {
-  background: #e06a3a;
+  background: #F7941D;
 }
 
 .btn-add-cart img {
@@ -944,9 +944,9 @@ body {
 
 /* Página Ativa (Laranja) */
 .page-num.active {
-  background-color: #ff7a45; /* Laranja padrão do seu projeto */
+  background-color: #F7941D; /* Laranja padrão do seu projeto */
   color: #ffffff;
-  border-color: #ff7a45;
+  border-color: #F7941D;
 }
 
 /* Efeito de Hover */
@@ -959,7 +959,7 @@ body {
    FOOTER
    ========================================================================== */
 .main-footer {
-  background-color: #3fa9f5; /* Azul padrão da identidade visual */
+  background-color: #2E8BC6; /* Azul padrão da identidade visual */
   color: #ffffff;
   padding: 40px 0 20px 0;
   font-family: 'Segoe UI', Tahoma, sans-serif;
@@ -1684,8 +1684,8 @@ body {
   --phase1-bg: #ffffff;
   --phase1-soft: #f7f8fa;
   --phase1-text: #243042;
-  --phase1-orange: #f08a24;
-  --phase1-orange-hover: #da7818;
+  --phase1-orange: #F7941D;
+  --phase1-orange-hover: #F9A63A;
   --phase1-line: #e7ebf0;
   --phase1-shadow: 0 8px 24px rgba(17, 24, 39, 0.08);
 }
@@ -1696,7 +1696,7 @@ body {
 }
 
 .header-top {
-  background-color: #2697e7;
+  background-color: #2E8BC6;
   padding: 10px 4%;
 }
 
@@ -1951,7 +1951,7 @@ body {
 :root {
   --p3-text: #1f2937;
   --p3-muted: #667085;
-  --p3-orange: #f08a24;
+  --p3-orange: #F7941D;
   --p3-orange-soft: #fff3e6;
   --p3-line: #e5eaf0;
 }
@@ -2032,10 +2032,10 @@ body {
    FASE 4 — IDENTIDADE PROFISSIONAL (AZUL + LARANJA)
    ========================================================================== */
 :root {
-  --brand-blue-900: #0f3e75;
-  --brand-blue-700: #1f5fa8;
-  --brand-blue-500: #2f7fd1;
-  --brand-orange-600: #ef7d1a;
+  --brand-blue-900: #1F6FA8;
+  --brand-blue-700: #1F6FA8;
+  --brand-blue-500: #2E8BC6;
+  --brand-orange-600: #F9A63A;
   --brand-orange-500: #f7941d;
   --brand-orange-100: #fff3e8;
   --surface-base: #f4f7fb;
@@ -2119,7 +2119,7 @@ body {
 
 .card-orange,
 .card-red {
-  background: linear-gradient(135deg, #db6e10, var(--brand-orange-500));
+  background: linear-gradient(135deg, #F9A63A, var(--brand-orange-500));
 }
 
 .card-blue,

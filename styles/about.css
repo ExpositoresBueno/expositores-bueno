@@ -65,7 +65,7 @@ h1, h2, h3 {
 
 /* ================= SOBRE ================= */
 .sobre-empresa {
-  background: #f9a825;
+  background: #F9A63A;
   padding: 60px 0;
   color: #fff;
 }
@@ -129,7 +129,7 @@ h1, h2, h3 {
 .diferenciais h3 {
   font-size: 26px;
   margin-bottom: 40px;
-  color: #ffb030;
+  color: #F7941D;
 }
 
 .cards-diferenciais {
@@ -151,7 +151,7 @@ h1, h2, h3 {
 
 .card i {
   font-size: 36px;
-  color: #1e88e5;
+  color: #2E8BC6;
   margin-bottom: 15px;
 }
 
@@ -172,7 +172,7 @@ h1, h2, h3 {
 
 /* ================= FOOTER ================= */
 .footer {
-  background: #1e88e5;
+  background: #2E8BC6;
   color: #fff;
   padding: 40px 0 20px;
 }
@@ -252,8 +252,8 @@ h1, h2, h3 {
   --p2-soft: #f7f8fa;
   --p2-text: #243042;
   --p2-muted: #5f6b7a;
-  --p2-orange: #f08a24;
-  --p2-orange-dark: #da7818;
+  --p2-orange: #F7941D;
+  --p2-orange-dark: #F9A63A;
   --p2-line: #e7ebf0;
   --p2-shadow: 0 8px 24px rgba(17, 24, 39, 0.08);
 }
