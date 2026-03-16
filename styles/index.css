@@ -355,6 +355,14 @@ body {
   border-bottom: 3px solid #30a9ff; /* Detalhe azul na base */
 }
 
+/* Evita que estilos do <ul> principal sobrescrevam o fundo do dropdown */
+.header-nav ul.dropdown-menu {
+  background-color: #ffffff;
+  padding: 10px 0;
+  margin: 0;
+  max-width: none;
+}
+
 /* Estilo dos itens dentro do dropdown */
 .dropdown-menu li {
   width: 100%;
