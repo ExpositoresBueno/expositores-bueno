@@ -1774,5 +1774,223 @@
     ],
     "permiteOrcamentoMedida": "sim",
     "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 58,
+    "categoria": [
+      "Expositores",
+      "Araras",
+      "Prateleiras",
+      "Moveis"
+    ],
+    "nome": "CABIDEIRO COM PRATELEIRAS EXPOSITOR PARA LOJA",
+    "preco": 920.0,
+    "tamanho": "1.80m",
+    "dimensoes": "1.80m Altura x 1.80m Largura x 30cm Profundidade",
+    "img": "./images/cabideirocomprat1 (1).jpeg",
+    "galeria": [
+      "./images/cabideirocomprat1 (1).jpeg",
+      "./images/cabideirocomprat1 (2).jpeg"
+    ],
+    "descricao": "Expositor completo ideal para organização e exposição de roupas em lojas. O modelo possui cabideiros metálicos para roupas penduradas e prateleiras centrais para peças dobradas ou acessórios, facilitando a organização dos produtos e deixando a loja mais prática e visualmente organizada.\n\nA estrutura em MDF branco proporciona um visual moderno e limpo, combinando facilmente com qualquer ambiente comercial. O design permite expor diferentes tipos de produtos no mesmo móvel, aproveitando melhor o espaço da loja.\n\nPerfeito para lojas de roupas, boutiques, moda feminina, masculina ou infantil.\n\nAltura: 1,80 m\nLargura: 1,80 m\nProfundidade: 30 cm.",
+    "tags": [
+      "cabideiro",
+      "expositor",
+      "roupas",
+      "prateleiras",
+      "loja",
+      "movel",
+      "moveis",
+      "boutique"
+    ],
+    "permiteOrcamentoMedida": "sim",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 59,
+    "categoria": [
+      "Balcões",
+      "Caixas",
+      "Expositores",
+      "Moveis"
+    ],
+    "nome": "BALCÃO CAIXA DUPLO COM PRATELEIRAS INCLINADAS PARA LOJA",
+    "preco": 1790.0,
+    "tamanho": "1.50m",
+    "dimensoes": "1.00m Altura x 1.50m Largura x 50cm Profundidade",
+    "img": "./images/caixaduplopratinclinada (1).jpeg",
+    "galeria": [
+      "./images/caixaduplopratinclinada (1).jpeg",
+      "./images/caixaduplopratinclinada (2).jpeg"
+    ],
+    "descricao": "Balcão caixa duplo ideal para lojas de roupas, calçados e acessórios, combinando área de atendimento com espaço para exposição de produtos.\n\nNa parte frontal conta com prateleiras inclinadas, perfeitas para expor calçados ou produtos em destaque, facilitando a visualização dos clientes. Já na parte interna possui nichos organizadores e duas gavetas com chave, ideais para guardar dinheiro, documentos e itens de uso diário do caixa.\n\nEstrutura em MDF branco, com design moderno e funcional, ajudando a deixar a loja organizada e com visual profissional.\n\nAltura: 1,00 m\nLargura: 1,50 m\nProfundidade: 50 cm.",
+    "tags": [
+      "balcao",
+      "caixa",
+      "prateleiras",
+      "expositor",
+      "loja",
+      "atendimento",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "sim",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 60,
+    "categoria": [
+      "Balcões",
+      "Caixas",
+      "Vitrines",
+      "Expositores",
+      "Moveis"
+    ],
+    "nome": "BALCÃO CAIXA EM L COM VITRINE DE VIDRO PARA LOJA",
+    "preco": 2750.0,
+    "tamanho": "1.50m x 1.50m",
+    "dimensoes": "1.00m Altura x 1.50m Largura x 40cm Profundidade",
+    "img": "./images/caixavitrineemL (3).jpeg",
+    "galeria": [
+      "./images/caixavitrineemL (3).jpeg",
+      "./images/caixavitrineemL (1).jpeg",
+      "./images/caixavitrineemL (2).jpeg"
+    ],
+    "descricao": "Balcão caixa em formato L com vitrine de vidro, ideal para lojas que querem unir atendimento e exposição de produtos no mesmo móvel.\n\nPossui vitrine frontal com prateleiras de vidro, perfeita para expor acessórios, bijuterias, eletrônicos ou produtos de pequeno porte, valorizando os itens e chamando atenção do cliente no ponto de venda.\n\nNa parte interna conta com gaveta com chave para maior segurança, além de prateleiras para organização de produtos e materiais do caixa.\n\nAltura: 1,00 m\nLargura: 1,50 m\nProfundidade: 40 cm.",
+    "tags": [
+      "balcao",
+      "caixa",
+      "vitrine",
+      "vidro",
+      "loja",
+      "atendimento",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 61,
+    "categoria": [
+      "Balcões",
+      "Expositores",
+      "Prateleiras",
+      "Moveis"
+    ],
+    "nome": "BALCÃO CANTONEIRA EXPOSITOR PARA LOJA",
+    "preco": 380.0,
+    "tamanho": "40cm",
+    "dimensoes": "1.00m Altura x 40cm Largura x 40cm Profundidade",
+    "img": "./images/balcaocantoneira (2).jpeg",
+    "galeria": [
+      "./images/balcaocantoneira (2).jpeg",
+      "./images/balcaocantoneira (1).jpeg"
+    ],
+    "descricao": "Balcão cantoneira ideal para aproveitar cantos da loja e otimizar o espaço de exposição. Possui prateleiras perfeitas para expor produtos como calçados, acessórios ou pequenos itens.\n\nFabricado em MDF branco, com design simples e funcional, combinando facilmente com outros móveis da loja.\n\nAltura: 1,00 m\nLargura: 40 cm\nProfundidade: 40 cm.",
+    "tags": [
+      "balcao",
+      "cantoneira",
+      "expositor",
+      "loja",
+      "prateleiras",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 62,
+    "categoria": [
+      "Balcões",
+      "Caixas",
+      "Vitrines",
+      "Expositores",
+      "Moveis"
+    ],
+    "nome": "BALCÃO CAIXA EM L COM VITRINE FRONTAL",
+    "preco": 2300.0,
+    "tamanho": "2.50m x 1.00m",
+    "dimensoes": "1.00m Altura x 2.50m Largura x 50cm Profundidade",
+    "img": "./images/caixavitrinemLdenovo (1).jpeg",
+    "galeria": [
+      "./images/caixavitrinemLdenovo (1).jpeg",
+      "./images/caixavitrinemLdenovo (2).jpeg",
+      "./images/caixavitrinemLdenovo (3).jpeg"
+    ],
+    "descricao": "Balcão caixa em formato L com vitrine frontal, ideal para lojas que precisam de área de atendimento e exposição de produtos ao mesmo tempo.\n\nO móvel possui vitrines com portas de vidro permitindo expor produtos com segurança e ótima visibilidade para os clientes. Internamente conta com prateleiras organizadoras e gaveta com chave.\n\nAltura: 1,00 m\nLargura: 2,50 m\nProfundidade: 50 cm.",
+    "tags": [
+      "balcao",
+      "caixa",
+      "vitrine",
+      "vidro",
+      "loja",
+      "atendimento",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 63,
+    "categoria": [
+      "Balcões",
+      "Caixas",
+      "Expositores",
+      "Moveis"
+    ],
+    "nome": "BALCÃO CAIXA EM L COM DETALHE FRONTAL – BRANCO",
+    "preco": 2900.0,
+    "tamanho": "1.50m x 1.50m",
+    "dimensoes": "1.00m Altura x 1.50m Largura x 40cm Profundidade",
+    "img": "./images/LBRANCODETALHEBRANCO.jpeg",
+    "galeria": [
+      "./images/LBRANCODETALHEBRANCO.jpeg",
+      "./images/LBRANCODETALHEBRANCO.png"
+    ],
+    "descricao": "Balcão caixa em formato L ideal para lojas que buscam um móvel funcional e com visual moderno. O modelo conta com detalhes decorativos na parte frontal, deixando o ambiente mais elegante e profissional.\n\nNa parte interna possui prateleiras organizadoras e gaveta com chave para guardar produtos e materiais do caixa.\n\nAltura: 1,00 m\nLargura: 1,50 m\nProfundidade: 40 cm.",
+    "tags": [
+      "balcao",
+      "caixa",
+      "loja",
+      "atendimento",
+      "movel",
+      "moveis",
+      "expositor"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 64,
+    "categoria": [
+      "Araras",
+      "Expositores",
+      "Moveis"
+    ],
+    "nome": "CABIDEIRO DUPLO",
+    "preco": 459.0,
+    "tamanho": "1.80m",
+    "dimensoes": "1.80m Altura x 1.00m Largura x 30cm Profundidade",
+    "img": "./images/cabduplo (1).jpeg",
+    "galeria": [
+      "./images/cabduplo (1).jpeg",
+      "./images/cabduplo (2).jpeg"
+    ],
+    "descricao": "Cabideiro duplo ideal para exposição de roupas em lojas, proporcionando mais organização e melhor aproveitamento do espaço.\n\nO modelo conta com dois níveis de cabideiro metálico permitindo expor mais peças no mesmo móvel. Fabricado em MDF branco com design moderno e versátil.\n\nAltura: 1,80 m\nLargura: 1,00 m\nProfundidade: 30 cm.",
+    "tags": [
+      "cabideiro",
+      "duplo",
+      "roupas",
+      "expositor",
+      "loja",
+      "movel",
+      "moveis",
+      "boutique"
+    ],
+    "permiteOrcamentoMedida": "sim",
+    "permiteVariacaoCor": "sim"
   }
 ]
