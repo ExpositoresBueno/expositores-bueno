@@ -2349,6 +2349,13 @@ body {
   white-space: nowrap;
 }
 
+.whatsapp-float img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  display: block;
+}
+
 .whatsapp-float:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.3);
@@ -2377,4 +2384,41 @@ body {
     font-size: 26px;
   }
   .whatsapp-float span { display: none; }
+  .whatsapp-float img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* Dropdown com descrições para menu Monte sua Loja */
+.dropdown-menu-monte-loja {
+  min-width: 430px;
+  max-width: 520px;
+}
+
+.dropdown-menu-monte-loja li a {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  white-space: normal;
+  line-height: 1.35;
+}
+
+.dropdown-menu-monte-loja li a strong {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.dropdown-menu-monte-loja li a span {
+  font-size: 0.82rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .dropdown-menu-monte-loja {
+    min-width: 300px;
+    max-width: calc(100vw - 32px);
+  }
 }
