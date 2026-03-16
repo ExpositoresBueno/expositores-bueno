@@ -28,11 +28,17 @@ const HISTORIA_FILES = [
   'uniforme.jpg',
 ];
 
+const lightbox = document.getElementById('history-lightbox');
+const lightboxImage = document.getElementById('history-lightbox-image');
+const lightboxClose = document.getElementById('history-lightbox-close');
+
 const createCardElement = (source, index) => {
   if (!source) return null;
 
-  const card = document.createElement('div');
+  const card = document.createElement('button');
   card.className = 'history-card';
+  card.type = 'button';
+  card.setAttribute('aria-label', `Ampliar foto histórica ${index}`);
 
   const image = document.createElement('img');
   image.src = source;
@@ -104,6 +110,23 @@ const initCarousel = () => {
     return clone;
   });
 
+
+  const openLightbox = (card) => {
+    const image = card.querySelector('img');
+    if (!image || !lightbox || !lightboxImage) return;
+
+    lightboxImage.src = image.src;
+    lightboxImage.alt = image.alt;
+    lightbox.classList.add('is-open');
+    lightbox.setAttribute('aria-hidden', 'false');
+  };
+
+  const closeLightbox = () => {
+    if (!lightbox) return;
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('aria-hidden', 'true');
+  };
+
   const getLoopPoint = () => track.scrollWidth / 2;
 
   const stopAutoplay = () => {
@@ -116,7 +139,9 @@ const initCarousel = () => {
     const deltaInSeconds = (timestamp - lastFrameTime) / 1000;
     lastFrameTime = timestamp;
 
-    carousel.scrollLeft += speedPxPerSecond * deltaInSeconds;
+    if (!lightbox?.classList.contains('is-open')) {
+      carousel.scrollLeft += speedPxPerSecond * deltaInSeconds;
+    }
     const loopPoint = getLoopPoint();
     if (carousel.scrollLeft >= loopPoint) {
       carousel.scrollLeft -= loopPoint;
@@ -138,8 +163,19 @@ const initCarousel = () => {
 
   const allCards = [...originalCards, ...duplicatedCards];
   allCards.forEach((card) => {
+    card.addEventListener('click', () => openLightbox(card));
     card.addEventListener('focusin', stopAutoplay);
     card.addEventListener('focusout', startAutoplay);
+  });
+
+  lightboxClose?.addEventListener('click', closeLightbox);
+
+  lightbox?.addEventListener('click', (event) => {
+    if (event.target === lightbox) closeLightbox();
+  });
+
+  window.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeLightbox();
   });
 
   document.addEventListener('visibilitychange', () => {
