@@ -89,7 +89,7 @@
     "preco": 815.0,
     "tamanho": "1.10m",
     "dimensoes": "1.10/1.00m Altura x 1.00m Largura x 40cm Profundidade",
-    "img": "./images/cards/balcaoCaixa.jpg",
+    "img": "./images/CAIXAPACOTE1M (1).jpeg",
     "descricao": "Balcão de atendimento fechado, focado em segurança e organização interna para o operador.",
     "tags": [
       "balcao",
@@ -101,6 +101,10 @@
       "simples",
       "movel",
       "moveis"
+    ],
+    "galeria": [
+      "./images/CAIXAPACOTE1M (1).jpeg",
+      "./images/CAIXAPACOTE1M (2).jpeg"
     ]
   },
   {
@@ -2027,5 +2031,188 @@
     ],
     "permiteOrcamentoMedida": "nao",
     "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 66,
+    "categoria": [
+      "Araras",
+      "Expositores",
+      "Móveis",
+      "Moveis"
+    ],
+    "nome": "CABIDEIRO EM MDF COM PRATELEIRAS",
+    "preco": 459.0,
+    "tamanho": "1.80m",
+    "dimensoes": "1.80m Altura x 90cm Largura x 30cm Profundidade",
+    "img": "./images/foto_1.jpg",
+    "galeria": [
+      "./images/foto_1.jpg"
+    ],
+    "descricao": "Estrutura ideal para lojas que precisam expor roupas de forma organizada e prática, aproveitando o espaço vertical.\n\nCombina área de cabideiro superior com prateleiras inferiores, permitindo expor peças penduradas e produtos dobrados no mesmo móvel.\n\nIndicado para:\nLojas de roupas, boutiques, bazares e lojas populares.\n\nEstrutura:\nProduzido em MDF, com tubo cabideiro metálico resistente.\nBase com prateleiras para apoio de produtos, caixas ou estoque leve.\n\nAltura: 1.80m\nLargura: 90cm\nProfundidade: 30cm.",
+    "tags": [
+      "cabideiro",
+      "arara",
+      "mdf",
+      "prateleiras",
+      "roupas",
+      "boutique",
+      "bazar",
+      "expositor",
+      "loja",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "sim",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 67,
+    "categoria": [
+      "Gôndolas",
+      "Expositores",
+      "Painel Canaletado",
+      "Móveis de Centro",
+      "Moveis"
+    ],
+    "nome": "GÔNDOLA CENTRAL COM PAINEL CANALETADO",
+    "preco": 699.9,
+    "tamanho": "1.20m",
+    "dimensoes": "1.20m Altura x 1.20m Largura x 40cm Profundidade",
+    "img": "./images/paineldoislados.jpg",
+    "galeria": [
+      "./images/paineldoislados.jpg"
+    ],
+    "descricao": "Gôndola ideal para lojas que precisam expor produtos de forma organizada e com alto aproveitamento de espaço.\n\nPossui dois lados com painel canaletado, permitindo uso de ganchos e acessórios, e prateleiras laterais para apoio de produtos.\n\nIndicado para:\nLojas de acessórios, utilidades, eletrônicos, bazares e geral.\n\nEstrutura:\nProduzida em MDF, com painel canaletado central e prateleiras laterais.\nPermite combinar exposição vertical e horizontal no mesmo móvel.\n\nAltura: 1.20m\nLargura: 1.20m\nProfundidade: 40cm.",
+    "tags": [
+      "gondola",
+      "gondola central",
+      "painel canaletado",
+      "canaletado",
+      "mdf",
+      "prateleiras",
+      "expositor",
+      "loja",
+      "bazar",
+      "utilidades",
+      "eletronicos",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "sim",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 68,
+    "categoria": [
+      "Gôndolas",
+      "Expositores",
+      "Móveis de Centro",
+      "Moveis"
+    ],
+    "nome": "GÔNDOLA CENTRAL 4 LADOS COM PRATELEIRAS",
+    "preco": 820.0,
+    "tamanho": "1.20m",
+    "dimensoes": "1.20m Altura x 1.20m Largura x 40cm Profundidade",
+    "img": "./images/paineleprat (1).jpg",
+    "galeria": [
+      "./images/paineleprat (1).jpg"
+    ],
+    "descricao": "Modelo desenvolvido para maximizar exposição de produtos em todos os lados do móvel.\n\nIdeal para posicionamento no centro da loja, aumentando a circulação e o volume de produtos expostos.\n\nIndicado para:\nMercadinhos, lojas de utilidades, roupas dobradas, calçados e produtos variados.\n\nEstrutura:\nTotalmente em MDF, com prateleiras em todos os lados.\nFacilita reposição e acesso rápido aos produtos.\n\nAltura: 1.20m\nLargura: 1.20m\nProfundidade: 40cm.",
+    "tags": [
+      "gondola",
+      "gondola central",
+      "4 lados",
+      "prateleiras",
+      "mdf",
+      "expositor",
+      "mercadinho",
+      "utilidades",
+      "roupas",
+      "calcados",
+      "loja",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "sim",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 69,
+    "categoria": [
+      "Balcões",
+      "Caixas",
+      "Painel Canaletado",
+      "Expositores",
+      "Moveis"
+    ],
+    "nome": "BALCÃO CAIXA COM PAINEL CANALETADO",
+    "preco": 1350.0,
+    "tamanho": "1.10m",
+    "dimensoes": "1.10m Altura x 1.50m Largura x 40cm Profundidade",
+    "img": "./images/CAIXACOMPAINEL (1).jpeg",
+    "galeria": [
+      "./images/CAIXACOMPAINEL (1).jpeg",
+      "./images/CAIXACOMPAINEL (2).jpeg",
+      "./images/CAIXACOMPAINEL (3).jpeg"
+    ],
+    "descricao": "Balcão desenvolvido para unir atendimento eficiente com exposição estratégica de produtos.\n\nA frente em painel canaletado permite trabalhar com ganchos e cestos, transformando o caixa em um ponto de venda adicional.\n\nIndicado para:\nLojas de roupas, acessórios, eletrônicos, conveniência e utilidades.\n\nEstrutura:\nProduzido em MDF, com painel canaletado frontal para uso de acessórios.\nParte interna com prateleiras e gaveta com chave, garantindo organização e segurança no caixa.\n\nDiferencial real (isso aqui vende):\nEnquanto o cliente paga, tu continua vendendo.\n\nAltura: 1.10m\nLargura: 1.50m\nProfundidade: 40cm.",
+    "tags": [
+      "balcao",
+      "caixa",
+      "painel canaletado",
+      "canaletado",
+      "pdv",
+      "mdf",
+      "gaveta com chave",
+      "expositor",
+      "loja",
+      "acessorios",
+      "eletronicos",
+      "conveniencia",
+      "utilidades",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "sim",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 70,
+    "categoria": [
+      "Balcões",
+      "Caixas",
+      "Recepção",
+      "Linha Premium",
+      "Moveis"
+    ],
+    "nome": "BALCÃO CAIXA EM L PREMIUM",
+    "preco": 3770.0,
+    "tamanho": "1.10m",
+    "dimensoes": "2.00m Comprimento x 1.00m Retorno (L) x 40cm Profundidade x 1.00m Altura parte baixa x 1.10m Altura parte alta",
+    "img": "./images/LPRETOAZUL (1).jpeg",
+    "galeria": [
+      "./images/LPRETOAZUL (1).jpeg",
+      "./images/LPRETOAZUL (2).jpeg",
+      "./images/LPRETOAZUL (3).jpeg",
+      "./images/LPRETOAZUL (4).jpeg"
+    ],
+    "descricao": "Balcão em formato L ideal para lojas que querem transmitir mais valor e profissionalismo no atendimento.\n\nDesign moderno na cor preta com detalhe frontal, trazendo presença forte no ambiente e elevando a percepção da loja.\n\nIndicado para:\nLojas de roupas, eletrônicos, cosméticos e negócios que querem posicionamento mais premium.\n\nEstrutura:\nProduzido em MDF, com amplo espaço interno para organização.\nFormato em L que melhora o fluxo de atendimento e aproveita melhor o espaço.\n\nDiferencial real:\nEle muda a cara da loja.\nPassa imagem de loja estruturada — e isso impacta diretamente na confiança do cliente.\n\nComprimento: 2.00m\nRetorno (L): 1.00m\nProfundidade: 40cm\nAltura parte baixa: 1.00m\nAltura parte alta: 1.10m.",
+    "tags": [
+      "balcao",
+      "balcao em l",
+      "caixa",
+      "premium",
+      "mdf",
+      "recepcao",
+      "atendimento",
+      "loja",
+      "roupas",
+      "eletronicos",
+      "cosmeticos",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "nao"
   }
 ]
