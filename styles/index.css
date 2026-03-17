@@ -2442,9 +2442,29 @@ body {
   opacity: 0.9;
 }
 
+/* Ajuste visual solicitado: faixa do cabeçalho totalmente branca e logo maior */
+.header,
+.header-container,
+.header-main {
+  background: #ffffff;
+  background-color: #ffffff;
+}
+
+.header-logo img {
+  height: 110px;
+  max-height: 110px;
+  width: auto;
+}
+
 @media (max-width: 768px) {
   .dropdown-menu-monte-loja {
     min-width: 300px;
     max-width: calc(100vw - 32px);
+  }
+
+  .header-logo img {
+    height: 96px;
+    max-height: 96px;
+    width: auto;
   }
 }
