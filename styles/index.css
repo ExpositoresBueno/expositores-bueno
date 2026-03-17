@@ -2039,15 +2039,15 @@ body {
   --brand-blue-500: #2E8BC6;
   --brand-orange-600: #F9A63A;
   --brand-orange-500: #f7941d;
-  --brand-orange-100: #fff3e8;
-  --surface-base: #f4f7fb;
-  --surface-card: #ffffff;
+  --brand-orange-100: #fff0e2;
+  --surface-base: #e9eff6;
+  --surface-card: #f8fbff;
   --text-strong: #16324f;
   --line-soft: #d8e3ef;
 }
 
 body {
-  background: linear-gradient(180deg, #f7fafe 0%, var(--surface-base) 100%);
+  background: linear-gradient(180deg, #edf3fa 0%, var(--surface-base) 100%);
   color: var(--text-strong);
 }
 
@@ -2097,6 +2097,7 @@ body {
 .page-btn,
 .page-num {
   border: 1px solid var(--line-soft);
+  background-color: var(--surface-card);
 }
 
 .carousel-section,
@@ -2189,10 +2190,10 @@ body {
 
 .brand-copy,
 .brand-media {
-  background: #ffffff;
+  background: #f7faff;
   border: 1px solid var(--line-soft);
   border-radius: 16px;
-  box-shadow: 0 12px 32px rgba(15, 62, 117, 0.08);
+  box-shadow: 0 10px 24px rgba(15, 62, 117, 0.06);
 }
 
 .brand-copy {
@@ -2306,7 +2307,7 @@ body {
 }
 
 .trust-seal-item {
-  background: #fff;
+  background: #f8fbff;
   border: 1px solid var(--line-soft);
   border-radius: 10px;
   padding: 14px 12px;
