@@ -63,8 +63,8 @@
     "preco": 800.0,
     "tamanho": "1.00m",
     "dimensoes": "1.00m Altura x 1.00m Largura x 40cm Profundidade",
-    "img": "./images/cards/balcaoVitrine.jpg",
-    "descricao": "Vitrine expositora com opção de prateleiras em MDF ou Vidro. Essencial para exibir medicamentos ou joias.",
+    "img": "./images/BALCAOVITRINE1M (3).jpg",
+    "descricao": "Balcão vitrine ideal para destacar produtos e valorizar a apresentação dentro da loja. Estrutura com frente em vidro que permite total visibilidade dos itens, aumentando o interesse e facilitando a decisão de compra. Indicado para: Lojas de roupas, eletrônicos, cosméticos, acessórios e presentes. Estrutura: Produzido em MDF com fechamento em vidro. Permite exposição organizada e protegida dos produtos. Diferencial real: Produto visível vende mais — simples assim. Esse balcão transforma itens comuns em produtos de vitrine.\n\nOpções:\n• Prateleiras em vidro (mais leve e sofisticado)\n• Prateleiras em MDF (mais resistente para peso)\n\nMedidas:\nAltura: 1,00 m\nLargura: 1,00 m\nProfundidade: 40 cm",
     "tags": [
       "balcao",
       "balcoes",
@@ -77,6 +77,12 @@
       "expositor",
       "movel",
       "moveis"
+    ],
+    "galeria": [
+      "./images/BALCAOVITRINE1M2X.jpg",
+      "./images/BALCAOVITRINE1M (4).jpg",
+      "./images/BALCAOVITRINE1M (1).jpg",
+      "./images/BALCAOVITRINE1M (2).jpg"
     ]
   },
   {
