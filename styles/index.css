@@ -2451,8 +2451,8 @@ body {
 }
 
 .header-logo img {
-  height: 110px;
-  max-height: 110px;
+  height: 78px;
+  max-height: 78px;
   width: auto;
 }
 
@@ -2463,8 +2463,8 @@ body {
   }
 
   .header-logo img {
-    height: 96px;
-    max-height: 96px;
+    height: 78px;
+    max-height: 78px;
     width: auto;
   }
 }
