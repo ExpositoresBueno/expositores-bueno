@@ -35,8 +35,8 @@
     "preco": 875.0,
     "tamanho": "1.10m",
     "dimensoes": "1.10/1.00m Altura x 1.15m Largura x 40cm Profundidade",
-    "img": "./images/cards/balcaoCaixaComVitrineBranco.jpg",
-    "descricao": "O campeão de vendas: balcão caixa com ampla vitrine frontal. Perfeito para Farmácias e Lojas variadas.",
+    "img": "./images/CXVITRINE (2).jpg",
+    "descricao": "Balcão ideal para unir atendimento no caixa com exposição de produtos de maior valor.\nConta com vitrine frontal em vidro, permitindo destacar itens enquanto o cliente está no momento de compra — aumentando o ticket médio de forma natural.\nIndicado para:\nLojas de roupas, acessórios, eletrônicos, cosméticos e presentes.\nEstrutura:\nProduzido em MDF, com vitrine em vidro e espaço interno para organização.\nPossui gaveta com chave para maior segurança no caixa.\nDiferencial real:\nEnquanto o cliente paga, tu continua vendendo.\nPerfeito para produtos de impulso e maior margem.\nOpções:\n• Prateleiras em vidro (mais sofisticado)\n• Prateleiras em MDF (mais resistência)\nMedidas:\nLargura: 1,15 m\nAltura: 1,10 m\nProfundidade: 40 cm",
     "tags": [
       "balcao",
       "balcoes",
@@ -49,6 +49,10 @@
       "expositor",
       "movel",
       "moveis"
+    ],
+    "galeria": [
+      "./images/CXVITRINE (2).jpg",
+      "./images/CXVITRINE (1).jpg"
     ]
   },
   {
