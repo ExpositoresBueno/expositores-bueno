@@ -260,6 +260,27 @@ Informe as dimensões abaixo e calcule o preço na hora.
             </div>
           </div>
         </main>
+
+        <section class="product-recommendations" aria-label="Sugestões de produtos">
+          <article class="recommendation-block">
+            <h2>Quem viu este produto, viu estes também</h2>
+            <div class="recommendation-carousel">
+              <button class="recommendation-nav" type="button" data-recommendation-prev="quem-viu" aria-label="Produtos anteriores">❮</button>
+              <div class="recommendation-track" id="quem-viu-track"></div>
+              <button class="recommendation-nav" type="button" data-recommendation-next="quem-viu" aria-label="Próximos produtos">❯</button>
+            </div>
+          </article>
+
+          <article class="recommendation-block">
+            <h2>Produtos mais procurados deste departamento</h2>
+            <div class="recommendation-carousel">
+              <button class="recommendation-nav" type="button" data-recommendation-prev="departamento" aria-label="Produtos anteriores">❮</button>
+              <div class="recommendation-track" id="departamento-track"></div>
+              <button class="recommendation-nav" type="button" data-recommendation-next="departamento" aria-label="Próximos produtos">❯</button>
+            </div>
+          </article>
+        </section>
+
         <!-- Carrinho Flutuante -->
         <div class="cart-overlay" id="cart-overlay"></div>
           <div class="cart-drawer" id="cart-drawer">
