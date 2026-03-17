@@ -92,6 +92,158 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const formatarMetros = (valor) => formatarNumero(valor);
 
+  const obterCategoriaPrincipal = (produto) => {
+    if (!produto) return 'Produtos';
+    return Array.isArray(produto.categoria) ? produto.categoria[0] : produto.categoria;
+  };
+
+  const normalizarPathImagem = (path) => String(path || '').replace('./', '../');
+
+  const embaralharComSeed = (lista, seed = 1) => {
+    const resultado = [...lista];
+    let valorSeed = Number(seed) || 1;
+
+    for (let i = resultado.length - 1; i > 0; i -= 1) {
+      valorSeed = (valorSeed * 9301 + 49297) % 233280;
+      const j = Math.floor((valorSeed / 233280) * (i + 1));
+      [resultado[i], resultado[j]] = [resultado[j], resultado[i]];
+    }
+
+    return resultado;
+  };
+
+  const criarCardRecomendacao = (produto) => {
+    const categoriaPrincipal = obterCategoriaPrincipal(produto);
+    const card = document.createElement('article');
+    card.className = 'recommendation-card';
+    card.innerHTML = `
+      <a href="./productDetails.html?id=${produto.id}" aria-label="Abrir ${produto.nome}">
+        <img src="${normalizarPathImagem(produto.img)}" alt="${produto.nome}" loading="lazy" decoding="async">
+        <div class="recommendation-card-content">
+          <p class="recommendation-category">${String(categoriaPrincipal || '').toUpperCase()}</p>
+          <h3 class="recommendation-name">${produto.nome}</h3>
+          <p class="recommendation-price">${formatarMoeda(Number(produto.preco) || 0)}</p>
+        </div>
+      </a>
+    `;
+    return card;
+  };
+
+  const configurarBotoesNavegacao = (track, key) => {
+    if (!track) return;
+
+    const btnPrev = document.querySelector(`[data-recommendation-prev="${key}"]`);
+    const btnNext = document.querySelector(`[data-recommendation-next="${key}"]`);
+    if (!btnPrev || !btnNext) return;
+
+    const atualizarEstado = () => {
+      const maxScrollLeft = Math.max(0, track.scrollWidth - track.clientWidth);
+      btnPrev.disabled = track.scrollLeft <= 2;
+      btnNext.disabled = track.scrollLeft >= maxScrollLeft - 2;
+    };
+
+    const rolar = (direcao) => {
+      const distancia = Math.max(220, Math.floor(track.clientWidth * 0.85));
+      track.scrollBy({ left: distancia * direcao, behavior: 'smooth' });
+    };
+
+    btnPrev.addEventListener('click', () => rolar(-1));
+    btnNext.addEventListener('click', () => rolar(1));
+    track.addEventListener('scroll', atualizarEstado, { passive: true });
+    window.addEventListener('resize', atualizarEstado);
+    atualizarEstado();
+  };
+
+  const iniciarAutoCarousel = (track, key) => {
+    if (!track) return;
+
+    const obterDistanciaCard = () => {
+      const primeiroCard = track.querySelector('.recommendation-card');
+      if (!primeiroCard) return Math.max(220, Math.floor(track.clientWidth * 0.8));
+
+      const estilos = window.getComputedStyle(track);
+      const gap = parseFloat(estilos.columnGap || estilos.gap || '0') || 0;
+      return primeiroCard.getBoundingClientRect().width + gap;
+    };
+
+    let intervaloAuto = null;
+    let aguardandoInteracao = false;
+
+    const avancar = () => {
+      const maxScrollLeft = Math.max(0, track.scrollWidth - track.clientWidth);
+      if (maxScrollLeft <= 0) return;
+
+      const distancia = obterDistanciaCard();
+      const proximoScroll = track.scrollLeft + distancia;
+      const chegouNoFim = proximoScroll >= maxScrollLeft - 2;
+
+      if (chegouNoFim) {
+        track.scrollTo({ left: 0, behavior: 'smooth' });
+        return;
+      }
+
+      track.scrollBy({ left: distancia, behavior: 'smooth' });
+    };
+
+    const iniciar = () => {
+      if (intervaloAuto) return;
+      intervaloAuto = setInterval(() => {
+        if (aguardandoInteracao) return;
+        avancar();
+      }, 3200);
+    };
+
+    const pausarTemporariamente = () => {
+      aguardandoInteracao = true;
+      window.clearTimeout(track._retomarAutoCarouselTimeout);
+      track._retomarAutoCarouselTimeout = window.setTimeout(() => {
+        aguardandoInteracao = false;
+      }, 4800);
+    };
+
+    track.addEventListener('mouseenter', () => { aguardandoInteracao = true; });
+    track.addEventListener('mouseleave', () => { aguardandoInteracao = false; });
+    track.addEventListener('touchstart', pausarTemporariamente, { passive: true });
+    track.addEventListener('wheel', pausarTemporariamente, { passive: true });
+
+    const btnPrev = document.querySelector(`[data-recommendation-prev="${key}"]`);
+    const btnNext = document.querySelector(`[data-recommendation-next="${key}"]`);
+    if (btnPrev) btnPrev.addEventListener('click', pausarTemporariamente);
+    if (btnNext) btnNext.addEventListener('click', pausarTemporariamente);
+
+    iniciar();
+  };
+
+  const renderizarRecomendacoes = (produtoAtual, listaProdutos) => {
+    const trackQuemViu = document.getElementById('quem-viu-track');
+    const trackDepartamento = document.getElementById('departamento-track');
+    if (!trackQuemViu || !trackDepartamento) return;
+
+    const categoriaAtual = obterCategoriaPrincipal(produtoAtual);
+
+    const baseRelacionados = listaProdutos
+      .filter((produto) => produto.id !== produtoAtual.id)
+      .filter((produto) => obterCategoriaPrincipal(produto) === categoriaAtual);
+
+    const fallback = listaProdutos.filter((produto) => produto.id !== produtoAtual.id);
+    const quemViuLista = embaralharComSeed(baseRelacionados.length ? baseRelacionados : fallback, produtoAtual.id).slice(0, 10);
+
+    const maisProcurados = [...(baseRelacionados.length ? baseRelacionados : fallback)]
+      .sort((a, b) => Number(b.preco) - Number(a.preco))
+      .slice(0, 10);
+
+    trackQuemViu.innerHTML = '';
+    trackDepartamento.innerHTML = '';
+
+    quemViuLista.forEach((produto) => trackQuemViu.appendChild(criarCardRecomendacao(produto)));
+    maisProcurados.forEach((produto) => trackDepartamento.appendChild(criarCardRecomendacao(produto)));
+
+    configurarBotoesNavegacao(trackQuemViu, 'quem-viu');
+    configurarBotoesNavegacao(trackDepartamento, 'departamento');
+    iniciarAutoCarousel(trackQuemViu, 'quem-viu');
+    iniciarAutoCarousel(trackDepartamento, 'departamento');
+  };
+
   const obterLinkCompartilhamento = (idProduto) => {
     const urlAtual = new URL(window.location.href);
     if (idProduto) {
@@ -175,6 +327,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // 4. Se o produto existir, preenche a página e configura o botão
     if (produtoSelecionado) {
+      renderizarRecomendacoes(produtoSelecionado, produtos);
       
       // Injeta Nome, Preço e Descrição
       document.getElementById('product-title').innerText = produtoSelecionado.nome;
