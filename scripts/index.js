@@ -396,8 +396,12 @@ function atualizarBotoesPaginacao(totalItens, pagina) {
   const totalPaginas = Math.ceil(totalItens / itensPorPagina);
   const container = document.querySelector(".page-numbers");
   if (!container) return;
+
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+  const limitePaginas = isMobile ? 3 : totalPaginas;
+
   container.innerHTML = "";
-  for (let i = 1; i <= totalPaginas; i++) {
+  for (let i = 1; i <= Math.min(totalPaginas, limitePaginas); i++) {
     const activeClass = i === pagina ? "active" : "";
     container.innerHTML += `<button class="page-num ${activeClass}" onclick="irParaPagina(${i})">${i}</button>`;
   }

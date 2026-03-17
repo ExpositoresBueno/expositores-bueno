@@ -2027,6 +2027,22 @@ body {
   .pagination-container {
     flex-wrap: wrap;
     gap: 10px;
+    justify-content: center;
+    width: 100%;
+    padding: 0 12px 20px;
+    box-sizing: border-box;
+  }
+
+  .page-numbers {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .page-btn,
+  .page-num {
+    min-width: 56px;
   }
 }
 
