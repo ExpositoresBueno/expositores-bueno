@@ -102,7 +102,7 @@ const initCarousel = () => {
 
   let animationFrame = null;
   let lastFrameTime = 0;
-  const speedPxPerSecond = 84;
+  const speedPxPerSecond = 160;
 
   const duplicatedCards = originalCards.map((card) => {
     const clone = card.cloneNode(true);
@@ -234,6 +234,28 @@ const bootstrapHistoryGallery = async () => {
 
   const baseDir = track.dataset.baseDir || 'HISTORIA';
   const maxImages = Number(track.dataset.maxImages || 20);
+
+  const explicitSources = HISTORIA_FILES
+    .map((fileName) => `../images/${baseDir}/${encodeURIComponent(fileName).replace(/%2F/g, '/')}`)
+    .reverse();
+
+  if (explicitSources.length) {
+    track.innerHTML = '';
+    explicitSources.forEach((source, index) => {
+      const card = createCardElement(source, index + 1);
+      if (card) track.appendChild(card);
+    });
+
+    if (!track.querySelector('.history-card')) {
+      carousel.hidden = true;
+      emptyState?.removeAttribute('hidden');
+      return;
+    }
+
+    initCarousel();
+    return;
+  }
+
   const candidates = createCandidateSources(baseDir, maxImages);
 
   track.innerHTML = '';
