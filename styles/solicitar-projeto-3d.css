@@ -1,0 +1,315 @@
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.solicitar-wrapper {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 40px 20px 70px;
+}
+
+.hero-request {
+  background: linear-gradient(120deg, #f7941d 0%, #f8b358 100%);
+  border-radius: 16px;
+  padding: 36px;
+  color: #fff;
+}
+
+.hero-request h1 {
+  margin-bottom: 12px;
+  font-size: 2rem;
+}
+
+.hero-request p {
+  max-width: 760px;
+  line-height: 1.7;
+}
+
+.step-section,
+.form-section,
+.examples-section,
+.socorro-section,
+.final-cta {
+  margin-top: 34px;
+}
+
+.step-section h2,
+.form-section h2,
+.examples-section h2,
+.socorro-section h2,
+.final-cta h2 {
+  color: #f7941d;
+  margin-bottom: 14px;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.step-card {
+  background: #fff;
+  border: 1px solid #ececec;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  position: relative;
+}
+
+.step-card span {
+  display: inline-flex;
+  width: 30px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #f7941d;
+  color: #fff;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.step-card h3 {
+  margin-bottom: 6px;
+}
+
+.step-card p,
+.examples-section li,
+.form-intro,
+.socorro-section p,
+.final-cta p {
+  color: #475569;
+  line-height: 1.6;
+}
+
+.step-hint {
+  display: block;
+  margin-top: 10px;
+  background: #fff7ed;
+  border: 1px dashed #fdba74;
+  border-radius: 10px;
+  padding: 8px 10px;
+  color: #9a3412;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.25s ease;
+}
+
+.step-card:hover .step-hint,
+.step-card:focus-within .step-hint {
+  opacity: 1;
+  max-height: 100px;
+}
+
+
+.step-card-sos {
+  background: #dc2626;
+  border-color: #b91c1c;
+}
+
+.step-card-sos h3,
+.step-card-sos p {
+  color: #ffffff;
+}
+
+.step-card-sos span {
+  background: #ffffff;
+  color: #dc2626;
+}
+
+.step-card-sos .step-hint {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.45);
+  color: #ffffff;
+}
+
+.form-section {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.request-form {
+  margin-top: 16px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.request-form label,
+.simple-fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.request-form input,
+.request-form select,
+.request-form textarea {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: #1e293b;
+  font-weight: 400;
+}
+
+.request-form input:focus,
+.request-form select:focus,
+.request-form textarea:focus {
+  outline: 2px solid #fbbf24;
+  border-color: #f59e0b;
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+.simple-fieldset {
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.simple-fieldset label {
+  font-weight: 500;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.simple-fieldset input[type='radio'] {
+  width: auto;
+}
+
+.options-help {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.budget-note {
+  font-size: 0.84rem;
+  color: #475569;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.btn-wa,
+.btn-socorro {
+  border: none;
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 700;
+  padding: 12px 20px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+
+.btn-wa {
+  background: #25d366;
+}
+
+.btn-socorro {
+  background: #dc2626;
+}
+
+.examples-section ul {
+  padding-left: 20px;
+}
+
+.socorro-section {
+  background: #fff1f2;
+  border: 1px solid #fecdd3;
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.socorro-section p {
+  text-align: center;
+}
+
+.socorro-title {
+  text-align: center;
+  background: #dc2626;
+  color: #fff !important;
+  border-radius: 10px;
+  padding: 10px 14px;
+  width: fit-content;
+  margin: 0 auto 12px;
+}
+
+.btn-socorro {
+  display: table;
+  margin: 14px auto 0;
+}
+
+.final-cta {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .steps-grid,
+  .form-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .solicitar-wrapper {
+    padding: 28px 14px 56px;
+  }
+
+  .hero-request,
+  .form-section,
+  .socorro-section,
+  .final-cta {
+    padding: 20px 16px;
+  }
+
+  .hero-request h1 {
+    font-size: 1.55rem;
+  }
+
+  .steps-grid,
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .step-card {
+    padding: 14px;
+  }
+
+  .step-hint {
+    opacity: 1;
+    max-height: none;
+    margin-top: 8px;
+  }
+
+  .socorro-title {
+    width: 100%;
+  }
+
+  .btn-wa,
+  .btn-socorro {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+}
