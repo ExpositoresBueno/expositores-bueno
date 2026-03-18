@@ -315,8 +315,10 @@ body {
 /* Notificação Toast Delicada */
 .toast-notificacao {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(90vw, 720px);
     background-color: #2E8BC6; /* Azul do seu tema */
     color: white;
     padding: 12px 24px;
@@ -328,18 +330,28 @@ body {
     z-index: 9999;
     display: flex;
     align-items: center;
+    justify-content: center;
+    text-align: center;
     gap: 10px;
-    animation: slideIn 0.4s ease, fadeOut 0.4s ease 2.5s forwards;
+    animation: slideInTop 0.4s ease, fadeOut 0.4s ease 2.5s forwards;
 }
 
-@keyframes slideIn {
-    from { transform: translateX(100%); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
+@keyframes slideInTop {
+    from { transform: translate(-50%, -24px); opacity: 0; }
+    to { transform: translate(-50%, 0); opacity: 1; }
 }
 
 @keyframes fadeOut {
     from { opacity: 1; }
     to { opacity: 0; pointer-events: none; }
+}
+
+@media (max-width: 768px) {
+  .toast-notificacao {
+    top: 16px;
+    width: calc(100vw - 32px);
+    padding: 12px 16px;
+  }
 }
 
 
