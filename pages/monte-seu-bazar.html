@@ -129,18 +129,20 @@
         </section>
         <p class="monte-description">Veja alguns exemplos de montagem de bazares utilizando nossos móveis e expositores. Os layouts são pensados para facilitar a organização dos produtos, melhorar a circulação dentro da loja e aumentar a visibilidade das mercadorias.</p>
 
-
-
-        <div class="monte-project-cta">
-          <a class="monte-project-btn" href="./solicitar-projeto-3d.html?segmento=Bazar">Quero fazer o projeto do meu bazar</a>
-        </div>
-
-        <section class="monte-gallery-grid" data-gallery-folder="Bazar" aria-label="Galeria de imagens de Monte seu Bazar"></section>
+        <section class="monte-gallery-section" aria-label="Galeria de projetos">
+          <div class="monte-gallery-carousel">
+            <div class="monte-gallery-track" data-gallery-folder="Bazar" aria-label="Galeria de imagens de Monte seu Bazar"></div>
+          </div>
+          <p class="monte-gallery-empty" hidden>Nenhuma imagem encontrada para esta categoria.</p>
+        </section>
       </main>
 
       <div class="gallery-lightbox" id="gallery-lightbox" aria-hidden="true">
+        <button class="gallery-lightbox-next" id="gallery-lightbox-next" type="button" aria-label="Próxima imagem">&#8250;</button>
         <button class="gallery-lightbox-close" id="gallery-lightbox-close" type="button" aria-label="Fechar imagem ampliada">×</button>
-        <img id="gallery-lightbox-image" src="" alt="Imagem ampliada">
+        <div class="gallery-lightbox-image-wrap">
+          <img id="gallery-lightbox-image" src="" alt="Imagem ampliada">
+        </div>
       </div>
 
       <div class="cart-overlay" id="cart-overlay"></div>

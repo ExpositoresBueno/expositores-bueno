@@ -223,66 +223,161 @@ function escapeForAttribute(value) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const gallery = document.querySelector('[data-gallery-folder]');
+  const carousel = document.querySelector('.monte-gallery-carousel');
+  const track = document.querySelector('.monte-gallery-track[data-gallery-folder]');
+  const emptyState = document.querySelector('.monte-gallery-empty');
   const lightbox = document.getElementById('gallery-lightbox');
   const lightboxImage = document.getElementById('gallery-lightbox-image');
   const lightboxClose = document.getElementById('gallery-lightbox-close');
+  const lightboxNext = document.getElementById('gallery-lightbox-next');
 
-  if (!gallery) return;
+  if (!carousel || !track) return;
 
-  const folder = gallery.getAttribute('data-gallery-folder');
+  const folder = track.getAttribute('data-gallery-folder');
   const images = galleryManifest[folder] || [];
 
   if (!images.length) {
-    gallery.innerHTML = '<p class="monte-gallery-empty">Nenhuma imagem encontrada para esta categoria.</p>';
+    carousel.hidden = true;
+    emptyState?.removeAttribute('hidden');
     return;
   }
 
-  const fragment = document.createDocumentFragment();
-  images.forEach((src, index) => {
+  const createCard = (src, index) => {
     const item = document.createElement('button');
     item.type = 'button';
     item.className = 'monte-gallery-item';
     item.setAttribute('aria-label', `Ampliar imagem ${index + 1} de ${images.length}`);
-    item.innerHTML = `<img src="${escapeForAttribute(src)}" alt="Imagem ${index + 1} da galeria ${folder}" loading="lazy">`;
+    item.dataset.index = String(index);
+    item.innerHTML = `<img src="${escapeForAttribute(src)}" alt="Imagem ${index + 1} da galeria ${folder}" loading="${index < 6 ? 'eager' : 'lazy'}" decoding="async">`;
 
-    item.addEventListener('click', () => {
-      if (!lightbox || !lightboxImage) return;
-      lightboxImage.src = src;
-      lightboxImage.alt = `Imagem ampliada ${index + 1} da galeria ${folder}`;
-      lightbox.classList.add('active');
-      lightbox.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-    });
+    const image = item.querySelector('img');
+    if (image && index < 2) {
+      image.fetchPriority = 'high';
+    }
 
-    fragment.appendChild(item);
+    return item;
+  };
+
+  track.innerHTML = '';
+  const originalCards = images.map((src, index) => createCard(src, index));
+  originalCards.forEach((card) => track.appendChild(card));
+
+  let currentCardIndex = -1;
+  let animationFrame = null;
+  let lastFrameTime = 0;
+  const speedPxPerSecond = 160;
+
+  const duplicatedCards = originalCards.map((card) => {
+    const clone = card.cloneNode(true);
+    clone.dataset.clone = 'true';
+    track.appendChild(clone);
+    return clone;
   });
 
-  gallery.appendChild(fragment);
+  const updateLightboxImage = (index) => {
+    const normalizedIndex = ((index % images.length) + images.length) % images.length;
+    const src = images[normalizedIndex];
+    if (!src || !lightboxImage) return;
 
-  function closeLightbox() {
+    lightboxImage.src = src;
+    lightboxImage.alt = `Imagem ampliada ${normalizedIndex + 1} da galeria ${folder}`;
+    currentCardIndex = normalizedIndex;
+  };
+
+  const openLightbox = (card) => {
     if (!lightbox || !lightboxImage) return;
+
+    const imageIndex = Number(card.dataset.index);
+    if (Number.isNaN(imageIndex)) return;
+
+    updateLightboxImage(imageIndex);
+    lightbox.classList.add('active');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeLightbox = () => {
+    if (!lightbox || !lightboxImage) return;
+
     lightbox.classList.remove('active');
     lightbox.setAttribute('aria-hidden', 'true');
     lightboxImage.src = '';
     document.body.style.overflow = '';
-  }
+  };
 
-  if (lightboxClose) {
-    lightboxClose.addEventListener('click', closeLightbox);
-  }
+  const showNextImage = () => {
+    if (!images.length) return;
+    const nextIndex = currentCardIndex < 0 ? 0 : (currentCardIndex + 1) % images.length;
+    updateLightboxImage(nextIndex);
+  };
 
-  if (lightbox) {
-    lightbox.addEventListener('click', (event) => {
-      if (event.target === lightbox) {
-        closeLightbox();
-      }
-    });
-  }
+  const getLoopPoint = () => track.scrollWidth / 2;
+
+  const stopAutoplay = () => {
+    if (animationFrame) cancelAnimationFrame(animationFrame);
+    animationFrame = null;
+  };
+
+  const autoplay = (timestamp) => {
+    if (!lastFrameTime) lastFrameTime = timestamp;
+    const deltaInSeconds = (timestamp - lastFrameTime) / 1000;
+    lastFrameTime = timestamp;
+
+    if (!lightbox?.classList.contains('active')) {
+      carousel.scrollLeft += speedPxPerSecond * deltaInSeconds;
+    }
+
+    const loopPoint = getLoopPoint();
+    if (carousel.scrollLeft >= loopPoint) {
+      carousel.scrollLeft -= loopPoint;
+    }
+
+    animationFrame = requestAnimationFrame(autoplay);
+  };
+
+  const startAutoplay = () => {
+    stopAutoplay();
+    lastFrameTime = 0;
+    animationFrame = requestAnimationFrame(autoplay);
+  };
+
+  const allCards = [...originalCards, ...duplicatedCards];
+  allCards.forEach((card) => {
+    card.addEventListener('click', () => openLightbox(card));
+    card.addEventListener('focusin', stopAutoplay);
+    card.addEventListener('focusout', startAutoplay);
+  });
+
+  carousel.addEventListener('mouseenter', stopAutoplay);
+  carousel.addEventListener('mouseleave', startAutoplay);
+
+  lightboxClose?.addEventListener('click', closeLightbox);
+  lightboxNext?.addEventListener('click', showNextImage);
+
+  lightbox?.addEventListener('click', (event) => {
+    if (event.target === lightbox) {
+      closeLightbox();
+    }
+  });
 
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
       closeLightbox();
     }
+
+    if (event.key === 'ArrowRight' && lightbox?.classList.contains('active')) {
+      showNextImage();
+    }
   });
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      stopAutoplay();
+      return;
+    }
+
+    startAutoplay();
+  });
+
+  startAutoplay();
 });

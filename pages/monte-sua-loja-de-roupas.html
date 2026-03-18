@@ -129,18 +129,20 @@
         </section>
         <p class="monte-description">A forma como as peças são expostas influencia diretamente nas vendas. Veja exemplos de montagem com araras, nichos e expositores que ajudam a valorizar as coleções e organizar o espaço da loja.</p>
 
-
-
-        <div class="monte-project-cta">
-          <a class="monte-project-btn" href="./solicitar-projeto-3d.html?segmento=Loja%20de%20Roupas">Quero fazer o projeto da minha loja de roupas</a>
-        </div>
-
-        <section class="monte-gallery-grid" data-gallery-folder="Lojas de roupas" aria-label="Galeria de imagens de Monte sua Loja de Roupas"></section>
+        <section class="monte-gallery-section" aria-label="Galeria de projetos">
+          <div class="monte-gallery-carousel">
+            <div class="monte-gallery-track" data-gallery-folder="Lojas de roupas" aria-label="Galeria de imagens de Monte sua Loja de Roupas"></div>
+          </div>
+          <p class="monte-gallery-empty" hidden>Nenhuma imagem encontrada para esta categoria.</p>
+        </section>
       </main>
 
       <div class="gallery-lightbox" id="gallery-lightbox" aria-hidden="true">
+        <button class="gallery-lightbox-next" id="gallery-lightbox-next" type="button" aria-label="Próxima imagem">&#8250;</button>
         <button class="gallery-lightbox-close" id="gallery-lightbox-close" type="button" aria-label="Fechar imagem ampliada">×</button>
-        <img id="gallery-lightbox-image" src="" alt="Imagem ampliada">
+        <div class="gallery-lightbox-image-wrap">
+          <img id="gallery-lightbox-image" src="" alt="Imagem ampliada">
+        </div>
       </div>
 
       <div class="cart-overlay" id="cart-overlay"></div>
