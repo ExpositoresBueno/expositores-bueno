@@ -115,15 +115,27 @@ function obterValorPrimeiroPagamento(totalComDesconto) {
   return Math.min(valorDigitado, Number(totalComDesconto) || 0);
 }
 
-function sincronizarSegundaFormaPagamento() {
+function sincronizarCamposPagamento(totalComDesconto) {
   const segundoPagamentoEl = document.getElementById("second-payment-method");
   const primeiroPagamentoEl = document.getElementById("first-payment-amount");
   if (!segundoPagamentoEl || !primeiroPagamentoEl) return;
 
-  const valorPrimeiroPagamento = Number(primeiroPagamentoEl.value || 0);
-  if (Number.isFinite(valorPrimeiroPagamento) && valorPrimeiroPagamento > 0 && segundoPagamentoEl.value === "NENHUM") {
-    segundoPagamentoEl.value = PAGAMENTO_CREDITO;
+  const possuiSegundaFormaSelecionada = segundoPagamentoEl.value !== "NENHUM";
+  const totalNormalizado = Number(totalComDesconto) || 0;
+
+  if (!possuiSegundaFormaSelecionada) {
+    primeiroPagamentoEl.disabled = true;
+    primeiroPagamentoEl.value = totalNormalizado > 0 ? totalNormalizado.toFixed(2) : "";
+    primeiroPagamentoEl.dataset.autoFill = "true";
+    return;
   }
+
+  const estavaAutopreenchido = primeiroPagamentoEl.dataset.autoFill === "true";
+  primeiroPagamentoEl.disabled = false;
+  if (estavaAutopreenchido) {
+    primeiroPagamentoEl.value = "";
+  }
+  primeiroPagamentoEl.dataset.autoFill = "false";
 }
 
 function obterPrecoAvistaItem(item) {
@@ -138,7 +150,8 @@ function calcularResumo(cart) {
   const subtotal = cart.reduce((acc, item) => acc + item.preco * item.quantidade, 0);
   const metodoPagamento = obterMetodoPagamentoSelecionado();
   const segundoMetodoPagamento = obterSegundoMetodoPagamentoSelecionado();
-  const temDesconto = PAGAMENTOS_COM_DESCONTO.includes(metodoPagamento);
+  const segundaFormaSelecionada = segundoMetodoPagamento !== "NENHUM";
+  const temDesconto = !segundaFormaSelecionada && PAGAMENTOS_COM_DESCONTO.includes(metodoPagamento);
 
   let totalComDesconto = subtotal;
   if (temDesconto) {
@@ -155,9 +168,13 @@ function calcularResumo(cart) {
   }
 
   const desconto = Math.max(0, subtotal - totalComDesconto);
-  const primeiroPagamento = obterValorPrimeiroPagamento(totalComDesconto);
-  const saldoSegundaForma = Math.max(0, totalComDesconto - primeiroPagamento);
-  const possuiSegundoPagamento = segundoMetodoPagamento !== "NENHUM" && saldoSegundaForma > 0;
+  const primeiroPagamento = segundaFormaSelecionada
+    ? obterValorPrimeiroPagamento(totalComDesconto)
+    : totalComDesconto;
+  const saldoSegundaForma = segundaFormaSelecionada
+    ? Math.max(0, totalComDesconto - primeiroPagamento)
+    : 0;
+  const possuiSegundoPagamento = segundaFormaSelecionada && saldoSegundaForma > 0;
 
   return {
     subtotal,
@@ -389,9 +406,11 @@ function montarMensagem(cart) {
 }
 
 function atualizarCheckout() {
-  sincronizarSegundaFormaPagamento();
   const cart = getCart();
   renderizarItens(cart);
+
+  const resumoInicial = calcularResumo(cart);
+  sincronizarCamposPagamento(resumoInicial.totalComDesconto);
 
   const { totalComDesconto } = calcularResumo(cart);
   preencherParcelas(totalComDesconto);
