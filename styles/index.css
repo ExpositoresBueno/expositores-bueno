@@ -2433,30 +2433,19 @@ body {
   }
 }
 
-/* Dropdown com descrições para menu Monte sua Loja */
+/* Dropdown simplificado para menu Monte sua Loja */
 .dropdown-menu-monte-loja {
-  min-width: 430px;
-  max-width: 520px;
+  min-width: 260px;
+  max-width: 320px;
 }
 
 .dropdown-menu-monte-loja li a {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 4px;
-  white-space: normal;
+  display: block;
+  padding: 12px 20px;
+  white-space: nowrap;
   line-height: 1.35;
-}
-
-.dropdown-menu-monte-loja li a strong {
   font-size: 0.95rem;
-  font-weight: 700;
-}
-
-.dropdown-menu-monte-loja li a span {
-  font-size: 0.82rem;
-  font-weight: 400;
-  opacity: 0.9;
+  font-weight: 600;
 }
 
 /* Ajuste visual solicitado: faixa do cabeçalho totalmente branca e logo maior */
@@ -2496,16 +2485,8 @@ body {
 
   .dropdown-menu-monte-loja li a {
     padding: 10px 14px;
-    gap: 3px;
-  }
-
-  .dropdown-menu-monte-loja li a strong {
     font-size: 0.88rem;
-  }
-
-  .dropdown-menu-monte-loja li a span {
-    font-size: 0.74rem;
-    line-height: 1.3;
+    white-space: normal;
   }
 
   .header-logo img {
