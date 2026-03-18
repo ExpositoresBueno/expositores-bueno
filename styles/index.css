@@ -2433,30 +2433,31 @@ body {
   }
 }
 
-/* Dropdown com descrições para menu Monte sua Loja */
+/* Dropdown simplificado para menu Monte sua Loja */
 .dropdown-menu-monte-loja {
-  min-width: 430px;
-  max-width: 520px;
+  min-width: 260px;
+  max-width: 320px;
+}
+
+.header-nav ul.dropdown-menu.dropdown-menu-monte-loja {
+  display: block;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.dropdown-menu-monte-loja li {
+  display: block;
+  width: 100%;
 }
 
 .dropdown-menu-monte-loja li a {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 4px;
-  white-space: normal;
+  display: block;
+  width: 100%;
+  padding: 12px 20px;
+  white-space: nowrap;
   line-height: 1.35;
-}
-
-.dropdown-menu-monte-loja li a strong {
   font-size: 0.95rem;
-  font-weight: 700;
-}
-
-.dropdown-menu-monte-loja li a span {
-  font-size: 0.82rem;
-  font-weight: 400;
-  opacity: 0.9;
+  font-weight: 600;
 }
 
 /* Ajuste visual solicitado: faixa do cabeçalho totalmente branca e logo maior */
@@ -2474,9 +2475,30 @@ body {
 }
 
 @media (max-width: 768px) {
+  .header-nav > ul > li.has-dropdown > a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 10px;
+    border-radius: 8px;
+    line-height: 1.2;
+    text-align: center;
+  }
+
   .dropdown-menu-monte-loja {
-    min-width: 300px;
-    max-width: calc(100vw - 32px);
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: unset;
+    width: min(320px, calc(100vw - 24px));
+    max-width: calc(100vw - 24px);
+    max-height: min(60vh, 420px);
+    overflow-y: auto;
+  }
+
+  .dropdown-menu-monte-loja li a {
+    padding: 10px 14px;
+    font-size: 0.88rem;
+    white-space: normal;
   }
 
   .header-logo img {
