@@ -111,3 +111,37 @@
     grid-template-columns: 1fr;
   }
 }
+
+
+.monte-project-cta {
+  margin: 0 0 28px;
+}
+
+.monte-project-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #25d366;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 14px 22px;
+  border-radius: 999px;
+  box-shadow: 0 10px 20px rgba(37, 211, 102, 0.22);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.monte-project-btn:hover,
+.monte-project-btn:focus-visible {
+  background: #1ebe5d;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(37, 211, 102, 0.28);
+}
+
+@media (max-width: 640px) {
+  .monte-project-btn {
+    width: 100%;
+    text-align: center;
+    padding: 14px 18px;
+  }
+}
