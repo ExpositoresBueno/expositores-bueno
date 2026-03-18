@@ -1,0 +1,290 @@
+[
+  {
+    "id": 1,
+    "nome": "BALCÃO CAIXINHA",
+    "larguraBase": 0.55,
+    "precoBase": 449,
+    "permiteOrcamentoMedida": "sim",
+    "orcamentos": {
+      "1.20": 979.64,
+      "2.67": 2179.69,
+      "0.60": 489.82
+    }
+  },
+  {
+    "id": 2,
+    "nome": "BALCÃO CAIXA COM VITRINE (BRANCO)",
+    "larguraBase": 1.15,
+    "precoBase": 875,
+    "permiteOrcamentoMedida": "sim",
+    "orcamentos": {
+      "1.20": 913.04,
+      "2.67": 2031.52,
+      "0.60": 456.52
+    }
+  },
+  {
+    "id": 3,
+    "nome": "BALCÃO VITRINE",
+    "larguraBase": 1,
+    "precoBase": 800,
+    "permiteOrcamentoMedida": "sim",
+    "orcamentos": {
+      "1.20": 960,
+      "2.67": 2136,
+      "0.60": 480
+    }
+  },
+  {
+    "id": 4,
+    "nome": "BALCÃO CAIXA",
+    "larguraBase": 1,
+    "precoBase": 815,
+    "permiteOrcamentoMedida": "sim",
+    "orcamentos": {
+      "1.20": 978,
+      "2.67": 2176.05,
+      "0.60": 489
+    }
+  },
+  {
+    "id": 5,
+    "nome": "ARMÁRIO COLMEIA",
+    "larguraBase": 0.9,
+    "precoBase": 699,
+    "permiteOrcamentoMedida": "sim",
+    "orcamentos": {
+      "1.20": 932,
+      "2.67": 2073.7,
+      "0.60": 466
+    }
+  },
+  {
+    "id": 6,
+    "nome": "MÓVEL COM PRATELEIRAS",
+    "larguraBase": 0.9,
+    "precoBase": 560,
+    "permiteOrcamentoMedida": "sim",
+    "orcamentos": {
+      "1.20": 746.67,
+      "2.67": 1661.33,
+      "0.60": 373.33
+    }
+  },
+  {
+    "id": 7,
+    "nome": "ARARA DE MDF COM COLMEIA",
+    "larguraBase": 0.9,
+    "precoBase": 459,
+    "permiteOrcamentoMedida": "sim",
+    "orcamentos": {
+      "1.20": 612,
+      "2.67": 1361.7,
+      "0.60": 306
+    }
+  },
+  {
+    "id": 8,
+    "nome": "ARARA DE MDF COM COLMEIA LATERAL",
+    "larguraBase": 0.9,
+    "precoBase": 459,
+    "permiteOrcamentoMedida": "sim",
+    "orcamentos": {
+      "1.20": 612,
+      "2.67": 1361.7,
+      "0.60": 306
+    }
+  },
+  {
+    "id": 10,
+    "nome": "GÔNDOLA 8 CANTOS",
+    "larguraBase": 0.9,
+    "precoBase": 899,
+    "permiteOrcamentoMedida": "nao",
+    "orcamentos": {
+      "1.20": null,
+      "2.67": null,
+      "0.60": null
+    }
+  },
+  {
+    "id": 11,
+    "nome": "GÔNDOLA CENTRAL",
+    "larguraBase": 1.4,
+    "precoBase": 990,
+    "permiteOrcamentoMedida": "sim",
+    "orcamentos": {
+      "1.20": 848.57,
+      "2.67": 1888.07,
+      "0.60": 424.29
+    }
+  },
+  {
+    "id": 12,
+    "nome": "MÓVEL PARA VITRINE",
+    "larguraBase": 1.5,
+    "precoBase": 1590,
+    "permiteOrcamentoMedida": "sim",
+    "orcamentos": {
+      "1.20": 1272,
+      "2.67": 2830.2,
+      "0.60": 636
+    }
+  },
+  {
+    "id": 13,
+    "nome": "ARMÁRIO VESTIÁRIO 8 PORTAS",
+    "larguraBase": 0.6,
+    "precoBase": 1040,
+    "permiteOrcamentoMedida": "nao",
+    "orcamentos": {
+      "1.20": null,
+      "2.67": null,
+      "0.60": null
+    }
+  },
+  {
+    "id": 14,
+    "nome": "GÔNDOLA CANALETADA",
+    "larguraBase": 0.9,
+    "precoBase": 490,
+    "permiteOrcamentoMedida": "sim",
+    "orcamentos": {
+      "1.20": 653.33,
+      "2.67": 1453.67,
+      "0.60": 326.67
+    }
+  },
+  {
+    "id": 15,
+    "nome": "GÔNDOLA QUADRADA MADEIRADA",
+    "larguraBase": 0.9,
+    "precoBase": 1590,
+    "permiteOrcamentoMedida": "nao",
+    "orcamentos": {
+      "1.20": null,
+      "2.67": null,
+      "0.60": null
+    }
+  },
+  {
+    "id": 16,
+    "nome": "BALCÃO CAIXA COM RIPADO",
+    "larguraBase": 1.2,
+    "precoBase": 3750,
+    "permiteOrcamentoMedida": "nao",
+    "orcamentos": {
+      "1.20": null,
+      "2.67": null,
+      "0.60": null
+    }
+  },
+  {
+    "id": 17,
+    "nome": "CARRINHO AUXILIAR",
+    "larguraBase": 0.4,
+    "precoBase": 389,
+    "permiteOrcamentoMedida": "sim",
+    "orcamentos": {
+      "1.20": 1167,
+      "2.67": 2596.57,
+      "0.60": 583.5
+    }
+  },
+  {
+    "id": 18,
+    "nome": "MÓVEL PARA VITRINE EM S",
+    "larguraBase": 0.9,
+    "precoBase": 689,
+    "permiteOrcamentoMedida": "sim",
+    "orcamentos": {
+      "1.20": 918.67,
+      "2.67": 2044.03,
+      "0.60": 459.33
+    }
+  },
+  {
+    "id": 19,
+    "nome": "MÓVEL PRATELEIRA INCLINADA",
+    "larguraBase": 0.9,
+    "precoBase": 629,
+    "permiteOrcamentoMedida": "sim",
+    "orcamentos": {
+      "1.20": 838.67,
+      "2.67": 1866.03,
+      "0.60": 419.33
+    }
+  },
+  {
+    "id": 20,
+    "nome": "MÓVEL ESCADA",
+    "larguraBase": 0.9,
+    "precoBase": 240,
+    "permiteOrcamentoMedida": "sim",
+    "orcamentos": {
+      "1.20": 320,
+      "2.67": 712,
+      "0.60": 160
+    }
+  },
+  {
+    "id": 21,
+    "nome": "MÓVEL PAINEL CANALETADO",
+    "larguraBase": 0.9,
+    "precoBase": 620,
+    "permiteOrcamentoMedida": "sim",
+    "orcamentos": {
+      "1.20": 826.67,
+      "2.67": 1839.33,
+      "0.60": 413.33
+    }
+  },
+  {
+    "id": 22,
+    "nome": "MÓVEL PAINEL COM NICHO LATERAL",
+    "larguraBase": 0.9,
+    "precoBase": 750,
+    "permiteOrcamentoMedida": "sim",
+    "orcamentos": {
+      "1.20": 1000,
+      "2.67": 2225,
+      "0.60": 500
+    }
+  },
+  {
+    "id": 23,
+    "nome": "MÓVEL PAINEL CANALETADO COM 9 NICHOS",
+    "larguraBase": 0.9,
+    "precoBase": 750,
+    "permiteOrcamentoMedida": "sim",
+    "orcamentos": {
+      "1.20": 1000,
+      "2.67": 2225,
+      "0.60": 500
+    }
+  },
+  {
+    "id": 24,
+    "nome": "MÓVEL PAINEL CANALETADO COM 6 NICHOS",
+    "larguraBase": 0.9,
+    "precoBase": 750,
+    "permiteOrcamentoMedida": "sim",
+    "orcamentos": {
+      "1.20": 1000,
+      "2.67": 2225,
+      "0.60": 500
+    }
+  },
+  {
+    "id": 25,
+    "nome": "KIT CABIDEIROS 60CM",
+    "larguraBase": 0.6,
+    "precoBase": 899,
+    "permiteOrcamentoMedida": "nao",
+    "orcamentos": {
+      "1.20": null,
+      "2.67": null,
+      "0.60": null
+    }
+  }
+]

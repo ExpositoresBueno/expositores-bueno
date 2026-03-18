@@ -6,13 +6,50 @@
     <meta name="description" content="A Expositores Bueno fabrica expositores e displays para lojas, vitrines e comércios. Soluções sob medida, diversos modelos e orçamento via WhatsApp." />
     <meta name="author" content="Expositores Bueno" />
     <link rel="stylesheet" href="../styles/index.css" />
+    <link rel="stylesheet" href="../styles/performance.min.css" />
     <link rel="stylesheet" href="../styles/productDetail.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="../images/favicon.png">
 
     <title>Expositores Bueno | Detalhes Produtos</title>
-  </head>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-327475264"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+
+      gtag('config', 'AW-327475264');
+    </script>
+
+    <!-- Google Analytics GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3M4J13DB3D"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+
+      gtag('js', new Date());
+      gtag('config', 'G-3M4J13DB3D');
+    </script>
+    <!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1992317484686861');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1992317484686861&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
   <body>
     <div class="page">
       <header class="header">
@@ -26,7 +63,7 @@
         <div class="header-main">
           <div class="header-logo">
             <a href="../index.html" style="text-decoration: none;">
-            <img src="../images/expo-bueno-logo.jpg" alt="Expositores Bueno" />
+            <img src="../images/72739814197.png" alt="Expositores Bueno" />
             </a>
             </div>
           <div class="header-search">
@@ -50,12 +87,19 @@
             <li><a href="/index.html">INÍCIO</a></li>
 
             <li class="has-dropdown">
-              <a href="javascript:void(0)">MAIS VENDIDOS ▾</a>
-              <ul class="dropdown-menu">
-                <li><a href="#" data-filter="BALCÃO CAIXA COM VITRINE">Balcão Caixa c/ Vitrine</a></li>
-                <li><a href="#" data-filter="ARMÁRIO COLMEIA">Armário Colmeia</a></li>
-                <li><a href="#" data-filter="MÓVEL COM PRATELEIRAS">Móvel c/ Prateleiras</a></li>
-                <li><a href="#" data-filter="ARARA DE MDF COM COLMEIA">Arara c/ Colmeia</a></li>
+              <a href="../index.html#products-grid">NOSSOS PRODUTOS</a>
+            </li>
+
+            <li class="has-dropdown">
+              <a href="javascript:void(0)">MONTE SUA LOJA ▾</a>
+              <ul class="dropdown-menu dropdown-menu-monte-loja">
+                <li><a href="../pages/monte-seu-bazar.html">Bazar</a></li>
+                <li><a href="../pages/monte-sua-farmacia.html">Farmácias</a></li>
+                <li><a href="../pages/monte-sua-clinica.html">Clínicas</a></li>
+                <li><a href="../pages/monte-seu-escritorio.html">Escritórios</a></li>
+                <li><a href="../pages/monte-sua-loja-de-roupas.html">Loja de Roupas</a></li>
+                <li><a href="../pages/monte-sua-otica.html">Óticas</a></li>
+                <li><a href="../pages/monte-sua-loja.html">Todo Tipo de Comércio</a></li>
               </ul>
             </li>
 
@@ -65,6 +109,13 @@
 
             <li class="has-dropdown">
               <a href="./instalacoes.html">INSTALAÇÕES</a>
+            </li>
+
+            <li class="has-dropdown">
+              <a href="./avaliacoes.html">AVALIAÇÕES</a>
+            </li>
+            <li class="has-dropdown">
+              <a href="./nossa-loja.html">NOSSA LOJA</a>
             </li>
           </ul>
         </nav>
@@ -93,10 +144,29 @@
 
                 <button id="gallery-next" class="gallery-nav-btn" type="button" aria-label="Próxima imagem">❯</button>
               </div>
+
+              <div class="product-description-side">
+                <p id="product-desc"></p>
+              </div>
             </div>
 
             <div class="product-info-section">
-              <h1 id="product-title">Carregando...</h1>
+              <div class="product-title-row">
+                <h1 id="product-title">Carregando...</h1>
+                <div class="share-inline-wrap">
+                  <button id="share-product-btn" class="share-inline-btn" type="button" aria-label="Compartilhar produto" title="Compartilhar produto">
+                    <i class="fa-solid fa-share-nodes" aria-hidden="true"></i>
+                  </button>
+                  <div id="share-inline-menu" class="share-inline-menu" aria-label="Opções de compartilhamento" hidden>
+                    <button id="share-whatsapp-btn" class="share-inline-option" type="button" aria-label="Compartilhar no WhatsApp" title="Compartilhar no WhatsApp">
+                      <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                    </button>
+                    <button id="share-copy-btn" class="share-inline-option" type="button" aria-label="Copiar link do produto" title="Copiar link do produto">
+                      <i class="fa-solid fa-link" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
               <span id="product-category" class="badge-category"></span>
 
               <div class="price-container">
@@ -104,19 +174,105 @@
                 <span id="product-price" class="price-value">0,00</span>
               </div>
 
-              <div class="product-description-side">
-                <p id="product-desc"></p>
+              <div class="product-quantity-detail">
+                <label for="detail-quantity-input">Quantidade</label>
+                <input id="detail-quantity-input" class="quantity-input-detail" type="number" min="1" value="1" step="1" inputmode="numeric">
               </div>
+
+              <section class="color-selector" id="color-selector">
+                <h2>Cores</h2>
+                <p class="color-helper">Selecione a cor desejada para o produto.</p>
+                <div class="color-options" role="radiogroup" aria-label="Selecionar cor">
+                  <label class="color-option">
+                    <input type="radio" name="product-color" value="branco" checked>
+                    <span>Branco</span>
+                  </label>
+                  <label class="color-option">
+                    <input type="radio" name="product-color" value="preto">
+                    <span>Preto</span>
+                  </label>
+                  <label class="color-option">
+                    <input type="radio" name="product-color" value="madeirado">
+                    <span>Madeirado</span>
+                  </label>
+                </div>
+              </section>
+
+              <section class="budget-calculator" id="budget-calculator">
+                <h2>Orçamento por medidas</h2>
+                <p class="budget-helper">
+                  Precisa deste móvel em outra medida?
+Informe as dimensões abaixo e calcule o preço na hora.
+                </p>
+
+                <div class="budget-dimension-row" data-dimension-row="largura">
+                  <label for="desired-width">Largura desejada</label>
+                  <div class="budget-input-row">
+                    <input type="text" id="desired-width" inputmode="decimal" placeholder="Ex.: 1.50, 150cm ou 1500mm" />
+                    <button type="button" class="budget-reset-btn" data-reset-dimension="largura">Padrão</button>
+                  </div>
+                </div>
+
+                <div class="budget-dimension-row" data-dimension-row="altura">
+                  <label for="desired-height">Altura desejada</label>
+                  <div class="budget-input-row">
+                    <input type="text" id="desired-height" inputmode="decimal" placeholder="Ex.: 1.80, 180cm ou 1800mm" />
+                    <button type="button" class="budget-reset-btn" data-reset-dimension="altura">Padrão</button>
+                  </div>
+                </div>
+
+                <div class="budget-dimension-row" data-dimension-row="profundidade">
+                  <label for="desired-depth">Profundidade desejada</label>
+                  <div class="budget-input-row">
+                    <input type="text" id="desired-depth" inputmode="decimal" placeholder="Ex.: 0.40, 40cm ou 400mm" />
+                    <button type="button" class="budget-reset-btn" data-reset-dimension="profundidade">Padrão</button>
+                  </div>
+                </div>
+
+                <button type="button" id="calculate-budget-btn">Calcular orçamento</button>
+
+                <p class="budget-result" id="budget-result">
+                  Ajuste qualquer medida e clique em calcular.
+                </p>
+              </section>
+
+              <section class="installments-box" id="installments-box" aria-live="polite">
+                <h2>Parcelamento sem juros</h2>
+                <p class="installments-value" id="installments-value">Valor R$ 0,00.</p>
+                <p class="installments-plan" id="installments-plan">1x de R$ 0,00</p>
+              </section>
 
               <div class="purchase-actions">
                 <button id="add-to-cart-btn" class="btn-whatsapp-large" data-id="" style="border: none; cursor: pointer; width: 100%;">
                   Adicionar ao Carrinho
                 </button>
+
               </div>
 
             </div>
           </div>
         </main>
+
+        <section class="product-recommendations" aria-label="Sugestões de produtos">
+          <article class="recommendation-block">
+            <h2>Quem viu este produto, viu estes também</h2>
+            <div class="recommendation-carousel">
+              <button class="recommendation-nav" type="button" data-recommendation-prev="quem-viu" aria-label="Produtos anteriores">❮</button>
+              <div class="recommendation-track" id="quem-viu-track"></div>
+              <button class="recommendation-nav" type="button" data-recommendation-next="quem-viu" aria-label="Próximos produtos">❯</button>
+            </div>
+          </article>
+
+          <article class="recommendation-block">
+            <h2>Produtos mais procurados deste departamento</h2>
+            <div class="recommendation-carousel">
+              <button class="recommendation-nav" type="button" data-recommendation-prev="departamento" aria-label="Produtos anteriores">❮</button>
+              <div class="recommendation-track" id="departamento-track"></div>
+              <button class="recommendation-nav" type="button" data-recommendation-next="departamento" aria-label="Próximos produtos">❯</button>
+            </div>
+          </article>
+        </section>
+
         <!-- Carrinho Flutuante -->
         <div class="cart-overlay" id="cart-overlay"></div>
           <div class="cart-drawer" id="cart-drawer">
@@ -131,21 +287,29 @@
             </div>
           </div>
 
+
+      <div id="image-lightbox" class="image-lightbox" hidden aria-hidden="true">
+        <button id="lightbox-close" class="lightbox-close-btn" type="button" aria-label="Fechar imagem ampliada">✕</button>
+        <img id="lightbox-image" class="lightbox-image" src="" alt="Imagem ampliada do produto">
+      </div>
+
       <footer class="main-footer">
         <div class="footer-container">
           <div class="footer-column">
             <h3>Endereço</h3>
             <ul class="footer-info">
               <li>
-                <i class="location-icon"></i>
+                <i class="fa-solid fa-location-dot footer-mini-icon" aria-hidden="true"></i>
                   <a target="_blank" href="https://www.google.com/maps/place/Expositores+Bueno/@-29.9038645,-51.1714882,17z/data=!3m1!4b1!4m6!3m5!1s0x9519707845c7925b:0xe744a83d42306f90!8m2!3d-29.9038645!4d-51.1714882!16s%2Fg%2F1w0p6t2h?entry=ttu&g_ep=EgoyMDI2MDMwNC4xIKXMDSoASAFQAw%3D%3D">Av. Boqueirão 804, Canoas, RS, 92410-350</a>
               </li>
+              <li class="footer-phone-list">
+                  <div class="footer-phone-links">
+                    <a class="footer-phone-link" href="https://wa.me/5551996034579" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i>(51) 99603-4579</a>
+                    <a class="footer-phone-link" href="https://wa.me/5551994623730" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i>(51) 99462-3730</a>
+                  </div>
+                </li>
               <li>
-                <i class="phone-icon"></i>
-                <span>(51) 99603-4579<br>(51) 3032-1020<br>(51) 3032-1414</span>
-              </li>
-              <li>
-                <i class="instagram-icon"></i>
+                <i class="fa-brands fa-instagram footer-mini-icon" aria-hidden="true"></i>
                 <a href="https://www.instagram.com/expositoresbueno/">@expositoresbueno</a>
               </li>
             </ul>
@@ -159,7 +323,7 @@
               <tr><td>Quarta-Feira</td><td>08:30 às 18:00</td></tr>
               <tr><td>Quinta-Feira</td><td>08:30 às 18:00</td></tr>
               <tr><td>Sexta-Feira</td><td>08:30 às 18:00</td></tr>
-              <tr><td>Sábado</td><td>Fechado</td></tr>
+              <tr><td>Sábado</td><td>08:30 às 12:00</td></tr>
               <tr><td>Domingo</td><td>Fechado</td></tr>
             </table>
           </div>
@@ -184,5 +348,7 @@
     >
       <i class="fa-brands fa-whatsapp"></i>
     </a>
-  </body>
+    <script type="module" src="../scripts/performance.min.js"></script>
+  <script src="/scripts/google-ads-tracking.js"></script>
+</body>
 </html>

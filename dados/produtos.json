@@ -1,212 +1,2228 @@
 [
   {
     "id": 1,
-    "categoria": ["Balcões", "Caixas"],
+    "categoria": [
+      "Balcões",
+      "Caixas"
+    ],
     "nome": "BALCÃO CAIXINHA",
-    "preco": 449.00,
+    "preco": 449.0,
     "tamanho": "1.10m",
     "dimensoes": "1.10/1.00m Altura x 55cm Largura x 40cm Profundidade",
     "img": "./images/cards/balcaoCaixaComRodape.jpg",
     "descricao": "Balcão compacto com rodapé e gaveta. Ideal para otimizar espaços pequenos com baixo custo.",
-    "tags": ["balcao", "balcoes", "caixa", "rodape", "atendimento", "compacto", "gaveta", "movel", "moveis"]
+    "tags": [
+      "balcao",
+      "balcoes",
+      "caixa",
+      "rodape",
+      "atendimento",
+      "compacto",
+      "gaveta",
+      "movel",
+      "moveis"
+    ]
   },
   {
     "id": 2,
-    "categoria": ["Balcões", "Caixas", "Vitrines", "Farmácia"],
+    "categoria": [
+      "Balcões",
+      "Caixas",
+      "Vitrines",
+      "Farmácia"
+    ],
     "nome": "BALCÃO CAIXA COM VITRINE (BRANCO)",
-    "preco": 815.00,
+    "preco": 875.0,
     "tamanho": "1.10m",
     "dimensoes": "1.10/1.00m Altura x 1.15m Largura x 40cm Profundidade",
-    "img": "./images/cards/balcaoCaixaComVitrineBranco.jpg",
-    "descricao": "O campeão de vendas: balcão caixa com ampla vitrine frontal. Perfeito para Farmácias e Lojas variadas.",
-    "tags": ["balcao", "balcoes", "caixa", "vitrine", "branco", "atendimento", "farmacia", "vidro", "expositor", "movel", "moveis"]
+    "img": "./images/cards/atualizandocxvitrine (1).jpeg",
+    "descricao": "Balcão ideal para unir atendimento no caixa com exposição de produtos de maior valor.\nConta com vitrine frontal em vidro, permitindo destacar itens enquanto o cliente está no momento de compra — aumentando o ticket médio de forma natural.\nIndicado para:\nLojas de roupas, acessórios, eletrônicos, cosméticos e presentes.\nEstrutura:\nProduzido em MDF, com vitrine em vidro e espaço interno para organização.\nPossui gaveta com chave para maior segurança no caixa.\nDiferencial real:\nEnquanto o cliente paga, tu continua vendendo.\nPerfeito para produtos de impulso e maior margem.\nOpções:\n• Prateleiras em vidro (mais sofisticado)\n• Prateleiras em MDF (mais resistência)\nMedidas:\nLargura: 1,15 m\nAltura: 1,10 m\nProfundidade: 40 cm",
+    "tags": [
+      "balcao",
+      "balcoes",
+      "caixa",
+      "vitrine",
+      "branco",
+      "atendimento",
+      "farmacia",
+      "vidro",
+      "expositor",
+      "movel",
+      "moveis"
+    ],
+    "galeria": [
+      "./images/cards/atualizandocxvitrine (1).jpeg",
+      "./images/cards/atualizandocxvitrine (1).jpg",
+      "./images/cards/atualizandocxvitrine (2).jpg"
+    ]
   },
   {
     "id": 3,
-    "categoria": ["Balcões", "Vitrines", "Farmácia", "Expositores"],
+    "categoria": [
+      "Balcões",
+      "Vitrines",
+      "Farmácia",
+      "Expositores"
+    ],
     "nome": "BALCÃO VITRINE",
-    "preco": 800.00,
+    "preco": 800.0,
     "tamanho": "1.00m",
     "dimensoes": "1.00m Altura x 1.00m Largura x 40cm Profundidade",
-    "img": "./images/cards/balcaoVitrine.jpg",
+    "img": "./images/cards/atualizandobalcaovitrine (4).jpg",
     "descricao": "Vitrine expositora com opção de prateleiras em MDF ou Vidro. Essencial para exibir medicamentos ou joias.",
-    "tags": ["balcao", "balcoes", "vitrine", "vidro", "prateleira", "farmacia", "medicamento", "joia", "expositor", "movel", "moveis"]
+    "tags": [
+      "balcao",
+      "balcoes",
+      "vitrine",
+      "vidro",
+      "prateleira",
+      "farmacia",
+      "medicamento",
+      "joia",
+      "expositor",
+      "movel",
+      "moveis"
+    ],
+    "galeria": [
+      "./images/cards/atualizandobalcaovitrine (1).jpg",
+      "./images/cards/atualizandobalcaovitrine (2).jpg",
+      "./images/cards/atualizandobalcaovitrine (3).jpg"
+    ]
   },
   {
-  "id": 4,
-  "categoria": ["Balcões", "Caixas"],
-  "nome": "BALCÃO CAIXA",
-  "preco": 815.00,
-  "tamanho": "1.10m",
-  "dimensoes": "1.10/1.00m Altura x 1.00m Largura x 40cm Profundidade",
-  "img": "./images/cards/balcaoCaixa.jpg",
-  "descricao": "Balcão de atendimento fechado, focado em segurança e organização interna para o operador.",
-  "tags": ["balcao", "balcoes", "caixa", "atendimento", "fechado", "seguranca", "simples", "movel", "moveis"]
+    "id": 4,
+    "categoria": [
+      "Balcões",
+      "Caixas"
+    ],
+    "nome": "BALCÃO CAIXA",
+    "preco": 815.0,
+    "tamanho": "1.10m",
+    "dimensoes": "1.10/1.00m Altura x 1.00m Largura x 40cm Profundidade",
+    "img": "./images/CAIXAPACOTE1M (2).jpeg",
+    "descricao": "Balcão de atendimento fechado, focado em segurança e organização interna para o operador.",
+    "tags": [
+      "balcao",
+      "balcoes",
+      "caixa",
+      "atendimento",
+      "fechado",
+      "seguranca",
+      "simples",
+      "movel",
+      "moveis"
+    ],
+    "galeria": [
+      "./images/CAIXAPACOTE1M (1).jpeg",
+      "./images/CAIXAPACOTE1M (2).jpeg"
+    ]
   },
   {
     "id": 5,
-    "categoria": ["Colmeias", "Expositores", "Armários", "Pet Shop"],
+    "categoria": [
+      "Colmeias",
+      "Expositores",
+      "Armários",
+      "Pet Shop"
+    ],
     "nome": "ARMÁRIO COLMEIA",
-    "preco": 699.00,
+    "preco": 699.0,
     "tamanho": "1.85m",
     "dimensoes": "1.85m Altura x 90cm Largura x 30cm Profundidade",
     "img": "./images/cards/armarioColmeia.jpg",
     "descricao": "Expositor vertical com nichos. Ótimo para Pet Shops (rações/acessórios) e lojas de roupas.",
-    "tags": ["armario", "colmeia", "nicho", "nichos", "estante", "expositor", "pet shop", "roupa", "camiseta", "movel", "moveis"]
+    "tags": [
+      "armario",
+      "colmeia",
+      "nicho",
+      "nichos",
+      "estante",
+      "expositor",
+      "pet shop",
+      "roupa",
+      "camiseta",
+      "movel",
+      "moveis"
+    ]
   },
   {
-  "id": 6,
-  "categoria": ["Expositores", "Prateleiras", "Móvel", "Movel", "Moveis"],
-  "nome": "MÓVEL COM PRATELEIRAS",
-  "preco": 560.00,
-  "tamanho": "1.80m",
-  "dimensoes": "1.80m Altura x 90cm Largura x 30cm Profundidade",
-  "img": "./images/cards/movelPrateleira.jpg",
-  "galeria": [
-    "./images/movelprat (1).jpeg",
-    "./images/movelprat (2).jpeg",
-    "./images/movelprat (3).jpeg"
-  ],
-  "descricao": "Estante versátil com prateleiras abertas. Item obrigatório para Farmácias e Pet Shops.\n\nAltura: 1.80m\nLargura: 90cm\nProfundidade: 30cm.",
-  "tags": ["movel", "moveis", "estante", "prateleira", "prateleiras", "gondola", "farmacia", "pet shop", "aberto"]
+    "id": 6,
+    "categoria": [
+      "Expositores",
+      "Prateleiras",
+      "Móvel",
+      "Movel",
+      "Moveis"
+    ],
+    "nome": "MÓVEL COM PRATELEIRAS",
+    "preco": 560.0,
+    "tamanho": "1.80m",
+    "dimensoes": "1.80m Altura x 90cm Largura x 30cm Profundidade",
+    "img": "./images/cards/movelPrateleira.jpg",
+    "galeria": [
+      "./images/movelprat (1).jpeg",
+      "./images/movelprat (2).jpeg",
+      "./images/movelprat (3).jpeg"
+    ],
+    "descricao": "Estante versátil com prateleiras abertas. Item obrigatório para Farmácias e Pet Shops.\n\nAltura: 1.80m\nLargura: 90cm\nProfundidade: 30cm.",
+    "tags": [
+      "movel",
+      "moveis",
+      "estante",
+      "prateleira",
+      "prateleiras",
+      "gondola",
+      "farmacia",
+      "pet shop",
+      "aberto"
+    ]
   },
   {
     "id": 7,
-    "categoria": ["Araras", "Colmeias", "Expositores"],
+    "categoria": [
+      "Araras",
+      "Colmeias",
+      "Expositores"
+    ],
     "nome": "ARARA DE MDF COM COLMEIA",
-    "preco": 459.00,
+    "preco": 459.0,
     "tamanho": "1.85m",
     "dimensoes": "1.85m Altura x 90cm Largura x 30cm Profundidade",
     "img": "./images/cards/araraMDFColmeia.jpg",
     "descricao": "Modelo híbrido com cabideiro superior e nichos na base, aproveitando 100% do espaço vertical.",
-    "tags": ["arara", "araras", "mdf", "colmeia", "cabideiro", "cabide", "nicho", "nichos", "roupa", "loja", "movel", "moveis"]
+    "tags": [
+      "arara",
+      "araras",
+      "mdf",
+      "colmeia",
+      "cabideiro",
+      "cabide",
+      "nicho",
+      "nichos",
+      "roupa",
+      "loja",
+      "movel",
+      "moveis"
+    ]
   },
   {
-  "id": 8,
-  "categoria": ["Araras", "Colmeias", "Expositores"],
-  "nome": "ARARA DE MDF COM COLMEIA LATERAL",
-  "preco": 459.00,
-  "tamanho": "1.80m",
-  "dimensoes": "1.80m Altura x 90cm Largura x 30cm Profundidade",
-  "img": "./images/cards/araraMDFColmeia2.jpg",
-  "galeria": [
-    "./images/nicholat (1).jpeg",
-    "./images/nicholat (2).jpeg",
-    "./images/nicholat (3).jpeg",
-    "./images/nicholat (4).jpeg"
-  ],
-  "descricao": "Modelo premium com coluna lateral de nichos. Organização completa para looks e acessórios.\n\nAltura: 1.80m\nLargura: 90cm\nProfundidade: 30cm.",
-  "tags": ["arara", "araras", "mdf", "colmeia", "lateral", "cabideiro", "cabide", "nicho", "premium", "roupa", "loja", "movel", "moveis"]
+    "id": 8,
+    "categoria": [
+      "Araras",
+      "Colmeias",
+      "Expositores"
+    ],
+    "nome": "ARARA DE MDF COM COLMEIA LATERAL",
+    "preco": 459.0,
+    "tamanho": "1.80m",
+    "dimensoes": "1.80m Altura x 90cm Largura x 30cm Profundidade",
+    "img": "./images/cards/araraMDFColmeia2.jpg",
+    "galeria": [
+      "./images/nicholat (1).jpeg",
+      "./images/nicholat (2).jpeg",
+      "./images/nicholat (2).jpeg",
+      "./images/nicholat (4).jpeg"
+    ],
+    "descricao": "Modelo premium com coluna lateral de nichos. Organização completa para looks e acessórios.\n\nAltura: 1.80m\nLargura: 90cm\nProfundidade: 30cm.",
+    "tags": [
+      "arara",
+      "araras",
+      "mdf",
+      "colmeia",
+      "lateral",
+      "cabideiro",
+      "cabide",
+      "nicho",
+      "premium",
+      "roupa",
+      "loja",
+      "movel",
+      "moveis"
+    ]
   },
   {
-    "id": 9,
-    "categoria": ["Balcões", "Caixas", "Vitrines", "Linha Premium"],
-    "nome": "BALCÃO CAIXA COM VITRINE (PRETO)",
-    "preco": 910.00,
-    "tamanho": "1.10m",
-    "dimensoes": "1.10/1.00m Altura x 1.15m Largura x 40cm Profundidade",
-    "img": "./images/cards/balcaoCaixaComVitrinePreto.jpg",
-    "descricao": "Acabamento sofisticado na cor preta, ideal para boutiques e lojas modernas.",
-    "tags": ["balcao", "balcoes", "caixa", "vitrine", "preto", "escura", "atendimento", "premium", "boutique", "movel", "moveis"]
+    "id": 10,
+    "categoria": [
+      "Gôndolas",
+      "Expositores",
+      "Móveis de Centro",
+      "Moveis"
+    ],
+    "nome": "GÔNDOLA 8 CANTOS",
+    "preco": 899.0,
+    "tamanho": "1.20m",
+    "dimensoes": "1.20m Altura x 90cm Largura x 90cm Profundidade",
+    "img": "./images/8cantos (3).jpeg",
+    "galeria": [
+      "./images/8cantos (1).jpeg"
+    ],
+    "descricao": "Gôndola central de 8 cantos em MDF, ideal para exposição de produtos no centro da loja, com ótimo aproveitamento de espaço e visual organizado.\n\nAltura: 1.20m\nLargura: 90cm\nProfundidade: 90cm.",
+    "tags": [
+      "gondola",
+      "gondolas",
+      "8 cantos",
+      "central",
+      "mdf",
+      "expositor",
+      "movel de centro",
+      "moveis",
+      "loja",
+      "bazar",
+      "conveniencia",
+      "farmacia"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim"
   },
   {
-  "id": 10,
-  "categoria": ["Gôndolas", "Expositores", "Móveis de Centro", "Moveis"],
-  "nome": "GÔNDOLA 8 CANTOS",
-  "preco": 899.00,
-  "tamanho": "1.20m",
-  "dimensoes": "1.20m Altura x 90cm Largura x 90cm Profundidade",
-  "img": "./images/8cantos (2).jpeg",
-  "galeria": [
-    "./images/8cantos (1).jpeg",
-    "./images/8cantos (3).jpeg"
-  ],
-  "descricao": "Gôndola central de 8 cantos em MDF, ideal para exposição de produtos no centro da loja, com ótimo aproveitamento de espaço e visual organizado.\n\nAltura: 1.20m\nLargura: 90cm\nProfundidade: 90cm.",
-  "tags": ["gondola", "gondolas", "8 cantos", "central", "mdf", "expositor", "movel de centro", "moveis", "loja", "bazar", "conveniencia", "farmacia"]
-   },
-    {
     "id": 11,
-    "categoria": ["Gôndolas", "Expositores", "Móveis de Centro", "Moveis"],
+    "categoria": [
+      "Gôndolas",
+      "Expositores",
+      "Móveis de Centro",
+      "Moveis"
+    ],
     "nome": "GÔNDOLA CENTRAL",
-    "preco": 990.00,
+    "preco": 990.0,
     "tamanho": "1.20m",
     "dimensoes": "1.20m Altura x 1.40m Largura x 80cm Profundidade",
-    "img": "./images/gondoval (2).jpeg",
+    "img": "./images/gondoval (1).jpeg",
     "galeria": [
-      "./images/gondoval (1).jpeg",
       "./images/gondoval (3).jpeg",
       "./images/gondoval (4).jpeg"
     ],
     "descricao": "Gôndola central em MDF, ideal para exposição de produtos no centro da loja, aproveitando bem o espaço e melhorando a visualização dos itens.\n\nAltura: 1.20m\nLargura: 1.40m\nProfundidade: 80cm.",
-    "tags": ["gondola", "gondolas", "central", "mdf", "expositor", "movel de centro", "moveis", "loja", "bazar", "conveniencia", "farmacia"]
+    "tags": [
+      "gondola",
+      "gondolas",
+      "central",
+      "mdf",
+      "expositor",
+      "movel de centro",
+      "moveis",
+      "loja",
+      "bazar",
+      "conveniencia",
+      "farmacia"
+    ]
   },
   {
-  "id": 12,
-  "categoria": ["Expositores", "Móveis para Vitrine", "Moveis", "Vitrines"],
-  "nome": "MÓVEL PARA VITRINE",
-  "preco": 1590.00,
-  "tamanho": "1.10m",
-  "dimensoes": "1.10m Altura x 1.50m Largura",
-  "img": "./images/vitmad (2).jpeg",
-  "galeria": [
-    "./images/vitmad (1).jpeg",
-    "./images/vitmad (3).jpeg",
-    "./images/vitmad (4).jpeg"
-  ],
-  "descricao": "Móvel para vitrine em MDF, ideal para destacar produtos com visual moderno e exposição em níveis.\n\nAltura: 1.10m\nLargura: 1.50m",
-  "tags": ["movel", "moveis", "vitrine", "movel para vitrine", "mdf", "expositor", "loja", "bazar", "roupa", "calcado", "mostruario"]
+    "id": 12,
+    "categoria": [
+      "Expositores",
+      "Móveis para Vitrine",
+      "Moveis",
+      "Vitrines"
+    ],
+    "nome": "MÓVEL PARA VITRINE",
+    "preco": 1590.0,
+    "tamanho": "1.10m",
+    "dimensoes": "1.10m Altura x 1.50m Largura",
+    "img": "./images/vitmad (1).jpeg",
+    "galeria": [
+      "./images/vitmad (3).jpeg",
+      "./images/vitmad (4).jpeg"
+    ],
+    "descricao": "Móvel para vitrine em MDF, ideal para destacar produtos com visual moderno e exposição em níveis.\n\nAltura: 1.10m\nLargura: 1.50m",
+    "tags": [
+      "movel",
+      "moveis",
+      "vitrine",
+      "movel para vitrine",
+      "mdf",
+      "expositor",
+      "loja",
+      "bazar",
+      "roupa",
+      "calcado",
+      "mostruario"
+    ],
+    "permiteOrcamentoMedida": "sim",
+    "permiteVariacaoCor": "nao"
   },
   {
-  "id": 13,
-  "categoria": ["Armários", "Vestiário", "Expositores", "Moveis"],
-  "nome": "ARMÁRIO VESTIÁRIO 8 PORTAS",
-  "preco": 1040.00,
-  "tamanho": "1.80m",
-  "dimensoes": "1.80m Altura x 60cm Largura x 30cm Profundidade",
-  "img": "./images/8P (1).jpeg",
-  "galeria": [
-    "./images/8P (2).jpeg",
-    "./images/V-vestiarios.mp4"
-  ],
-  "descricao": "Armário vestiário em MDF com 8 portas, ideal para organização de pertences em lojas, fábricas e ambientes de apoio. Cada porta acompanha 2 chaves.\n\nAltura: 1.80m\nLargura: 60cm\nProfundidade: 30cm.",
-  "tags": ["armario", "vestiario", "8 portas", "mdf", "portas", "chave", "organizacao", "loja", "fabrica", "movel", "moveis"]
-},
+    "id": 13,
+    "categoria": [
+      "Armários",
+      "Vestiário",
+      "Expositores",
+      "Moveis",
+      "Armários Vestiários"
+    ],
+    "nome": "ARMÁRIO VESTIÁRIO 8 PORTAS",
+    "preco": 1040.0,
+    "tamanho": "1.80m",
+    "dimensoes": "1.80m Altura x 60cm Largura x 30cm Profundidade",
+    "img": "./images/8P (1).jpeg",
+    "galeria": [
+      "./images/8P (2).jpeg",
+      "./images/V-vestiarios.mp4"
+    ],
+    "descricao": "Armário vestiário em MDF com 8 portas, ideal para organização de pertences em lojas, fábricas e ambientes de apoio. Cada porta acompanha 2 chaves.\n\nAltura: 1.80m\nLargura: 60cm\nProfundidade: 30cm.",
+    "tags": [
+      "armario",
+      "vestiario",
+      "8 portas",
+      "mdf",
+      "portas",
+      "chave",
+      "organizacao",
+      "loja",
+      "fabrica",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim"
+  },
   {
-  "id": 14,
-  "categoria": ["Gôndolas", "Painel Canaletado", "Expositores", "Moveis"],
-  "nome": "GÔNDOLA CANALETADA",
-  "preco": 490.00,
-  "tamanho": "1.10m",
-  "dimensoes": "1.10m Altura x 90cm Largura x 60cm Profundidade",
-  "img": "./images/gondolapaine (2).jpeg",
-  "descricao": "Gôndola canaletada em MDF, ideal para exposição de produtos com uso de ganchos e acessórios, trazendo organização e aproveitamento inteligente do espaço.\n\nAltura: 1.10m\nLargura: 90cm\nProfundidade: 60cm.",
-  "tags": ["gondola", "gondolas", "caneletada", "canaletada", "painel canaletado", "mdf", "expositor", "gancho", "loja", "bazar", "conveniencia", "farmacia"]
- },
+    "id": 14,
+    "categoria": [
+      "Gôndolas",
+      "Painel Canaletado",
+      "Expositores",
+      "Moveis"
+    ],
+    "nome": "GÔNDOLA CANALETADA",
+    "preco": 490.0,
+    "tamanho": "1.10m",
+    "dimensoes": "1.10m Altura x 90cm Largura x 60cm Profundidade",
+    "img": "./images/gondolapaine (2).jpeg",
+    "descricao": "Gôndola canaletada em MDF, ideal para exposição de produtos com uso de ganchos e acessórios, trazendo organização e aproveitamento inteligente do espaço.\n\nAltura: 1.10m\nLargura: 90cm\nProfundidade: 60cm.",
+    "tags": [
+      "gondola",
+      "gondolas",
+      "caneletada",
+      "canaletada",
+      "painel canaletado",
+      "mdf",
+      "expositor",
+      "gancho",
+      "loja",
+      "bazar",
+      "conveniencia",
+      "farmacia"
+    ]
+  },
   {
-  "id": 15,
-  "categoria": ["Gôndolas", "Expositores", "Móveis de Centro", "Moveis"],
-  "nome": "GÔNDOLA QUADRADA MADEIRADA",
-  "preco": 1590.00,
-  "tamanho": "1.20m",
-  "dimensoes": "1.20m Altura x 90cm Largura x 90cm Profundidade",
-  "img": "./images/quadradaMad (2).jpeg",
-  "descricao": "Gôndola quadrada madeirada em MDF, com prateleiras engrossuradas, ideal para exposição de produtos no centro da loja com visual mais robusto e sofisticado.\n\nAltura: 1.20m\nLargura: 90cm\nProfundidade: 90cm.",
-  "tags": ["gondola", "gondolas", "quadrada", "madeirada", "mdf", "prateleiras engrossuradas", "movel de centro", "expositor", "loja", "bazar", "conveniencia", "farmacia"]
- },
+    "id": 15,
+    "categoria": [
+      "Gôndolas",
+      "Expositores",
+      "Móveis de Centro",
+      "Moveis"
+    ],
+    "nome": "GÔNDOLA QUADRADA MADEIRADA",
+    "preco": 1590.0,
+    "tamanho": "1.20m",
+    "dimensoes": "1.20m Altura x 90cm Largura x 90cm Profundidade",
+    "img": "./images/quadradaMad (2).jpeg",
+    "descricao": "Gôndola quadrada madeirada em MDF, com prateleiras engrossuradas, ideal para exposição de produtos no centro da loja com visual mais robusto e sofisticado.\n\nAltura: 1.20m\nLargura: 90cm\nProfundidade: 90cm.",
+    "tags": [
+      "gondola",
+      "gondolas",
+      "quadrada",
+      "madeirada",
+      "mdf",
+      "prateleiras engrossuradas",
+      "movel de centro",
+      "expositor",
+      "loja",
+      "bazar",
+      "conveniencia",
+      "farmacia"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "nao"
+  },
   {
-  "id": 16,
-  "categoria": ["Balcões", "Caixas", "Recepção", "Linha Premium"],
-  "nome": "BALCÃO CAIXA COM RIPADO",
-  "preco": 3750.00,
-  "tamanho": "1.00m",
-  "dimensoes": "2.50m Comprimento x 1.20m Parte do L x 1.00m Altura x 40cm Profundidade",
-  "img": "./images/cxripado (2).jpeg",
-  "galeria": [
-    "./images/cxripado (1).jpeg",
-    "./images/cxripado (3).jpeg",
-    "./images/cxripado (4).jpeg"
-  ],
-  "descricao": "Balcão de recepção em L com detalhe ripado e iluminação em LED, ideal para lojas e ambientes que buscam um visual mais sofisticado e moderno.\n\nComprimento: 2.50m\nParte do L: 1.20m\nAltura: 1.00m\nProfundidade: 40cm.",
-  "tags": ["balcao", "balcoes", "caixa", "recepcao", "ripado", "led", "balcao em l", "premium", "atendimento", "loja", "movel", "moveis"]
- }
+    "id": 16,
+    "categoria": [
+      "Balcões",
+      "Caixas",
+      "Recepção",
+      "Linha Premium"
+    ],
+    "nome": "BALCÃO CAIXA COM RIPADO",
+    "preco": 3750.0,
+    "tamanho": "1.00m",
+    "dimensoes": "2.50m Comprimento x 1.20m Parte do L x 1.00m Altura x 40cm Profundidade",
+    "img": "./images/cxripado (2).jpeg",
+    "galeria": [
+      "./images/cxripado (1).jpeg",
+      "./images/cxripado (3).jpeg",
+      "./images/cxripado (4).jpeg"
+    ],
+    "descricao": "Balcão de recepção em L com detalhe ripado e iluminação em LED, ideal para lojas e ambientes que buscam um visual mais sofisticado e moderno.\n\nComprimento: 2.50m\nParte do L: 1.20m\nAltura: 1.00m\nProfundidade: 40cm.",
+    "tags": [
+      "balcao",
+      "balcoes",
+      "caixa",
+      "recepcao",
+      "ripado",
+      "led",
+      "balcao em l",
+      "premium",
+      "atendimento",
+      "loja",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 17,
+    "categoria": [
+      "Expositores",
+      "Móveis de Apoio",
+      "Moveis",
+      "Mesa de Manicure"
+    ],
+    "nome": "CARRINHO AUXILIAR",
+    "preco": 389.0,
+    "tamanho": "80cm",
+    "dimensoes": "80cm Altura x 40cm Largura x 30cm Profundidade",
+    "img": "./images/carrinho (4).jpeg",
+    "galeria": [
+      "./images/carrinho (1).jpeg",
+      "./images/carrinho (3).jpeg",
+      "./images/carrinho (4).jpeg"
+    ],
+    "descricao": "Carrinho auxiliar em MDF, ideal para apoiar produtos e organizar o atendimento com praticidade no dia a dia da loja.\n\nAltura: 80cm\nLargura: 40cm\nProfundidade: 30cm.",
+    "tags": [
+      "carrinho",
+      "auxiliar",
+      "movel de apoio",
+      "mdf",
+      "organizador",
+      "expositor",
+      "loja",
+      "movel",
+      "moveis"
+    ]
+  },
+  {
+    "id": 18,
+    "categoria": [
+      "Expositores",
+      "Móveis para Vitrine",
+      "Moveis",
+      "Vitrines"
+    ],
+    "nome": "MÓVEL PARA VITRINE EM S",
+    "preco": 689.0,
+    "tamanho": "1.80m",
+    "dimensoes": "1.80m Altura x 90cm Largura x 30cm Profundidade",
+    "img": "./images/VIT (3).jpg",
+    "galeria": [
+      "./images/VIT (1).jpg",
+      "./images/VIT (2).jpg",
+      "./images/VIT (3).jpg",
+      "./images/VIT (4).jpg"
+    ],
+    "descricao": "Móvel para vitrine em S, ideal para destacar produtos com exposição organizada e visual moderno.\n\nAltura: 1.80m\nLargura: 90cm\nProfundidade: 30cm.",
+    "tags": [
+      "movel",
+      "moveis",
+      "vitrine",
+      "vitrine em s",
+      "mdf",
+      "expositor",
+      "loja",
+      "mostruario"
+    ]
+  },
+  {
+    "id": 19,
+    "categoria": [
+      "Expositores",
+      "Prateleiras",
+      "Moveis"
+    ],
+    "nome": "MÓVEL PRATELEIRA INCLINADA",
+    "preco": 629.0,
+    "tamanho": "1.80m",
+    "dimensoes": "1.80m Altura x 90cm Largura x 30cm Profundidade",
+    "img": "./images/prat (2).jpeg",
+    "galeria": [
+      "./images/prat (2).jpeg",
+      "./images/prat (3).jpeg",
+      "./images/prat (1).jpeg"
+    ],
+    "descricao": "Móvel com prateleiras inclinadas, ideal para exposição prática e organizada de produtos no dia a dia da loja.\n\nAltura: 1.80m\nLargura: 90cm\nProfundidade: 30cm.",
+    "tags": [
+      "movel",
+      "moveis",
+      "prateleira",
+      "prateleiras inclinadas",
+      "expositor",
+      "mdf",
+      "loja",
+      "organizador"
+    ]
+  },
+  {
+    "id": 20,
+    "categoria": [
+      "Expositores",
+      "Móveis de Apoio",
+      "Moveis"
+    ],
+    "nome": "MÓVEL ESCADA",
+    "preco": 240.0,
+    "tamanho": "90cm",
+    "dimensoes": "90cm Altura x 90cm Largura x 30cm Profundidade",
+    "img": "./images/escadinha (2).jpeg",
+    "galeria": [
+      "./images/escadinha (2).jpeg",
+      "./images/escadinha (1).jpeg"
+    ],
+    "descricao": "Móvel escada em MDF, ideal para exposição de produtos com visual prático e organizado em diferentes setores da loja.\n\nAltura: 90cm\nLargura: 90cm\nProfundidade: 30cm.",
+    "tags": [
+      "movel",
+      "moveis",
+      "escada",
+      "escadinha",
+      "expositor",
+      "mdf",
+      "loja",
+      "organizador"
+    ]
+  },
+  {
+    "id": 21,
+    "categoria": [
+      "Expositores",
+      "Painel Canaletado",
+      "Moveis"
+    ],
+    "nome": "MÓVEL PAINEL CANALETADO",
+    "preco": 620.0,
+    "tamanho": "1.80m",
+    "dimensoes": "1.80m Altura x 90cm Largura x 30cm Profundidade",
+    "img": "./images/MOVELPAINEL (2).jpeg",
+    "galeria": [
+      "./images/MOVELPAINEL (3).jpeg",
+      "./images/MOVELPAINEL (1).jpeg",
+      "./images/MOVELPAINEL (2).jpeg"
+    ],
+    "descricao": "Móvel painel canaletado em MDF, ideal para exposição versátil com ganchos e acessórios, mantendo a organização e boa visualização dos produtos.\n\nAltura: 1.80m\nLargura: 90cm\nProfundidade: 30cm.",
+    "tags": [
+      "movel",
+      "moveis",
+      "painel canaletado",
+      "canaletado",
+      "expositor",
+      "mdf",
+      "loja",
+      "organizador"
+    ]
+  },
+  {
+    "id": 22,
+    "categoria": [
+      "Expositores",
+      "Painel Canaletado",
+      "Moveis"
+    ],
+    "nome": "MÓVEL PAINEL COM NICHO LATERAL",
+    "preco": 750.0,
+    "tamanho": "1.80m",
+    "dimensoes": "1.80m Altura x 90cm Largura x 30cm Profundidade",
+    "img": "./images/painel.nicholat.jpeg",
+    "galeria": [
+      "./images/painel.nicholat.jpeg"
+    ],
+    "descricao": "Móvel painel com nicho lateral em MDF, ideal para organizar e destacar produtos com visual funcional e moderno.\n\nAltura: 1.80m\nLargura: 90cm\nProfundidade: 30cm.",
+    "tags": [
+      "movel",
+      "moveis",
+      "painel",
+      "nicho lateral",
+      "expositor",
+      "mdf",
+      "loja",
+      "organizador"
+    ]
+  },
+  {
+    "id": 23,
+    "categoria": [
+      "Expositores",
+      "Painel Canaletado",
+      "Moveis"
+    ],
+    "nome": "MÓVEL PAINEL CANALETADO COM 9 NICHOS",
+    "preco": 750.0,
+    "tamanho": "1.80m",
+    "dimensoes": "1.80m Altura x 90cm Largura x 30cm Profundidade",
+    "img": "./images/painel9nichos.jpeg",
+    "galeria": [
+      "./images/painel9nichos.jpeg"
+    ],
+    "descricao": "Móvel painel canaletado com 9 nichos, ideal para exposição organizada e melhor aproveitamento vertical do espaço.\n\nAltura: 1.80m\nLargura: 90cm\nProfundidade: 30cm.",
+    "tags": [
+      "movel",
+      "moveis",
+      "painel canaletado",
+      "9 nichos",
+      "expositor",
+      "mdf",
+      "loja",
+      "organizador"
+    ]
+  },
+  {
+    "id": 24,
+    "categoria": [
+      "Expositores",
+      "Painel Canaletado",
+      "Moveis"
+    ],
+    "nome": "MÓVEL PAINEL CANALETADO COM 6 NICHOS",
+    "preco": 750.0,
+    "tamanho": "1.80m",
+    "dimensoes": "1.80m Altura x 90cm Largura x 30cm Profundidade",
+    "img": "./images/painel6nichos.jpeg",
+    "galeria": [
+      "./images/painel6nichos.jpeg"
+    ],
+    "descricao": "Móvel painel canaletado com 6 nichos, ideal para exposição prática com organização e boa visualização dos produtos.\n\nAltura: 1.80m\nLargura: 90cm\nProfundidade: 30cm.",
+    "tags": [
+      "movel",
+      "moveis",
+      "painel canaletado",
+      "6 nichos",
+      "expositor",
+      "mdf",
+      "loja",
+      "organizador"
+    ]
+  },
+  {
+    "id": 25,
+    "categoria": [
+      "Araras",
+      "Expositores",
+      "Kits",
+      "Moveis"
+    ],
+    "nome": "KIT CABIDEIROS 60CM",
+    "preco": 899.0,
+    "tamanho": "1.80m",
+    "dimensoes": "1.80m Altura x 60cm Largura x 30cm Profundidade (unitário) | 1.80m Altura x 1.80m Largura x 30cm Profundidade (kit)",
+    "img": "./images/kit60cm (2).jpeg",
+    "galeria": [
+      "./images/kit60cm (2).jpeg",
+      "./images/kit60cm (2).jpeg",
+      "./images/kit60cm (4).jpeg",
+      "./images/kit60cm (5).jpeg",
+      "./images/kit60cm (1).jpeg"
+    ],
+    "descricao": "Kit com 3 móveis cabideiros de 60cm, ideal para montar uma parede expositora completa com ótimo aproveitamento de espaço. Valor do kit completo e único: R$ 899,00, em até 4x sem juros ou à vista, sem alteração de preço.\n\nMedidas unitárias:\nAltura: 1.80m\nLargura: 60cm\nProfundidade: 30cm.\n\nMedidas totais do kit:\nAltura: 1.80m\nLargura: 1.80m\nProfundidade: 30cm.",
+    "tags": [
+      "kit",
+      "cabideiro",
+      "cabideiros",
+      "60cm",
+      "arara",
+      "expositor",
+      "movel",
+      "moveis",
+      "loja"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 26,
+    "categoria": [
+      "Armários",
+      "Vestiários",
+      "Expositores",
+      "Moveis",
+      "Armários Vestiários"
+    ],
+    "nome": "ARMÁRIO VESTIÁRIO 12 PORTAS",
+    "preco": 1560.0,
+    "tamanho": "1.80m",
+    "dimensoes": "1.80m Altura x 90cm Largura x 30cm Profundidade",
+    "img": "./images/12p.jpg",
+    "galeria": [
+      "./images/12p.jpg",
+      "./images/12pvideocorreto.mp4"
+    ],
+    "descricao": "Armário vestiário com 12 portas, ideal para organização de pertences em empresas, escolas e academias.\n\nAltura: 1.80m\nLargura: 90cm\nProfundidade: 30cm.",
+    "tags": [
+      "armario",
+      "vestiario",
+      "12 portas",
+      "organizador",
+      "expositor",
+      "mdf",
+      "loja",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "categoria": [
+      "Armários",
+      "Vestiários",
+      "Expositores",
+      "Moveis",
+      "Armários Vestiários"
+    ],
+    "nome": "ARMÁRIO VESTIÁRIO 5 PORTAS",
+    "preco": 650.0,
+    "tamanho": "1.60m",
+    "dimensoes": "1.60m Altura x 40cm Largura x 30cm Profundidade",
+    "img": "./images/vestiario5p (1).jpeg",
+    "galeria": [
+      "./images/vestiario5p (1).jpeg",
+      "./images/vestiario5p (2).jpeg"
+    ],
+    "descricao": "Armário vestiário com 5 portas, ideal para organização de pertences em espaços compactos. Somente opção de cores, sem alteração de medidas.\n\nAltura: 1.60m\nLargura: 40cm\nProfundidade: 30cm.",
+    "tags": [
+      "armario",
+      "vestiario",
+      "5 portas",
+      "organizador",
+      "mdf",
+      "expositor",
+      "loja",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim",
+    "id": 27
+  },
+  {
+    "categoria": [
+      "Armários",
+      "Vestiários",
+      "Expositores",
+      "Moveis",
+      "Armários Vestiários"
+    ],
+    "nome": "ARMÁRIO VESTIÁRIO 3 PORTAS",
+    "preco": 390.0,
+    "tamanho": "95cm",
+    "dimensoes": "95cm Altura x 40cm Largura x 30cm Profundidade",
+    "img": "./images/vestiario3p (1).jpeg",
+    "galeria": [
+      "./images/vestiario3p (1).jpeg",
+      "./images/vestiario3p (2).jpeg",
+      "./images/vestiario3p (3).jpeg"
+    ],
+    "descricao": "Armário vestiário com 3 portas, ideal para pequenos ambientes e organização funcional. Somente opção de cores, sem alteração de medidas.\n\nAltura: 95cm\nLargura: 40cm\nProfundidade: 30cm.",
+    "tags": [
+      "armario",
+      "vestiario",
+      "3 portas",
+      "organizador",
+      "mdf",
+      "expositor",
+      "loja",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim",
+    "id": 28
+  },
+  {
+    "categoria": [
+      "Armários",
+      "Vestiários",
+      "Expositores",
+      "Moveis",
+      "Armários Vestiários"
+    ],
+    "nome": "ARMÁRIO VESTIÁRIO 20 PORTAS",
+    "preco": 2600.0,
+    "tamanho": "2.00m",
+    "dimensoes": "2.00m Altura x 2.00m Largura x 30cm Profundidade",
+    "img": "./images/20P (1).jpeg",
+    "galeria": [
+      "./images/20P (1).jpeg",
+      "./images/20P (2).jpeg"
+    ],
+    "descricao": "Armário vestiário com 20 portas, ideal para ambientes com maior demanda de organização. Somente opção de cores, sem alteração de medidas.\n\nAltura: 2.00m\nLargura: 2.00m\nProfundidade: 30cm.",
+    "tags": [
+      "armario",
+      "vestiario",
+      "20 portas",
+      "organizador",
+      "mdf",
+      "expositor",
+      "empresa",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim",
+    "id": 29
+  },
+  {
+    "categoria": [
+      "Armários",
+      "Vestiários",
+      "Expositores",
+      "Moveis",
+      "Armários Vestiários"
+    ],
+    "nome": "ARMÁRIO VESTIÁRIO 10 PORTAS",
+    "preco": 1300.0,
+    "tamanho": "1.80m",
+    "dimensoes": "1.80m Altura x 60cm Largura x 30cm Profundidade",
+    "img": "./images/10portas (1).jpg",
+    "galeria": [
+      "./images/10portas (1).jpg",
+      "./images/10portas (2).jpg"
+    ],
+    "descricao": "Armário vestiário com 10 portas, ideal para organização de pertences em lojas e áreas de apoio. Somente opção de cores, sem alteração de medidas.\n\nAltura: 1.80m\nLargura: 60cm\nProfundidade: 30cm.",
+    "tags": [
+      "armario",
+      "vestiario",
+      "10 portas",
+      "organizador",
+      "mdf",
+      "expositor",
+      "loja",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim",
+    "id": 30
+  },
+  {
+    "categoria": [
+      "Kits",
+      "Balcões",
+      "Expositores",
+      "Moveis"
+    ],
+    "nome": "KIT 3 BALCÕES",
+    "preco": 1700.0,
+    "tamanho": "Kit completo",
+    "dimensoes": "Kit com 1 caixa + 1 cantoneira + 1 balcão vitrine",
+    "img": "./images/kit3b (1).jpg",
+    "galeria": [
+      "./images/kit3b (1).jpg",
+      "./images/kit3b (2).jpg",
+      "./images/kit3b (3).jpg",
+      "./images/kit3b (4).jpg",
+      "./images/kit3b (5).jpg",
+      "./images/kit3b (6).jpg",
+      "./images/3balcoes1499.mp4"
+    ],
+    "descricao": "Kit promocional com 3 balcões: 1 balcão caixa, 1 cantoneira e 1 balcão vitrine. Valor parcelado: R$ 1.700,00. Valor à vista final: R$ 1.499,00 (sem desconto adicional). Somente opção de cores, sem opção de medidas.",
+    "tags": [
+      "kit",
+      "3 balcoes",
+      "balcao caixa",
+      "cantoneira",
+      "balcao vitrine",
+      "promocional",
+      "loja",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim",
+    "id": 31,
+    "precoAvista": 1499.0
+  },
+  {
+    "categoria": [
+      "Kits",
+      "Expositores",
+      "Araras",
+      "Moveis"
+    ],
+    "nome": "KIT 6 MÓVEIS",
+    "preco": 3148.0,
+    "tamanho": "Kit completo",
+    "dimensoes": "Kit com 3 balcões + 3 móveis de parede (2 cabideiros e 1 prateleira)",
+    "img": "./images/kit2600.jpeg",
+    "galeria": [
+      "./images/kit2600.jpeg",
+      "./images/kit26002.jpeg",
+      "./images/kit2600.mp4"
+    ],
+    "descricao": "Kit com 6 móveis, sendo 3 balcões + 3 móveis de parede (2 cabideiros e 1 prateleira). Valor parcelado: R$ 3.148,00. Valor à vista final: R$ 2.600,00 (sem desconto adicional). Somente opção de cores, sem opção de tamanhos.",
+    "tags": [
+      "kit",
+      "6 moveis",
+      "balcoes",
+      "cabideiros",
+      "prateleira",
+      "promocional",
+      "loja",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim",
+    "id": 32,
+    "precoAvista": 2600.0
+  },
+  {
+    "id": 33,
+    "categoria": [
+      "Balcões",
+      "Caixas",
+      "Recepção",
+      "Moveis"
+    ],
+    "nome": "BALCÃO CAIXA EM L",
+    "preco": 2900.0,
+    "tamanho": "1.00m",
+    "dimensoes": "1.00m Altura x 1.80m Comprimento x 1.20m Parte do L x 40cm Profundidade",
+    "img": "./images/L180X120 (2).jpg",
+    "galeria": [
+      "./images/L180X120 (2).jpg",
+      "./images/L180X120 (1).jpg"
+    ],
+    "descricao": "Balcão caixa em L, branco com detalhes em carvalho Munique. Ideal para recepção e atendimento em lojas.\n\nAltura: 1.00m\nComprimento: 1.80m\nParte do L: 1.20m\nProfundidade: 40cm.",
+    "tags": [
+      "balcao",
+      "balcao em l",
+      "caixa",
+      "recepcao",
+      "atendimento",
+      "carvalho munique",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 34,
+    "categoria": [
+      "Gôndolas",
+      "Expositores",
+      "Móveis de Centro",
+      "Moveis"
+    ],
+    "nome": "GÔNDOLA RETANGULAR",
+    "preco": 875.0,
+    "tamanho": "1.20m",
+    "dimensoes": "1.20m Altura x 1.40m Largura x 80cm Profundidade",
+    "img": "./images/RETANGULAR (2).jpg",
+    "galeria": [
+      "./images/RETANGULAR (2).jpg",
+      "./images/RETANGULAR (3).jpg",
+      "./images/RETANGULAR (1).jpg"
+    ],
+    "descricao": "Gôndola retangular em MDF para centro de loja, com excelente aproveitamento de exposição.\n\nAltura: 1.20m\nLargura: 1.40m \nProfundidade: 80cm.",
+    "tags": [
+      "gondola",
+      "gondolas",
+      "retangular",
+      "mdf",
+      "movel de centro",
+      "expositor",
+      "loja",
+      "bazar",
+      "conveniencia",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "sim",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 35,
+    "categoria": [
+      "Gôndolas",
+      "Expositores",
+      "Móveis de Centro",
+      "Moveis"
+    ],
+    "nome": "GÔNDOLA QUADRADA",
+    "preco": 805.0,
+    "tamanho": "1.20m",
+    "dimensoes": "1.20m Altura x 90cm Largura x 90cm Profundidade",
+    "img": "./images/gquadrada (1).jpg",
+    "galeria": [
+      "./images/gquadrada (1).jpg",
+      "./images/gquadrada (2).jpg"
+    ],
+    "descricao": "Gôndola quadrada para centro de loja, ideal para exposição em todos os lados com circulação livre.\n\nAltura: 1.20m\nLargura: 90cm\nProfundidade: 90cm.",
+    "tags": [
+      "gondola",
+      "gondolas",
+      "quadrada",
+      "expositor",
+      "movel de centro",
+      "loja",
+      "bazar",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "sim",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 36,
+    "categoria": [
+      "Expositores",
+      "Móveis de Apoio",
+      "Moveis",
+      "Mesa de Manicure"
+    ],
+    "nome": "MESA MANICURE EM L COM ARMÁRIO AUXILIAR",
+    "preco": 1000.0,
+    "tamanho": "80cm",
+    "dimensoes": "80cm Altura x 1.00m Largura x 1.00m Comprimento x 40cm Profundidade",
+    "img": "./images/AUX (3).jpeg",
+    "galeria": [
+      "./images/AUX (1).jpeg",
+      "./images/AUX (2).jpeg",
+      "./images/AUX (3).jpeg"
+    ],
+    "descricao": "Mesa manicure em L com armário auxiliar, pensada para rotina de salão com organização e praticidade.\n\nAltura: 80cm\nLargura: 1.00m\nComprimento: 1.00m\nProfundidade: 40cm.",
+    "tags": [
+      "mesa manicure",
+      "manicure em l",
+      "armario auxiliar",
+      "salão",
+      "beleza",
+      "atendimento",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 37,
+    "categoria": [
+      "Expositores",
+      "Móveis de Apoio",
+      "Moveis",
+      "Mesa de Manicure"
+    ],
+    "nome": "MESA EM L COM 4 GAVETAS + GAVETA NO TAMPO COM VIDRO",
+    "preco": 1120.0,
+    "tamanho": "80cm",
+    "dimensoes": "80cm Altura x 1.20m Largura x 80cm Comprimento x 40cm Profundidade",
+    "img": "./images/4GAVETAS (3).jpeg",
+    "galeria": [
+      "./images/4GAVETAS (1).jpeg",
+      "./images/4GAVETAS (2).jpeg",
+      "./images/4GAVETAS (3).jpeg"
+    ],
+    "descricao": "Mesa em L com 4 gavetas + 1 gaveta no tampo com vidro, ideal para atendimento e organização de itens de uso diário.\n\nAltura: 80cm\nLargura: 1.20m\nComprimento: 80cm\nProfundidade: 40cm.",
+    "tags": [
+      "mesa em l",
+      "gavetas",
+      "tampo vidro",
+      "manicure",
+      "salão",
+      "organizador",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 38,
+    "categoria": [
+      "Expositores",
+      "Móveis de Apoio",
+      "Moveis",
+      "Mesa de Manicure"
+    ],
+    "nome": "MESA COM PORTA E GAVETA",
+    "preco": 620.0,
+    "tamanho": "80cm",
+    "dimensoes": "80cm Altura x 1.00m Largura x 40cm Profundidade",
+    "img": "./images/Mani (1).jpeg",
+    "galeria": [
+      "./images/Mani (1).jpeg"
+    ],
+    "descricao": "Mesa com porta e gaveta para apoio de atendimento, com design compacto e funcional para ambientes comerciais.\n\nAltura: 80cm\nLargura: 1.00m\nProfundidade: 40cm.",
+    "tags": [
+      "mesa",
+      "porta",
+      "gaveta",
+      "manicure",
+      "apoio",
+      "atendimento",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 39,
+    "categoria": [
+      "Araras",
+      "Expositores",
+      "Moveis"
+    ],
+    "nome": "ARARA COM NICHO",
+    "preco": 420.0,
+    "tamanho": "1.20m",
+    "dimensoes": "1.20m Altura x 1.10m Largura x 30cm Profundidade",
+    "img": "./images/araracnicho (2).jpg",
+    "galeria": [
+      "./images/araracnicho (1).jpg",
+      "./images/araracnicho (2).jpg",
+      "./images/araracnicho (1).jpeg"
+    ],
+    "descricao": "Arara com nicho em MDF para exposição de roupas e acessórios.\n\nAltura: 1.20m\nLargura: 1.10m \nProfundidade: 30cm.",
+    "tags": [
+      "arara",
+      "nicho",
+      "cabideiro",
+      "roupas",
+      "expositor",
+      "loja",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "sim",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 40,
+    "categoria": [
+      "Araras",
+      "Expositores",
+      "Moveis"
+    ],
+    "nome": "ARARA CASAQUEIRA",
+    "preco": 780.0,
+    "tamanho": "1.20m",
+    "dimensoes": "1.20m Altura x 1.20m Largura x 50cm Profundidade",
+    "img": "./images/casaqueira (2).jpg",
+    "galeria": [
+      "./images/casaqueira (1).jpeg",
+      "./images/casaqueira (1).jpg",
+      "./images/casaqueira (2).jpg",
+      "./images/casaqueira (3).jpeg"
+    ],
+    "descricao": "Arara casaqueira reforçada para exposição de peças mais volumosas.\n\nAltura: 1.20m\nLargura: 1.20m\nProfundidade: 50cm.",
+    "tags": [
+      "arara",
+      "casaqueira",
+      "cabideiro",
+      "roupas",
+      "expositor",
+      "loja",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "sim",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 41,
+    "categoria": [
+      "Araras",
+      "Expositores",
+      "Moveis"
+    ],
+    "nome": "ARARA SIMPLES",
+    "preco": 340.0,
+    "tamanho": "1.20m",
+    "dimensoes": "1.20m Altura x 1.10m Largura x 30cm Profundidade",
+    "img": "./images/semnicho (3).jpeg",
+    "galeria": [
+      "./images/semnicho (1).jpeg",
+      "./images/semnicho (2).jpeg",
+      "./images/semnicho (3).jpeg",
+      "./images/semnicho (4).jpeg"
+    ],
+    "descricao": "Arara simples para exposição prática de roupas em lojas e showrooms.\n\nAltura: 1.20m\nLargura: 1.10m\nProfundidade: 30cm.",
+    "tags": [
+      "arara",
+      "simples",
+      "cabideiro",
+      "roupas",
+      "expositor",
+      "loja",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "sim",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 42,
+    "categoria": [
+      "Balcões",
+      "Caixas",
+      "Vitrines",
+      "Moveis"
+    ],
+    "nome": "BALCÃO CAIXINHA RETO COM VITRINE",
+    "preco": 515.0,
+    "tamanho": "1.00m",
+    "dimensoes": "1.00m Altura x 55cm Largura x 40cm Profundidade",
+    "img": "./images/caixinhacvit (3).jpg",
+    "galeria": [
+      "./images/caixinhacvit (1).jpg",
+      "./images/caixinhacvit (2).jpg",
+      "./images/caixinhacvit (3).jpg",
+      "./images/caixinhacvit (4).jpg"
+    ],
+    "descricao": "Balcão caixinha reto com vitrine. Acompanha 2 prateleiras de vidro e 1 gaveta caixa, ideal para atendimento com exposição frontal.\n\nAltura: 1.00m\nLargura: 55cm \nProfundidade: 40cm.",
+    "tags": [
+      "balcao",
+      "caixinha",
+      "reto",
+      "vitrine",
+      "caixa",
+      "prateleiras de vidro",
+      "gaveta caixa",
+      "atendimento",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "sim",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 43,
+    "categoria": [
+      "Caixas",
+      "Móveis de Apoio",
+      "Moveis"
+    ],
+    "nome": "GAVETA PARA DINHEIRO",
+    "preco": 175.0,
+    "tamanho": "15cm",
+    "dimensoes": "15cm Altura x 55cm Largura x 40cm Profundidade",
+    "img": "./images/gavetacaixa (1).jpg",
+    "galeria": [
+      "./images/gavetacaixa (1).jpg",
+      "./images/gavetacaixa (2).jpg",
+      "./images/gavetacaixa (3).jpg"
+    ],
+    "descricao": "Gaveta para dinheiro, ideal para composição de balcões de caixa com segurança e organização.\n\nAltura: 15cm\nLargura: 55cm\nProfundidade: 40cm.",
+    "tags": [
+      "gaveta",
+      "dinheiro",
+      "caixa",
+      "balcao",
+      "atendimento",
+      "organizacao",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "nao"
+  },
+  {
+    "id": 44,
+    "categoria": [
+      "Balcões",
+      "Caixas",
+      "Vitrines",
+      "Moveis"
+    ],
+    "nome": "BALCÃO CAIXINHA COM VITRINE (ELEVADO)",
+    "preco": 580.0,
+    "tamanho": "1.00m",
+    "dimensoes": "1.00m Altura x 55cm Largura x 40cm Profundidade",
+    "img": "./images/elevadocvitrine (1).jpeg",
+    "galeria": [
+      "./images/elevadocvitrine (1).jpeg",
+      "./images/elevadocvitrine (2).jpeg"
+    ],
+    "descricao": "Balcão caixinha com vitrine elevado. Acompanha 2 prateleiras de vidro e 1 gaveta caixa para facilitar o atendimento.\n\nAltura: 1.00m\nLargura: 55cm\nProfundidade: 40cm.",
+    "tags": [
+      "balcao",
+      "caixinha",
+      "vitrine",
+      "elevado",
+      "caixa",
+      "prateleiras de vidro",
+      "gaveta caixa",
+      "atendimento",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "sim",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 45,
+    "categoria": [
+      "Balcões",
+      "Vitrines",
+      "Expositores",
+      "Moveis"
+    ],
+    "nome": "BALCÃO VITRINE COM GAVETÃO",
+    "preco": 999.0,
+    "tamanho": "1.00m",
+    "dimensoes": "1.00m Altura x 1.00m Largura x 40cm Profundidade",
+    "img": "./images/vitcomgaveta (2).jpeg",
+    "galeria": [
+      "./images/vitcomgaveta (1).jpeg",
+      "./images/vitcomgaveta (2).jpeg",
+      "./images/vitcomgaveta (3).jpeg"
+    ],
+    "descricao": "Balcão vitrine com 1 gavetão e tampo em vidro. Modelo aberto para os dois lados, ideal para centro de loja.\n\nAltura: 1.00m\nLargura: 1.00m\nProfundidade: 40cm.",
+    "tags": [
+      "balcao",
+      "vitrine",
+      "gavetao",
+      "tampo vidro",
+      "centro de loja",
+      "expositor",
+      "atendimento",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 46,
+    "categoria": [
+      "Kits",
+      "Expositores",
+      "Araras",
+      "Moveis"
+    ],
+    "nome": "KIT LOJA DE ROUPAS",
+    "preco": 4999.0,
+    "tamanho": "Kit completo",
+    "dimensoes": "Kit completo para montagem de loja de roupas",
+    "img": "./images/kitlojaroupa (1).jpg",
+    "galeria": [
+      "./images/kitlojaroupa (1).jpg",
+      "./images/kitlojaroupa (2).jpg",
+      "./images/kitlojaroupa (3).jpg"
+    ],
+    "descricao": "Kit completo para montagem de loja de roupas.\n\nContém:\n\n• 4 Cabideiros Duplo\n• 1 Móvel Colmeia\n• 1 Arara Casaqueira\n• 1 Balcão Caixa 1m\n• 1 Provador de Parede\n• 1 Painel Canaletado com Testeira e Base\n\nIdeal para montar uma loja organizada, funcional e pronta para receber clientes.",
+    "tags": [
+      "kit",
+      "kit loja de roupas",
+      "cabideiros",
+      "movel colmeia",
+      "arara casaqueira",
+      "balcao caixa",
+      "provador",
+      "painel canaletado",
+      "loja",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 47,
+    "categoria": [
+      "Kits",
+      "Balcões",
+      "Expositores",
+      "Moveis"
+    ],
+    "nome": "KIT LOJA",
+    "preco": 7499.0,
+    "tamanho": "Kit completo",
+    "dimensoes": "Kit com 5 móveis prateleira, 2 móveis colmeia, 1 balcão vitrine, 1 balcão cantoneira, 1 balcão caixa com vitrine, 1 gôndola central, 1 expositor em S e 1 painel canaletado",
+    "img": "./images/kitloja6 (1).jpg",
+    "galeria": [
+      "./images/kitloja6 (1).jpg",
+      "./images/kitloja6 (2).jpg",
+      "./images/kitloja6 (3).jpg",
+      "./images/kitloja6 (4).jpg"
+    ],
+    "descricao": "Kit completo para montagem ou renovação de loja, pensado para quem precisa organizar produtos, melhorar exposição e criar um espaço profissional de vendas sem gastar uma fortuna.\n\nEsse conjunto reúne móveis de parede, móveis de apoio e exposição central, criando uma loja equilibrada entre exposição vertical, circulação e destaque de produtos.\n\nO kit inclui:\n\n• 5 Móveis com prateleiras – ideais para exposição organizada de diversos produtos\n\n• 2 Móveis colmeia – excelente para pequenos itens e organização visual\n\n• 1 Balcão vitrine – destaque para produtos de maior valor\n\n• 1 Balcão cantoneira – integração entre balcões e melhor aproveitamento de espaço\n\n• 1 Balcão caixa com vitrine – área de atendimento e fechamento de vendas\n\n• 1 Gôndola central – exposição no centro da loja aumentando a visibilidade\n\n• 1 Expositor em S – ideal para produtos específicos ou destaque promocional\n\n• 1 Painel canaletado – versátil para ganchos e acessórios de exposição",
+    "tags": [
+      "kit",
+      "kit loja",
+      "movel prateleira",
+      "movel colmeia",
+      "balcao vitrine",
+      "balcao cantoneira",
+      "balcao caixa",
+      "gondola central",
+      "expositor em s",
+      "painel canaletado",
+      "loja",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 48,
+    "categoria": [
+      "Kits",
+      "Expositores",
+      "Balcões",
+      "Gôndolas",
+      "Moveis"
+    ],
+    "nome": "KIT LOJA PARA TABACARIA E CONVENIÊNCIA",
+    "preco": 26900.0,
+    "tamanho": "Kit completo",
+    "dimensoes": "Projeto completo sem opção de medidas",
+    "img": "./images/Lojamadeirada (1).jpg",
+    "galeria": [
+      "./images/Lojamadeirada (1).jpg",
+      "./images/Lojamadeirada (2).jpg"
+    ],
+    "descricao": "Projeto completo desenvolvido para lojas que precisam de grande capacidade de exposição, organização visual e circulação confortável para clientes. Ideal para tabacarias, lojas de conveniência, acessórios, vape, headshop ou produtos variados.\n\nO layout utiliza expositores de parede com prateleiras de vidro, proporcionando melhor visualização dos produtos e valorizando itens expostos. No centro da loja, as gôndolas em metal com MDF criam pontos estratégicos de exposição para aumentar o giro de mercadorias.\n\nA combinação de balcões e vitrines permite exposição segura de produtos de maior valor, além de manter um fluxo de atendimento organizado no caixa.\n\nO kit inclui:\n\n• 12 móveis de parede com prateleiras de vidro\n• 1 painel canaletado com testeira e rodapé\n• 3 móveis para vitrine\n• 1 balcão caixa com vitrine\n• 1 balcão cantoneira\n• 1 balcão vitrine\n• 3 gôndolas centrais em estrutura metálica com MDF\n\nValor total: R$ 26.900,00.\n\nEsse valor já considera o acabamento madeirado.",
+    "tags": [
+      "kit",
+      "kit tabacaria",
+      "kit conveniencia",
+      "tabacaria",
+      "conveniencia",
+      "vape",
+      "headshop",
+      "expositor de parede",
+      "balcao vitrine",
+      "gondola central",
+      "painel canaletado",
+      "loja",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "nao"
+  },
+  {
+    "id": 49,
+    "categoria": [
+      "Kits",
+      "Expositores",
+      "Balcões",
+      "Moveis"
+    ],
+    "nome": "KIT COMPACTO LOJA FUNCIONAL",
+    "preco": 3800.0,
+    "tamanho": "Kit completo",
+    "dimensoes": "Kit compacto sem opção de medidas",
+    "img": "./images/kit23 (1).jpeg",
+    "galeria": [
+      "./images/kit23 (1).jpeg",
+      "./images/kit23 (2).jpeg"
+    ],
+    "descricao": "Kit compacto e funcional ideal para lojas de roupas, boutiques e pequenos comércios.",
+    "tags": [
+      "kit compacto",
+      "kit loja roupas",
+      "boutique",
+      "balcao caixa vitrine",
+      "cantoneira",
+      "loja"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "nao",
+    "maxParcelasSemJuros": 4
+  },
+  {
+    "id": 50,
+    "categoria": [
+      "Kits",
+      "Expositores",
+      "Balcões",
+      "Farmácia",
+      "Moveis"
+    ],
+    "nome": "FARMÁCIA COMPLETA – VIDRO + MDF",
+    "preco": 18900.0,
+    "tamanho": "Projeto completo",
+    "dimensoes": "Projeto completo sem alteração de cores e sem alteração de medidas",
+    "img": "./images/farmacia1 (1).jfif",
+    "galeria": [
+      "./images/farmacia1 (1).jfif",
+      "./images/farmacia1 (2).jfif",
+      "./images/farmacia1 (3).jfif"
+    ],
+    "descricao": "Projeto desenvolvido para farmácia com foco em organização, visibilidade de produtos e fluxo eficiente de atendimento.\n\nA estrutura inclui:\n\n• Estantes modulares em vidro para exposição de medicamentos\n• Balcões de atendimento e caixa em MDF\n• Mobiliário planejado para otimizar o espaço da loja\n• Layout pensado para circulação de clientes e operação da equipe\n\nO projeto permite alta capacidade de exposição de produtos, mantendo o ambiente limpo, organizado e profissional.",
+    "tags": [
+      "farmacia completa",
+      "farmacia",
+      "vidro",
+      "mdf",
+      "estantes modulares",
+      "balcao de atendimento",
+      "balcao caixa",
+      "layout loja",
+      "expositor",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "nao"
+  },
+  {
+    "id": 51,
+    "categoria": [
+      "Balcões",
+      "Moveis"
+    ],
+    "nome": "Balcão caixa com detalhes madeirado",
+    "preco": 1990.0,
+    "tamanho": "1,00m x 2,00m x 0,40m",
+    "dimensoes": "Altura: 1,00 m | Largura: 2,00 m | Profundidade: 40 cm",
+    "img": "./images/caixareto (2).jpg",
+    "galeria": [
+      "./images/caixareto (1).jpg",
+      "./images/caixareto (2).jpg",
+      "./images/caixareto (3).jpg"
+    ],
+    "descricao": "Balcão caixa desenvolvido para proporcionar organização, praticidade no atendimento e visual moderno para a loja.\n\nFabricado em MDF branco, com detalhe frontal em padrão amadeirado Carvalho Malva, que valoriza o ambiente e cria um acabamento mais elegante no ponto de atendimento.\n\nPossui amplo espaço interno para trabalho, permitindo acomodar computador, sistema de caixa e organização de itens do dia a dia. Conta também com gaveta com divisória para dinheiro, facilitando o controle no momento das vendas.\n\nIndicado para lojas de roupas, farmácias, eletrônicos, variedades e comércios em geral.\n\nMedidas:\nAltura: 1,00 m\nLargura: 2,00 m\nProfundidade: 40 cm",
+    "tags": [
+      "balcao caixa",
+      "balcao atendimento",
+      "balcao madeirado",
+      "carvalho malva",
+      "gaveta caixa",
+      "moveis loja",
+      "comercio"
+    ],
+    "permiteOrcamentoMedida": "sim",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 52,
+    "categoria": [
+      "Balcões",
+      "Caixas",
+      "Expositores",
+      "Moveis"
+    ],
+    "nome": "Balcão caixa em L com painel e prateleiras",
+    "preco": 3300.0,
+    "tamanho": "1,00m x 1,50m x 1,50m x 0,40m",
+    "dimensoes": "Altura: 1,00 m | Comprimento: 1,50 m | Parte do L: 1,50 m | Profundidade: 40 cm",
+    "img": "./images/Lcompainel (2).jpg",
+    "galeria": [
+      "./images/Lcompainel (1).jpg",
+      "./images/Lcompainel (2).jpg"
+    ],
+    "descricao": "Balcão de atendimento em formato L, projetado para oferecer organização, funcionalidade e maior exposição de produtos no ponto de venda.\n\nO modelo conta com painel canaletado em uma das laterais, permitindo a instalação de ganchos e acessórios para exposição de produtos. Na parte frontal possui prateleiras inclinadas, ideais para exposição de balas, doces, pequenos itens e produtos de impulso, aumentando as vendas no caixa.\n\nFabricado em MDF, o balcão possui amplo espaço interno para organização de materiais, sistema de caixa e itens utilizados no atendimento.\n\nIndicado para mercados, lojas de conveniência, farmácias, lojas de variedades e comércios em geral.\n\nMedidas:\nAltura: 1,00 m\nComprimento: 1,50 m\nParte do L: 1,50 m\nProfundidade: 40 cm",
+    "tags": [
+      "balcao caixa",
+      "balcao em l",
+      "painel canaletado",
+      "prateleiras inclinadas",
+      "balcao atendimento",
+      "mercado",
+      "conveniencia",
+      "farmacia",
+      "moveis loja"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 53,
+    "categoria": [
+      "Balcões",
+      "Caixas",
+      "Expositores",
+      "Moveis"
+    ],
+    "nome": "Balcão Caixa em L com Iluminação LED",
+    "preco": 3500.0,
+    "tamanho": "1,10m/1,00m x 1,50m x 1,50m x 0,40m",
+    "dimensoes": "Altura: 1,10 m ou 1,00 m | Comprimento: 1,50 m | Parte do L: 1,50 m | Profundidade: 40 cm",
+    "img": "./images/Premium (2).jpg",
+    "galeria": [
+      "./images/Premium (1).jpg",
+      "./images/Premium (2).jpg",
+      "./images/Premium (3).jpg"
+    ],
+    "descricao": "Balcão de atendimento em formato L, com design moderno e acabamento em dois tons de madeirado, ideal para valorizar o ambiente da loja e criar um ponto de caixa elegante e profissional.\n\nFabricado em MDF 15 mm, o modelo possui detalhes geométricos no painel frontal e iluminação em LED embutida, que destaca o balcão e cria um visual sofisticado no espaço comercial.\n\nO interior conta com amplo espaço para organização, permitindo acomodar computador, sistema de caixa e itens de apoio para o atendimento diário.\n\nIndicado para lojas de roupas, eletrônicos, cosméticos, acessórios e comércios em geral que buscam um balcão diferenciado e moderno.\n\nMedidas:\nAltura: 1,10 m ou 1,00 m\nComprimento: 1,50 m\nParte do L: 1,50 m\nProfundidade: 40 cm",
+    "tags": [
+      "balcao caixa",
+      "balcao em l",
+      "iluminacao led",
+      "balcao atendimento",
+      "mdf 15mm",
+      "madeirado",
+      "loja roupas",
+      "eletronicos",
+      "cosmeticos",
+      "moveis loja"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "nao"
+  },
+  {
+    "id": 54,
+    "categoria": [
+      "Balcões",
+      "Caixas",
+      "Expositores",
+      "Moveis"
+    ],
+    "nome": "Balcão Caixa em L – Preto com Detalhe Madeirado",
+    "preco": 3770.0,
+    "tamanho": "1,10m/1,00m x 2,00m x 1,00m x 0,40m",
+    "dimensoes": "Altura: 1,10 m e 1,00 m | Comprimento: 2,00 m | Parte do L: 1,00 m | Profundidade: 40 cm",
+    "img": "./images/Balcaolpreto (1).jpg",
+    "galeria": [
+      "./images/Balcaolpreto (1).jpg",
+      "./images/Balcaolpreto (2).jpg"
+    ],
+    "descricao": "Balcão de atendimento em formato L, com acabamento em MDF preto e detalhes frontais em padrão madeirado, proporcionando um visual moderno e sofisticado para o ambiente da loja.\n\nO modelo possui nível duplo de altura, facilitando o atendimento ao cliente e a organização interna do caixa. Conta também com amplo espaço interno com prateleiras, ideal para acomodar computador, sistema de caixa, documentos e materiais de uso diário.\n\nIndicado para lojas de roupas, eletrônicos, cosméticos, acessórios e comércios em geral que buscam um balcão funcional e com design diferenciado.\n\nMedidas:\nComprimento: 2,00 m\nParte do L: 1,00 m\nProfundidade: 40 cm\nAltura da parte baixa: 1,00 m\nAltura da parte alta: 1,10 m",
+    "tags": [
+      "balcao caixa",
+      "balcao em l",
+      "preto",
+      "detalhe madeirado",
+      "balcao atendimento",
+      "prateleiras internas",
+      "loja roupas",
+      "eletronicos",
+      "cosmeticos",
+      "moveis loja"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "nao"
+  },
+  {
+    "id": 55,
+    "categoria": [
+      "Balcões",
+      "Caixas",
+      "Expositores",
+      "Moveis"
+    ],
+    "nome": "Balcão Caixa em L Madeirado com Detalhe Ripado",
+    "preco": 2900.0,
+    "tamanho": "1,10m x 1,20m x 1,20m",
+    "dimensoes": "Altura: 1,10 m | Comprimento: 1,20 m | Parte do L: 1,20 m",
+    "img": "./images/balcãoripadomadeirado (3).jpg",
+    "galeria": [
+      "./images/balcãoripadomadeirado (3).jpg",
+      "./images/balcãoripadomadeirado (4).jpg",
+      "./images/balcãoripadomadeirado (1).jpg",
+      "./images/balcãoripadomadeirado (2).jpg"
+    ],
+    "descricao": "Balcão de atendimento em formato L, com acabamento madeirado e detalhe ripado frontal, trazendo um visual moderno e sofisticado para o ambiente da loja.\n\nO modelo combina design elegante com funcionalidade, sendo ideal para organizar o ponto de caixa e valorizar o espaço comercial. Possui gaveta com chave para dinheiro, prateleira interna para organização de materiais e área de trabalho confortável para computador ou sistema de caixa.\n\nO painel ripado frontal adiciona um acabamento decorativo diferenciado, deixando o balcão mais moderno e destacando o ambiente da loja.\n\nIndicado para lojas de roupas, boutiques, cosméticos, eletrônicos e comércios em geral.\n\nMedidas:\nComprimento: 1,20 m\nParte do L: 1,20 m\nAltura: 1,10 m",
+    "tags": [
+      "balcao caixa",
+      "balcao em l",
+      "madeirado",
+      "ripado",
+      "balcao atendimento",
+      "gaveta com chave",
+      "prateleira interna",
+      "loja roupas",
+      "boutique",
+      "cosmeticos",
+      "eletronicos",
+      "moveis loja"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "nao"
+  },
+  {
+    "id": 56,
+    "categoria": [
+      "Kits",
+      "Expositores",
+      "Araras",
+      "Moveis"
+    ],
+    "nome": "Kit Expositor Preto para Loja com Cabideiro e Nichos",
+    "preco": 1650.0,
+    "tamanho": "Kit com 3 módulos",
+    "dimensoes": "Kit padrão sem alteração de cor e sem alteração de medida",
+    "img": "./images/KITMOVEL3PRETO (2).jpg",
+    "galeria": [
+      "./images/KITMOVEL3PRETO (1).jpg",
+      "./images/KITMOVEL3PRETO (2).jpg",
+      "./images/KITMOVEL3PRETO (3).jpg"
+    ],
+    "descricao": "Conjunto expositor ideal para organização e exposição de roupas e acessórios em lojas de varejo. O kit possui estrutura em MDF na cor preta, combinando nichos superiores para exposição de produtos com cabideiros metálicos para pendurar roupas.\n\nO conjunto inclui três módulos que permitem organizar diferentes tipos de mercadorias: peças penduradas, produtos dobrados ou itens decorativos. O design moderno e vertical ajuda a aproveitar melhor o espaço da loja, deixando o ambiente mais organizado e profissional.\n\nIndicado para lojas de roupas, boutiques, lojas de moda e comércios em geral.",
+    "tags": [
+      "kit expositor",
+      "kit preto",
+      "cabideiro",
+      "nichos",
+      "loja de roupas",
+      "boutique",
+      "expositor mdf",
+      "moveis loja"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "nao"
+  },
+  {
+    "id": 57,
+    "categoria": [
+      "Kits",
+      "Expositores",
+      "Araras",
+      "Moveis"
+    ],
+    "nome": "Kit Closet Expositor Branco para Loja com Cabideiro, Nichos e Gavetas",
+    "preco": 3370.0,
+    "tamanho": "Kit com 3 módulos",
+    "dimensoes": "Kit com opção de alteração de cor e de medida",
+    "img": "./images/KITCLOSET (1).jpg",
+    "galeria": [
+      "./images/KITCLOSET (1).jpg",
+      "./images/KITCLOSET (2).jpg",
+      "./images/KITCLOSET (3).jpg"
+    ],
+    "descricao": "Conjunto expositor estilo closet aberto, ideal para organização e exposição de roupas em lojas. O kit possui estrutura em MDF branco, com design moderno que valoriza o ambiente e facilita a visualização dos produtos.\n\nO módulo central conta com cabideiros metálicos para roupas, perfeito para peças penduradas como vestidos, camisas e casacos. Nas laterais, o conjunto possui prateleiras amplas para roupas dobradas ou acessórios, além de gavetas inferiores para organização de estoque ou itens menores.\n\nEsse tipo de expositor deixa a loja mais organizada, elegante e prática para o dia a dia.\n\nIdeal para lojas de roupas, boutiques, moda feminina, masculina ou infantil.",
+    "tags": [
+      "kit closet",
+      "kit expositor",
+      "branco",
+      "cabideiro",
+      "nichos",
+      "gavetas",
+      "loja de roupas",
+      "boutique",
+      "moda feminina",
+      "moda masculina",
+      "moda infantil",
+      "moveis loja"
+    ],
+    "permiteOrcamentoMedida": "sim",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 58,
+    "categoria": [
+      "Expositores",
+      "Araras",
+      "Prateleiras",
+      "Moveis"
+    ],
+    "nome": "CABIDEIRO COM PRATELEIRAS EXPOSITOR PARA LOJA",
+    "preco": 920.0,
+    "tamanho": "1.80m",
+    "dimensoes": "1.80m Altura x 1.80m Largura x 30cm Profundidade",
+    "img": "./images/cabideirocomprat1 (1).jpeg",
+    "galeria": [
+      "./images/cabideirocomprat1 (1).jpeg",
+      "./images/cabideirocomprat1 (2).jpeg"
+    ],
+    "descricao": "Expositor completo ideal para organização e exposição de roupas em lojas. O modelo possui cabideiros metálicos para roupas penduradas e prateleiras centrais para peças dobradas ou acessórios, facilitando a organização dos produtos e deixando a loja mais prática e visualmente organizada.\n\nA estrutura em MDF branco proporciona um visual moderno e limpo, combinando facilmente com qualquer ambiente comercial. O design permite expor diferentes tipos de produtos no mesmo móvel, aproveitando melhor o espaço da loja.\n\nPerfeito para lojas de roupas, boutiques, moda feminina, masculina ou infantil.\n\nAltura: 1,80 m\nLargura: 1,80 m\nProfundidade: 30 cm.",
+    "tags": [
+      "cabideiro",
+      "expositor",
+      "roupas",
+      "prateleiras",
+      "loja",
+      "movel",
+      "moveis",
+      "boutique"
+    ],
+    "permiteOrcamentoMedida": "sim",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 59,
+    "categoria": [
+      "Balcões",
+      "Caixas",
+      "Expositores",
+      "Moveis"
+    ],
+    "nome": "BALCÃO CAIXA DUPLO COM PRATELEIRAS INCLINADAS PARA LOJA",
+    "preco": 1790.0,
+    "tamanho": "1.50m",
+    "dimensoes": "1.00m Altura x 1.50m Largura x 50cm Profundidade",
+    "img": "./images/caixaduplopratinclinada (2).jpeg",
+    "galeria": [
+      "./images/caixaduplopratinclinada (1).jpeg",
+      "./images/caixaduplopratinclinada (2).jpeg"
+    ],
+    "descricao": "Balcão caixa duplo ideal para lojas de roupas, calçados e acessórios, combinando área de atendimento com espaço para exposição de produtos.\n\nNa parte frontal conta com prateleiras inclinadas, perfeitas para expor calçados ou produtos em destaque, facilitando a visualização dos clientes. Já na parte interna possui nichos organizadores e duas gavetas com chave, ideais para guardar dinheiro, documentos e itens de uso diário do caixa.\n\nEstrutura em MDF branco, com design moderno e funcional, ajudando a deixar a loja organizada e com visual profissional.\n\nAltura: 1,00 m\nLargura: 1,50 m\nProfundidade: 50 cm.",
+    "tags": [
+      "balcao",
+      "caixa",
+      "prateleiras",
+      "expositor",
+      "loja",
+      "atendimento",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "sim",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 60,
+    "categoria": [
+      "Balcões",
+      "Caixas",
+      "Vitrines",
+      "Expositores",
+      "Moveis"
+    ],
+    "nome": "BALCÃO CAIXA EM L COM VITRINE DE VIDRO PARA LOJA",
+    "preco": 2750.0,
+    "tamanho": "1.50m x 1.50m",
+    "dimensoes": "1.00m Altura x 1.50m Largura x 40cm Profundidade",
+    "img": "./images/caixavitrineemL (2).jpeg",
+    "galeria": [
+      "./images/caixavitrineemL (3).jpeg",
+      "./images/caixavitrineemL (1).jpeg",
+      "./images/caixavitrineemL (2).jpeg"
+    ],
+    "descricao": "Balcão caixa em formato L com vitrine de vidro, ideal para lojas que querem unir atendimento e exposição de produtos no mesmo móvel.\n\nPossui vitrine frontal com prateleiras de vidro, perfeita para expor acessórios, bijuterias, eletrônicos ou produtos de pequeno porte, valorizando os itens e chamando atenção do cliente no ponto de venda.\n\nNa parte interna conta com gaveta com chave para maior segurança, além de prateleiras para organização de produtos e materiais do caixa.\n\nAltura: 1,00 m\nLargura: 1,50 m\nProfundidade: 40 cm.",
+    "tags": [
+      "balcao",
+      "caixa",
+      "vitrine",
+      "vidro",
+      "loja",
+      "atendimento",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 61,
+    "categoria": [
+      "Balcões",
+      "Expositores",
+      "Prateleiras",
+      "Moveis"
+    ],
+    "nome": "BALCÃO CANTONEIRA EXPOSITOR PARA LOJA",
+    "preco": 380.0,
+    "tamanho": "40cm",
+    "dimensoes": "1.00m Altura x 40cm Largura x 40cm Profundidade",
+    "img": "./images/balcaocantoneira (2).jpeg",
+    "galeria": [
+      "./images/balcaocantoneira (2).jpeg",
+      "./images/balcaocantoneira (1).jpeg"
+    ],
+    "descricao": "Balcão cantoneira ideal para aproveitar cantos da loja e otimizar o espaço de exposição. Possui prateleiras perfeitas para expor produtos como calçados, acessórios ou pequenos itens.\n\nFabricado em MDF branco, com design simples e funcional, combinando facilmente com outros móveis da loja.\n\nAltura: 1,00 m\nLargura: 40 cm\nProfundidade: 40 cm.",
+    "tags": [
+      "balcao",
+      "cantoneira",
+      "expositor",
+      "loja",
+      "prateleiras",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 62,
+    "categoria": [
+      "Balcões",
+      "Caixas",
+      "Vitrines",
+      "Expositores",
+      "Moveis"
+    ],
+    "nome": "BALCÃO CAIXA EM L COM VITRINE FRONTAL",
+    "preco": 2300.0,
+    "tamanho": "2.50m x 1.00m",
+    "dimensoes": "1.00m Altura x 2.50m Largura x 50cm Profundidade",
+    "img": "./images/caixavitrinemLdenovo (1).jpeg",
+    "galeria": [
+      "./images/caixavitrinemLdenovo (1).jpeg",
+      "./images/caixavitrinemLdenovo (2).jpeg",
+      "./images/caixavitrinemLdenovo (3).jpeg"
+    ],
+    "descricao": "Balcão caixa em formato L com vitrine frontal, ideal para lojas que precisam de área de atendimento e exposição de produtos ao mesmo tempo.\n\nO móvel possui vitrines com portas de vidro permitindo expor produtos com segurança e ótima visibilidade para os clientes. Internamente conta com prateleiras organizadoras e gaveta com chave.\n\nAltura: 1,00 m\nLargura: 2,50 m\nProfundidade: 50 cm.",
+    "tags": [
+      "balcao",
+      "caixa",
+      "vitrine",
+      "vidro",
+      "loja",
+      "atendimento",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 63,
+    "categoria": [
+      "Balcões",
+      "Caixas",
+      "Expositores",
+      "Moveis"
+    ],
+    "nome": "BALCÃO CAIXA EM L COM DETALHE FRONTAL – BRANCO",
+    "preco": 2900.0,
+    "tamanho": "1.50m x 1.50m",
+    "dimensoes": "1.00m Altura x 1.50m Largura x 40cm Profundidade",
+    "img": "./images/LBRANCODETALHEBRANCO.jpeg",
+    "galeria": [
+      "./images/LBRANCODETALHEBRANCO.jpeg",
+      "./images/LBRANCODETALHEBRANCO.png"
+    ],
+    "descricao": "Balcão caixa em formato L ideal para lojas que buscam um móvel funcional e com visual moderno. O modelo conta com detalhes decorativos na parte frontal, deixando o ambiente mais elegante e profissional.\n\nNa parte interna possui prateleiras organizadoras e gaveta com chave para guardar produtos e materiais do caixa.\n\nAltura: 1,00 m\nLargura: 1,50 m\nProfundidade: 40 cm.",
+    "tags": [
+      "balcao",
+      "caixa",
+      "loja",
+      "atendimento",
+      "movel",
+      "moveis",
+      "expositor"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 64,
+    "categoria": [
+      "Araras",
+      "Expositores",
+      "Moveis"
+    ],
+    "nome": "CABIDEIRO DUPLO",
+    "preco": 459.0,
+    "tamanho": "1.80m",
+    "dimensoes": "1.80m Altura x 1.00m Largura x 30cm Profundidade",
+    "img": "./images/cabduplo (1).jpeg",
+    "galeria": [
+      "./images/cabduplo (1).jpeg",
+      "./images/cabduplo (2).jpeg"
+    ],
+    "descricao": "Cabideiro duplo ideal para exposição de roupas em lojas, proporcionando mais organização e melhor aproveitamento do espaço.\n\nO modelo conta com dois níveis de cabideiro metálico permitindo expor mais peças no mesmo móvel. Fabricado em MDF branco com design moderno e versátil.\n\nAltura: 1,80 m\nLargura: 1,00 m\nProfundidade: 30 cm.",
+    "tags": [
+      "cabideiro",
+      "duplo",
+      "roupas",
+      "expositor",
+      "loja",
+      "movel",
+      "moveis",
+      "boutique"
+    ],
+    "permiteOrcamentoMedida": "sim",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 65,
+    "categoria": [
+      "Kits",
+      "Expositores",
+      "Gôndolas",
+      "Moveis"
+    ],
+    "nome": "KIT BAZAR COMPLETO",
+    "preco": 28900.0,
+    "tamanho": "Kit completo",
+    "dimensoes": "Móveis de parede 2.20m Altura x 35cm Profundidade",
+    "img": "./images/bazarcanoas (2).jfif",
+    "galeria": [
+      "./images/bazarcanoas (1).jfif",
+      "./images/bazarcanoas (2).jfif",
+      "./images/bazarcanoas (3).jfif"
+    ],
+    "descricao": "Kit completo para montagem de bazar ou loja de utilidades, desenvolvido para quem precisa estruturar uma loja inteira com móveis padronizados e de alta capacidade de exposição.\n\nO conjunto é totalmente fabricado em MDF e inclui gôndolas centrais com prateleiras reguláveis e painéis canaletados nas laterais, permitindo diferentes formas de exposição de produtos. Os móveis de parede também possuem prateleiras com regulagem de altura, podendo ser ajustadas de 10 em 10 cm conforme a necessidade da loja.\n\nA estrutura foi pensada para comércios maiores, oferecendo grande capacidade de exposição e organização dos produtos, mantendo a loja visualmente limpa, organizada e profissional.\n\nAltura dos móveis de parede: 2,20 m\nProfundidade dos móveis: 35 cm\nPrateleiras com regulagem de altura de 10 em 10 cm.",
+    "tags": [
+      "kit loja",
+      "kit bazar",
+      "moveis para loja",
+      "expositores para loja",
+      "gondolas",
+      "painel canaletado",
+      "loja de utilidades",
+      "loja bazar",
+      "mobilia comercial",
+      "montagem de loja",
+      "moveis comerciais"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 66,
+    "categoria": [
+      "Araras",
+      "Expositores",
+      "Móveis",
+      "Moveis"
+    ],
+    "nome": "CABIDEIRO EM MDF COM PRATELEIRAS",
+    "preco": 459.0,
+    "tamanho": "1.80m",
+    "dimensoes": "1.80m Altura x 90cm Largura x 30cm Profundidade",
+    "img": "./images/foto_1.jpg",
+    "galeria": [
+      "./images/foto_1.jpg"
+    ],
+    "descricao": "Estrutura ideal para lojas que precisam expor roupas de forma organizada e prática, aproveitando o espaço vertical.\n\nCombina área de cabideiro superior com prateleiras inferiores, permitindo expor peças penduradas e produtos dobrados no mesmo móvel.\n\nIndicado para:\nLojas de roupas, boutiques, bazares e lojas populares.\n\nEstrutura:\nProduzido em MDF, com tubo cabideiro metálico resistente.\nBase com prateleiras para apoio de produtos, caixas ou estoque leve.\n\nAltura: 1.80m\nLargura: 90cm\nProfundidade: 30cm.",
+    "tags": [
+      "cabideiro",
+      "arara",
+      "mdf",
+      "prateleiras",
+      "roupas",
+      "boutique",
+      "bazar",
+      "expositor",
+      "loja",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "sim",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 67,
+    "categoria": [
+      "Gôndolas",
+      "Expositores",
+      "Painel Canaletado",
+      "Móveis de Centro",
+      "Moveis"
+    ],
+    "nome": "GÔNDOLA CENTRAL COM PAINEL CANALETADO",
+    "preco": 699.9,
+    "tamanho": "1.20m",
+    "dimensoes": "1.20m Altura x 1.20m Largura x 40cm Profundidade",
+    "img": "./images/paineldoislados.jpg",
+    "galeria": [
+      "./images/paineldoislados.jpg"
+    ],
+    "descricao": "Gôndola ideal para lojas que precisam expor produtos de forma organizada e com alto aproveitamento de espaço.\n\nPossui dois lados com painel canaletado, permitindo uso de ganchos e acessórios, e prateleiras laterais para apoio de produtos.\n\nIndicado para:\nLojas de acessórios, utilidades, eletrônicos, bazares e geral.\n\nEstrutura:\nProduzida em MDF, com painel canaletado central e prateleiras laterais.\nPermite combinar exposição vertical e horizontal no mesmo móvel.\n\nAltura: 1.20m\nLargura: 1.20m\nProfundidade: 40cm.",
+    "tags": [
+      "gondola",
+      "gondola central",
+      "painel canaletado",
+      "canaletado",
+      "mdf",
+      "prateleiras",
+      "expositor",
+      "loja",
+      "bazar",
+      "utilidades",
+      "eletronicos",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "sim",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 68,
+    "categoria": [
+      "Gôndolas",
+      "Expositores",
+      "Móveis de Centro",
+      "Moveis"
+    ],
+    "nome": "GÔNDOLA CENTRAL 4 LADOS COM PRATELEIRAS",
+    "preco": 820.0,
+    "tamanho": "1.20m",
+    "dimensoes": "1.20m Altura x 1.20m Largura x 40cm Profundidade",
+    "img": "./images/paineleprat (1).jpg",
+    "galeria": [
+      "./images/paineleprat (1).jpg"
+    ],
+    "descricao": "Modelo desenvolvido para maximizar exposição de produtos em todos os lados do móvel.\n\nIdeal para posicionamento no centro da loja, aumentando a circulação e o volume de produtos expostos.\n\nIndicado para:\nMercadinhos, lojas de utilidades, roupas dobradas, calçados e produtos variados.\n\nEstrutura:\nTotalmente em MDF, com prateleiras em todos os lados.\nFacilita reposição e acesso rápido aos produtos.\n\nAltura: 1.20m\nLargura: 1.20m\nProfundidade: 40cm.",
+    "tags": [
+      "gondola",
+      "gondola central",
+      "4 lados",
+      "prateleiras",
+      "mdf",
+      "expositor",
+      "mercadinho",
+      "utilidades",
+      "roupas",
+      "calcados",
+      "loja",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "sim",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 69,
+    "categoria": [
+      "Balcões",
+      "Caixas",
+      "Painel Canaletado",
+      "Expositores",
+      "Moveis"
+    ],
+    "nome": "BALCÃO CAIXA COM PAINEL CANALETADO",
+    "preco": 1350.0,
+    "tamanho": "1.10m",
+    "dimensoes": "1.10m Altura x 1.50m Largura x 40cm Profundidade",
+    "img": "./images/CAIXACOMPAINEL (1).jpeg",
+    "galeria": [
+      "./images/CAIXACOMPAINEL (1).jpeg",
+      "./images/CAIXACOMPAINEL (2).jpeg",
+      "./images/CAIXACOMPAINEL (3).jpeg"
+    ],
+    "descricao": "Balcão desenvolvido para unir atendimento eficiente com exposição estratégica de produtos.\n\nA frente em painel canaletado permite trabalhar com ganchos e cestos, transformando o caixa em um ponto de venda adicional.\n\nIndicado para:\nLojas de roupas, acessórios, eletrônicos, conveniência e utilidades.\n\nEstrutura:\nProduzido em MDF, com painel canaletado frontal para uso de acessórios.\nParte interna com prateleiras e gaveta com chave, garantindo organização e segurança no caixa.\n\nDiferencial real (isso aqui vende):\nEnquanto o cliente paga, tu continua vendendo.\n\nAltura: 1.10m\nLargura: 1.50m\nProfundidade: 40cm.",
+    "tags": [
+      "balcao",
+      "caixa",
+      "painel canaletado",
+      "canaletado",
+      "pdv",
+      "mdf",
+      "gaveta com chave",
+      "expositor",
+      "loja",
+      "acessorios",
+      "eletronicos",
+      "conveniencia",
+      "utilidades",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "sim",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 70,
+    "categoria": [
+      "Balcões",
+      "Caixas",
+      "Recepção",
+      "Linha Premium",
+      "Moveis"
+    ],
+    "nome": "BALCÃO CAIXA EM L PREMIUM",
+    "preco": 3770.0,
+    "tamanho": "1.10m",
+    "dimensoes": "2.00m Comprimento x 1.00m Retorno (L) x 40cm Profundidade x 1.00m Altura parte baixa x 1.10m Altura parte alta",
+    "img": "./images/LPRETOAZUL (4).jpeg",
+    "galeria": [
+      "./images/LPRETOAZUL (1).jpeg",
+      "./images/LPRETOAZUL (2).jpeg",
+      "./images/LPRETOAZUL (3).jpeg",
+      "./images/LPRETOAZUL (4).jpeg"
+    ],
+    "descricao": "Balcão em formato L ideal para lojas que querem transmitir mais valor e profissionalismo no atendimento.\n\nDesign moderno na cor preta com detalhe frontal, trazendo presença forte no ambiente e elevando a percepção da loja.\n\nIndicado para:\nLojas de roupas, eletrônicos, cosméticos e negócios que querem posicionamento mais premium.\n\nEstrutura:\nProduzido em MDF, com amplo espaço interno para organização.\nFormato em L que melhora o fluxo de atendimento e aproveita melhor o espaço.\n\nDiferencial real:\nEle muda a cara da loja.\nPassa imagem de loja estruturada — e isso impacta diretamente na confiança do cliente.\n\nComprimento: 2.00m\nRetorno (L): 1.00m\nProfundidade: 40cm\nAltura parte baixa: 1.00m\nAltura parte alta: 1.10m.",
+    "tags": [
+      "balcao",
+      "balcao em l",
+      "caixa",
+      "premium",
+      "mdf",
+      "recepcao",
+      "atendimento",
+      "loja",
+      "roupas",
+      "eletronicos",
+      "cosmeticos",
+      "movel",
+      "moveis"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "nao"
+  }
 ]

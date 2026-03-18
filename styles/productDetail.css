@@ -88,6 +88,49 @@ h1, h2, h3 {
   background-color: #fff;
 }
 
+.product-gallery-slide img {
+  cursor: zoom-in;
+}
+
+.image-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.82);
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.image-lightbox[hidden] {
+  display: none !important;
+}
+
+.lightbox-image {
+  max-width: min(92vw, 1200px);
+  max-height: 88vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.lightbox-close-btn {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 999px;
+  background: rgba(17, 17, 17, 0.65);
+  color: #fff;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
 .gallery-nav-btn {
   flex-shrink: 0;
   width: 38px;
@@ -162,6 +205,14 @@ h1, h2, h3 {
   .btn-whatsapp-large {
     width: 100%; /* No celular o botão ocupa a largura toda */
   }
+
+  .budget-input-row {
+    flex-direction: column;
+  }
+
+  .color-options {
+    flex-direction: column;
+  }
 }
 
 /* ================= WHATSAPP FLOAT ================= */
@@ -194,8 +245,8 @@ h1, h2, h3 {
   --p2-soft: #f7f8fa;
   --p2-text: #243042;
   --p2-muted: #5f6b7a;
-  --p2-orange: #f08a24;
-  --p2-orange-dark: #da7818;
+  --p2-orange: #F7941D;
+  --p2-orange-dark: #F9A63A;
   --p2-line: #e7ebf0;
   --p2-shadow: 0 8px 24px rgba(17, 24, 39, 0.08);
 }
@@ -228,6 +279,70 @@ h1, h2, h3 {
   line-height: 1.25;
 }
 
+.product-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.share-inline-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.share-inline-btn {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--p2-line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--p2-text);
+  cursor: pointer;
+}
+
+.share-inline-menu {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid var(--p2-line);
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: var(--p2-shadow);
+  z-index: 3;
+}
+
+.share-inline-option {
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--p2-line);
+  border-radius: 999px;
+  background: #fff;
+  cursor: pointer;
+}
+
+#share-whatsapp-btn {
+  color: #1b8f4a;
+}
+
+#share-copy-btn {
+  color: #2d3f58;
+}
+
+.share-inline-option.copied {
+  background: #e8fff0;
+  border-color: #9ad8b2;
+}
+
+.share-inline-option.copy-error {
+  background: #ffefef;
+  border-color: #efb0b0;
+}
+
+
 .badge-category,
 #product-category {
   display: inline-block;
@@ -250,12 +365,190 @@ h1, h2, h3 {
   color: var(--p2-orange-dark);
 }
 
+
+
+
+.installments-box {
+  margin-top: 8px;
+  border: 1px solid var(--p2-line);
+  border-radius: 12px;
+  padding: 14px 16px;
+  background: #ffffff;
+}
+
+.installments-box h2 {
+  font-size: 1.05rem;
+  margin: 0 0 8px;
+  color: var(--p2-text);
+}
+
+.installments-value,
+.installments-plan {
+  margin: 0;
+  font-weight: 600;
+  color: var(--p2-text);
+}
+
+.installments-plan {
+  margin-top: 2px;
+}
+
+.color-selector {
+  margin-top: 8px;
+  border: 1px solid var(--p2-line);
+  border-radius: 12px;
+  padding: 14px 16px;
+  background: #ffffff;
+}
+
+.color-selector h2 {
+  font-size: 1.05rem;
+  margin: 0 0 4px;
+  color: var(--p2-text);
+}
+
+.color-helper {
+  margin: 0 0 10px;
+  color: var(--p2-muted);
+  font-size: 0.92rem;
+}
+
+.color-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.color-option {
+  border: 1px solid var(--p2-line);
+  border-radius: 999px;
+  padding: 7px 12px;
+  font-weight: 600;
+  color: var(--p2-text);
+  cursor: pointer;
+}
+
+.color-option input {
+  margin-right: 6px;
+}
+
+.budget-calculator {
+  margin-top: 14px;
+  border: 1px solid var(--p2-line);
+  border-radius: 12px;
+  padding: 16px;
+  background: #fffdf9;
+}
+
+.budget-calculator h2 {
+  font-size: 1.05rem;
+  margin: 0 0 6px;
+  color: var(--p2-text);
+}
+
+.budget-helper {
+  margin: 0 0 10px;
+  color: var(--p2-muted);
+  font-size: 0.95rem;
+}
+
+.budget-calculator label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.budget-input-row {
+  display: flex;
+  gap: 10px;
+}
+
+.budget-input-row input {
+  flex: 1;
+  border: 1px solid var(--p2-line);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.budget-input-row button {
+  white-space: nowrap;
+}
+
+.budget-result {
+  margin: 12px 0 0;
+  font-weight: 600;
+  color: var(--p2-text);
+}
+
+.budget-result.error {
+  color: #c0392b;
+}
+
+
+.budget-dimension-row {
+  margin-bottom: 10px;
+}
+
+.budget-dimension-row.disabled {
+  opacity: 0.55;
+}
+
+.budget-reset-btn {
+  border: 1px solid var(--p2-line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--p2-text);
+  font-weight: 600;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+#calculate-budget-btn {
+  border: none;
+  border-radius: 8px;
+  background: var(--p2-orange-dark);
+  color: #fff;
+  font-weight: 700;
+  padding: 10px 14px;
+  cursor: pointer;
+  margin-top: 6px;
+}
+
 .product-description-side {
   border-top: 1px solid var(--p2-line);
 }
 
 .product-description-side p {
   color: var(--p2-muted);
+}
+
+.product-quantity-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.product-quantity-detail label {
+  font-size: 0.85rem;
+  color: var(--p2-muted);
+  font-weight: 600;
+}
+
+.quantity-input-detail {
+  width: 130px;
+  border: 1px solid var(--p2-line);
+  border-radius: 8px;
+  padding: 9px 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--p2-text);
+}
+
+.quantity-input-detail:focus {
+  outline: none;
+  border-color: var(--p2-orange);
+  box-shadow: 0 0 0 2px rgba(240, 138, 36, 0.22);
 }
 
 .btn-whatsapp-large {
@@ -325,6 +618,7 @@ h1, h2, h3 {
   margin-top: 6px;
 }
 
+
 @media (max-width: 768px) {
   .product-gallery {
     gap: 6px;
@@ -371,5 +665,120 @@ h1, h2, h3 {
 @media (max-width: 768px) {
   .product-description-side {
     margin-top: 14px;
+  }
+}
+
+/* ==========================================================================
+   VITRINES DE RECOMENDAÇÃO
+   ========================================================================== */
+.product-recommendations {
+  max-width: 1200px;
+  margin: 24px auto 40px;
+  padding: 0 6px;
+}
+
+.recommendation-block {
+  margin-top: 28px;
+}
+
+.recommendation-block h2 {
+  font-size: 1.2rem;
+  margin-bottom: 14px;
+  color: var(--p2-text);
+}
+
+.recommendation-carousel {
+  display: grid;
+  grid-template-columns: 40px 1fr 40px;
+  align-items: center;
+  gap: 10px;
+}
+
+.recommendation-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(190px, 1fr);
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 8px 2px;
+}
+
+.recommendation-track::-webkit-scrollbar {
+  height: 8px;
+}
+
+.recommendation-track::-webkit-scrollbar-thumb {
+  background: #d7dde5;
+  border-radius: 999px;
+}
+
+.recommendation-nav {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid var(--p2-line);
+  background: #fff;
+  cursor: pointer;
+}
+
+.recommendation-nav:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.recommendation-card {
+  border: 1px solid var(--p2-line);
+  border-radius: 8px;
+  background: #fff;
+  overflow: hidden;
+  scroll-snap-align: start;
+}
+
+.recommendation-card a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.recommendation-card img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  background: #f4f4f4;
+}
+
+.recommendation-card-content {
+  padding: 10px;
+}
+
+.recommendation-category {
+  font-size: 0.72rem;
+  color: #697385;
+  text-transform: uppercase;
+}
+
+.recommendation-name {
+  margin: 6px 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  min-height: 42px;
+}
+
+.recommendation-price {
+  color: #f76f00;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .recommendation-carousel {
+    grid-template-columns: 1fr;
+  }
+
+  .recommendation-nav {
+    display: none;
+  }
+
+  .recommendation-track {
+    grid-auto-columns: minmax(160px, 68vw);
   }
 }

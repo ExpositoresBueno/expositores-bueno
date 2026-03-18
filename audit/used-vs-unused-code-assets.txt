@@ -1,0 +1,21 @@
+Scripts used:
+scripts/checkout.js
+scripts/index.js
+scripts/instalacoesCarousel.js
+scripts/orcamentos.js
+scripts/productDetails.js
+scripts/projetos3D.js
+
+Scripts possibly unused:
+
+
+CSS used:
+styles/about.css
+styles/avaliacoes.css
+styles/checkout.css
+styles/index.css
+styles/instalacoes.css
+styles/productDetail.css
+styles/projetos3D.css
+
+CSS possibly unused:

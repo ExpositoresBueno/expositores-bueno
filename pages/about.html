@@ -6,6 +6,7 @@
     <title>Sobre a Empresa | Expositores Bueno</title>
     <link rel="stylesheet" href="../styles/about.css" />
     <link rel="stylesheet" href="../styles/index.css" />
+    <link rel="stylesheet" href="../styles/performance.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
         <link rel="icon" type="image/png" href="../images/favicon.png">
 
@@ -27,7 +28,43 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
-  </head>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-327475264"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+
+      gtag('config', 'AW-327475264');
+    </script>
+
+    <!-- Google Analytics GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3M4J13DB3D"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+
+      gtag('js', new Date());
+      gtag('config', 'G-3M4J13DB3D');
+    </script>
+    <!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1992317484686861');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1992317484686861&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
 
   <body>
     <div class="page">
@@ -42,7 +79,7 @@
         <div class="header-main">
           <div class="header-logo">
           <a href="../index.html" style="text-decoration: none;">
-            <img src="../images/expo-bueno-logo.jpg" alt="Expositores Bueno" />
+            <img src="../images/72739814197.png" alt="Expositores Bueno" />
             </a>
           </div>
 
@@ -74,12 +111,19 @@
             <li><a href="../index.html">INÍCIO</a></li>
 
             <li class="has-dropdown">
-              <a href="javascript:void(0)">MAIS VENDIDOS ▾</a>
-              <ul class="dropdown-menu">
-                <li><a href="#" data-filter="BALCÃO CAIXA COM VITRINE">Balcão Caixa c/ Vitrine</a></li>
-                <li><a href="#" data-filter="ARMÁRIO COLMEIA">Armário Colmeia</a></li>
-                <li><a href="#" data-filter="MÓVEL COM PRATELEIRAS">Móvel c/ Prateleiras</a></li>
-                <li><a href="#" data-filter="ARARA DE MDF COM COLMEIA">Arara c/ Colmeia</a></li>
+              <a href="../index.html#products-grid">NOSSOS PRODUTOS</a>
+            </li>
+
+            <li class="has-dropdown">
+              <a href="javascript:void(0)">MONTE SUA LOJA ▾</a>
+              <ul class="dropdown-menu dropdown-menu-monte-loja">
+                <li><a href="../pages/monte-seu-bazar.html">Bazar</a></li>
+                <li><a href="../pages/monte-sua-farmacia.html">Farmácias</a></li>
+                <li><a href="../pages/monte-sua-clinica.html">Clínicas</a></li>
+                <li><a href="../pages/monte-seu-escritorio.html">Escritórios</a></li>
+                <li><a href="../pages/monte-sua-loja-de-roupas.html">Loja de Roupas</a></li>
+                <li><a href="../pages/monte-sua-otica.html">Óticas</a></li>
+                <li><a href="../pages/monte-sua-loja.html">Todo Tipo de Comércio</a></li>
               </ul>
             </li>
 
@@ -89,6 +133,14 @@
 
             <li class="has-dropdown">
               <a href="../pages/instalacoes.html">INSTALAÇÕES</a>
+            </li>
+
+            <li class="has-dropdown">
+              <a href="../pages/avaliacoes.html">AVALIAÇÕES</a>
+            </li>
+
+            <li class="has-dropdown">
+              <a href="../pages/nossa-loja.html">NOSSA LOJA</a>
             </li>
           </ul>
         </nav>
@@ -100,7 +152,7 @@
     </section>
 
     <!-- ================= SOBRE ================= -->
-    <section class="sobre-empresa">
+    <section class="sobre-empresa" id="nossa-historia">
       <div class="container">
         <h2>Nossa História: Tradição e Excelência</h2>
 
@@ -139,6 +191,57 @@
         </ul>
       </div>
     </section>
+
+    <section class="history-carousel-section" aria-label="Um pouco da nossa história">
+      <div class="container">
+        <div class="history-carousel-header">
+          <h3>Um pouco da nossa história</h3>
+          <p>Registros antigos da trajetória da Expositores Bueno.</p>
+        </div>
+
+        <div class="history-carousel" id="history-carousel" aria-live="polite">
+          <div
+            class="history-track"
+            id="history-track"
+            data-base-dir="HISTORIA"
+            data-max-images="20"
+          ></div>
+        </div>
+
+        <div
+          class="history-lightbox"
+          id="history-lightbox"
+          aria-hidden="true"
+          role="dialog"
+          aria-label="Visualização ampliada de foto histórica"
+        >
+          <button
+            class="history-lightbox-next"
+            id="history-lightbox-next"
+            type="button"
+            aria-label="Próxima foto histórica"
+          >
+            &#8250;
+          </button>
+          <button
+            class="history-lightbox-close"
+            id="history-lightbox-close"
+            type="button"
+            aria-label="Fechar visualização"
+          >
+            &times;
+          </button>
+          <div class="history-lightbox-image-wrap">
+            <img id="history-lightbox-image" src="" alt="" />
+          </div>
+        </div>
+
+        <p class="history-carousel-empty" id="history-carousel-empty" hidden>
+          As fotos históricas serão adicionadas em breve.
+        </p>
+      </div>
+    </section>
+
 
     <!-- ================= DIFERENCIAIS ================= -->
     <section class="diferenciais">
@@ -192,12 +295,14 @@
               <h3>Endereço</h3>
               <ul class="footer-info">
                 <li>
-                  <i class="location-icon"></i>
+                  <i class="fa-solid fa-location-dot footer-mini-icon" aria-hidden="true"></i>
                   <a target="_blank" href="https://www.google.com/maps/place/Expositores+Bueno/@-29.9038645,-51.1714882,17z/data=!3m1!4b1!4m6!3m5!1s0x9519707845c7925b:0xe744a83d42306f90!8m2!3d-29.9038645!4d-51.1714882!16s%2Fg%2F1w0p6t2h?entry=ttu&g_ep=EgoyMDI2MDMwNC4xIKXMDSoASAFQAw%3D%3D">Av. Boqueirão 804, Canoas, RS, 92410-350</a>
                 </li>
-                <li>
-                  <i class="phone-icon"></i>
-                  <span>(51) 99603-4579<br>(51) 3032-1020<br>(51) 3032-1414</span>
+                <li class="footer-phone-list">
+                  <div class="footer-phone-links">
+                    <a class="footer-phone-link" href="https://wa.me/5551996034579" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i>(51) 99603-4579</a>
+                    <a class="footer-phone-link" href="https://wa.me/5551994623730" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i>(51) 99462-3730</a>
+                  </div>
                 </li>
                 <li class="instagram-icon">
                   <img src="../images/instagramIcon.png" alt="Instagram">
@@ -215,7 +320,7 @@
                 <tr><td>Quarta-Feira</td><td>08:30 às 18:00</td></tr>
                 <tr><td>Quinta-Feira</td><td>08:30 às 18:00</td></tr>
                 <tr><td>Sexta-Feira</td><td>08:30 às 18:00</td></tr>
-                <tr><td>Sábado</td><td>Fechado</td></tr>
+                <tr><td>Sábado</td><td>08:30 às 12:00</td></tr>
                 <tr><td>Domingo</td><td>Fechado</td></tr>
               </table>
             </div>
@@ -249,5 +354,8 @@
     </a>
 
     <script type="module" src="../scripts/index.js"></script>
-  </body>
+    <script type="module" src="../scripts/aboutHistoriaCarousel.js"></script>
+    <script type="module" src="../scripts/performance.min.js"></script>
+  <script src="/scripts/google-ads-tracking.js"></script>
+</body>
 </html>

@@ -1,0 +1,190 @@
+.monte-page {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 40px 20px 64px;
+}
+
+.monte-hero {
+  margin-bottom: 18px;
+}
+
+.monte-hero h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: #1f1f1f;
+  margin: 0;
+}
+
+.monte-description {
+  max-width: 920px;
+  color: #404040;
+  line-height: 1.7;
+  font-size: 1.05rem;
+  margin-bottom: 28px;
+}
+
+.monte-gallery-section {
+  padding: 8px 0 24px;
+}
+
+.monte-gallery-carousel {
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+  scrollbar-width: none;
+}
+
+.monte-gallery-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.monte-gallery-track {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: max-content;
+  padding: 14px;
+}
+
+.monte-gallery-item {
+  flex: 0 0 clamp(220px, 28vw, 360px);
+  aspect-ratio: 4 / 3;
+  border: 0;
+  padding: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 5px 16px rgba(17, 24, 39, 0.14);
+  transition: transform 0.25s ease;
+  cursor: zoom-in;
+}
+
+.monte-gallery-item:hover,
+.monte-gallery-item:focus-visible {
+  transform: translateY(-4px);
+}
+
+.monte-gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.monte-gallery-empty {
+  margin: 12px 0 0;
+  color: #555;
+  text-align: center;
+}
+
+.gallery-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(7, 12, 22, 0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 84px;
+  z-index: 9999;
+}
+
+.gallery-lightbox.active {
+  display: flex;
+}
+
+.gallery-lightbox-image-wrap {
+  width: min(100%, 1200px);
+  display: flex;
+  justify-content: center;
+}
+
+.gallery-lightbox img {
+  width: min(100%, 1200px);
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.gallery-lightbox-next,
+.gallery-lightbox-close {
+  position: absolute;
+  border: none;
+  border-radius: 50%;
+  background: #fff;
+  color: #111;
+  cursor: pointer;
+}
+
+.gallery-lightbox-next {
+  right: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.gallery-lightbox-close {
+  top: 18px;
+  right: 22px;
+  width: 42px;
+  height: 42px;
+  font-size: 1.7rem;
+}
+
+@media (max-width: 768px) {
+  .monte-gallery-track {
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .monte-gallery-item {
+    flex-basis: 68vw;
+  }
+
+  .gallery-lightbox {
+    padding: 14px 62px 14px 14px;
+  }
+
+  .gallery-lightbox-next {
+    right: 12px;
+    width: 42px;
+    height: 42px;
+  }
+}
+
+
+.monte-project-cta {
+  margin: 0 0 28px;
+}
+
+.monte-project-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #25d366;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 14px 22px;
+  border-radius: 999px;
+  box-shadow: 0 10px 20px rgba(37, 211, 102, 0.22);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.monte-project-btn:hover,
+.monte-project-btn:focus-visible {
+  background: #1ebe5d;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(37, 211, 102, 0.28);
+}
+
+@media (max-width: 640px) {
+  .monte-project-btn {
+    width: 100%;
+    text-align: center;
+    padding: 14px 18px;
+  }
+}

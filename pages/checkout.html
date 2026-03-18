@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <link rel="stylesheet" href="../styles/performance.min.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finalizar Pedido | Expositores Bueno</title>
+    <link rel="stylesheet" href="../styles/checkout.css" />
+
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=AW-327475264"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "AW-327475264");
+    </script>
+
+    <!-- Event snippet for Contato conversion page -->
+    <script>
+      gtag("event", "conversion", {
+        send_to: "AW-327475264/CUBmCPbW-4YcEMDAk5wB",
+        value: 1.0,
+        currency: "BRL",
+      });
+    </script>
+
+    <!-- Google Analytics GA4 -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-3M4J13DB3D"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      gtag("js", new Date());
+      gtag("config", "G-3M4J13DB3D");
+    </script>
+    <!-- Meta Pixel Code -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js",
+      );
+      fbq("init", "1992317484686861");
+      fbq("track", "PageView");
+    </script>
+    <noscript
+      ><img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id=1992317484686861&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+  </head>
+  <body>
+    <main class="checkout-page">
+      <div class="checkout-topbar">
+        <a class="checkout-back-btn" href="../index.html"
+          >← Voltar aos produtos</a
+        >
+        <a
+          class="checkout-logo-link"
+          href="../index.html"
+          aria-label="Ir para a página inicial"
+        >
+          <img src="../images/expo-bueno-logo.jpg" alt="Expositores Bueno" />
+        </a>
+      </div>
+
+      <header class="checkout-header">
+        <h1>Só falta um passo</h1>
+        <p>
+          Confere os dados e envia no WhatsApp pra gente dar sequência no seu
+          pedido.
+        </p>
+      </header>
+
+      <section
+        class="checkout-card client-data-card"
+        aria-label="Dados do cliente"
+      >
+        <h2>Preencher suas informações</h2>
+        <div class="client-data-grid">
+          <div class="field-group">
+            <label for="client-name">Nome</label>
+            <input
+              id="client-name"
+              type="text"
+              placeholder="Seu nome"
+              required
+            />
+          </div>
+          <div class="field-group">
+            <label for="client-city">Cidade</label>
+            <input
+              id="client-city"
+              type="text"
+              placeholder="Sua cidade"
+              required
+            />
+          </div>
+        </div>
+      </section>
+
+      <section class="checkout-layout">
+        <div class="checkout-card">
+          <h2>Itens do carrinho</h2>
+          <div id="checkout-items" class="checkout-items"></div>
+        </div>
+
+        <aside class="checkout-card checkout-summary-card">
+          <h2>Como você prefere pagar?</h2>
+
+          <section class="payment-section">
+            <h3>Como deseja pagar?</h3>
+            <p class="section-helper">
+              Ajuste a forma de pagamento e confira o total do seu pedido.
+            </p>
+
+            <div class="payment-grid">
+              <div class="field-group">
+                <label for="payment-method">1ª forma de pagamento</label>
+                <select id="payment-method">
+                  <option value="PIX">PIX</option>
+                  <option value="DINHEIRO">DINHEIRO</option>
+                  <option value="CARTÃO DE DÉBITO">CARTÃO DE DÉBITO</option>
+                  <option value="CARTÃO DE CRÉDITO">CARTÃO DE CRÉDITO</option>
+                </select>
+              </div>
+
+              <div class="field-group">
+                <label for="second-payment-method">2ª forma de pagamento</label>
+                <select id="second-payment-method">
+                  <option value="NENHUM">Sem segunda forma</option>
+                  <option value="PIX">PIX</option>
+                  <option value="DINHEIRO">DINHEIRO</option>
+                  <option value="CARTÃO DE DÉBITO">CARTÃO DE DÉBITO</option>
+                  <option value="CARTÃO DE CRÉDITO">CARTÃO DE CRÉDITO</option>
+                </select>
+              </div>
+
+              <div class="field-group">
+                <label for="first-payment-amount">Valor</label>
+                <input
+                  id="first-payment-amount"
+                  type="number"
+                  min="0"
+                  step="0.01"
+                  placeholder="Ex.: 50,00"
+                />
+              </div>
+
+              <div class="field-group">
+                <label for="second-payment-amount">Valor</label>
+                <input
+                  id="second-payment-amount"
+                  type="text"
+                  readonly
+                  value="R$ 0,00"
+                />
+              </div>
+
+              <div class="field-group payment-grid-full">
+                <label for="installments"
+                  >Parcelamento do saldo (2ª forma)</label
+                >
+                <select id="installments"></select>
+              </div>
+            </div>
+          </section>
+
+          <section class="totals-section" aria-label="Resumo financeiro">
+            <div class="summary-line">
+              <span>Subtotal</span>
+              <strong id="checkout-subtotal">R$ 0,00</strong>
+            </div>
+            <div class="summary-line">
+              <span>Desconto</span>
+              <strong id="checkout-discount">R$ 0,00</strong>
+            </div>
+            <div class="summary-line">
+              <span>1º pagamento</span>
+              <strong id="first-payment-total">R$ 0,00</strong>
+            </div>
+            <div class="summary-line">
+              <span>Saldo na 2ª forma</span>
+              <strong id="second-payment-total">R$ 0,00</strong>
+            </div>
+            <div class="summary-line summary-line-total">
+              <span>Total da compra</span>
+              <strong id="checkout-total">R$ 0,00</strong>
+            </div>
+            <div class="summary-line">
+              <span>Valor por parcela</span>
+              <strong id="installment-value">R$ 0,00</strong>
+            </div>
+          </section>
+
+          <button id="send-whatsapp" class="checkout-btn">
+            Enviar pedido no WhatsApp
+          </button>
+          <a class="back-link" href="../index.html">← Voltar para produtos</a>
+        </aside>
+      </section>
+    </main>
+
+    <script type="module" src="../scripts/checkout.js"></script>
+    <script type="module" src="../scripts/performance.min.js"></script>
+    <script src="/scripts/google-ads-tracking.js"></script>
+  </body>
+</html>

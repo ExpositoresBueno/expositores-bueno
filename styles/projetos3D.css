@@ -112,7 +112,7 @@ h1, h2, h3 {
 }
 
 .title-orange {
-  color: #ffb03a;
+  color: #F7941D;
   font-size: 1.1rem;
   font-weight: 800;
   margin-bottom: 40px;
@@ -247,7 +247,7 @@ h1, h2, h3 {
   font-weight: 700;
   font-size: 1rem;
   text-transform: uppercase;
-  border: 2px solid #ffb03a;
+  border: 2px solid #F7941D;
   padding: 10px 20px;
   border-radius: 4px;
 }
@@ -338,7 +338,7 @@ h1, h2, h3 {
 }
 
 .modal-close:hover {
-  color: #ffb03a; /* Laranja da Expositores Bueno */
+  color: #F7941D; /* Laranja da Expositores Bueno */
 }
 
 /* Animação suave para o modal aparecer */
@@ -376,7 +376,7 @@ h1, h2, h3 {
 
 .modal-prev:hover, .modal-next:hover {
   background-color: rgba(0,0,0,0.8);
-  color: #ffb03a;
+  color: #F7941D;
 }
 /* ==========================================================================
    FASE 2 — REFINO VISUAL CONSERVADOR (PROJETOS 3D)
@@ -386,8 +386,8 @@ h1, h2, h3 {
   --p2-soft: #f7f8fa;
   --p2-text: #243042;
   --p2-muted: #5f6b7a;
-  --p2-orange: #f08a24;
-  --p2-orange-dark: #da7818;
+  --p2-orange: #F7941D;
+  --p2-orange-dark: #F9A63A;
   --p2-line: #e7ebf0;
   --p2-shadow: 0 8px 24px rgba(17, 24, 39, 0.08);
 }
@@ -539,5 +539,50 @@ h1, h2, h3 {
 @media (max-width: 768px) {
   #modal-caption {
     font-size: 1rem;
+  }
+}
+
+/* ==========================================================================
+   SOLICITAÇÃO DE PROJETO
+   ========================================================================== */
+.request-project-section {
+  padding: 24px 0 10px;
+}
+
+.request-project-content {
+  border: 1px solid var(--p2-line);
+  border-radius: 14px;
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  background: #fff;
+  box-shadow: var(--p2-shadow);
+}
+
+.request-project-content p {
+  color: var(--p2-muted);
+  margin-top: 8px;
+}
+
+.request-project-btn {
+  background: var(--p2-orange);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 12px 20px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.request-project-btn:hover {
+  background: var(--p2-orange-dark);
+}
+
+@media (max-width: 768px) {
+  .request-project-content {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

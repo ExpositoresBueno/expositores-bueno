@@ -1,0 +1,179 @@
+.store-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px 50px;
+  font-family: Poppins, Arial, sans-serif;
+}
+
+.store-hero {
+  background: linear-gradient(135deg, #1F6FA8, #2E8BC6);
+  color: #fff;
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 28px;
+}
+
+.store-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+}
+
+.store-hero h1 {
+  margin: 0 0 10px;
+  font-size: 1.9rem;
+  color: #F9A63A;
+}
+
+.store-hero p {
+  line-height: 1.7;
+}
+
+.store-contacts {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.store-contacts a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.route-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.route-btn {
+  text-decoration: none;
+  color: #fff;
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.route-btn.waze {
+  background: #2E8BC6;
+  color: #1F6FA8;
+}
+
+.route-btn.maps {
+  background: #1F6FA8;
+}
+
+.store-history {
+  margin-top: 10px;
+}
+
+.history-header strong {
+  color: #F7941D;
+}
+
+.history-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+  margin-top: 16px;
+}
+
+.history-card {
+  border: 1px solid #e1e4ea;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.history-card.current {
+  border: 2px solid #F7941D;
+  box-shadow: 0 8px 24px rgba(255, 122, 0, 0.2);
+}
+
+.history-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.history-content {
+  padding: 14px;
+}
+
+.history-content h3 {
+  margin: 10px 0 8px;
+  font-size: 1.05rem;
+}
+
+
+.history-cta {
+  display: inline-flex;
+  margin-top: 10px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  background: #F7941D;
+  color: #fff;
+}
+
+.history-cta:hover {
+  background: #F7941D;
+}
+
+.history-tag {
+  display: inline-block;
+  background: #F7941D;
+  color: #fff;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  padding: 4px 10px;
+}
+
+.history-tag.muted {
+  background: #808898;
+}
+
+
+.history-grid.single-card {
+  grid-template-columns: 1fr;
+}
+
+.history-grid.single-card .history-card {
+  width: 100%;
+}
+
+.history-grid.single-card .history-card img {
+  height: 260px;
+}
+
+.history-grid.single-card .history-content {
+  padding: 18px;
+}
+
+.history-grid.single-card .history-content h3 {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+@media (max-width: 768px) {
+  .store-hero h1 {
+    font-size: 1.45rem;
+  }
+
+  .history-grid.single-card .history-card img {
+    height: 180px;
+  }
+}

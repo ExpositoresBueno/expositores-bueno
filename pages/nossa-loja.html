@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Conheça a loja física da Expositores Bueno, veja o endereço atual em Canoas e como chegar com Waze ou Google Maps."
+    />
+    <meta
+      name="keywords"
+      content="expositores bueno, loja física, endereço, canoas, igara"
+    />
+    <title>Nossa Loja | Expositores Bueno</title>
+
+    <link rel="stylesheet" href="../styles/index.css" />
+    <link rel="stylesheet" href="../styles/performance.min.css" />
+    <link rel="stylesheet" href="../styles/nossa-loja.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="../images/favicon.png" />
+
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=AW-327475264"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "AW-327475264");
+    </script>
+
+    <!-- Google Analytics GA4 -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-3M4J13DB3D"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      gtag("js", new Date());
+      gtag("config", "G-3M4J13DB3D");
+    </script>
+    <!-- Meta Pixel Code -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js",
+      );
+      fbq("init", "1992317484686861");
+      fbq("track", "PageView");
+    </script>
+    <noscript
+      ><img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id=1992317484686861&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+  </head>
+
+  <body>
+    <div class="page">
+      <header class="header">
+        <div class="header-top">
+          <div class="header-top-left">
+            <img src="../images/callPhone.png" alt="Telefone" />
+            <a
+              href="https://wa.me/5551996034579"
+              style="color: white; text-decoration: none"
+              >Ligue agora +55 (51) 99603-4579</a
+            >
+          </div>
+        </div>
+
+        <div class="header-main">
+          <div class="header-logo">
+            <a href="../index.html" style="text-decoration: none">
+              <img src="../images/72739814197.png" alt="Expositores Bueno" />
+            </a>
+          </div>
+
+          <div class="header-search">
+            <select id="search-category">
+              <option value="Todos">Todos os produtos</option>
+              <option value="BALCÃO CAIXA C/ RODAPÉ">
+                Balcão Caixa c/ Rodapé
+              </option>
+              <option value="BALCÃO CAIXA COM VITRINE">
+                Balcão Caixa com Vitrine
+              </option>
+              <option value="BALCÃO CAIXA COM VITRINE (PRETO)">
+                Balcão Caixa com Vitrine (Preto)
+              </option>
+              <option value="BALCÃO VITRINE">Balcão Vitrine</option>
+              <option value="BALCÃO CAIXA (FECHADO)">
+                Balcão Caixa (Fechado)
+              </option>
+              <option value="ARMÁRIO COLMEIA">Armário Colmeia</option>
+              <option value="MÓVEL COM PRATELEIRAS">
+                Móvel com Prateleiras
+              </option>
+              <option value="ARARA DE MDF COM COLMEIA">
+                Arara de MDF com Colmeia
+              </option>
+              <option value="ARARA DE MDF (SIMPLES)">
+                Arara de MDF (Simples)
+              </option>
+              <option value="ARARA DE MDF COM COLMEIA LATERAL">
+                Arara de MDF c/ Colmeia Lateral
+              </option>
+              <option value="MÓVEL COM PRATELEIRAS">Móveis</option>
+            </select>
+            <input
+              type="text"
+              id="search-input"
+              placeholder="Buscar produtos"
+            />
+            <button id="search-btn" aria-label="Buscar">🔍</button>
+          </div>
+
+          <div class="cart-icon">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="cart-count">0</span>
+          </div>
+        </div>
+
+        <nav class="header-nav">
+          <ul>
+            <li><a href="../index.html">INÍCIO</a></li>
+
+            <li class="has-dropdown">
+              <a href="../index.html#products-grid">NOSSOS PRODUTOS</a>
+            </li>
+            <li class="has-dropdown">
+              <a href="javascript:void(0)">MONTE SUA LOJA ▾</a>
+              <ul class="dropdown-menu dropdown-menu-monte-loja">
+                <li><a href="../pages/monte-seu-bazar.html">Bazar</a></li>
+                <li>
+                  <a href="../pages/monte-sua-farmacia.html">Farmácias</a>
+                </li>
+                <li><a href="../pages/monte-sua-clinica.html">Clínicas</a></li>
+                <li>
+                  <a href="../pages/monte-seu-escritorio.html">Escritórios</a>
+                </li>
+                <li>
+                  <a href="../pages/monte-sua-loja-de-roupas.html"
+                    >Loja de Roupas</a
+                  >
+                </li>
+                <li><a href="../pages/monte-sua-otica.html">Óticas</a></li>
+                <li>
+                  <a href="../pages/monte-sua-loja.html"
+                    >Todo Tipo de Comércio</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="has-dropdown">
+              <a href="../pages/projetos3D.html">PROJETOS 3D</a>
+            </li>
+            <li class="has-dropdown">
+              <a href="../pages/instalacoes.html">INSTALAÇÕES</a>
+            </li>
+            <li class="has-dropdown">
+              <a href="../pages/avaliacoes.html">AVALIAÇÕES</a>
+            </li>
+            <li class="has-dropdown">
+              <a href="#" class="active">NOSSA LOJA</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <nav class="breadcrumb">
+        <div class="breadcrumb-content">
+          <a href="../index.html" class="breadcrumb-link">
+            <img
+              src="../images/homeVector.png"
+              alt="Homepage"
+              class="home-icon"
+            />
+            Homepage
+          </a>
+          <span class="breadcrumb-separator">>></span>
+          <span class="breadcrumb-current">Nossa Loja</span>
+        </div>
+      </nav>
+
+      <main class="store-page">
+        <section class="store-hero">
+          <span class="store-badge">Endereço atual da Expositores Bueno</span>
+          <h1>Endereço da loja física</h1>
+          <p>
+            <strong>Rua/Avenida:</strong> Avenida Boqueirão, 804<br />
+            <strong>Bairro:</strong> Igara<br />
+            <strong>Cidade/UF:</strong> Canoas - RS<br />
+            <strong>CEP:</strong> 92410-350
+          </p>
+
+          <div class="store-contacts">
+            <a
+              href="https://wa.me/5551996034579"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="fa-brands fa-whatsapp"></i>
+              (51) 99603-4579
+            </a>
+            <a
+              href="https://wa.me/5551994623730"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="fa-brands fa-whatsapp"></i>
+              (51) 99462-3730
+            </a>
+          </div>
+
+          <div class="route-buttons">
+            <a
+              class="route-btn waze"
+              href="https://www.waze.com/ul?ll=-29.9038645,-51.1714882&navigate=yes"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="fa-brands fa-waze"></i>
+              Ir com Waze
+            </a>
+            <a
+              class="route-btn maps"
+              href="https://www.google.com/maps/place/Expositores+Bueno/@-29.9038645,-51.1714882,17z"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="fa-solid fa-map-location-dot"></i>
+              Ir com Maps
+            </a>
+          </div>
+        </section>
+
+        <section class="store-history">
+          <div class="history-grid single-card">
+            <article class="history-card current">
+              <img
+                src="../images/sobre_empresa.jpg"
+                alt="Fachada e estrutura da nossa loja"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="history-content">
+                <h3>Nossa loja</h3>
+                <a class="history-cta" href="./about.html#nossa-historia"
+                  >Conheça a nossa história</a
+                >
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <footer class="main-footer">
+        <div class="footer-container">
+          <div class="footer-column">
+            <h3>Endereço</h3>
+            <ul class="footer-info">
+              <li>
+                <i
+                  class="fa-solid fa-location-dot footer-mini-icon"
+                  aria-hidden="true"
+                ></i>
+                <a
+                  target="_blank"
+                  href="https://www.google.com/maps/place/Expositores+Bueno/@-29.9038645,-51.1714882,17z/data=!3m1!4b1!4m6!3m5!1s0x9519707845c7925b:0xe744a83d42306f90!8m2!3d-29.9038645!4d-51.1714882!16s%2Fg%2F1w0p6t2h?entry=ttu&g_ep=EgoyMDI2MDMwNC4xIKXMDSoASAFQAw%3D%3D"
+                  >Av. Boqueirão 804, Canoas, RS, 92410-350</a
+                >
+              </li>
+              <li class="footer-phone-list">
+                <div class="footer-phone-links">
+                  <a
+                    class="footer-phone-link"
+                    href="https://wa.me/5551996034579"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><i class="fa-brands fa-whatsapp" aria-hidden="true"></i
+                    >(51) 99603-4579</a
+                  >
+                  <a
+                    class="footer-phone-link"
+                    href="https://wa.me/5551994623730"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><i class="fa-brands fa-whatsapp" aria-hidden="true"></i
+                    >(51) 99462-3730</a
+                  >
+                </div>
+              </li>
+              <li class="instagram-icon">
+                <img src="../images/instagramIcon.png" alt="Instagram" />
+                <a href="https://www.instagram.com/expositoresbueno/"
+                  >@expositoresbueno</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>HORÁRIO DE ATENDIMENTO</h3>
+            <table class="schedule-table">
+              <tr>
+                <td>Segunda-Feira</td>
+                <td>08:30 às 18:00</td>
+              </tr>
+              <tr>
+                <td>Terça-Feira</td>
+                <td>08:30 às 18:00</td>
+              </tr>
+              <tr>
+                <td>Quarta-Feira</td>
+                <td>08:30 às 18:00</td>
+              </tr>
+              <tr>
+                <td>Quinta-Feira</td>
+                <td>08:30 às 18:00</td>
+              </tr>
+              <tr>
+                <td>Sexta-Feira</td>
+                <td>08:30 às 18:00</td>
+              </tr>
+              <tr>
+                <td>Sábado</td>
+                <td>08:30 às 12:00</td>
+              </tr>
+              <tr>
+                <td>Domingo</td>
+                <td>Fechado</td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="footer-column">
+            <h3>QUEM SOMOS</h3>
+            <ul class="footer-info">
+              <li>
+                <a href="./about.html">Nossa História</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>BUENO INDÚSTRIA E COMÉRCIO DE EXPOSITORES LTDA</p>
+          <p>CNPJ 40.494.084.0001.81</p>
+          <p>Av. Boqueirão 804, Canoas, RS, 92410-350</p>
+        </div>
+        <p class="copy">© Expositores Bueno — Todos os direitos reservados</p>
+      </footer>
+    </div>
+
+    <script type="module" src="../scripts/index.js"></script>
+    <script src="../scripts/google-ads-tracking.js"></script>
+    <script type="module" src="../scripts/performance.min.js"></script>
+  </body>
+</html>

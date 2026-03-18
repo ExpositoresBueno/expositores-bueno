@@ -53,9 +53,40 @@ const grid = document.getElementById("products-grid");
 const searchInput = document.getElementById("search-input");
 const searchCategoryTop = document.getElementById("search-category");
 const sizeSelect = document.getElementById("size-select");
+const typeSelect = document.getElementById("type-select");
+const heightSelect = document.getElementById("height-select");
+const widthSelect = document.getElementById("width-select");
+const materialSelect = document.getElementById("material-select");
 const inputMin = document.getElementById("price-min");
 const inputMax = document.getElementById("price-max");
 const sortSelect = document.getElementById("sort-products");
+const possuiGridProdutos = Boolean(document.getElementById("products-grid"));
+
+const ORDEM_PADRAO_CATEGORIAS = [
+  "Balcões",
+  "Armários",
+  "Armários Vestiários",
+  "Vestiários",
+  "Vestiário",
+  "Expositores",
+  "Araras",
+  "Vitrines",
+  "Caixas",
+  "Colmeias",
+  "Gôndolas",
+  "Painel Canaletado",
+  "Mesa de Manicure",
+  "Kits",
+  "Móveis de Apoio",
+  "Móveis de Centro",
+  "Móveis para Vitrine",
+  "Moveis",
+  "Movel",
+  "Móvel",
+  "Recepção",
+  "Farmácia",
+  "Prateleiras",
+];
 
 function removerAcentos(texto) {
   return texto
@@ -64,11 +95,148 @@ function removerAcentos(texto) {
     .toLowerCase();
 }
 
+function stringsEquivalentes(a, b) {
+  return removerAcentos(String(a || "")) === removerAcentos(String(b || ""));
+}
+
+function obterPrioridadeCategoria(produto) {
+  const categorias = Array.isArray(produto.categoria) ? produto.categoria : [produto.categoria];
+  const categoriaPrincipal = categorias[0];
+  const indice = ORDEM_PADRAO_CATEGORIAS.findIndex((categoriaBase) =>
+    stringsEquivalentes(categoriaBase, categoriaPrincipal),
+  );
+
+  return indice === -1 ? Number.MAX_SAFE_INTEGER : indice;
+}
+
+function ordenarPorSequenciaPadrao(a, b) {
+  const prioridadeA = obterPrioridadeCategoria(a);
+  const prioridadeB = obterPrioridadeCategoria(b);
+
+  if (prioridadeA !== prioridadeB) return prioridadeA - prioridadeB;
+  return a.id - b.id;
+}
+
+const formatadorMoedaBR = new Intl.NumberFormat("pt-BR", {
+  style: "currency",
+  currency: "BRL",
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+});
+
+const formatadorNumeroBR = new Intl.NumberFormat("pt-BR", {
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+});
+
+const CAMPOS_PRECO_AVISTA = ["precoAvista", "preco_a_vista", "precoAVista"];
+const DESCONTO_PAGAMENTO_AVISTA = 0.05;
+
+function formatarMoedaBR(valor) {
+  return formatadorMoedaBR.format(Number(valor) || 0);
+}
+
+function formatarNumeroBR(valor) {
+  return formatadorNumeroBR.format(Number(valor) || 0);
+}
+
+function obterPrecoAvistaProduto(produto) {
+  if (!produto || typeof produto !== "object") return null;
+
+  for (const campo of CAMPOS_PRECO_AVISTA) {
+    const valorCampo = Number(produto[campo]);
+    if (Number.isFinite(valorCampo) && valorCampo > 0) {
+      return valorCampo;
+    }
+  }
+
+  const precoBase = Number(produto.preco);
+  if (!Number.isFinite(precoBase) || precoBase <= 0) return null;
+
+  return precoBase * (1 - DESCONTO_PAGAMENTO_AVISTA);
+}
+
+function formatarMedidaCm(valorEmMetros) {
+  const valor = Number(valorEmMetros);
+  if (!Number.isFinite(valor) || valor <= 0) return "";
+  return `${formatarNumeroBR(valor * 100)}cm`;
+}
+
+function calcularParcelamentoSemJuros(valorTotal, limiteParcelas = 12) {
+  const valor = Number(valorTotal);
+  if (!Number.isFinite(valor) || valor <= 0) {
+    return { parcelas: 1, valorParcela: 0 };
+  }
+
+  const parcelasMaximasPorValor = Math.floor(valor / 200);
+  const parcelas = Math.min(limiteParcelas, Math.max(1, parcelasMaximasPorValor));
+  const valorParcela = valor / parcelas;
+
+  return { parcelas, valorParcela };
+}
+
+function extrairDimensoes(dimensoes = "") {
+  const alturaMatch = dimensoes.match(/([\d.,]+)m\s*Altura/i);
+  const larguraMatch = dimensoes.match(/([\d.,]+)cm\s*Largura/i);
+  const material = /mdf/i.test(dimensoes)
+    ? "MDF"
+    : /metal|ferro|aço/i.test(dimensoes)
+      ? "Metal"
+      : "Misto";
+
+  return {
+    altura: alturaMatch ? `${alturaMatch[1]}m` : "",
+    largura: larguraMatch ? `${larguraMatch[1]}cm` : "",
+    material,
+  };
+}
+
+function preencherSelectFiltro(selectEl, valores = [], placeholder = "Todos") {
+  if (!selectEl) return;
+  selectEl.innerHTML = `<option value="">${placeholder}</option>`;
+  [...new Set(valores.filter(Boolean))]
+    .sort((a, b) => removerAcentos(a).localeCompare(removerAcentos(b)))
+    .forEach((valor) => {
+      const option = document.createElement("option");
+      option.value = valor;
+      option.textContent = valor;
+      selectEl.appendChild(option);
+    });
+}
+
+function inicializarFiltrosAvancados() {
+  const tipos = [];
+  const alturas = [];
+  const larguras = [];
+  const materiais = [];
+
+  produtos.forEach((produto) => {
+    const categorias = Array.isArray(produto.categoria)
+      ? produto.categoria
+      : [produto.categoria];
+    tipos.push(...categorias);
+
+    const { altura, largura, material } = extrairDimensoes(produto.dimensoes);
+    if (altura) alturas.push(altura);
+    if (largura) larguras.push(largura);
+    materiais.push(material);
+  });
+
+  preencherSelectFiltro(typeSelect, tipos, "Todos os tipos");
+  preencherSelectFiltro(heightSelect, alturas, "Todas as alturas");
+  preencherSelectFiltro(widthSelect, larguras, "Todas as larguras");
+  preencherSelectFiltro(materialSelect, materiais, "Todos os materiais");
+}
+
 function aplicarFiltros(filtroManual = null) {
   const termo = searchInput ? removerAcentos(searchInput.value.trim()) : "";
   const filtroTopo =
     filtroManual || (searchCategoryTop ? searchCategoryTop.value : "Todos");
   const tamanho = sizeSelect ? sizeSelect.value : "";
+  const tipo = typeSelect ? typeSelect.value : "";
+  const altura = heightSelect ? heightSelect.value : "";
+  const largura = widthSelect ? widthSelect.value : "";
+  const material = materialSelect ? materialSelect.value : "";
   const min = parseFloat(inputMin ? inputMin.value : 0) || 0;
   const max = parseFloat(inputMax ? inputMax.value : Infinity) || Infinity;
 
@@ -85,21 +253,33 @@ function aplicarFiltros(filtroManual = null) {
     const categoriasDoProduto = Array.isArray(p.categoria)
       ? p.categoria
       : [p.categoria];
+    const categoriasNormalizadas = categoriasDoProduto.map((categoria) =>
+      removerAcentos(categoria),
+    );
+    const filtroTopoNormalizado = removerAcentos(filtroTopo);
+
     const matchesCatOuNome =
       filtroTopo === "Todos" ||
-      categoriasDoProduto.includes(filtroTopo) ||
-      p.nome === filtroTopo;
+      categoriasNormalizadas.includes(filtroTopoNormalizado) ||
+      stringsEquivalentes(p.nome, filtroTopo);
     const matchesTam = tamanho === "" || p.tamanho === tamanho;
     const matchesPreco = p.preco >= min && p.preco <= max;
+    const infoDimensao = extrairDimensoes(p.dimensoes);
+    const matchesTipo =
+      tipo === "" || categoriasDoProduto.some((cat) => stringsEquivalentes(cat, tipo));
+    const matchesAltura = altura === "" || infoDimensao.altura === altura;
+    const matchesLargura = largura === "" || infoDimensao.largura === largura;
+    const matchesMaterial = material === "" || infoDimensao.material === material;
 
-    return matchesNomeOuTag && matchesCatOuNome && matchesTam && matchesPreco;
+    return matchesNomeOuTag && matchesCatOuNome && matchesTam && matchesPreco
+      && matchesTipo && matchesAltura && matchesLargura && matchesMaterial;
   });
 
   const criterio = sortSelect ? sortSelect.value : "relevance";
   if (criterio === "price-asc") listaFiltrada.sort((a, b) => a.preco - b.preco);
   else if (criterio === "price-desc")
     listaFiltrada.sort((a, b) => b.preco - a.preco);
-  else listaFiltrada.sort((a, b) => a.id - b.id);
+  else listaFiltrada.sort(ordenarPorSequenciaPadrao);
 
   paginaAtual = 1;
   exibirPagina(listaFiltrada, 1);
@@ -119,6 +299,7 @@ async function carregarCatalogo() {
     if (!resposta.ok) throw new Error("Arquivo JSON não encontrado!");
 
     produtos = await resposta.json();
+    inicializarFiltrosAvancados();
     aplicarFiltros();
   } catch (erro) {
     console.error("Falha ao carregar o catálogo:", erro);
@@ -135,6 +316,9 @@ function renderizarProdutos(lista) {
   }
 
   const isPaginaInterna = window.location.pathname.includes("/pages/");
+  const destinoDetalheBase = isPaginaInterna
+    ? "./productDetails.html"
+    : "./pages/productDetails.html";
 
   lista.forEach((prod) => {
     const cardDiv = document.createElement("div");
@@ -148,53 +332,87 @@ function renderizarProdutos(lista) {
       ? "../images/carrinho_card.jpg"
       : "./images/carrinho_card.jpg";
 
+    const destinoDetalhe = `${destinoDetalheBase}?id=${prod.id}`;
+    const precoAvista = obterPrecoAvistaProduto(prod);
+
     cardDiv.innerHTML = `
+      <a href="${destinoDetalhe}" class="product-card-link" aria-label="Abrir produto ${prod.nome}">
         <div class="product-image-container">
           <span class="category-badge">${categoriaPrincipal.toUpperCase()}</span>
-          <img src="${imgPath}" alt="${prod.nome}" class="product-img">
+          <img src="${imgPath}" alt="${prod.nome}" class="product-img" loading="lazy" decoding="async">
         </div>
         <div class="product-info">
           <h3>${prod.nome}</h3>
           <div class="product-footer">
             <div class="price-container">
-              <span class="price-value">R$ ${prod.preco.toFixed(2).replace(".", ",")}</span>
+              <span class="price-value">${formatarMoedaBR(prod.preco)}</span>
               <button class="btn-add-cart" data-id="${prod.id}">
-                <img class="carrinho_card" src="${cartIconPath}">
+                <img class="carrinho_card" src="${cartIconPath}" alt="Adicionar ao carrinho" loading="lazy" decoding="async">
               </button>
             </div>
+            <p class="installment-preview">${(() => {
+              const limiteParcelas = Number(prod.maxParcelasSemJuros);
+              const parcelamento = calcularParcelamentoSemJuros(
+                prod.preco,
+                Number.isFinite(limiteParcelas) && limiteParcelas > 0 ? limiteParcelas : 12,
+              );
+              return `${parcelamento.parcelas}x de ${formatarMoedaBR(parcelamento.valorParcela)} sem juros`;
+            })()}</p>
+            ${precoAvista != null ? `<p class="cash-price">A vista ${formatarMoedaBR(precoAvista)}</p>` : ""}
+            <ul class="product-trust-list">
+              <li><i class="fa-solid fa-check"></i><span>Parcelamento sem juros</span></li>
+              <li><i class="fa-solid fa-check"></i><span>Entrega em todo RS</span></li>
+              <li><i class="fa-solid fa-check"></i><span>Produção própria</span></li>
+            </ul>
           </div>
-        </div>`;
+        </div>
+      </a>`;
 
     cardDiv.addEventListener("click", (e) => {
       if (e.target.closest(".btn-add-cart")) return;
-      const destino = isPaginaInterna
-        ? "./productDetails.html"
-        : "./pages/productDetails.html";
-      window.location.href = `${destino}?id=${prod.id}`;
+      window.location.href = destinoDetalhe;
     });
     grid.appendChild(cardDiv);
   });
 }
 
-function exibirPagina(lista, pagina) {
+function rolarParaTopoDosProdutos() {
+  if (!grid) return;
+  const topoDaGrade = grid.getBoundingClientRect().top + window.scrollY;
+  window.scrollTo({ top: Math.max(0, topoDaGrade - 24), behavior: "smooth" });
+}
+
+function exibirPagina(lista, pagina, { rolarParaTopo = false } = {}) {
   const container = document.querySelector(".page-numbers");
-  const inicio = (pagina - 1) * itensPorPagina;
+  const totalPaginas = Math.max(1, Math.ceil(lista.length / itensPorPagina));
+  paginaAtual = Math.min(Math.max(1, pagina), totalPaginas);
+  const inicio = (paginaAtual - 1) * itensPorPagina;
   renderizarProdutos(lista.slice(inicio, inicio + itensPorPagina));
-  if (container) atualizarBotoesPaginacao(lista.length, pagina);
+  if (rolarParaTopo) rolarParaTopoDosProdutos();
+  if (container) atualizarBotoesPaginacao(lista.length, paginaAtual);
 }
 
 function atualizarBotoesPaginacao(totalItens, pagina) {
   const totalPaginas = Math.ceil(totalItens / itensPorPagina);
   const container = document.querySelector(".page-numbers");
   if (!container) return;
+
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+  const limitePaginas = isMobile ? 3 : totalPaginas;
+
   container.innerHTML = "";
-  for (let i = 1; i <= totalPaginas; i++) {
+  for (let i = 1; i <= Math.min(totalPaginas, limitePaginas); i++) {
     const activeClass = i === pagina ? "active" : "";
     container.innerHTML += `<button class="page-num ${activeClass}" onclick="irParaPagina(${i})">${i}</button>`;
   }
 }
 
-window.irParaPagina = (n) => exibirPagina(listaFiltrada, n);
+window.irParaPagina = (n) =>
+  exibirPagina(listaFiltrada, n, { rolarParaTopo: true });
+window.paginaAnterior = () =>
+  exibirPagina(listaFiltrada, paginaAtual - 1, { rolarParaTopo: true });
+window.proximaPagina = () =>
+  exibirPagina(listaFiltrada, paginaAtual + 1, { rolarParaTopo: true });
 
 /* ==========================================================================
    4. CARRINHO E WHATSAPP
@@ -206,14 +424,39 @@ function saveCart(cart) {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-function addToCart(produto) {
-  const cart = getCart();
-  const existente = cart.find((item) => item.id === produto.id);
-  if (existente) {
-    existente.quantidade += 1;
-  } else {
-    cart.push({ ...produto, quantidade: 1 });
+function getCartItemKey(item) {
+  if (item.cartKey) return item.cartKey;
+
+  const corKey = item.corOrcada
+    ? String(item.corOrcada).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "")
+    : "branco";
+
+  const medidas = ["larguraOrcada", "alturaOrcada", "profundidadeOrcada"]
+    .map((campo) => {
+      const valor = Number(item?.[campo]);
+      return Number.isFinite(valor) && valor > 0 ? valor.toFixed(2) : "";
+    })
+    .filter(Boolean);
+
+  if (medidas.length > 0) {
+    return `${item.id}-${medidas.join('-')}-${corKey}`;
   }
+
+  return `${item.id}-${corKey}`;
+}
+
+function addToCart(produto) {
+  const quantidade = Math.max(1, parseInt(produto.quantidade, 10) || 1);
+  const cart = getCart();
+  const cartKey = getCartItemKey(produto);
+  const existente = cart.find((item) => getCartItemKey(item) === cartKey);
+
+  if (existente) {
+    existente.quantidade += quantidade;
+  } else {
+    cart.push({ ...produto, cartKey, quantidade });
+  }
+
   saveCart(cart);
   atualizarContadorCarrinho();
 
@@ -247,20 +490,35 @@ function renderizarCarrinho() {
     total += item.preco * item.quantidade;
     const imgPath = isPaginaInterna ? item.img.replace("./", "../") : item.img;
 
+    const larguraInfo = item.larguraOrcada
+      ? `<p>Largura: ${formatarMedidaCm(item.larguraOrcada)}</p>`
+      : "";
+    const corInfo = item.corOrcada ? `<p>Cor: ${item.corOrcada}</p>` : "";
+    const alturaInfo = item.alturaOrcada
+      ? `<p>Altura: ${formatarMedidaCm(item.alturaOrcada)}</p>`
+      : "";
+    const profundidadeInfo = item.profundidadeOrcada
+      ? `<p>Profundidade: ${formatarMedidaCm(item.profundidadeOrcada)}</p>`
+      : "";
+
     cartItemsContainer.innerHTML += `
       <div class="cart-item">
         <img src="${imgPath}" alt="${item.nome}">
         <div class="cart-item-info">
           <h4>${item.nome}</h4>
+          ${corInfo}
+          ${larguraInfo}
+          ${alturaInfo}
+          ${profundidadeInfo}
           <p>Qtd: ${item.quantidade}</p>
-          <p>R$ ${(item.preco * item.quantidade).toFixed(2).replace(".", ",")}</p>
+          <p>${formatarMoedaBR(item.preco * item.quantidade)}</p>
         </div>
-        <button class="btn-remove-item" data-id="${item.id}" title="Remover item">
+        <button class="btn-remove-item" data-cart-key="${getCartItemKey(item)}" title="Remover item">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>`;
   });
-  totalElement.textContent = "R$ " + total.toFixed(2).replace(".", ",");
+  totalElement.textContent = formatarMoedaBR(total);
 }
 function limparCarrinho() {
   if (confirm("Deseja realmente remover todos os itens do carrinho?")) {
@@ -283,14 +541,40 @@ function finalizarPedidoWhatsApp() {
 
   cart.forEach((item) => {
     total += item.preco * item.quantidade;
-    mensagem += `• *${item.nome}*\n  Qtd: ${item.quantidade} x R$ ${item.preco.toFixed(2).replace(".", ",")}\n\n`;
+    const larguraInfo = item.larguraOrcada
+      ? `\n  Largura: ${formatarMedidaCm(item.larguraOrcada)}`
+      : "";
+    const corInfo = item.corOrcada ? `\n  Cor: ${item.corOrcada}` : "";
+    const alturaInfo = item.alturaOrcada
+      ? `\n  Altura: ${formatarMedidaCm(item.alturaOrcada)}`
+      : "";
+    const profundidadeInfo = item.profundidadeOrcada
+      ? `\n  Profundidade: ${formatarMedidaCm(item.profundidadeOrcada)}`
+      : "";
+
+    mensagem += `• *${item.nome}*\n  Qtd: ${item.quantidade} x ${formatarMoedaBR(item.preco)}${corInfo}${larguraInfo}${alturaInfo}${profundidadeInfo}\n\n`;
   });
 
-  mensagem += `*Valor Total: R$ ${total.toFixed(2).replace(".", ",")}*`;
+  mensagem += `*Valor Total: ${formatarMoedaBR(total)}*`;
   window.open(
     `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`,
     "_blank",
   );
+}
+
+function irParaFinalizacao() {
+  const cart = getCart();
+  if (cart.length === 0) {
+    alert("Seu carrinho está vazio!");
+    return;
+  }
+
+  const isPaginaInterna = window.location.pathname.includes("/pages/");
+  const destino = isPaginaInterna
+    ? "./checkout.html"
+    : "./pages/checkout.html";
+
+  window.location.href = destino;
 }
 
 /* ==========================================================================
@@ -332,10 +616,10 @@ function exibirSugestoes(termo) {
           : `./pages/productDetails.html?id=${prod.id}`;
 
         return `
-        <div class="suggestion-item" onclick="window.location.href='${urlDestino}'">
+        <a class="suggestion-item" href="${urlDestino}" aria-label="Abrir produto ${prod.nome}">
           <img src="${imgPath}" alt="${prod.nome}">
           <span>${prod.nome}</span>
-        </div>
+        </a>
       `;
       })
       .join("");
@@ -352,6 +636,37 @@ document.addEventListener("click", (e) => {
     container.style.display = "none";
   }
 });
+
+if (searchInput) {
+  searchInput.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter") return;
+    e.preventDefault();
+    executarBuscaTopo();
+  });
+}
+
+const searchBtn = document.getElementById("search-btn");
+if (searchBtn) {
+  searchBtn.addEventListener("click", () => executarBuscaTopo());
+}
+
+function executarBuscaTopo() {
+  if (possuiGridProdutos) {
+    aplicarFiltros();
+    return;
+  }
+
+  const termo = encodeURIComponent(searchInput ? searchInput.value.trim() : "");
+  const categoria = encodeURIComponent(
+    searchCategoryTop ? searchCategoryTop.value : "Todos",
+  );
+
+  const destinoBase = window.location.pathname.includes("/pages/")
+    ? "../index.html"
+    : "./index.html";
+
+  window.location.href = `${destinoBase}?busca=${termo}&categoria=${categoria}`;
+}
 
 function mostrarAvisoCarrinho(nomeProduto) {
   // Remove avisos antigos se o usuário clicar muito rápido
@@ -381,16 +696,33 @@ document.addEventListener("DOMContentLoaded", () => {
   const cartFloating = document.querySelector(".cart-icon");
 
   atualizarContadorCarrinho();
+
+  const parametrosUrl = new URLSearchParams(window.location.search);
+  const buscaUrl = parametrosUrl.get("busca");
+  const categoriaUrl = parametrosUrl.get("categoria");
+
+  if (searchInput && buscaUrl) {
+    searchInput.value = buscaUrl;
+  }
+
+  if (searchCategoryTop && categoriaUrl) {
+    const optionExists = [...searchCategoryTop.options].some(
+      (opcao) => opcao.value === categoriaUrl,
+    );
+    searchCategoryTop.value = optionExists ? categoriaUrl : "Todos";
+  }
+
   carregarCatalogo();
 
   // --- LÓGICA DO MENU DROPDOWN (MAIS VENDIDOS) ---
   document.querySelectorAll(".dropdown-menu a").forEach((link) => {
     link.addEventListener("click", (e) => {
-      e.preventDefault(); // Impede o pulo da página por ser um link
-
       const filtro = link.getAttribute("data-filter");
 
-      if (filtro && searchCategoryTop) {
+      if (!filtro) return;
+      e.preventDefault(); // Mantém na página apenas para links de filtro
+
+      if (searchCategoryTop) {
         // 1. Verifica se o filtro existe nas opções do select do topo
         const optionExists = [...searchCategoryTop.options].some(
           (o) => o.value === filtro,
@@ -453,7 +785,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const btnFinalizar = document.querySelector(".checkout-btn");
   if (btnFinalizar)
-    btnFinalizar.addEventListener("click", finalizarPedidoWhatsApp);
+    btnFinalizar.addEventListener("click", irParaFinalizacao);
 
   // --- RECONECTANDO SEUS FILTROS ORIGINAIS ---
   document
@@ -500,6 +832,10 @@ document.addEventListener("DOMContentLoaded", () => {
   if (searchCategoryTop)
     searchCategoryTop.addEventListener("change", () => aplicarFiltros());
   if (sizeSelect) sizeSelect.addEventListener("change", () => aplicarFiltros());
+  if (typeSelect) typeSelect.addEventListener("change", () => aplicarFiltros());
+  if (heightSelect) heightSelect.addEventListener("change", () => aplicarFiltros());
+  if (widthSelect) widthSelect.addEventListener("change", () => aplicarFiltros());
+  if (materialSelect) materialSelect.addEventListener("change", () => aplicarFiltros());
   if (sortSelect) sortSelect.addEventListener("change", () => aplicarFiltros());
 
   const btnFilterPrice = document.getElementById("btn-filter-price");
@@ -519,6 +855,10 @@ document.addEventListener("DOMContentLoaded", () => {
       // 2. Resetando os selects para o valor inicial
       if (searchCategoryTop) searchCategoryTop.value = "Todos";
       if (sizeSelect) sizeSelect.value = "";
+      if (typeSelect) typeSelect.value = "";
+      if (heightSelect) heightSelect.value = "";
+      if (widthSelect) widthSelect.value = "";
+      if (materialSelect) materialSelect.value = "";
       if (sortSelect) sortSelect.value = "relevance";
 
       // 3. Aplicando os filtros vazios para atualizar a lista
@@ -548,8 +888,8 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("click", (e) => {
     const btnRemove = e.target.closest(".btn-remove-item");
     if (btnRemove) {
-      const id = parseInt(btnRemove.dataset.id);
-      saveCart(getCart().filter((i) => i.id !== id));
+      const cartKey = btnRemove.dataset.cartKey;
+      saveCart(getCart().filter((item) => getCartItemKey(item) !== cartKey));
       atualizarContadorCarrinho();
       renderizarCarrinho();
     }
@@ -559,7 +899,7 @@ document.addEventListener("DOMContentLoaded", () => {
       e.stopPropagation();
       const id = parseInt(btnAdd.dataset.id);
       const produto = produtos.find((p) => p.id === id);
-      if (produto) addToCart(produto);
+      if (produto) addToCart({ ...produto, quantidade: 1 });
     }
   });
 });

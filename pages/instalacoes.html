@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Instalações comerciais completas para Farmácias, Pet Shops e lojas. Expositores Bueno."
+      content="Instalações comerciais completas para farmácias, pet shops, bazares, óticas, lojas de roupas, perfumarias e todo tipo de comércio."
     />
     <link rel="stylesheet" href="../styles/index.css" />
+    <link rel="stylesheet" href="../styles/performance.min.css" />
     <link rel="stylesheet" href="../styles/instalacoes.css" />
+    <link rel="preload" as="image" href="../images/instalacoes.jpeg" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -19,6 +21,71 @@
     />
     <title>Expositores Bueno | Instalações Comerciais</title>
     <link rel="icon" type="image/png" href="../images/favicon.png" />
+
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=AW-327475264"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "AW-327475264");
+    </script>
+
+    <!-- Google Analytics GA4 -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-3M4J13DB3D"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      gtag("js", new Date());
+      gtag("config", "G-3M4J13DB3D");
+    </script>
+    <!-- Meta Pixel Code -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js",
+      );
+      fbq("init", "1992317484686861");
+      fbq("track", "PageView");
+    </script>
+    <noscript
+      ><img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id=1992317484686861&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
   </head>
   <body>
     <div class="page">
@@ -37,10 +104,7 @@
         <div class="header-main">
           <div class="header-logo">
             <a href="../index.html" style="text-decoration: none">
-              <img
-                src="../images/expo-bueno-logo.jpg"
-                alt="Expositores Bueno"
-              />
+              <img src="../images/72739814197.png" alt="Expositores Bueno" />
             </a>
           </div>
 
@@ -96,24 +160,29 @@
             <li><a href="../index.html">INÍCIO</a></li>
 
             <li class="has-dropdown">
-              <a href="javascript:void(0)">MAIS VENDIDOS ▾</a>
-              <ul class="dropdown-menu">
+              <a href="../index.html#products-grid">NOSSOS PRODUTOS</a>
+            </li>
+
+            <li class="has-dropdown">
+              <a href="javascript:void(0)">MONTE SUA LOJA ▾</a>
+              <ul class="dropdown-menu dropdown-menu-monte-loja">
+                <li><a href="../pages/monte-seu-bazar.html">Bazar</a></li>
                 <li>
-                  <a href="#" data-filter="BALCÃO CAIXA COM VITRINE"
-                    >Balcão Caixa c/ Vitrine</a
+                  <a href="../pages/monte-sua-farmacia.html">Farmácias</a>
+                </li>
+                <li><a href="../pages/monte-sua-clinica.html">Clínicas</a></li>
+                <li>
+                  <a href="../pages/monte-seu-escritorio.html">Escritórios</a>
+                </li>
+                <li>
+                  <a href="../pages/monte-sua-loja-de-roupas.html"
+                    >Loja de Roupas</a
                   >
                 </li>
+                <li><a href="../pages/monte-sua-otica.html">Óticas</a></li>
                 <li>
-                  <a href="#" data-filter="ARMÁRIO COLMEIA">Armário Colmeia</a>
-                </li>
-                <li>
-                  <a href="#" data-filter="MÓVEL COM PRATELEIRAS"
-                    >Móvel c/ Prateleiras</a
-                  >
-                </li>
-                <li>
-                  <a href="#" data-filter="ARARA DE MDF COM COLMEIA"
-                    >Arara c/ Colmeia</a
+                  <a href="../pages/monte-sua-loja.html"
+                    >Todo Tipo de Comércio</a
                   >
                 </li>
               </ul>
@@ -125,6 +194,14 @@
 
             <li class="has-dropdown">
               <a href="#" class="active">INSTALAÇÕES</a>
+            </li>
+
+            <li class="has-dropdown">
+              <a href="../pages/avaliacoes.html">AVALIAÇÕES</a>
+            </li>
+
+            <li class="has-dropdown">
+              <a href="../pages/nossa-loja.html">NOSSA LOJA</a>
             </li>
           </ul>
         </nav>
@@ -161,7 +238,10 @@
       <main class="installations-container">
         <section class="niche-section">
           <div class="niche-content">
-            <div class="niche-box">
+            <a
+              class="niche-box niche-box-link"
+              href="../pages/monte-sua-farmacia.html"
+            >
               <i class="fas fa-pills"></i>
               <h2>Farmácias</h2>
               <p>
@@ -169,7 +249,7 @@
                 todas as normas, garantindo higiene e visibilidade total dos
                 medicamentos.
               </p>
-            </div>
+            </a>
 
             <div class="niche-box">
               <i class="fas fa-paw"></i>
@@ -179,6 +259,113 @@
                 inteligentes para acessórios e higiene animal.
               </p>
             </div>
+
+            <a
+              class="niche-box niche-box-link"
+              href="../pages/monte-seu-bazar.html"
+            >
+              <i class="fas fa-store"></i>
+              <h2>Bazar</h2>
+              <p>
+                Layout funcional com gôndolas e expositores versáteis para
+                organizar utilidades, presentes e itens sazonais com
+                praticidade.
+              </p>
+            </a>
+
+            <div class="niche-box">
+              <i class="fas fa-glasses"></i>
+              <h2>Óticas</h2>
+              <p>
+                Mobiliário com acabamento refinado, vitrines estratégicas e
+                balcões planejados para destacar armações e facilitar o
+                atendimento.
+              </p>
+            </div>
+
+            <a
+              class="niche-box niche-box-link"
+              href="../pages/monte-sua-loja-de-roupas.html"
+            >
+              <i class="fas fa-shirt"></i>
+              <h2>Loja de Roupas</h2>
+              <p>
+                Araras, nichos e balcões sob medida para valorizar coleções,
+                melhorar a circulação da loja e ampliar a exposição de produtos.
+              </p>
+            </a>
+
+            <div class="niche-box">
+              <i class="fas fa-spray-can-sparkles"></i>
+              <h2>Perfumaria</h2>
+              <p>
+                Expositores elegantes para perfumes e cosméticos com iluminação,
+                organização por linhas e foco na experiência de compra.
+              </p>
+            </div>
+
+            <a
+              class="niche-box niche-box-full niche-box-link"
+              href="../pages/monte-sua-loja.html"
+            >
+              <i class="fas fa-shop"></i>
+              <h2>Todo Tipo de Comércio</h2>
+              <p>
+                Projetos personalizados para qualquer segmento, com estudo do
+                espaço e instalação completa para sua loja vender mais.
+              </p>
+            </a>
+          </div>
+        </section>
+
+        <section
+          class="projects-carousel-section"
+          aria-label="Obras já finalizadas"
+        >
+          <div class="projects-carousel-header">
+            <h2>Obras já finalizadas</h2>
+            <p>Confira alguns ambientes entregues pela nossa equipe.</p>
+          </div>
+
+          <div
+            class="projects-carousel"
+            id="projects-carousel"
+            aria-live="polite"
+          >
+            <div
+              class="projects-track"
+              id="projects-track"
+              data-base-name="lojasprontas"
+              data-max-images="30"
+            ></div>
+          </div>
+
+          <p
+            class="projects-carousel-empty"
+            id="projects-carousel-empty"
+            hidden
+          >
+            As fotos de obras finalizadas serão adicionadas em breve.
+          </p>
+
+          <div
+            class="projects-lightbox"
+            id="projects-lightbox"
+            aria-hidden="true"
+          >
+            <button
+              class="projects-lightbox-close"
+              id="projects-lightbox-close"
+              type="button"
+              aria-label="Fechar imagem ampliada"
+            >
+              ×
+            </button>
+            <img
+              id="projects-lightbox-image"
+              src="../images/expo-bueno-logo.jpg"
+              alt="Imagem ampliada de obra finalizada"
+            />
           </div>
         </section>
 
@@ -243,18 +430,35 @@
             <h3>Endereço</h3>
             <ul class="footer-info">
               <li>
-                <i class="location-icon"></i>
+                <i
+                  class="fa-solid fa-location-dot footer-mini-icon"
+                  aria-hidden="true"
+                ></i>
                 <a
                   target="_blank"
                   href="https://www.google.com/maps/place/Expositores+Bueno/@-29.9038645,-51.1714882,17z/data=!3m1!4b1!4m6!3m5!1s0x9519707845c7925b:0xe744a83d42306f90!8m2!3d-29.9038645!4d-51.1714882!16s%2Fg%2F1w0p6t2h?entry=ttu&g_ep=EgoyMDI2MDMwNC4xIKXMDSoASAFQAw%3D%3D"
                   >Av. Boqueirão 804, Canoas, RS, 92410-350</a
                 >
               </li>
-              <li>
-                <i class="phone-icon"></i>
-                <span
-                  >(51) 99603-4579<br />(51) 3032-1020<br />(51) 3032-1414</span
-                >
+              <li class="footer-phone-list">
+                <div class="footer-phone-links">
+                  <a
+                    class="footer-phone-link"
+                    href="https://wa.me/5551996034579"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><i class="fa-brands fa-whatsapp" aria-hidden="true"></i
+                    >(51) 99603-4579</a
+                  >
+                  <a
+                    class="footer-phone-link"
+                    href="https://wa.me/5551994623730"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><i class="fa-brands fa-whatsapp" aria-hidden="true"></i
+                    >(51) 99462-3730</a
+                  >
+                </div>
               </li>
               <li class="instagram-icon">
                 <img src="../images/instagramIcon.png" alt="Instagram" />
@@ -290,7 +494,7 @@
               </tr>
               <tr>
                 <td>Sábado</td>
-                <td>Fechado</td>
+                <td>08:30 às 12:00</td>
               </tr>
               <tr>
                 <td>Domingo</td>
@@ -309,6 +513,43 @@
           </div>
         </div>
 
+        <div class="footer-column">
+          <h3>HORÁRIO DE ATENDIMENTO</h3>
+          <table class="schedule-table">
+            <tr>
+              <td>Segunda-Feira</td>
+              <td>08:30 às 18:00</td>
+            </tr>
+            <tr>
+              <td>Terça-Feira</td>
+              <td>08:30 às 18:00</td>
+            </tr>
+            <tr>
+              <td>Quarta-Feira</td>
+              <td>08:30 às 18:00</td>
+            </tr>
+            <tr>
+              <td>Quinta-Feira</td>
+              <td>08:30 às 18:00</td>
+            </tr>
+            <tr>
+              <td>Sexta-Feira</td>
+              <td>08:30 às 18:00</td>
+            </tr>
+            <tr>
+              <td>Sábado</td>
+              <td>Fechado</td>
+            </tr>
+            <tr>
+              <td>Domingo</td>
+              <td>Fechado</td>
+            </tr>
+          </table>
+        </div>
+
+        <script type="module" src="../scripts/index.js"></script>
+        <script type="module" src="../scripts/instalacoesCarousel.js"></script>
+
         <div class="footer-bottom">
           <p>BUENO INDÚSTRIA E COMÉRCIO DE EXPOSITORES LTDA</p>
           <p>CNPJ 40.494.084.0001.81</p>
@@ -318,15 +559,7 @@
       </footer>
     </div>
 
-    <script type="module" src="../scripts/index.js"></script>
-
-    <a
-      href="https://wa.me/5551996034579"
-      class="whatsapp-float"
-      target="_blank"
-      aria-label="WhatsApp"
-    >
-      <i class="fa-brands fa-whatsapp"></i>
-    </a>
+    <script type="module" src="../scripts/performance.min.js"></script>
+    <script src="/scripts/google-ads-tracking.js"></script>
   </body>
 </html>

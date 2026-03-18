@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Monte seu Bazar - Expositores Bueno" />
+    <link rel="stylesheet" href="../styles/index.css" />
+    <link rel="stylesheet" href="../styles/performance.min.css" />
+    <link rel="stylesheet" href="../styles/monte-sua-loja.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="../images/favicon.png" />
+    <title>Expositores Bueno | Monte seu Bazar</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=AW-327475264"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "AW-327475264");
+    </script>
+
+    <!-- Google Analytics GA4 -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-3M4J13DB3D"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      gtag("js", new Date());
+      gtag("config", "G-3M4J13DB3D");
+    </script>
+    <!-- Meta Pixel Code -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js",
+      );
+      fbq("init", "1992317484686861");
+      fbq("track", "PageView");
+    </script>
+    <noscript
+      ><img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id=1992317484686861&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <div class="header-top">
+          <div class="header-top-left">
+            <img src="../images/callPhone.png" alt="Telefone" />
+            <a
+              href="https://wa.me/5551996034579"
+              style="color: white; text-decoration: none"
+              >Ligue agora +55 (51) 99603-4579</a
+            >
+          </div>
+        </div>
+
+        <div class="header-main">
+          <div class="header-logo">
+            <a href="../index.html" style="text-decoration: none">
+              <img src="../images/72739814197.png" alt="Expositores Bueno" />
+            </a>
+          </div>
+
+          <div class="header-search">
+            <select id="search-category">
+              <option value="Todos">Todos os produtos</option>
+              <option value="BALCÃO CAIXA C/ RODAPÉ">
+                Balcão Caixa c/ Rodapé
+              </option>
+              <option value="BALCÃO CAIXA COM VITRINE">
+                Balcão Caixa com Vitrine
+              </option>
+              <option value="BALCÃO CAIXA COM VITRINE (PRETO)">
+                Balcão Caixa com Vitrine (Preto)
+              </option>
+              <option value="BALCÃO VITRINE">Balcão Vitrine</option>
+              <option value="BALCÃO CAIXA (FECHADO)">
+                Balcão Caixa (Fechado)
+              </option>
+              <option value="ARMÁRIO COLMEIA">Armário Colmeia</option>
+              <option value="MÓVEL COM PRATELEIRAS">
+                Móvel com Prateleiras
+              </option>
+              <option value="ARARA DE MDF COM COLMEIA">
+                Arara de MDF com Colmeia
+              </option>
+              <option value="ARARA DE MDF (SIMPLES)">
+                Arara de MDF (Simples)
+              </option>
+              <option value="ARARA DE MDF COM COLMEIA LATERAL">
+                Arara de MDF c/ Colmeia Lateral
+              </option>
+              <option value="MÓVEL COM PRATELEIRAS">Móveis</option>
+            </select>
+            <input
+              type="text"
+              id="search-input"
+              placeholder="Buscar produtos"
+            />
+            <button id="search-btn" aria-label="Buscar">🔍</button>
+          </div>
+          <div class="cart-icon">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="cart-count">0</span>
+          </div>
+        </div>
+
+        <nav class="header-nav">
+          <ul>
+            <li><a href="../index.html">INÍCIO</a></li>
+
+            <li class="has-dropdown">
+              <a href="../index.html#products-grid">NOSSOS PRODUTOS</a>
+            </li>
+
+            <li class="has-dropdown">
+              <a href="javascript:void(0)">MONTE SUA LOJA ▾</a>
+              <ul class="dropdown-menu dropdown-menu-monte-loja">
+                <li><a href="../pages/monte-seu-bazar.html">Bazar</a></li>
+                <li>
+                  <a href="../pages/monte-sua-farmacia.html">Farmácias</a>
+                </li>
+                <li><a href="../pages/monte-sua-clinica.html">Clínicas</a></li>
+                <li>
+                  <a href="../pages/monte-seu-escritorio.html">Escritórios</a>
+                </li>
+                <li>
+                  <a href="../pages/monte-sua-loja-de-roupas.html"
+                    >Loja de Roupas</a
+                  >
+                </li>
+                <li><a href="../pages/monte-sua-otica.html">Óticas</a></li>
+                <li>
+                  <a href="../pages/monte-sua-loja.html"
+                    >Todo Tipo de Comércio</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <li class="has-dropdown">
+              <a href="../pages/projetos3D.html">PROJETOS 3D</a>
+            </li>
+
+            <li class="has-dropdown">
+              <a href="../pages/instalacoes.html">INSTALAÇÕES</a>
+            </li>
+
+            <li class="has-dropdown">
+              <a href="../pages/avaliacoes.html">AVALIAÇÕES</a>
+            </li>
+
+            <li class="has-dropdown">
+              <a href="../pages/nossa-loja.html">NOSSA LOJA</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <nav class="breadcrumb">
+        <div class="breadcrumb-content">
+          <a href="../index.html" class="breadcrumb-link">
+            <img
+              src="../images/homeVector.png"
+              alt="Homepage"
+              class="home-icon"
+            />
+            Homepage
+          </a>
+          <span class="breadcrumb-separator">>></span>
+          <span class="breadcrumb-current">Monte seu Bazar</span>
+        </div>
+      </nav>
+
+      <main class="monte-page">
+        <section class="monte-hero">
+          <h1>Monte seu Bazar</h1>
+        </section>
+        <p class="monte-description">
+          Veja alguns exemplos de montagem de bazares utilizando nossos móveis e
+          expositores. Os layouts são pensados para facilitar a organização dos
+          produtos, melhorar a circulação dentro da loja e aumentar a
+          visibilidade das mercadorias.
+        </p>
+
+        <section class="monte-gallery-section" aria-label="Galeria de projetos">
+          <div class="monte-gallery-carousel">
+            <div
+              class="monte-gallery-track"
+              data-gallery-folder="Bazar"
+              aria-label="Galeria de imagens de Monte seu Bazar"
+            ></div>
+          </div>
+          <p class="monte-gallery-empty" hidden>
+            Nenhuma imagem encontrada para esta categoria.
+          </p>
+        </section>
+      </main>
+
+      <div class="gallery-lightbox" id="gallery-lightbox" aria-hidden="true">
+        <button
+          class="gallery-lightbox-next"
+          id="gallery-lightbox-next"
+          type="button"
+          aria-label="Próxima imagem"
+        >
+          &#8250;
+        </button>
+        <button
+          class="gallery-lightbox-close"
+          id="gallery-lightbox-close"
+          type="button"
+          aria-label="Fechar imagem ampliada"
+        >
+          ×
+        </button>
+        <div class="gallery-lightbox-image-wrap">
+          <img id="gallery-lightbox-image" src="" alt="Imagem ampliada" />
+        </div>
+      </div>
+
+      <div class="cart-overlay" id="cart-overlay"></div>
+      <div class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+          <h2>Seu Carrinho</h2>
+          <button
+            id="close-cart"
+            style="
+              background: none;
+              border: none;
+              font-size: 24px;
+              cursor: pointer;
+            "
+          >
+            &times;
+          </button>
+        </div>
+        <div class="cart-items" id="cart-items"></div>
+        <div class="cart-footer">
+          <div class="cart-total">
+            Total: <span id="cart-total">R$ 0,00</span>
+          </div>
+          <button
+            class="btn-clear-cart"
+            style="
+              background: none;
+              border: 1px solid #ccc;
+              color: #666;
+              padding: 5px 10px;
+              cursor: pointer;
+              margin-bottom: 10px;
+              width: 100%;
+              font-size: 13px;
+            "
+          >
+            Limpar Carrinho
+          </button>
+          <button class="checkout-btn">Finalizar Pedido</button>
+        </div>
+      </div>
+    </div>
+
+    <a
+      href="https://wa.me/5551996034579"
+      class="whatsapp-float"
+      target="_blank"
+      rel="noopener"
+    >
+      <img src="../images/whatsappIcon.png" alt="WhatsApp" />
+    </a>
+
+    <script type="module" src="../scripts/index.js"></script>
+    <script src="../scripts/monte-sua-loja.js"></script>
+    <script src="../scripts/google-ads-tracking.js"></script>
+  </body>
+</html>

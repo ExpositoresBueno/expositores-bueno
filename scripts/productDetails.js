@@ -27,6 +27,275 @@ document.addEventListener('DOMContentLoaded', async () => {
     return null;
   };
 
+
+  const extrairMaiorValorNumerico = (trecho = '') => {
+    const numeros = String(trecho)
+      .split('/')
+      .map((item) => parseFloat(item))
+      .filter((item) => Number.isFinite(item) && item > 0);
+
+    if (numeros.length === 0) return NaN;
+    return Math.max(...numeros);
+  };
+
+  const converterParaMetros = (valor, unidade = 'm') => {
+    if (!Number.isFinite(valor) || valor <= 0) return null;
+
+    const unidadeNormalizada = String(unidade || 'm').toLowerCase();
+    if (unidadeNormalizada === 'mm') return valor / 1000;
+    if (unidadeNormalizada === 'cm') return valor / 100;
+    return valor;
+  };
+
+  const obterDimensaoEmMetros = (textoDimensoes = '', chaves = []) => {
+    const texto = String(textoDimensoes).toLowerCase().replace(/,/g, '.');
+
+    const patterns = chaves.flatMap((chave) => ([
+      new RegExp(`x\\s*([\\d.]+)\\s*(m|cm|mm)\\s*${chave}`, 'i'),
+      new RegExp(`([\\d.]+)\\s*(m|cm|mm)\\s*${chave}`, 'i'),
+    ]));
+
+    for (const regex of patterns) {
+      const match = texto.match(regex);
+      if (!match) continue;
+
+      const valor = extrairMaiorValorNumerico(match[1]);
+      const unidade = (match[2] || '').toLowerCase();
+
+      const valorEmMetros = converterParaMetros(valor, unidade);
+      if (!valorEmMetros) continue;
+      return valorEmMetros;
+    }
+
+    return null;
+  };
+
+  const obterLarguraEmMetros = (textoDimensoes = '') => obterDimensaoEmMetros(textoDimensoes, ['largura', 'parte\\s*do\\s*l']);
+  const obterAlturaEmMetros = (textoDimensoes = '') => obterDimensaoEmMetros(textoDimensoes, ['altura']);
+  const obterProfundidadeEmMetros = (textoDimensoes = '') => obterDimensaoEmMetros(textoDimensoes, ['profundidade']);
+
+  const formatadorMoedaBR = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+
+  const formatadorNumeroBR = new Intl.NumberFormat('pt-BR', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+
+  const formatarMoeda = (valor) => formatadorMoedaBR.format(Number(valor) || 0);
+
+  const formatarNumero = (valor) => formatadorNumeroBR.format(Number(valor) || 0);
+
+  const formatarMetros = (valor) => formatarNumero(valor);
+
+  const obterCategoriaPrincipal = (produto) => {
+    if (!produto) return 'Produtos';
+    return Array.isArray(produto.categoria) ? produto.categoria[0] : produto.categoria;
+  };
+
+  const normalizarPathImagem = (path) => String(path || '').replace('./', '../');
+
+  const embaralharComSeed = (lista, seed = 1) => {
+    const resultado = [...lista];
+    let valorSeed = Number(seed) || 1;
+
+    for (let i = resultado.length - 1; i > 0; i -= 1) {
+      valorSeed = (valorSeed * 9301 + 49297) % 233280;
+      const j = Math.floor((valorSeed / 233280) * (i + 1));
+      [resultado[i], resultado[j]] = [resultado[j], resultado[i]];
+    }
+
+    return resultado;
+  };
+
+  const criarCardRecomendacao = (produto) => {
+    const categoriaPrincipal = obterCategoriaPrincipal(produto);
+    const card = document.createElement('article');
+    card.className = 'recommendation-card';
+    card.innerHTML = `
+      <a href="./productDetails.html?id=${produto.id}" aria-label="Abrir ${produto.nome}">
+        <img src="${normalizarPathImagem(produto.img)}" alt="${produto.nome}" loading="lazy" decoding="async">
+        <div class="recommendation-card-content">
+          <p class="recommendation-category">${String(categoriaPrincipal || '').toUpperCase()}</p>
+          <h3 class="recommendation-name">${produto.nome}</h3>
+          <p class="recommendation-price">${formatarMoeda(Number(produto.preco) || 0)}</p>
+        </div>
+      </a>
+    `;
+    return card;
+  };
+
+  const configurarBotoesNavegacao = (track, key) => {
+    if (!track) return;
+
+    const btnPrev = document.querySelector(`[data-recommendation-prev="${key}"]`);
+    const btnNext = document.querySelector(`[data-recommendation-next="${key}"]`);
+    if (!btnPrev || !btnNext) return;
+
+    const atualizarEstado = () => {
+      const maxScrollLeft = Math.max(0, track.scrollWidth - track.clientWidth);
+      btnPrev.disabled = track.scrollLeft <= 2;
+      btnNext.disabled = track.scrollLeft >= maxScrollLeft - 2;
+    };
+
+    const rolar = (direcao) => {
+      const distancia = Math.max(220, Math.floor(track.clientWidth * 0.85));
+      track.scrollBy({ left: distancia * direcao, behavior: 'smooth' });
+    };
+
+    btnPrev.addEventListener('click', () => rolar(-1));
+    btnNext.addEventListener('click', () => rolar(1));
+    track.addEventListener('scroll', atualizarEstado, { passive: true });
+    window.addEventListener('resize', atualizarEstado);
+    atualizarEstado();
+  };
+
+  const iniciarAutoCarousel = (track, key) => {
+    if (!track) return;
+
+    const obterDistanciaCard = () => {
+      const primeiroCard = track.querySelector('.recommendation-card');
+      if (!primeiroCard) return Math.max(220, Math.floor(track.clientWidth * 0.8));
+
+      const estilos = window.getComputedStyle(track);
+      const gap = parseFloat(estilos.columnGap || estilos.gap || '0') || 0;
+      return primeiroCard.getBoundingClientRect().width + gap;
+    };
+
+    let intervaloAuto = null;
+    let aguardandoInteracao = false;
+
+    const avancar = () => {
+      const maxScrollLeft = Math.max(0, track.scrollWidth - track.clientWidth);
+      if (maxScrollLeft <= 0) return;
+
+      const distancia = obterDistanciaCard();
+      const proximoScroll = track.scrollLeft + distancia;
+      const chegouNoFim = proximoScroll >= maxScrollLeft - 2;
+
+      if (chegouNoFim) {
+        track.scrollTo({ left: 0, behavior: 'smooth' });
+        return;
+      }
+
+      track.scrollBy({ left: distancia, behavior: 'smooth' });
+    };
+
+    const iniciar = () => {
+      if (intervaloAuto) return;
+      intervaloAuto = setInterval(() => {
+        if (aguardandoInteracao) return;
+        avancar();
+      }, 3200);
+    };
+
+    const pausarTemporariamente = () => {
+      aguardandoInteracao = true;
+      window.clearTimeout(track._retomarAutoCarouselTimeout);
+      track._retomarAutoCarouselTimeout = window.setTimeout(() => {
+        aguardandoInteracao = false;
+      }, 4800);
+    };
+
+    track.addEventListener('mouseenter', () => { aguardandoInteracao = true; });
+    track.addEventListener('mouseleave', () => { aguardandoInteracao = false; });
+    track.addEventListener('touchstart', pausarTemporariamente, { passive: true });
+    track.addEventListener('wheel', pausarTemporariamente, { passive: true });
+
+    const btnPrev = document.querySelector(`[data-recommendation-prev="${key}"]`);
+    const btnNext = document.querySelector(`[data-recommendation-next="${key}"]`);
+    if (btnPrev) btnPrev.addEventListener('click', pausarTemporariamente);
+    if (btnNext) btnNext.addEventListener('click', pausarTemporariamente);
+
+    iniciar();
+  };
+
+  const renderizarRecomendacoes = (produtoAtual, listaProdutos) => {
+    const trackQuemViu = document.getElementById('quem-viu-track');
+    const trackDepartamento = document.getElementById('departamento-track');
+    if (!trackQuemViu || !trackDepartamento) return;
+
+    const categoriaAtual = obterCategoriaPrincipal(produtoAtual);
+
+    const baseRelacionados = listaProdutos
+      .filter((produto) => produto.id !== produtoAtual.id)
+      .filter((produto) => obterCategoriaPrincipal(produto) === categoriaAtual);
+
+    const fallback = listaProdutos.filter((produto) => produto.id !== produtoAtual.id);
+    const quemViuLista = embaralharComSeed(baseRelacionados.length ? baseRelacionados : fallback, produtoAtual.id).slice(0, 10);
+
+    const maisProcurados = [...(baseRelacionados.length ? baseRelacionados : fallback)]
+      .sort((a, b) => Number(b.preco) - Number(a.preco))
+      .slice(0, 10);
+
+    trackQuemViu.innerHTML = '';
+    trackDepartamento.innerHTML = '';
+
+    quemViuLista.forEach((produto) => trackQuemViu.appendChild(criarCardRecomendacao(produto)));
+    maisProcurados.forEach((produto) => trackDepartamento.appendChild(criarCardRecomendacao(produto)));
+
+    configurarBotoesNavegacao(trackQuemViu, 'quem-viu');
+    configurarBotoesNavegacao(trackDepartamento, 'departamento');
+    iniciarAutoCarousel(trackQuemViu, 'quem-viu');
+    iniciarAutoCarousel(trackDepartamento, 'departamento');
+  };
+
+  const obterLinkCompartilhamento = (idProduto) => {
+    const urlAtual = new URL(window.location.href);
+    if (idProduto) {
+      urlAtual.searchParams.set('id', idProduto);
+    }
+    return urlAtual.toString();
+  };
+
+  const copiarTexto = async (texto) => {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(texto);
+      return;
+    }
+
+    const textArea = document.createElement('textarea');
+    textArea.value = texto;
+    textArea.setAttribute('readonly', '');
+    textArea.style.position = 'absolute';
+    textArea.style.left = '-9999px';
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textArea);
+  };
+
+  const calcularParcelamentoSemJuros = (valorTotal, limiteParcelas = 12) => {
+    const valor = Number(valorTotal);
+    if (!Number.isFinite(valor) || valor <= 0) {
+      return { parcelas: 1, valorParcela: 0 };
+    }
+
+    const parcelasMaximasPorValor = Math.floor(valor / 200);
+    const parcelas = Math.min(limiteParcelas, Math.max(1, parcelasMaximasPorValor));
+    const valorParcela = valor / parcelas;
+
+    return { parcelas, valorParcela };
+  };
+
+  const multiplicadoresCor = {
+    branco: 1,
+    preto: 1.3,
+    madeirado: 1.35,
+  };
+
+  const nomeCor = {
+    branco: 'Branco',
+    preto: 'Preto',
+    madeirado: 'Madeirado',
+  };
+
+  const opcaoAtiva = (valor) => String(valor ?? 'sim').toLowerCase() !== 'nao';
+
   const detectarTipoMidia = (item) => {
     if (item.tipo === 'video') return 'video';
     if (item.tipo === 'imagem') return 'imagem';
@@ -58,12 +327,61 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // 4. Se o produto existir, preenche a página e configura o botão
     if (produtoSelecionado) {
+      renderizarRecomendacoes(produtoSelecionado, produtos);
       
       // Injeta Nome, Preço e Descrição
       document.getElementById('product-title').innerText = produtoSelecionado.nome;
-      document.getElementById('product-price').innerText = produtoSelecionado.preco.toFixed(2).replace('.', ',');
       document.getElementById('product-desc').innerText = produtoSelecionado.descricao || "Descrição não disponível.";
-      
+
+      const priceElement = document.getElementById('product-price');
+      const installmentsValueElement = document.getElementById('installments-value');
+      const installmentsPlanElement = document.getElementById('installments-plan');
+      const inputQuantidade = document.getElementById('detail-quantity-input') || document.getElementById('quantity-input');
+      const colorSection = document.getElementById('color-selector');
+      const budgetSection = document.getElementById('budget-calculator');
+      let valorAtualProduto = Number(produtoSelecionado.preco);
+      const colorInputs = document.querySelectorAll('input[name="product-color"]');
+      const permiteVariacaoCor = opcaoAtiva(produtoSelecionado.permiteVariacaoCor);
+      const permiteOrcamentoMedida = opcaoAtiva(produtoSelecionado.permiteOrcamentoMedida);
+      let corSelecionada = 'branco';
+
+      const obterMultiplicadorCor = () => {
+        if (!permiteVariacaoCor) return 1;
+        return multiplicadoresCor[corSelecionada] || 1;
+      };
+      const calcularPrecoComCor = (precoBranco) => Number(precoBranco) * obterMultiplicadorCor();
+
+      const obterQuantidadeAtual = () => {
+        if (!inputQuantidade) return 1;
+        return Math.max(1, parseInt(inputQuantidade.value, 10) || 1);
+      };
+
+      const atualizarParcelamento = (valorBase) => {
+        if (!installmentsValueElement || !installmentsPlanElement) return;
+        const limiteParcelas = Number(produtoSelecionado.maxParcelasSemJuros);
+        const { parcelas, valorParcela } = calcularParcelamentoSemJuros(
+          valorBase,
+          Number.isFinite(limiteParcelas) && limiteParcelas > 0 ? limiteParcelas : 12,
+        );
+        installmentsValueElement.innerText = `Valor ${formatarMoeda(Number(valorBase) || 0)}.`;
+        installmentsPlanElement.innerText = `${parcelas}x de ${formatarMoeda(valorParcela)} sem juros`;
+      };
+
+      const atualizarPrecoExibicao = () => {
+        if (!priceElement) return;
+        const valorTotal = valorAtualProduto * obterQuantidadeAtual();
+        priceElement.innerText = formatarNumero(valorTotal);
+        atualizarParcelamento(valorTotal);
+      };
+
+      const atualizarPrecoPrincipal = () => {
+        const precoComCor = calcularPrecoComCor(produtoSelecionado.preco);
+        valorAtualProduto = precoComCor;
+        atualizarPrecoExibicao();
+      };
+
+      atualizarPrecoPrincipal();
+
       // Monta galeria horizontal (com arraste e botões)
       const galleryTrack = document.getElementById('product-gallery-track');
       const btnPrev = document.getElementById('gallery-prev');
@@ -93,7 +411,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             <div class="product-gallery-slide">
               <div class="product-gallery-media">
                 ${item.tipoMidia === 'video'
-                  ? `<video controls preload="metadata" playsinline>
+                  ? `<video controls controlsList="nodownload nofullscreen noplaybackrate" disablePictureInPicture preload="metadata" playsinline oncontextmenu="return false;">
                        <source src="${item.src}" type="video/mp4">
                        Seu navegador não suporta vídeo.
                      </video>`
@@ -149,6 +467,244 @@ document.addEventListener('DOMContentLoaded', async () => {
         atualizarControles();
       }
 
+      const lightbox = document.getElementById('image-lightbox');
+      const lightboxImage = document.getElementById('lightbox-image');
+      const lightboxClose = document.getElementById('lightbox-close');
+
+      const abrirLightbox = (src, alt = '') => {
+        if (!lightbox || !lightboxImage || !src) return;
+        lightboxImage.src = src;
+        lightboxImage.alt = alt || 'Imagem ampliada do produto';
+        lightbox.hidden = false;
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      };
+
+      const fecharLightbox = () => {
+        if (!lightbox || !lightboxImage) return;
+        lightbox.hidden = true;
+        lightbox.setAttribute('aria-hidden', 'true');
+        lightboxImage.src = '';
+        document.body.style.overflow = '';
+      };
+
+      if (galleryTrack && lightbox) {
+        galleryTrack.addEventListener('click', (event) => {
+          const imagem = event.target.closest('img');
+          if (!imagem) return;
+          abrirLightbox(imagem.src, imagem.alt);
+        });
+      }
+
+      if (lightboxClose) {
+        lightboxClose.addEventListener('click', fecharLightbox);
+      }
+
+      if (lightbox) {
+        lightbox.addEventListener('click', (event) => {
+          if (event.target === lightbox) {
+            fecharLightbox();
+          }
+        });
+      }
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && lightbox && !lightbox.hidden) {
+          fecharLightbox();
+        }
+      });
+
+      // Calculadora de orçamento por medidas (largura, altura e profundidade)
+      const btnCalcular = document.getElementById('calculate-budget-btn');
+      const inputLargura = document.getElementById('desired-width');
+      const inputAltura = document.getElementById('desired-height');
+      const inputProfundidade = document.getElementById('desired-depth');
+      const resultadoOrcamento = document.getElementById('budget-result');
+      const botoesReset = document.querySelectorAll('[data-reset-dimension]');
+
+      const dimensoesBase = {
+        largura: obterLarguraEmMetros(produtoSelecionado.dimensoes),
+        altura: obterAlturaEmMetros(produtoSelecionado.dimensoes),
+        profundidade: obterProfundidadeEmMetros(produtoSelecionado.dimensoes),
+      };
+
+      const dimensoesConfig = [
+        { chave: 'largura', nome: 'Largura', input: inputLargura, base: dimensoesBase.largura },
+        { chave: 'altura', nome: 'Altura', input: inputAltura, base: dimensoesBase.altura },
+        { chave: 'profundidade', nome: 'Profundidade', input: inputProfundidade, base: dimensoesBase.profundidade },
+      ];
+
+      const existeAlgumaBase = dimensoesConfig.some((dim) => Number.isFinite(dim.base) && dim.base > 0);
+
+      const atualizarEstadoCamposMedidas = () => {
+        dimensoesConfig.forEach((dim) => {
+          const row = document.querySelector(`[data-dimension-row="${dim.chave}"]`);
+          if (!dim.input || !row) return;
+
+          const possuiBase = Number.isFinite(dim.base) && dim.base > 0;
+          const botaoReset = row.querySelector('[data-reset-dimension]');
+
+          if (!possuiBase) {
+            row.classList.add('disabled');
+            dim.input.disabled = true;
+            dim.input.placeholder = 'Não disponível';
+            if (botaoReset) botaoReset.disabled = true;
+          } else {
+            row.classList.remove('disabled');
+            dim.input.disabled = false;
+            dim.input.placeholder = `Padrão: ${formatarMetros(dim.base)}m`;
+            if (botaoReset) botaoReset.disabled = false;
+          }
+        });
+      };
+
+      const obterValorMedidaDigitada = (valorTexto) => {
+        const normalizado = String(valorTexto ?? '').trim().toLowerCase().replace(',', '.');
+        if (!normalizado) return null;
+
+        const match = normalizado.match(/^([\d.]+)\s*(mm|cm|m|milimetros?|milímetros?|centimetros?|centímetros?|metros?)?$/i);
+        if (!match) return NaN;
+
+        const valor = parseFloat(match[1]);
+        if (!Number.isFinite(valor) || valor <= 0) return NaN;
+
+        const unidadeInformada = (match[2] || 'm').toLowerCase();
+        const unidade = unidadeInformada.startsWith('mil') ? 'mm' : unidadeInformada.startsWith('cent') ? 'cm' : unidadeInformada.startsWith('metro') ? 'm' : unidadeInformada;
+        const valorEmMetros = converterParaMetros(valor, unidade);
+        return valorEmMetros ?? NaN;
+      };
+
+      const todasMedidasNoPadrao = () => dimensoesConfig.every((dim) => {
+        if (!Number.isFinite(dim.base) || dim.base <= 0) return true;
+        const valorDigitado = obterValorMedidaDigitada(dim.input?.value);
+        if (Number.isNaN(valorDigitado)) return false;
+        if (valorDigitado === null) return true;
+        return Math.abs(valorDigitado - dim.base) < 0.0001;
+      });
+
+      const calcularValor = () => {
+        const precoBaseBranco = Number(produtoSelecionado.preco);
+        let fatorMedidas = 1;
+        const medidasAplicadas = [];
+
+        for (const dim of dimensoesConfig) {
+          if (!Number.isFinite(dim.base) || dim.base <= 0) continue;
+
+          const valorDigitado = obterValorMedidaDigitada(dim.input?.value);
+          if (Number.isNaN(valorDigitado)) {
+            resultadoOrcamento.innerText = `Informe uma ${dim.chave} válida maior que zero.`;
+            resultadoOrcamento.classList.add('error');
+            valorAtualProduto = calcularPrecoComCor(produtoSelecionado.preco);
+            atualizarPrecoExibicao();
+            return;
+          }
+
+          const valorEfetivo = valorDigitado ?? dim.base;
+          fatorMedidas *= (valorEfetivo / dim.base);
+          medidasAplicadas.push(`${dim.nome}: ${formatarMetros(valorEfetivo)}m`);
+        }
+
+        const valorBrancoMedida = precoBaseBranco * fatorMedidas;
+        const valorFinal = calcularPrecoComCor(valorBrancoMedida);
+
+        resultadoOrcamento.classList.remove('error');
+        if (todasMedidasNoPadrao()) {
+          resultadoOrcamento.innerText = `Medidas no padrão (${nomeCor[corSelecionada]}): ${formatarMoeda(calcularPrecoComCor(precoBaseBranco))}.`;
+          valorAtualProduto = calcularPrecoComCor(precoBaseBranco);
+          atualizarPrecoExibicao();
+          return;
+        }
+
+        resultadoOrcamento.innerText = `Valor estimado (${medidasAplicadas.join(' • ')}) (${nomeCor[corSelecionada]}): ${formatarMoeda(valorFinal)}. Este valor será usado ao adicionar no carrinho.`;
+        valorAtualProduto = valorFinal;
+        atualizarPrecoExibicao();
+      };
+
+      const calcularPrecoPorMedidas = () => {
+        let fatorMedidas = 1;
+        const medidasNome = [];
+        const medidasOrcadas = {};
+
+        for (const dim of dimensoesConfig) {
+          if (!Number.isFinite(dim.base) || dim.base <= 0) continue;
+
+          const valorDigitado = obterValorMedidaDigitada(dim.input?.value);
+          if (Number.isNaN(valorDigitado)) {
+            return { erro: `Informe uma ${dim.chave} válida maior que zero.` };
+          }
+
+          const valorEfetivo = Number.isFinite(valorDigitado) ? valorDigitado : dim.base;
+          fatorMedidas *= (valorEfetivo / dim.base);
+          medidasOrcadas[`${dim.chave}Orcada`] = Number(valorEfetivo.toFixed(2));
+          medidasNome.push(`${dim.nome} ${formatarMetros(valorEfetivo)}m`);
+        }
+
+        const valorBranco = Number(produtoSelecionado.preco) * fatorMedidas;
+        return {
+          valorFinal: calcularPrecoComCor(valorBranco),
+          medidasNome,
+          medidasOrcadas,
+        };
+      };
+
+      if (budgetSection && btnCalcular && inputLargura && inputAltura && inputProfundidade && resultadoOrcamento) {
+        if (!permiteOrcamentoMedida || !existeAlgumaBase) {
+          budgetSection.style.display = 'none';
+        } else {
+          atualizarEstadoCamposMedidas();
+
+          btnCalcular.addEventListener('click', calcularValor);
+
+          [inputLargura, inputAltura, inputProfundidade].forEach((input) => {
+            input.addEventListener('keydown', (event) => {
+              if (event.key === 'Enter') {
+                event.preventDefault();
+                calcularValor();
+              }
+            });
+
+            input.addEventListener('input', () => {
+              if (todasMedidasNoPadrao()) {
+                calcularValor();
+              }
+            });
+          });
+
+          botoesReset.forEach((botao) => {
+            botao.addEventListener('click', () => {
+              const chave = botao.dataset.resetDimension;
+              const dim = dimensoesConfig.find((item) => item.chave === chave);
+              if (!dim || !dim.input) return;
+              dim.input.value = '';
+              calcularValor();
+            });
+          });
+
+          if (permiteVariacaoCor && colorInputs.length > 0) {
+            colorInputs.forEach((input) => {
+              input.addEventListener('change', () => {
+                corSelecionada = input.value;
+                atualizarPrecoPrincipal();
+                calcularValor();
+              });
+            });
+          }
+        }
+      }
+
+      if (permiteVariacaoCor && colorInputs.length > 0 && (!budgetSection || !existeAlgumaBase || !permiteOrcamentoMedida)) {
+        colorInputs.forEach((input) => {
+          input.addEventListener('change', () => {
+            corSelecionada = input.value;
+            atualizarPrecoPrincipal();
+          });
+        });
+      }
+
+      if (!permiteVariacaoCor && colorSection) {
+        colorSection.style.display = 'none';
+      }
+
       // Ajusta a categoria no badge
       const catElement = document.getElementById('product-category');
       if (catElement) {
@@ -161,15 +717,121 @@ document.addEventListener('DOMContentLoaded', async () => {
       if (breadcrumb) breadcrumb.innerText = produtoSelecionado.nome;
       document.title = `Expositores Bueno | ${produtoSelecionado.nome}`;
 
+      const btnShareToggle = document.getElementById('share-product-btn');
+      const shareMenu = document.getElementById('share-inline-menu');
+      const btnShareWhatsapp = document.getElementById('share-whatsapp-btn');
+      const btnShareCopy = document.getElementById('share-copy-btn');
+      const linkCompartilhamento = obterLinkCompartilhamento(produtoSelecionado.id);
+
+
+      const fecharMenuCompartilhar = () => {
+        if (!shareMenu) return;
+        shareMenu.hidden = true;
+      };
+
+      if (btnShareToggle && shareMenu) {
+        btnShareToggle.addEventListener('click', (event) => {
+          event.stopPropagation();
+          shareMenu.hidden = !shareMenu.hidden;
+        });
+
+        shareMenu.addEventListener('click', (event) => {
+          event.stopPropagation();
+        });
+
+        document.addEventListener('click', fecharMenuCompartilhar);
+      }
+
+      if (btnShareWhatsapp) {
+        btnShareWhatsapp.addEventListener('click', () => {
+          const texto = `Olá! Confira este produto da Expositores Bueno: ${produtoSelecionado.nome} - ${linkCompartilhamento}`;
+          const urlWhatsapp = `https://wa.me/?text=${encodeURIComponent(texto)}`;
+          window.open(urlWhatsapp, '_blank', 'noopener,noreferrer');
+          fecharMenuCompartilhar();
+        });
+      }
+
+      if (btnShareCopy) {
+        btnShareCopy.addEventListener('click', async () => {
+          try {
+            await copiarTexto(linkCompartilhamento);
+            btnShareCopy.classList.add('copied');
+            setTimeout(() => btnShareCopy.classList.remove('copied'), 800);
+            fecharMenuCompartilhar();
+          } catch (erroCopia) {
+            console.error('Erro ao copiar link do produto:', erroCopia);
+            btnShareCopy.classList.add('copy-error');
+            setTimeout(() => btnShareCopy.classList.remove('copy-error'), 800);
+          }
+        });
+      }
+
+      const montarProdutoParaCarrinho = () => {
+        const corNome = permiteVariacaoCor ? (nomeCor[corSelecionada] || 'Branco') : 'Branco';
+        const corKey = permiteVariacaoCor ? (corSelecionada || 'branco') : 'branco';
+
+        if (!existeAlgumaBase || !permiteOrcamentoMedida) {
+          const precoSemMedida = calcularPrecoComCor(produtoSelecionado.preco);
+          return {
+            ...produtoSelecionado,
+            preco: Number(precoSemMedida.toFixed(2)),
+            ...(permiteVariacaoCor ? { corOrcada: corNome } : {}),
+            cartKey: `${produtoSelecionado.id}-${corKey}`,
+            nome: permiteVariacaoCor ? `${produtoSelecionado.nome} (${corNome})` : produtoSelecionado.nome
+          };
+        }
+
+        const resultadoCalculo = calcularPrecoPorMedidas();
+        if (resultadoCalculo.erro) {
+          if (resultadoOrcamento) {
+            resultadoOrcamento.innerText = resultadoCalculo.erro;
+            resultadoOrcamento.classList.add('error');
+          }
+          return null;
+        }
+
+        const { valorFinal, medidasNome, medidasOrcadas } = resultadoCalculo;
+
+        return {
+          ...produtoSelecionado,
+          preco: Number(valorFinal.toFixed(2)),
+          ...medidasOrcadas,
+          ...(permiteVariacaoCor ? { corOrcada: corNome } : {}),
+          cartKey: `${produtoSelecionado.id}-${Object.values(medidasOrcadas).join('-')}-${corKey}`,
+          nome: permiteVariacaoCor ? `${produtoSelecionado.nome} (${medidasNome.join(' | ')} - ${corNome})` : `${produtoSelecionado.nome} (${medidasNome.join(' | ')})`
+        };
+      };
+
       /* ==========================================================================
          LÓGICA DO BOTÃO "ADICIONAR AO CARRINHO"
          ========================================================================== */
       const btnAddToCart = document.getElementById('add-to-cart-btn');
+
+      if (inputQuantidade) {
+        inputQuantidade.addEventListener('input', () => {
+          const valor = parseInt(inputQuantidade.value, 10);
+          inputQuantidade.value = Number.isNaN(valor) || valor < 1 ? '1' : String(valor);
+          atualizarPrecoExibicao();
+        });
+      }
+
       if (btnAddToCart) {
         btnAddToCart.addEventListener('click', () => {
           // Chama as funções globais definidas no index.js
           if (typeof window.addToCart === 'function') {
-            window.addToCart(produtoSelecionado);
+            const quantidade = inputQuantidade
+              ? Math.max(1, parseInt(inputQuantidade.value, 10) || 1)
+              : 1;
+
+            const produtoBaseCarrinho = montarProdutoParaCarrinho();
+            if (!produtoBaseCarrinho) return;
+
+            const produtoParaCarrinho = {
+              ...produtoBaseCarrinho,
+              quantidade,
+            };
+
+            window.addToCart(produtoParaCarrinho);
             
             // Abre visualmente a gaveta do carrinho lateral
             const drawer = document.getElementById('cart-drawer');

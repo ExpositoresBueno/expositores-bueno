@@ -1,0 +1,10 @@
+[
+  {"path":"/index.html","load_ms":1404.2,"resources":17,"transfer_bytes":1542344,"js_transfer_bytes":24618,"console_errors":0,"failed_requests":0},
+  {"path":"/pages/about.html","load_ms":233.9,"resources":10,"transfer_bytes":26184,"js_transfer_bytes":0,"console_errors":0,"failed_requests":0},
+  {"path":"/pages/avaliacoes.html","load_ms":206.9,"resources":10,"transfer_bytes":2447,"js_transfer_bytes":0,"console_errors":0,"failed_requests":0},
+  {"path":"/pages/checkout.html","load_ms":94.1,"resources":2,"transfer_bytes":11845,"js_transfer_bytes":9597,"console_errors":0,"failed_requests":0},
+  {"path":"/pages/instalacoes.html","load_ms":1259.4,"resources":21,"transfer_bytes":2031325,"js_transfer_bytes":4581,"console_errors":0,"failed_requests":0},
+  {"path":"/pages/orcamentos.html","load_ms":66.7,"resources":3,"transfer_bytes":3190,"js_transfer_bytes":3190,"console_errors":0,"failed_requests":0},
+  {"path":"/pages/productDetails.html","load_ms":196.0,"resources":10,"transfer_bytes":31072,"js_transfer_bytes":19983,"console_errors":0,"failed_requests":0},
+  {"path":"/pages/projetos3D.html","load_ms":280.3,"resources":21,"transfer_bytes":1778873,"js_transfer_bytes":4504,"console_errors":0,"failed_requests":0}
+]
