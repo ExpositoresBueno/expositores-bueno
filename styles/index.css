@@ -2439,8 +2439,20 @@ body {
   max-width: 320px;
 }
 
+.header-nav ul.dropdown-menu.dropdown-menu-monte-loja {
+  display: block;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.dropdown-menu-monte-loja li {
+  display: block;
+  width: 100%;
+}
+
 .dropdown-menu-monte-loja li a {
   display: block;
+  width: 100%;
   padding: 12px 20px;
   white-space: nowrap;
   line-height: 1.35;
