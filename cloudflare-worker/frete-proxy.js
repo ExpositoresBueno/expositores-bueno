@@ -44,6 +44,31 @@ const buildCorsHeaders = (origin) => {
 };
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const INTERNAL_SERVER_ERROR_MSG = 'The page cannot be displayed because an internal server error has occurred.';
+
+const normalizarCidade = (cidade = '') => String(cidade || '')
+  .normalize('NFD')
+  .replace(/[\u0300-\u036f]/g, '')
+  .replace(/[^a-zA-Z\s'-]/g, ' ')
+  .replace(/\s+/g, ' ')
+  .trim();
+
+const extrairMensagemErro = (raw, fallback = 'Falha na integração com a Rodonaves.') => {
+  if (!raw) return fallback;
+  const texto = typeof raw === 'string' ? raw : '';
+  if (texto.includes(INTERNAL_SERVER_ERROR_MSG)) {
+    return 'A transportadora está instável no momento. Tente novamente em instantes.';
+  }
+  return texto || fallback;
+};
+
+const parseJsonSafe = (texto, fallback = null) => {
+  try {
+    return JSON.parse(texto);
+  } catch (_) {
+    return fallback;
+  }
+};
 
 async function requestToken(env, tentativas = 2) {
   const payload = {
@@ -81,26 +106,40 @@ async function requestToken(env, tentativas = 2) {
 }
 
 async function buscarMunicipioId(token, cidadeDestino, ufDestino) {
-  const url = new URL(MUNICIPIO_URL);
-  url.searchParams.set('municipio', cidadeDestino);
-  url.searchParams.set('uf', ufDestino);
+  const tentativasCidade = [cidadeDestino, normalizarCidade(cidadeDestino)]
+    .filter((cidade, i, arr) => cidade && arr.indexOf(cidade) === i);
 
-  const response = await fetch(url.toString(), {
-    headers: { Authorization: `Bearer ${token}` },
-  });
+  let ultimoErro;
 
-  const data = await response.json().catch(() => null);
-  if (!response.ok || !data) {
-    throw new Error('Falha ao consultar município de entrega.');
+  for (const cidade of tentativasCidade) {
+    const url = new URL(MUNICIPIO_URL);
+    url.searchParams.set('municipio', cidade);
+    url.searchParams.set('uf', ufDestino);
+
+    const response = await fetch(url.toString(), {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    const texto = await response.text().catch(() => '');
+    const data = texto ? parseJsonSafe(texto, null) : null;
+
+    if (!response.ok || !data) {
+      const mensagem = extrairMensagemErro(
+        data?.message || data?.erro || texto,
+        'Falha ao consultar município de entrega.',
+      );
+      ultimoErro = new Error(mensagem);
+      continue;
+    }
+
+    const primeiro = Array.isArray(data) ? data[0] : data;
+    const municipioId = primeiro?.id || primeiro?.idMunicipio || primeiro?.codigo || null;
+    if (municipioId) return municipioId;
+
+    ultimoErro = new Error('Cidade não encontrada');
   }
 
-  const primeiro = Array.isArray(data) ? data[0] : data;
-  const municipioId = primeiro?.id || primeiro?.idMunicipio || primeiro?.codigo || null;
-  if (!municipioId) {
-    throw new Error('Cidade não encontrada');
-  }
-
-  return municipioId;
+  throw ultimoErro || new Error('Falha ao consultar município de entrega.');
 }
 
 function normalizarVolumes(volumes = []) {
@@ -136,9 +175,13 @@ async function cotarFrete(token, env, body, municipioIdDestino) {
     body: JSON.stringify(payloadCotacao),
   });
 
-  const data = await response.json().catch(() => ({}));
+  const texto = await response.text().catch(() => '');
+  const data = texto ? parseJsonSafe(texto, {}) : {};
   if (!response.ok) {
-    throw new Error(data?.message || data?.erro || 'Falha ao cotar frete na Rodonaves.');
+    throw new Error(extrairMensagemErro(
+      data?.message || data?.erro || texto,
+      'Falha ao cotar frete na Rodonaves.',
+    ));
   }
 
   const valorFrete = Number(data?.valorFrete ?? data?.valor ?? data?.totalFrete);
