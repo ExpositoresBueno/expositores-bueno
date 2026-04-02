@@ -2,6 +2,12 @@ import { supabase } from './supabase-client.js';
 
 const CART_STORAGE_KEY = 'cart';
 
+export const CARTS_UNIQUE_CONSTRAINT_SQL = `ALTER TABLE public.carts \
+ADD CONSTRAINT carts_unique_item \
+UNIQUE (user_id, produto_id, cor_orcada, \
+        largura_orcada, altura_orcada, \
+        profundidade_orcada);`;
+
 function getLocalCart() {
   try {
     return JSON.parse(localStorage.getItem(CART_STORAGE_KEY)) || [];
@@ -94,64 +100,63 @@ function mapDbToItem(row) {
 }
 
 export async function loadCartFromDb() {
-  const user = await getLoggedUser();
-  if (!user) return null;
+  console.log('Carregando carrinho do banco...');
 
   try {
+    const { data: userData, error: userError } = await supabase.auth.getUser();
+    if (userError || !userData?.user) {
+      return null;
+    }
+
     const { data, error } = await supabase
       .from('carts')
       .select('produto_id, nome, preco, quantidade, img, cor_orcada, largura_orcada, altura_orcada, profundidade_orcada, updated_at')
-      .eq('user_id', user.id)
+      .eq('user_id', userData.user.id)
       .order('updated_at', { ascending: false });
 
-    if (error) return null;
-    return (data || []).map(mapDbToItem);
-  } catch {
+    if (error) {
+      console.error('[cart-db] Erro ao carregar carrinho:', error);
+      return null;
+    }
+
+    const cartItems = (data || []).map(mapDbToItem);
+    console.log(`Itens no banco: ${cartItems.length}`);
+    saveLocalCart(cartItems);
+    console.log(`Carrinho restaurado: ${cartItems.length} itens`);
+
+    return cartItems;
+  } catch (error) {
+    console.error('[cart-db] Exceção ao carregar carrinho:', error);
     return null;
   }
 }
 
 export async function addItemToDb(item) {
-  const user = await getLoggedUser();
-  if (!user || !item) return false;
+  if (!item) return false;
 
   try {
-    console.debug('[cart-db] addItemToDb chamado', {
-      user_id: user.id,
-      produto_id: item.id ?? item.produto_id ?? null,
-      quantidade: item.quantidade ?? 1,
-      cartKey: item.cartKey || buildCartKey(item),
-    });
+    const { data: userData, error: userError } = await supabase.auth.getUser();
+    if (userError || !userData?.user) return false;
 
-    const row = mapItemToDb(user.id, item);
+    console.log(`Salvando item no banco: ${item.nome || 'sem nome'}`);
 
-    const { data: existing, error: existingError } = await supabase
-      .from('carts')
-      .select('quantidade')
-      .eq('user_id', row.user_id)
-      .eq('produto_id', row.produto_id)
-      .eq('cor_orcada', row.cor_orcada)
-      .eq('largura_orcada', row.largura_orcada)
-      .eq('altura_orcada', row.altura_orcada)
-      .eq('profundidade_orcada', row.profundidade_orcada)
-      .maybeSingle();
+    const row = mapItemToDb(userData.user.id, item);
+    row.produto_id = Number(item.id);
 
-    if (existingError) return false;
-
-    const quantidadeFinal = (Number(existing?.quantidade) || 0) + row.quantidade;
-
-    const { error } = await supabase.from('carts').upsert(
+    const { data, error } = await supabase.from('carts').upsert(
       {
         ...row,
-        quantidade: quantidadeFinal,
       },
       {
         onConflict: 'user_id,produto_id,cor_orcada,largura_orcada,altura_orcada,profundidade_orcada',
       },
     );
 
+    console.log('[cart-db] Resultado addItemToDb:', { data, error });
+
     return !error;
-  } catch {
+  } catch (error) {
+    console.error('[cart-db] Exceção addItemToDb:', error);
     return false;
   }
 }

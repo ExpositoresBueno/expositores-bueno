@@ -764,11 +764,15 @@ function mostrarAvisoCarrinho(nomeProduto) {
    5. INICIALIZAÇÃO UNIFICADA
    ========================================================================== */
 document.addEventListener("DOMContentLoaded", async () => {
-  if (await usuarioLogado()) {
-    const cartDb = await loadCartFromDb();
-    if (Array.isArray(cartDb)) {
-      saveCart(cartDb);
+  try {
+    const { data, error } = await supabase.auth.getSession();
+    const isLoggedIn = Boolean(data?.session?.user) && !error;
+
+    if (isLoggedIn) {
+      await loadCartFromDb();
     }
+  } catch (error) {
+    console.error('[index] Erro ao restaurar carrinho:', error);
   }
 
   atualizarContadorCarrinho();
