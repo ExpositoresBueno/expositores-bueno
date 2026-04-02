@@ -1,4 +1,4 @@
-const FRETE_PROXY_URL = 'https://frete-proxy.SEU_SUBDOMINIO.workers.dev/cotacao';
+const FRETE_PROXY_URL = 'https://frete-proxy.tiagocbueno.workers.dev/cotacao';
 // SUBSTITUIR pela URL real do seu Cloudflare Worker após o deploy
 
 const CIDADES_RS = new Set([
