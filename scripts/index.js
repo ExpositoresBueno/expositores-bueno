@@ -1,3 +1,12 @@
+import { supabase } from './supabase-client.js';
+import {
+  addItemToDb,
+  clearCartInDb,
+  loadCartFromDb,
+  removeItemFromDb,
+  buildCartKey,
+} from './cart-db.js';
+
 /* ==========================================================================
    1. CAROUSEL E MENU (MANTIDOS ORIGINAIS)
    ========================================================================== */
@@ -425,24 +434,16 @@ function saveCart(cart) {
 }
 
 function getCartItemKey(item) {
-  if (item.cartKey) return item.cartKey;
+  return buildCartKey(item);
+}
 
-  const corKey = item.corOrcada
-    ? String(item.corOrcada).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "")
-    : "branco";
-
-  const medidas = ["larguraOrcada", "alturaOrcada", "profundidadeOrcada"]
-    .map((campo) => {
-      const valor = Number(item?.[campo]);
-      return Number.isFinite(valor) && valor > 0 ? valor.toFixed(2) : "";
-    })
-    .filter(Boolean);
-
-  if (medidas.length > 0) {
-    return `${item.id}-${medidas.join('-')}-${corKey}`;
+async function usuarioLogado() {
+  try {
+    const { data } = await supabase.auth.getSession();
+    return Boolean(data?.session?.user);
+  } catch {
+    return false;
   }
-
-  return `${item.id}-${corKey}`;
 }
 
 function addToCart(produto) {
@@ -459,6 +460,43 @@ function addToCart(produto) {
 
   saveCart(cart);
   atualizarContadorCarrinho();
+
+  usuarioLogado().then((logado) => {
+    if (logado) {
+      addItemToDb({ ...produto, cartKey, quantidade }).catch(() => {});
+    }
+  });
+
+  try {
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'add_to_cart', {
+        currency: 'BRL',
+        value: produto.preco,
+        items: [{
+          item_id: String(produto.id),
+          item_name: produto.nome,
+          price: produto.preco,
+          quantity: produto.quantidade || 1,
+        }],
+      });
+    }
+  } catch {
+    // Falha silenciosa de analytics.
+  }
+
+  try {
+    if (typeof fbq !== 'undefined') {
+      fbq('track', 'AddToCart', {
+        value: produto.preco,
+        currency: 'BRL',
+        content_ids: [String(produto.id)],
+        content_type: 'product',
+        content_name: produto.nome,
+      });
+    }
+  } catch {
+    // Falha silenciosa de analytics.
+  }
 
   mostrarAvisoCarrinho(produto.nome);
 }
@@ -525,6 +563,12 @@ function limparCarrinho() {
     saveCart([]); // Salva um array vazio
     atualizarContadorCarrinho(); // Zera o contador visual
     renderizarCarrinho(); // Atualiza a lista na gaveta
+
+    usuarioLogado().then((logado) => {
+      if (logado) {
+        clearCartInDb().catch(() => {});
+      }
+    });
   }
 }
 
@@ -691,9 +735,16 @@ function mostrarAvisoCarrinho(nomeProduto) {
 /* ==========================================================================
    5. INICIALIZAÇÃO UNIFICADA
    ========================================================================== */
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   const whatsappBtn = document.querySelector(".whatsapp-float");
   const cartFloating = document.querySelector(".cart-icon");
+
+  if (await usuarioLogado()) {
+    const cartDb = await loadCartFromDb();
+    if (Array.isArray(cartDb)) {
+      saveCart(cartDb);
+    }
+  }
 
   atualizarContadorCarrinho();
 
@@ -892,6 +943,12 @@ document.addEventListener("DOMContentLoaded", () => {
       saveCart(getCart().filter((item) => getCartItemKey(item) !== cartKey));
       atualizarContadorCarrinho();
       renderizarCarrinho();
+
+      usuarioLogado().then((logado) => {
+        if (logado) {
+          removeItemFromDb(cartKey).catch(() => {});
+        }
+      });
     }
 
     const btnAdd = e.target.closest(".btn-add-cart");

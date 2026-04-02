@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meus Pedidos | Expositores Bueno</title>
+    <link rel="stylesheet" href="../styles/index.css" />
+    <link rel="stylesheet" href="../styles/performance.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+      .orders-wrap{max-width:1180px;margin:24px auto 40px;padding:0 16px}
+      .orders-header h1{margin:0;color:#243042}
+      .orders-filters{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
+      .orders-filters button{border:1px solid #d6dfeb;background:#fff;border-radius:999px;padding:8px 14px;cursor:pointer;font-weight:600;color:#243042}
+      .orders-filters button.active{background:#F7941D;color:#fff;border-color:#F7941D}
+      .orders-loading{padding:20px 0;color:#2E8BC6;font-weight:600}
+      .order-card{border:1px solid #e6ebf2;border-radius:12px;padding:14px;margin-bottom:12px;background:#fff}
+      .order-card-top{display:flex;justify-content:space-between;gap:12px}
+      .order-meta-right{text-align:right}
+      .order-status{display:inline-block;color:#fff;border-radius:999px;padding:4px 10px;font-size:12px;font-weight:700;margin-bottom:6px}
+      .order-details-btn,.repeat-order-btn{border:none;border-radius:8px;padding:10px 14px;font-weight:700;cursor:pointer}
+      .order-details-btn{background:#2E8BC6;color:#fff;margin-top:10px}
+      .repeat-order-btn{background:#F7941D;color:#fff}
+      .order-details{margin-top:14px;padding-top:12px;border-top:1px dashed #d7e0ed}
+      .order-item{display:flex;gap:12px;border:1px solid #edf1f7;border-radius:10px;padding:10px;margin-bottom:10px}
+      .order-item img{width:84px;height:84px;border-radius:8px;object-fit:cover;background:#f3f4f6}
+      .order-extra p{margin:4px 0}
+      .order-footer-actions{margin-top:12px}
+      #orders-feedback{display:none;color:#1f7a39;font-weight:600;margin:12px 0}
+      .orders-pagination{display:flex;gap:8px;justify-content:center;margin-top:16px}
+      .page-btn{border:1px solid #cfd8e5;background:#fff;border-radius:8px;padding:6px 11px;cursor:pointer}
+      .page-btn.active{background:#2E8BC6;color:#fff;border-color:#2E8BC6}
+      .orders-empty{border:1px dashed #d5deea;border-radius:12px;padding:28px;text-align:center;background:#fff}
+      .orders-empty-illustration{font-size:38px;color:#2E8BC6;margin-bottom:8px}
+      .orders-empty-btn{display:inline-block;margin-top:10px;text-decoration:none;background:#F7941D;color:#fff;padding:10px 14px;border-radius:8px;font-weight:700}
+      .breadcrumb-simple{margin:8px 0 0;color:#5b6676}
+      .breadcrumb-simple a{color:#2E8BC6;text-decoration:none}
+    </style>
+    <script type="module">
+      import { checkAuth } from "../scripts/auth.js";
+      checkAuth();
+    </script>
+  </head>
+  <body data-page="meus-pedidos">
+    <div class="page">
+      <header class="header">
+        <div class="header-top"><div class="header-top-left"><img src="../images/callPhone.png" alt="Telefone" /><a href="https://wa.me/5551996034579" style="color: white; text-decoration: none;">Ligue agora +55 (51) 99603-4579</a></div></div>
+        <div class="header-main">
+          <div class="header-logo"><a href="../index.html" style="text-decoration: none;"><img src="../images/72739814197.png" alt="Expositores Bueno" /></a></div>
+          <div class="header-search"><select id="search-category"><option value="Todos">Todos os produtos</option></select><input type="text" id="search-input" placeholder="Buscar produtos" /><button id="search-btn" aria-label="Buscar">🔍</button></div>
+          <div class="header-user-auth" data-auth-user-menu></div>
+        </div>
+        <nav class="header-nav"><ul><li><a href="../index.html">INÍCIO</a></li><li class="has-dropdown"><a href="../index.html#products-grid">NOSSOS PRODUTOS</a></li><li class="has-dropdown"><a href="../pages/minha-conta.html">MINHA CONTA</a></li></ul></nav>
+      </header>
+
+      <main class="orders-wrap">
+        <div class="orders-header">
+          <p class="breadcrumb-simple"><a href="../index.html">Início</a> >> <span>Meus Pedidos</span></p>
+          <h1>Meus Pedidos</h1>
+        </div>
+
+        <div class="orders-filters">
+          <button class="active" data-filter="mes">Último mês</button>
+          <button data-filter="trimestre">Últimos 3 meses</button>
+          <button data-filter="ano">Último ano</button>
+          <button data-filter="todos">Todos</button>
+        </div>
+
+        <p id="orders-feedback"></p>
+        <div id="orders-loading" class="orders-loading">Carregando pedidos...</div>
+        <section id="orders-list"></section>
+        <div id="orders-pagination" class="orders-pagination"></div>
+      </main>
+
+      <footer class="main-footer"><div class="footer-container"><div class="footer-column"><h3>Endereço</h3><ul class="footer-info"><li><i class="fa-solid fa-location-dot footer-mini-icon" aria-hidden="true"></i><a target="_blank" href="https://www.google.com/maps/place/Expositores+Bueno/@-29.9038645,-51.1714882,17z/data=!3m1!4b1!4m6!3m5!1s0x9519707845c7925b:0xe744a83d42306f90!8m2!3d-29.9038645!4d-51.1714882!16s%2Fg%2F1w0p6t2h?entry=ttu&g_ep=EgoyMDI2MDMwNC4xIKXMDSoASAFQAw%3D%3D">Av. Boqueirão 804, Canoas, RS, 92410-350</a></li></ul></div></div><div class="footer-bottom"><p>BUENO INDÚSTRIA E COMÉRCIO DE EXPOSITORES LTDA</p><p>CNPJ 40.494.084.0001.81</p><p>Av. Boqueirão 804, Canoas, RS, 92410-350</p></div><p class="copy">© Expositores Bueno — Todos os direitos reservados</p></footer>
+
+      <script type="module" src="../scripts/auth.js"></script>
+      <script type="module" src="../scripts/orders.js"></script>
+      <script type="module" src="../scripts/performance.min.js"></script>
+      <script src="/scripts/google-ads-tracking.js"></script>
+    </div>
+  </body>
+</html>
