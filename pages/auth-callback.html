@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Confirmação de Cadastro | Expositores Bueno</title>
+    <style>
+      :root {
+        --azul: #2E8BC6;
+        --laranja: #F7941D;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: #fff;
+        color: #1f2a38;
+        font-family: 'Poppins', Arial, sans-serif;
+      }
+
+      .callback-box {
+        width: min(92vw, 460px);
+        text-align: center;
+        padding: 28px 22px;
+        border: 1px solid #e6edf5;
+        border-radius: 14px;
+        box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
+      }
+
+      .spinner {
+        width: 56px;
+        height: 56px;
+        margin: 0 auto 16px;
+        border-radius: 50%;
+        border: 5px solid rgba(46, 139, 198, 0.16);
+        border-top-color: var(--azul);
+        border-right-color: var(--laranja);
+        animation: spin 1s linear infinite;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 1.2rem;
+        color: var(--azul);
+      }
+
+      p {
+        margin: 10px 0 0;
+        color: #3f4a59;
+      }
+
+      .status.error h1 {
+        color: #be2e2e;
+      }
+
+      .status.error p {
+        color: #6d2020;
+      }
+
+      .btn-link {
+        display: inline-block;
+        margin-top: 18px;
+        text-decoration: none;
+        background: var(--laranja);
+        color: #fff;
+        font-weight: 700;
+        padding: 10px 14px;
+        border-radius: 8px;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="callback-box" id="status-box" aria-live="polite">
+      <div class="spinner" id="spinner" aria-hidden="true"></div>
+      <h1 id="status-title">Confirmando seu cadastro...</h1>
+      <p id="status-message">Aguarde enquanto validamos seu link.</p>
+    </main>
+
+    <script type="module">
+      import { supabase } from '../scripts/supabase-client.js';
+
+      const statusBox = document.getElementById('status-box');
+      const statusTitle = document.getElementById('status-title');
+      const statusMessage = document.getElementById('status-message');
+      const spinner = document.getElementById('spinner');
+
+      const INDEX_URL = '../index.html';
+      const LOGIN_URL = './login.html';
+      const ACCOUNT_URL = './minha-conta.html';
+
+      function setErrorState(message) {
+        statusBox.classList.add('status', 'error');
+        spinner.style.display = 'none';
+        statusTitle.textContent = 'Não foi possível confirmar seu cadastro';
+        statusMessage.textContent = message || 'O link de confirmação é inválido ou expirou.';
+
+        const existingLink = statusBox.querySelector('.btn-link');
+        if (!existingLink) {
+          const link = document.createElement('a');
+          link.href = LOGIN_URL;
+          link.className = 'btn-link';
+          link.textContent = 'Ir para o login';
+          statusBox.appendChild(link);
+        }
+      }
+
+      function parseCombinedParams() {
+        const queryParams = new URLSearchParams(window.location.search);
+        const hashValue = window.location.hash.startsWith('#')
+          ? window.location.hash.slice(1)
+          : window.location.hash;
+        const hashParams = new URLSearchParams(hashValue);
+        const combined = new URLSearchParams();
+
+        hashParams.forEach((value, key) => combined.set(key, value));
+        queryParams.forEach((value, key) => combined.set(key, value));
+
+        return combined;
+      }
+
+      async function processAuthCallback() {
+        const params = parseCombinedParams();
+
+        const accessToken = params.get('access_token');
+        const refreshToken = params.get('refresh_token');
+        const type = params.get('type');
+        const tokenHash = params.get('token_hash');
+        const token = params.get('token');
+        const code = params.get('code');
+
+        const hasRelevantToken = Boolean(accessToken || refreshToken || type || tokenHash || token || code);
+        if (!hasRelevantToken) {
+          window.location.replace(INDEX_URL);
+          return;
+        }
+
+        const normalizedType = type || 'signup';
+        const isEmailConfirmationFlow =
+          normalizedType === 'signup' ||
+          normalizedType === 'email_change' ||
+          Boolean(tokenHash);
+
+        if (!isEmailConfirmationFlow) {
+          window.location.replace(INDEX_URL);
+          return;
+        }
+
+        try {
+          let authError = null;
+
+          if (code) {
+            const { error } = await supabase.auth.exchangeCodeForSession(code);
+            authError = error;
+          } else if (tokenHash || token) {
+            const payload = {
+              type: normalizedType,
+            };
+
+            if (tokenHash) payload.token_hash = tokenHash;
+            if (token) payload.token = token;
+
+            const { error } = await supabase.auth.verifyOtp(payload);
+            authError = error;
+          } else if (accessToken && refreshToken) {
+            const { error } = await supabase.auth.setSession({
+              access_token: accessToken,
+              refresh_token: refreshToken,
+            });
+            authError = error;
+          } else {
+            throw new Error('Parâmetros de confirmação ausentes.');
+          }
+
+          if (authError) {
+            throw authError;
+          }
+
+          const successUrl = `${ACCOUNT_URL}?status=success&message=${encodeURIComponent('Cadastro confirmado com sucesso!')}`;
+          window.location.replace(successUrl);
+        } catch (error) {
+          const message = error?.message || 'Não conseguimos validar este link de confirmação.';
+          setErrorState(message);
+        }
+      }
+
+      processAuthCallback();
+    </script>
+  </body>
+</html>
