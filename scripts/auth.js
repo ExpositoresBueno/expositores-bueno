@@ -11,6 +11,14 @@ function getIndexUrl() {
   return window.location.pathname.includes('/pages/') ? '../index.html' : './index.html';
 }
 
+function getAccountUrl() {
+  return window.location.pathname.includes('/pages/') ? './minha-conta.html' : './pages/minha-conta.html';
+}
+
+function getOrdersUrl() {
+  return window.location.pathname.includes('/pages/') ? './meus-pedidos.html' : './pages/meus-pedidos.html';
+}
+
 function escapeHtml(value = '') {
   return String(value)
     .replaceAll('&', '&amp;')
@@ -35,66 +43,10 @@ function ensureAuthStyles() {
   const style = document.createElement('style');
   style.id = AUTH_STYLE_ID;
   style.textContent = `
-    .header-user-auth { position: relative; margin-left: 12px; }
-    .header-user-button {
-      border: none;
-      background: transparent;
-      color: #1f2a38;
-      cursor: pointer;
-      font-size: 16px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 600;
-      padding: 8px 10px;
-      border-radius: 8px;
-      transition: background-color .2s ease;
-    }
-    .header-user-button:hover { background: rgba(46,139,198,.1); }
-    .header-user-greeting { max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .header-user-dropdown {
-      list-style: none;
-      margin: 8px 0 0;
-      padding: 8px 0;
-      min-width: 190px;
-      position: absolute;
-      right: 0;
-      top: 100%;
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 10px 24px rgba(0,0,0,.15);
-      border: 1px solid #e5e7eb;
-      z-index: 1200;
-      display: none;
-    }
-    .header-user-dropdown.open { display: block; }
-    .header-user-dropdown a,
-    .header-user-dropdown button {
-      width: 100%;
-      text-align: left;
-      background: transparent;
-      border: none;
-      color: #243042;
-      font-size: 14px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 14px;
-      cursor: pointer;
-      text-decoration: none;
-      font-family: inherit;
-    }
-    .header-user-dropdown a:hover,
-    .header-user-dropdown button:hover { background: #f4f8fc; }
-    .header-user-auth.is-guest .header-user-button { color: #2E8BC6; }
     .field-error { color: #c0392b; font-size: 12px; min-height: 16px; margin-top: 4px; }
     .auth-feedback { font-size: 14px; margin-bottom: 14px; min-height: 20px; }
     .auth-feedback.error { color: #c0392b; }
     .auth-feedback.success { color: #1f7a39; }
-    @media (max-width: 768px) {
-      .header-user-greeting { max-width: 110px; font-size: 13px; }
-      .header-user-button { font-size: 14px; padding: 6px 8px; }
-    }
   `;
   document.head.appendChild(style);
 }
@@ -127,6 +79,15 @@ function findAuthHost() {
 async function renderHeaderAuth() {
   const host = findAuthHost();
   if (!host) return;
+  host.classList.add('header-user-auth');
+
+  const headerMain = host.closest('.header-main');
+  const headerBackground = window.getComputedStyle(headerMain || document.body).backgroundColor || '';
+  const rgbMatch = headerBackground.match(/\d+/g) || [];
+  const [r = 255, g = 255, b = 255] = rgbMatch.map(Number);
+  const luminance = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
+  host.classList.toggle('auth-on-dark', luminance < 0.55);
+  host.classList.toggle('auth-on-light', luminance >= 0.55);
 
   const { data: sessionData } = await supabase.auth.getSession();
   const user = sessionData?.session?.user || null;
@@ -136,6 +97,7 @@ async function renderHeaderAuth() {
     host.innerHTML = `
       <button class="header-user-button" type="button" aria-label="Entrar ou criar conta">
         <i class="fa-regular fa-user"></i>
+        <span class="header-user-label">Entrar / Cadastrar</span>
       </button>
     `;
     host.querySelector('button')?.addEventListener('click', () => {
@@ -149,13 +111,16 @@ async function renderHeaderAuth() {
   host.classList.remove('is-guest');
   host.innerHTML = `
     <button class="header-user-button" type="button" aria-haspopup="true" aria-expanded="false">
-      <i class="fa-regular fa-user"></i>
-      <span class="header-user-greeting">Olá, ${nome}</span>
+      <i class="fa-solid fa-user-check"></i>
+      <span class="header-user-label">Minha Conta</span>
       <i class="fa-solid fa-chevron-down" style="font-size:12px"></i>
     </button>
-    <ul class="header-user-dropdown" role="menu">
-      <li><a href="${window.location.pathname.includes('/pages/') ? './minha-conta.html' : './pages/minha-conta.html'}"><i class="fa-regular fa-id-card"></i>Minha Conta</a></li>
-      <li><a href="${window.location.pathname.includes('/pages/') ? './meus-pedidos.html' : './pages/meus-pedidos.html'}"><i class="fa-solid fa-box"></i>Meus Pedidos</a></li>
+    <ul class="header-user-dropdown" role="menu" aria-hidden="true">
+      <li class="header-user-dropdown-greeting">Olá, ${nome}</li>
+      <li class="header-user-dropdown-divider" role="separator"></li>
+      <li><a href="${getAccountUrl()}"><i class="fa-regular fa-id-card"></i>Minha Conta</a></li>
+      <li><a href="${getOrdersUrl()}"><i class="fa-solid fa-box"></i>Meus Pedidos</a></li>
+      <li class="header-user-dropdown-divider" role="separator"></li>
       <li><button type="button" data-auth-signout><i class="fa-solid fa-right-from-bracket"></i>Sair</button></li>
     </ul>
   `;
@@ -168,6 +133,7 @@ async function renderHeaderAuth() {
     event.stopPropagation();
     const isOpen = dropdown?.classList.toggle('open');
     button.setAttribute('aria-expanded', String(Boolean(isOpen)));
+    dropdown?.setAttribute('aria-hidden', String(!isOpen));
   });
 
   signoutButton?.addEventListener('click', async () => {
@@ -178,6 +144,7 @@ async function renderHeaderAuth() {
     if (!host.contains(event.target)) {
       dropdown?.classList.remove('open');
       button?.setAttribute('aria-expanded', 'false');
+      dropdown?.setAttribute('aria-hidden', 'true');
     }
   });
 }
