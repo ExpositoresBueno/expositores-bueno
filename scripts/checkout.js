@@ -1,5 +1,6 @@
 import { supabase } from "./supabase-client.js";
 import { getProfile, getUser } from "./auth.js";
+import { getAddresses } from "./profile.js";
 
 const numeroWhatsApp = "5551996034579";
 const DESCONTO_PAGAMENTO_AVISTA = 0.05;
@@ -542,7 +543,9 @@ function aplicarEnderecoNoFormulario(endereco) {
     cidadeInput.value = "";
     return;
   }
-  cidadeInput.value = endereco.cidade || "";
+  const cidade = endereco.cidade || "";
+  const estado = endereco.estado || "";
+  cidadeInput.value = estado ? `${cidade}/${estado}` : cidade;
 }
 
 async function inicializarEnderecosSalvos() {
@@ -556,16 +559,8 @@ async function inicializarEnderecosSalvos() {
     return;
   }
 
-  const profile = await getProfile();
-  const fonte = Array.isArray(profile?.enderecos)
-    ? profile.enderecos
-    : Array.isArray(profile?.addresses)
-      ? profile.addresses
-      : profile?.endereco_padrao
-        ? [profile.endereco_padrao]
-        : [];
-
-  enderecosSalvos = fonte.filter(Boolean);
+  const enderecos = await getAddresses();
+  enderecosSalvos = (enderecos || []).filter(Boolean);
   if (!enderecosSalvos.length) {
     section.hidden = true;
     return;
@@ -581,13 +576,41 @@ async function inicializarEnderecosSalvos() {
   });
 
   if (enderecosSalvos.length > 0) {
-    select.value = "0";
-    aplicarEnderecoNoFormulario(enderecosSalvos[0]);
+    const indicePadrao = enderecosSalvos.findIndex((endereco) => Boolean(endereco.is_default));
+    const indiceInicial = indicePadrao >= 0 ? indicePadrao : 0;
+    select.value = String(indiceInicial);
+    aplicarEnderecoNoFormulario(enderecosSalvos[indiceInicial]);
   }
 
   select.addEventListener("change", () => {
     aplicarEnderecoNoFormulario(obterEnderecoSelecionado());
   });
+}
+
+async function preencherDadosClienteLogado() {
+  const user = await getUser();
+  if (!user) return;
+
+  const nomeInput = document.getElementById("client-name");
+  const cidadeInput = document.getElementById("client-city");
+  const feedback = document.getElementById("checkout-account-prefill-note");
+
+  const profile = await getProfile();
+  if (nomeInput && profile?.nome) {
+    nomeInput.value = profile.nome;
+  }
+
+  const enderecos = await getAddresses();
+  const enderecoPadrao = (enderecos || []).find((endereco) => Boolean(endereco.is_default));
+  if (cidadeInput && enderecoPadrao) {
+    const cidade = enderecoPadrao.cidade || "";
+    const estado = enderecoPadrao.estado || "";
+    cidadeInput.value = estado ? `${cidade}/${estado}` : cidade;
+  }
+
+  if (feedback && ((profile?.nome && nomeInput) || enderecoPadrao)) {
+    feedback.hidden = false;
+  }
 }
 
 function atualizarCheckout() {
@@ -668,6 +691,7 @@ function inicializarCheckout() {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
+  await preencherDadosClienteLogado();
   await inicializarEnderecosSalvos();
   inicializarCheckout();
 });

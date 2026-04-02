@@ -558,6 +558,34 @@ function renderizarCarrinho() {
   });
   totalElement.textContent = formatarMoedaBR(total);
 }
+
+function abrirCarrinhoDrawer() {
+  const drawer = document.getElementById("cart-drawer");
+  const overlay = document.getElementById("cart-overlay");
+  const whatsappBtn = document.querySelector(".whatsapp-float");
+  const cartFloating = document.querySelector(".cart-icon");
+  if (!drawer || !overlay) return;
+
+  drawer.classList.add("active");
+  overlay.classList.add("active");
+  if (whatsappBtn) whatsappBtn.style.display = "none";
+  if (cartFloating) cartFloating.style.display = "none";
+  renderizarCarrinho();
+}
+
+function fecharCarrinhoDrawer() {
+  const drawer = document.getElementById("cart-drawer");
+  const overlay = document.getElementById("cart-overlay");
+  const whatsappBtn = document.querySelector(".whatsapp-float");
+  const cartFloating = document.querySelector(".cart-icon");
+  if (!drawer || !overlay) return;
+
+  drawer.classList.remove("active");
+  overlay.classList.remove("active");
+  if (whatsappBtn) whatsappBtn.style.display = "flex";
+  if (cartFloating) cartFloating.style.display = "flex";
+}
+
 function limparCarrinho() {
   if (confirm("Deseja realmente remover todos os itens do carrinho?")) {
     saveCart([]); // Salva um array vazio
@@ -736,9 +764,6 @@ function mostrarAvisoCarrinho(nomeProduto) {
    5. INICIALIZAÇÃO UNIFICADA
    ========================================================================== */
 document.addEventListener("DOMContentLoaded", async () => {
-  const whatsappBtn = document.querySelector(".whatsapp-float");
-  const cartFloating = document.querySelector(".cart-icon");
-
   if (await usuarioLogado()) {
     const cartDb = await loadCartFromDb();
     if (Array.isArray(cartDb)) {
@@ -804,35 +829,30 @@ document.addEventListener("DOMContentLoaded", async () => {
   const cartIcon = document.querySelector(".cart-icon");
   if (cartIcon) {
     cartIcon.addEventListener("click", () => {
-      document.getElementById("cart-drawer").classList.add("active");
-      document.getElementById("cart-overlay").classList.add("active");
-
-      if (whatsappBtn) whatsappBtn.style.display = "none";
-      if (cartFloating) cartFloating.style.display = "none";
-
-      renderizarCarrinho();
+      abrirCarrinhoDrawer();
     });
   }
 
   const closeCartBtn = document.getElementById("close-cart");
   if (closeCartBtn)
     closeCartBtn.addEventListener("click", () => {
-      document.getElementById("cart-drawer").classList.remove("active");
-      document.getElementById("cart-overlay").classList.remove("active");
-
-      if (whatsappBtn) whatsappBtn.style.display = "flex";
-      if (cartFloating) cartFloating.style.display = "flex";
+      fecharCarrinhoDrawer();
     });
 
   const cartOverlay = document.getElementById("cart-overlay");
   if (cartOverlay)
     cartOverlay.addEventListener("click", () => {
-      document.getElementById("cart-drawer").classList.remove("active");
-      document.getElementById("cart-overlay").classList.remove("active");
-
-      if (whatsappBtn) whatsappBtn.style.display = "flex";
-      if (cartFloating) cartFloating.style.display = "flex";
+      fecharCarrinhoDrawer();
     });
+
+  const abrirCarrinhoPorHash = () => {
+    if (window.location.hash === "#carrinho") {
+      abrirCarrinhoDrawer();
+    }
+  };
+
+  abrirCarrinhoPorHash();
+  window.addEventListener("hashchange", abrirCarrinhoPorHash);
 
   const btnFinalizar = document.querySelector(".checkout-btn");
   if (btnFinalizar)

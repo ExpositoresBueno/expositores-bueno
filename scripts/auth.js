@@ -19,6 +19,10 @@ function getOrdersUrl() {
   return window.location.pathname.includes('/pages/') ? './meus-pedidos.html' : './pages/meus-pedidos.html';
 }
 
+function getCartUrl() {
+  return window.location.pathname.includes('/pages/') ? '../index.html#carrinho' : './index.html#carrinho';
+}
+
 function escapeHtml(value = '') {
   return String(value)
     .replaceAll('&', '&amp;')
@@ -120,6 +124,7 @@ async function renderHeaderAuth() {
       <li class="header-user-dropdown-divider" role="separator"></li>
       <li><a href="${getAccountUrl()}"><i class="fa-regular fa-id-card"></i>Minha Conta</a></li>
       <li><a href="${getOrdersUrl()}"><i class="fa-solid fa-box"></i>Meus Pedidos</a></li>
+      <li><a href="${getCartUrl()}"><i class="fa-solid fa-cart-shopping"></i>Carrinho</a></li>
       <li class="header-user-dropdown-divider" role="separator"></li>
       <li><button type="button" data-auth-signout><i class="fa-solid fa-right-from-bracket"></i>Sair</button></li>
     </ul>
