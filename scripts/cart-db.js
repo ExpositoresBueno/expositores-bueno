@@ -116,6 +116,13 @@ export async function addItemToDb(item) {
   if (!user || !item) return false;
 
   try {
+    console.debug('[cart-db] addItemToDb chamado', {
+      user_id: user.id,
+      produto_id: item.id ?? item.produto_id ?? null,
+      quantidade: item.quantidade ?? 1,
+      cartKey: item.cartKey || buildCartKey(item),
+    });
+
     const row = mapItemToDb(user.id, item);
 
     const { data: existing, error: existingError } = await supabase

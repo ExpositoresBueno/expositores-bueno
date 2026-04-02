@@ -1,4 +1,5 @@
 import { supabase } from './supabase-client.js';
+import { clearCartInDb } from './cart-db.js';
 import {
   checkAuth,
   getUser,
@@ -187,22 +188,27 @@ export async function getRecentOrders() {
 
 export async function getCartSummary() {
   const user = await getUser();
-  if (!user) return { itens: 0, total: 0 };
+  if (!user) return { itens: 0, total: 0, items: [] };
 
   const { data, error } = await supabase
     .from('carts')
-    .select('quantidade, preco')
+    .select('produto_id, nome, img, quantidade, preco')
     .eq('user_id', user.id);
 
-  if (error || !data) return { itens: 0, total: 0 };
+  if (error || !data) return { itens: 0, total: 0, items: [] };
 
-  return data.reduce((acc, item) => {
+  const summary = data.reduce((acc, item) => {
     const qtd = Math.max(1, Number(item.quantidade) || 1);
     const preco = Number(item.preco) || 0;
     acc.itens += qtd;
     acc.total += qtd * preco;
     return acc;
   }, { itens: 0, total: 0 });
+
+  return {
+    ...summary,
+    items: data,
+  };
 }
 
 function renderOrders(orders) {
@@ -348,11 +354,39 @@ async function preencherResumoCarrinho() {
     return;
   }
 
+  const itemsHtml = (summary.items || []).map((item) => `
+    <article class="account-card-row">
+      <div style="display:flex; gap:10px; align-items:center;">
+        <img src="../${String(item.img || '').replace('./', '')}" alt="${item.nome}" style="width:56px; height:56px; object-fit:cover; border-radius:8px; border:1px solid #e6ebf2;" />
+        <div>
+          <h4 style="margin:0 0 4px;">${item.nome}</h4>
+          <p style="margin:0;">Quantidade: ${Math.max(1, Number(item.quantidade) || 1)}</p>
+        </div>
+      </div>
+      <div class="account-card-right">
+        <strong>${moneyBRL((Number(item.preco) || 0) * (Math.max(1, Number(item.quantidade) || 1)))}</strong>
+      </div>
+    </article>
+  `).join('');
+
   el.innerHTML = `
     <p><strong>${summary.itens}</strong> item(ns) salvos</p>
     <p>Total: <strong>${moneyBRL(summary.total)}</strong></p>
-    <a class="link-btn" href="../index.html#products-grid">Ver carrinho</a>
+    <div style="margin-top:10px">${itemsHtml}</div>
+    <div class="actions">
+      <a class="link-btn" href="../index.html#carrinho">Ir para o carrinho</a>
+      <button type="button" id="clear-saved-cart-btn" class="btn-secondary">Limpar carrinho salvo</button>
+    </div>
   `;
+
+  byId('clear-saved-cart-btn')?.addEventListener('click', async () => {
+    await clearCartInDb();
+    localStorage.setItem('cart', JSON.stringify([]));
+    if (typeof window.atualizarContadorCarrinho === 'function') {
+      window.atualizarContadorCarrinho();
+    }
+    await preencherResumoCarrinho();
+  });
 }
 
 async function initPage() {
