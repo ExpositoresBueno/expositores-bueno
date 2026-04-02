@@ -1,0 +1,416 @@
+{
+  "1": {
+    "peso": 118,
+    "altura": 30,
+    "largura": 55,
+    "comprimento": 110
+  },
+  "2": {
+    "peso": 247,
+    "altura": 30,
+    "largura": 115,
+    "comprimento": 110
+  },
+  "3": {
+    "peso": 195,
+    "altura": 30,
+    "largura": 100,
+    "comprimento": 100
+  },
+  "4": {
+    "peso": 214,
+    "altura": 30,
+    "largura": 100,
+    "comprimento": 110
+  },
+  "5": {
+    "peso": 325,
+    "altura": 30,
+    "largura": 90,
+    "comprimento": 185
+  },
+  "6": {
+    "peso": 316,
+    "altura": 30,
+    "largura": 90,
+    "comprimento": 180
+  },
+  "7": {
+    "peso": 325,
+    "altura": 30,
+    "largura": 90,
+    "comprimento": 185
+  },
+  "8": {
+    "peso": 316,
+    "altura": 30,
+    "largura": 90,
+    "comprimento": 180
+  },
+  "10": {
+    "peso": 211,
+    "altura": 30,
+    "largura": 90,
+    "comprimento": 120
+  },
+  "11": {
+    "peso": 328,
+    "altura": 30,
+    "largura": 140,
+    "comprimento": 120
+  },
+  "12": {
+    "peso": 322,
+    "altura": 30,
+    "largura": 150,
+    "comprimento": 110
+  },
+  "13": {
+    "peso": 211,
+    "altura": 30,
+    "largura": 60,
+    "comprimento": 180
+  },
+  "14": {
+    "peso": 193,
+    "altura": 30,
+    "largura": 90,
+    "comprimento": 110
+  },
+  "15": {
+    "peso": 211,
+    "altura": 30,
+    "largura": 90,
+    "comprimento": 120
+  },
+  "16": {
+    "peso": 234,
+    "altura": 30,
+    "largura": 120,
+    "comprimento": 100
+  },
+  "17": {
+    "peso": 62,
+    "altura": 30,
+    "largura": 40,
+    "comprimento": 80
+  },
+  "18": {
+    "peso": 316,
+    "altura": 30,
+    "largura": 90,
+    "comprimento": 180
+  },
+  "19": {
+    "peso": 316,
+    "altura": 30,
+    "largura": 90,
+    "comprimento": 180
+  },
+  "20": {
+    "peso": 158,
+    "altura": 30,
+    "largura": 90,
+    "comprimento": 90
+  },
+  "21": {
+    "peso": 316,
+    "altura": 30,
+    "largura": 90,
+    "comprimento": 180
+  },
+  "22": {
+    "peso": 316,
+    "altura": 30,
+    "largura": 90,
+    "comprimento": 180
+  },
+  "23": {
+    "peso": 316,
+    "altura": 30,
+    "largura": 90,
+    "comprimento": 180
+  },
+  "24": {
+    "peso": 316,
+    "altura": 30,
+    "largura": 90,
+    "comprimento": 180
+  },
+  "25": {
+    "peso": 211,
+    "altura": 30,
+    "largura": 60,
+    "comprimento": 180
+  },
+  "26": {
+    "peso": 316,
+    "altura": 30,
+    "largura": 90,
+    "comprimento": 180
+  },
+  "27": {
+    "peso": 125,
+    "altura": 30,
+    "largura": 40,
+    "comprimento": 160
+  },
+  "28": {
+    "peso": 74,
+    "altura": 30,
+    "largura": 40,
+    "comprimento": 95
+  },
+  "29": {
+    "peso": 780,
+    "altura": 30,
+    "largura": 200,
+    "comprimento": 200
+  },
+  "30": {
+    "peso": 211,
+    "altura": 30,
+    "largura": 60,
+    "comprimento": 180
+  },
+  "31": {
+    "peso": 257,
+    "altura": 30,
+    "largura": 120,
+    "comprimento": 110
+  },
+  "32": {
+    "peso": 257,
+    "altura": 30,
+    "largura": 120,
+    "comprimento": 110
+  },
+  "33": {
+    "peso": 234,
+    "altura": 30,
+    "largura": 120,
+    "comprimento": 100
+  },
+  "34": {
+    "peso": 328,
+    "altura": 30,
+    "largura": 140,
+    "comprimento": 120
+  },
+  "35": {
+    "peso": 211,
+    "altura": 30,
+    "largura": 90,
+    "comprimento": 120
+  },
+  "36": {
+    "peso": 156,
+    "altura": 30,
+    "largura": 100,
+    "comprimento": 80
+  },
+  "37": {
+    "peso": 187,
+    "altura": 30,
+    "largura": 120,
+    "comprimento": 80
+  },
+  "38": {
+    "peso": 156,
+    "altura": 30,
+    "largura": 100,
+    "comprimento": 80
+  },
+  "39": {
+    "peso": 257,
+    "altura": 30,
+    "largura": 110,
+    "comprimento": 120
+  },
+  "40": {
+    "peso": 281,
+    "altura": 30,
+    "largura": 120,
+    "comprimento": 120
+  },
+  "41": {
+    "peso": 257,
+    "altura": 30,
+    "largura": 110,
+    "comprimento": 120
+  },
+  "42": {
+    "peso": 107,
+    "altura": 30,
+    "largura": 55,
+    "comprimento": 100
+  },
+  "43": {
+    "peso": 16,
+    "altura": 30,
+    "largura": 55,
+    "comprimento": 15
+  },
+  "44": {
+    "peso": 107,
+    "altura": 30,
+    "largura": 55,
+    "comprimento": 100
+  },
+  "45": {
+    "peso": 195,
+    "altura": 30,
+    "largura": 100,
+    "comprimento": 100
+  },
+  "46": {
+    "peso": 257,
+    "altura": 30,
+    "largura": 120,
+    "comprimento": 110
+  },
+  "47": {
+    "peso": 257,
+    "altura": 30,
+    "largura": 120,
+    "comprimento": 110
+  },
+  "48": {
+    "peso": 257,
+    "altura": 30,
+    "largura": 120,
+    "comprimento": 110
+  },
+  "49": {
+    "peso": 257,
+    "altura": 30,
+    "largura": 120,
+    "comprimento": 110
+  },
+  "50": {
+    "peso": 257,
+    "altura": 30,
+    "largura": 120,
+    "comprimento": 110
+  },
+  "51": {
+    "peso": 195,
+    "altura": 30,
+    "largura": 100,
+    "comprimento": 100
+  },
+  "52": {
+    "peso": 195,
+    "altura": 30,
+    "largura": 100,
+    "comprimento": 100
+  },
+  "53": {
+    "peso": 236,
+    "altura": 30,
+    "largura": 110,
+    "comprimento": 110
+  },
+  "54": {
+    "peso": 236,
+    "altura": 30,
+    "largura": 110,
+    "comprimento": 110
+  },
+  "55": {
+    "peso": 236,
+    "altura": 30,
+    "largura": 110,
+    "comprimento": 110
+  },
+  "56": {
+    "peso": 1755,
+    "altura": 30,
+    "largura": 300,
+    "comprimento": 300
+  },
+  "57": {
+    "peso": 1755,
+    "altura": 30,
+    "largura": 300,
+    "comprimento": 300
+  },
+  "58": {
+    "peso": 632,
+    "altura": 30,
+    "largura": 180,
+    "comprimento": 180
+  },
+  "59": {
+    "peso": 292,
+    "altura": 30,
+    "largura": 150,
+    "comprimento": 100
+  },
+  "60": {
+    "peso": 292,
+    "altura": 30,
+    "largura": 150,
+    "comprimento": 100
+  },
+  "61": {
+    "peso": 78,
+    "altura": 30,
+    "largura": 40,
+    "comprimento": 100
+  },
+  "62": {
+    "peso": 488,
+    "altura": 30,
+    "largura": 250,
+    "comprimento": 100
+  },
+  "63": {
+    "peso": 292,
+    "altura": 30,
+    "largura": 150,
+    "comprimento": 100
+  },
+  "64": {
+    "peso": 351,
+    "altura": 30,
+    "largura": 100,
+    "comprimento": 180
+  },
+  "65": {
+    "peso": 515,
+    "altura": 30,
+    "largura": 120,
+    "comprimento": 220
+  },
+  "66": {
+    "peso": 316,
+    "altura": 30,
+    "largura": 90,
+    "comprimento": 180
+  },
+  "67": {
+    "peso": 281,
+    "altura": 30,
+    "largura": 120,
+    "comprimento": 120
+  },
+  "68": {
+    "peso": 281,
+    "altura": 30,
+    "largura": 120,
+    "comprimento": 120
+  },
+  "69": {
+    "peso": 322,
+    "altura": 30,
+    "largura": 150,
+    "comprimento": 110
+  },
+  "70": {
+    "peso": 195,
+    "altura": 30,
+    "largura": 100,
+    "comprimento": 100
+  }
+}

@@ -782,3 +782,100 @@ h1, h2, h3 {
     grid-auto-columns: minmax(160px, 68vw);
   }
 }
+
+/* ==========================================================================
+   WIDGET DE FRETE (DETALHE DO PRODUTO)
+   ========================================================================== */
+.frete-calculator {
+  margin: 18px 0;
+  padding: 16px;
+  border: 1px solid var(--p2-line);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 6px 14px rgba(46, 139, 198, 0.08);
+}
+
+.frete-calculator h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #2E8BC6;
+}
+
+.frete-helper {
+  margin: 8px 0 12px;
+  color: var(--p2-muted);
+  font-size: 0.92rem;
+}
+
+.frete-input-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 90px 120px;
+  gap: 10px;
+  align-items: center;
+}
+
+#frete-cidade-input,
+#frete-uf-select {
+  border: 1px solid var(--p2-line);
+  border-radius: 10px;
+  padding: 10px 12px;
+  color: var(--p2-text);
+}
+
+#frete-calcular-btn {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--p2-orange);
+  cursor: pointer;
+}
+
+#frete-calcular-btn:hover {
+  background: #F7941D;
+}
+
+.frete-resultado {
+  margin-top: 12px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #d4e8f7;
+  background: #f2f9ff;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: #1d4f74;
+}
+
+.frete-loading,
+.frete-erro {
+  margin-top: 10px;
+  font-size: 0.93rem;
+}
+
+.frete-loading {
+  color: #2E8BC6;
+}
+
+.frete-erro {
+  color: #c43a35;
+}
+
+.frete-calculator.is-error {
+  border-color: #f0b1af;
+}
+
+.frete-calculator.is-success {
+  border-color: #9dd0ef;
+}
+
+@media (max-width: 768px) {
+  .frete-input-row {
+    grid-template-columns: 1fr;
+  }
+
+  #frete-cidade-input {
+    width: 100%;
+  }
+}

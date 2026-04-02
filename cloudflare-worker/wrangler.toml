@@ -1,0 +1,7 @@
+name = "frete-proxy"
+main = "frete-proxy.js"
+compatibility_date = "2026-04-02"
+workers_dev = true
+
+[observability]
+enabled = true
