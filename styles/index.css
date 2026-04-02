@@ -64,6 +64,135 @@ body {
   font-size: 24px;
 }
 
+.header-user-auth {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-self: end;
+}
+
+.header-user-button {
+  border: 1px solid transparent;
+  background: transparent;
+  color: #2E8BC6;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  padding: 9px 14px;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.header-user-button:hover {
+  background: rgba(46, 139, 198, 0.1);
+}
+
+.header-user-label {
+  white-space: nowrap;
+}
+
+.header-user-auth.auth-on-dark .header-user-button {
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+.header-user-auth.auth-on-dark .header-user-button:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.header-user-auth.auth-on-light .header-user-button {
+  color: #2E8BC6;
+  border-color: #2E8BC6;
+}
+
+.header-user-auth.auth-on-light .header-user-button:hover {
+  background: rgba(46, 139, 198, 0.08);
+}
+
+.header-user-dropdown {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 8px 0;
+  min-width: 235px;
+  position: absolute;
+  right: 0;
+  top: calc(100% + 2px);
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e7edf4;
+  box-shadow: 0 12px 28px rgba(31, 42, 56, 0.16);
+  z-index: 1400;
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition: opacity .2s ease, transform .2s ease;
+}
+
+.header-user-dropdown.open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.header-user-dropdown a,
+.header-user-dropdown button {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  color: #243042;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+}
+
+.header-user-dropdown a:hover,
+.header-user-dropdown button:hover {
+  background: #f2f7fc;
+}
+
+.header-user-dropdown-greeting {
+  color: #5d6b7d;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 16px;
+  cursor: default;
+}
+
+.header-user-dropdown-divider {
+  border-top: 1px solid #edf2f8;
+  margin: 6px 0;
+}
+
+@media (max-width: 768px) {
+  .header-user-button {
+    padding: 8px 10px;
+    gap: 0;
+    min-width: 44px;
+    justify-content: center;
+  }
+
+  .header-user-button .header-user-label,
+  .header-user-button .fa-chevron-down {
+    display: none;
+  }
+
+  .header-user-dropdown {
+    right: -8px;
+    min-width: 210px;
+  }
+}
+
 #cart-count {
   position: absolute;
   top: -8px;
