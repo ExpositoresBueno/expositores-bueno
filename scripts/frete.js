@@ -1,5 +1,12 @@
+// ============================================================
+// LIGA / DESLIGA O WIDGET DE FRETE
+// false = widget some completamente do site
+// true  = widget ativo e visível para o cliente
+// ============================================================
+const FRETE_ATIVO = true;
+// ============================================================
+
 const FRETE_PROXY_URL = 'https://frete-proxy.tiagocbueno.workers.dev/cotacao';
-// SUBSTITUIR pela URL real do seu Cloudflare Worker após o deploy
 
 const CIDADES_RS = new Set([
   'porto alegre', 'caxias do sul', 'canoas', 'passo fundo', 'pelotas', 'santa maria',
@@ -58,6 +65,11 @@ const chamarFreteProxy = async (payload) => fetchJSON(FRETE_PROXY_URL, {
 const initFreteProduto = async (dimensoesMap) => {
   const section = document.getElementById('frete-calculator');
   if (!section) return;
+
+  if (!FRETE_ATIVO) {
+    section.remove();
+    return;
+  }
 
   const cidadeInput = document.getElementById('frete-cidade-input');
   const ufSelect = document.getElementById('frete-uf-select');
@@ -132,6 +144,11 @@ const initFreteCheckout = async (dimensoesMap) => {
   const botao = document.getElementById('frete-checkout-btn');
   const resultado = document.getElementById('frete-checkout-resultado');
   if (!botao || !resultado) return;
+
+  if (!FRETE_ATIVO) {
+    botao.closest('.frete-checkout-wrap')?.remove();
+    return;
+  }
 
   botao.addEventListener('click', async () => {
     botao.disabled = true;
