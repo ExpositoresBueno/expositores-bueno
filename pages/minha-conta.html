@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minha Conta | Expositores Bueno</title>
+    <link rel="stylesheet" href="../styles/index.css" />
+    <link rel="stylesheet" href="../styles/performance.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+      .account-wrap { max-width: 1180px; margin: 28px auto 40px; padding: 0 16px; }
+      .tabs { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 10px; margin-bottom: 16px; }
+      .tab-btn { border: 1px solid #d5deea; background: #fff; color: #243042; border-radius: 10px; padding: 12px; font-weight: 600; cursor: pointer; }
+      .tab-btn.is-active { background: #2E8BC6; border-color: #2E8BC6; color: #fff; }
+      .tab-panel { background: #fff; border: 1px solid #e6ebf2; border-radius: 14px; box-shadow: 0 8px 20px rgba(0,0,0,.05); padding: 22px; }
+      .form-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
+      .field-group label { display: block; font-weight: 600; margin-bottom: 6px; }
+      .field-group input, .field-group select { width: 100%; border: 1px solid #cfd8e5; border-radius: 8px; padding: 10px; font-family: inherit; }
+      .field-group input[readonly] { background: #f4f7fb; }
+      .actions { margin-top: 16px; display: flex; gap: 10px; flex-wrap: wrap; }
+      .btn-primary { background: #F7941D; color: #fff; border: none; border-radius: 8px; padding: 11px 16px; font-weight: 700; cursor: pointer; }
+      .btn-secondary { background: #fff; border: 1px solid #2E8BC6; color: #2E8BC6; border-radius: 8px; padding: 11px 16px; font-weight: 700; cursor: pointer; }
+      .inline-message { margin-top: 10px; font-size: 14px; min-height: 20px; }
+      .inline-message.success { color: #1f7a39; }
+      .inline-message.error { color: #c0392b; }
+      .address-card, .account-card-row { border: 1px solid #e6ebf2; border-radius: 10px; padding: 12px; display:flex; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+      .address-actions { display:flex; flex-direction: column; gap:6px; }
+      .address-actions button { border: 1px solid #d0d9e6; background:#fff; border-radius:6px; padding:6px 10px; cursor:pointer; }
+      .default-badge, .status-badge { display:inline-block; margin-top:6px; color:#fff; border-radius:999px; padding:4px 10px; font-size:12px; font-weight:600; }
+      .default-badge { background: #2E8BC6; }
+      .account-card-right { text-align:right; }
+      .link-btn { display:inline-block; margin-top:10px; color:#2E8BC6; font-weight:700; text-decoration:none; }
+      @media (max-width: 900px) { .tabs { grid-template-columns: repeat(2,minmax(0,1fr)); } .form-grid { grid-template-columns: 1fr; } }
+      @media (max-width: 640px) { .tabs { grid-template-columns: 1fr; } .address-card,.account-card-row { flex-direction:column; } }
+    </style>
+    <script type="module">
+      import { checkAuth } from "../scripts/auth.js";
+      checkAuth();
+    </script>
+  </head>
+  <body data-page="minha-conta">
+    <div class="page">
+      <header class="header">
+        <div class="header-top">
+          <div class="header-top-left">
+            <img src="../images/callPhone.png" alt="Telefone" />
+            <a href="https://wa.me/5551996034579" style="color: white; text-decoration: none;">Ligue agora +55 (51) 99603-4579</a>
+          </div>
+        </div>
+
+        <div class="header-main">
+          <div class="header-logo">
+          <a href="../index.html" style="text-decoration: none;">
+            <img src="../images/72739814197.png" alt="Expositores Bueno" />
+            </a>
+          </div>
+
+          <div class="header-search">
+            <select id="search-category">
+              <option value="Todos">Todos os produtos</option>
+              <option value="BALCÃO CAIXA C/ RODAPÉ">Balcão Caixa c/ Rodapé</option>
+              <option value="BALCÃO CAIXA COM VITRINE">Balcão Caixa com Vitrine</option>
+              <option value="BALCÃO CAIXA COM VITRINE (PRETO)">Balcão Caixa com Vitrine (Preto)</option>
+              <option value="BALCÃO VITRINE">Balcão Vitrine</option>
+              <option value="BALCÃO CAIXA (FECHADO)">Balcão Caixa (Fechado)</option>
+              <option value="ARMÁRIO COLMEIA">Armário Colmeia</option>
+              <option value="MÓVEL COM PRATELEIRAS">Móvel com Prateleiras</option>
+              <option value="ARARA DE MDF COM COLMEIA">Arara de MDF com Colmeia</option>
+              <option value="ARARA DE MDF (SIMPLES)">Arara de MDF (Simples)</option>
+              <option value="ARARA DE MDF COM COLMEIA LATERAL">Arara de MDF c/ Colmeia Lateral</option>
+              <option value="MÓVEL COM PRATELEIRAS">Móveis</option>
+            </select>
+            <input type="text" id="search-input" placeholder="Buscar produtos" />
+            <button id="search-btn" aria-label="Buscar">🔍</button>
+          </div>
+
+          <div class="header-user-auth" data-auth-user-menu></div>
+        </div>
+
+       <nav class="header-nav">
+          <ul>
+            <li><a href="../index.html">INÍCIO</a></li>
+            <li class="has-dropdown"><a href="../index.html#products-grid">NOSSOS PRODUTOS</a></li>
+            <li class="has-dropdown">
+              <a href="javascript:void(0)">MONTE SUA LOJA ▾</a>
+              <ul class="dropdown-menu dropdown-menu-monte-loja">
+                <li><a href="../pages/monte-seu-bazar.html">Bazar</a></li>
+                <li><a href="../pages/monte-sua-farmacia.html">Farmácias</a></li>
+                <li><a href="../pages/monte-sua-clinica.html">Clínicas</a></li>
+                <li><a href="../pages/monte-seu-escritorio.html">Escritórios</a></li>
+                <li><a href="../pages/monte-sua-loja-de-roupas.html">Loja de Roupas</a></li>
+                <li><a href="../pages/monte-sua-otica.html">Óticas</a></li>
+                <li><a href="../pages/monte-sua-loja.html">Todo Tipo de Comércio</a></li>
+              </ul>
+            </li>
+            <li class="has-dropdown"><a href="../pages/projetos3D.html">PROJETOS 3D</a></li>
+            <li class="has-dropdown"><a href="../pages/instalacoes.html">INSTALAÇÕES</a></li>
+            <li class="has-dropdown"><a href="../pages/avaliacoes.html">AVALIAÇÕES</a></li>
+            <li class="has-dropdown"><a href="../pages/nossa-loja.html">NOSSA LOJA</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main class="account-wrap">
+        <div class="tabs">
+          <button class="tab-btn is-active" data-tab-btn="perfil">Meu Perfil</button>
+          <button class="tab-btn" data-tab-btn="enderecos">Meus Endereços</button>
+          <button class="tab-btn" data-tab-btn="pedidos">Meus Pedidos</button>
+          <button class="tab-btn" data-tab-btn="carrinho">Carrinho Salvo</button>
+        </div>
+
+        <section class="tab-panel" data-tab-panel="perfil">
+          <h2>Meu Perfil</h2>
+          <form id="profile-form">
+            <div class="form-grid">
+              <div class="field-group"><label for="profile-name">Nome</label><input id="profile-name" type="text" required /></div>
+              <div class="field-group"><label for="profile-phone">Telefone</label><input id="profile-phone" type="text" required /></div>
+              <div class="field-group"><label for="profile-email">E-mail</label><input id="profile-email" type="email" readonly /></div>
+            </div>
+            <div class="actions">
+              <button id="save-profile-btn" class="btn-primary" type="submit">Salvar alterações</button>
+              <button id="reset-password-btn" class="btn-secondary" type="button">Alterar senha</button>
+            </div>
+            <p id="profile-message" class="inline-message"></p>
+          </form>
+        </section>
+
+        <section class="tab-panel" data-tab-panel="enderecos" hidden>
+          <h2>Meus Endereços</h2>
+          <div class="actions"><button id="add-address-btn" class="btn-primary" type="button">Adicionar endereço</button></div>
+          <div id="addresses-list"></div>
+
+          <div id="address-form-wrapper" hidden>
+            <form id="address-form">
+              <input id="address-id" type="hidden" />
+              <div class="form-grid">
+                <div class="field-group"><label for="address-label">Apelido</label><input id="address-label" required /></div>
+                <div class="field-group"><label for="address-cep">CEP</label><input id="address-cep" required /></div>
+                <div class="field-group"><label for="address-logradouro">Logradouro</label><input id="address-logradouro" required /></div>
+                <div class="field-group"><label for="address-numero">Número</label><input id="address-numero" required /></div>
+                <div class="field-group"><label for="address-complemento">Complemento</label><input id="address-complemento" /></div>
+                <div class="field-group"><label for="address-bairro">Bairro</label><input id="address-bairro" required /></div>
+                <div class="field-group"><label for="address-cidade">Cidade</label><input id="address-cidade" required /></div>
+                <div class="field-group"><label for="address-estado">Estado</label><input id="address-estado" required /></div>
+              </div>
+              <div class="actions">
+                <label><input type="checkbox" id="address-default" /> Definir como padrão</label>
+              </div>
+              <div class="actions">
+                <button type="submit" class="btn-primary">Salvar endereço</button>
+                <button type="button" id="cancel-address-btn" class="btn-secondary">Cancelar</button>
+              </div>
+              <p id="address-message" class="inline-message"></p>
+            </form>
+          </div>
+        </section>
+
+        <section class="tab-panel" data-tab-panel="pedidos" hidden>
+          <h2>Meus Pedidos (resumo)</h2>
+          <div id="orders-summary"></div>
+          <a class="link-btn" href="./meus-pedidos.html">Ver todos os pedidos</a>
+        </section>
+
+        <section class="tab-panel" data-tab-panel="carrinho" hidden>
+          <h2>Carrinho Salvo</h2>
+          <div id="saved-cart-summary"></div>
+        </section>
+      </main>
+
+      <footer class="main-footer">
+          <div class="footer-container">
+            <div class="footer-column">
+              <h3>Endereço</h3>
+              <ul class="footer-info">
+                <li>
+                  <i class="fa-solid fa-location-dot footer-mini-icon" aria-hidden="true"></i>
+                  <a target="_blank" href="https://www.google.com/maps/place/Expositores+Bueno/@-29.9038645,-51.1714882,17z/data=!3m1!4b1!4m6!3m5!1s0x9519707845c7925b:0xe744a83d42306f90!8m2!3d-29.9038645!4d-51.1714882!16s%2Fg%2F1w0p6t2h?entry=ttu&g_ep=EgoyMDI2MDMwNC4xIKXMDSoASAFQAw%3D%3D">Av. Boqueirão 804, Canoas, RS, 92410-350</a>
+                </li>
+                <li class="footer-phone-list">
+                  <div class="footer-phone-links">
+                    <a class="footer-phone-link" href="https://wa.me/5551996034579" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i>(51) 99603-4579</a>
+                    <a class="footer-phone-link" href="https://wa.me/5551994623730" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i>(51) 99462-3730</a>
+                  </div>
+                </li>
+                <li class="instagram-icon">
+                  <img src="../images/instagramIcon.png" alt="Instagram">
+                  <a href="https://www.instagram.com/expositoresbueno/">@expositoresbueno</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="footer-column">
+              <h3>HORÁRIO DE ATENDIMENTO</h3>
+              <table class="schedule-table">
+                <tr><td>Segunda-Feira</td><td>08:30 às 18:00</td></tr>
+                <tr><td>Terça-Feira</td><td>08:30 às 18:00</td></tr>
+                <tr><td>Quarta-Feira</td><td>08:30 às 18:00</td></tr>
+                <tr><td>Quinta-Feira</td><td>08:30 às 18:00</td></tr>
+                <tr><td>Sexta-Feira</td><td>08:30 às 18:00</td></tr>
+                <tr><td>Sábado</td><td>08:30 às 12:00</td></tr>
+                <tr><td>Domingo</td><td>Fechado</td></tr>
+              </table>
+            </div>
+
+            <div class="footer-column">
+              <h3>QUEM SOMOS</h3>
+              <ul class="footer-info">
+                <li>
+                  <a href="./about.html">Nossa História</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="footer-bottom">
+            <p>BUENO INDÚSTRIA E COMÉRCIO DE EXPOSITORES LTDA</p>
+            <p>CNPJ 40.494.084.0001.81</p>
+            <p>Av. Boqueirão 804, Canoas, RS, 92410-350</p>
+          </div>
+          <p class="copy">© Expositores Bueno — Todos os direitos reservados</p>
+      </footer>
+
+      <a href="https://wa.me/5551996034579" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+      </a>
+
+      <script type="module" src="../scripts/auth.js"></script>
+      <script type="module" src="../scripts/profile.js"></script>
+      <script type="module" src="../scripts/performance.min.js"></script>
+      <script src="/scripts/google-ads-tracking.js"></script>
+    </div>
+  </body>
+</html>

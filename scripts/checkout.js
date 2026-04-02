@@ -1,3 +1,6 @@
+import { supabase } from "./supabase-client.js";
+import { getProfile, getUser } from "./auth.js";
+
 const numeroWhatsApp = "5551996034579";
 const DESCONTO_PAGAMENTO_AVISTA = 0.05;
 const PAGAMENTOS_COM_DESCONTO = ["PIX", "DINHEIRO"];
@@ -6,6 +9,7 @@ const PAGAMENTO_CREDITO = "CARTÃO DE CRÉDITO";
 const NOMES_KITS_SEM_DESCONTO_AVISTA = ["KIT LOJA", "KIT LOJA DE ROUPAS"];
 const MAX_PARCELAS_PADRAO = 12;
 const MAX_PARCELAS_KIT = 4;
+let enderecosSalvos = [];
 
 function getCart() {
   return JSON.parse(localStorage.getItem("cart")) || [];
@@ -366,6 +370,17 @@ function montarMensagem(cart) {
   mensagem += `*Cliente:* ${nome}\n`;
   mensagem += `*Cidade:* ${cidade}\n\n`;
 
+  const enderecoSelecionado = obterEnderecoSelecionado();
+  if (enderecoSelecionado) {
+    const logradouro = enderecoSelecionado.logradouro || "";
+    const numero = enderecoSelecionado.numero || "s/n";
+    const complemento = enderecoSelecionado.complemento || "";
+    const bairro = enderecoSelecionado.bairro || "";
+    const cidadeEndereco = enderecoSelecionado.cidade || cidade;
+    const estado = enderecoSelecionado.estado || "";
+    mensagem += `*Endereço de entrega:* ${logradouro}, ${numero} ${complemento} - ${bairro}, ${cidadeEndereco}/${estado}\n\n`;
+  }
+
   cart.forEach((item) => {
     const larguraInfo = item.larguraOrcada
       ? `\n  Largura: ${formatarMedidaCm(item.larguraOrcada)}`
@@ -403,6 +418,176 @@ function montarMensagem(cart) {
   mensagem += `*Total do pedido:* ${formatarReal(totalComDesconto)}`;
 
   return mensagem;
+}
+
+function exibirFeedbackPedidoSalvo() {
+  const feedback = document.getElementById("order-save-feedback");
+  if (!feedback) return;
+
+  feedback.textContent = "✓ Pedido salvo no seu histórico";
+  feedback.style.display = "block";
+  clearTimeout(exibirFeedbackPedidoSalvo.timeoutId);
+  exibirFeedbackPedidoSalvo.timeoutId = setTimeout(() => {
+    feedback.style.display = "none";
+    feedback.textContent = "";
+  }, 3000);
+}
+
+async function saveOrderToSupabase(cart, resumo) {
+  try {
+    const user = await getUser();
+    if (!user) return null;
+
+    const profile = await getProfile();
+    const enderecoSelecionado = obterEnderecoSelecionado();
+    const enderecoEntrega = enderecoSelecionado || profile?.endereco_padrao || null;
+
+    const { data: orderData, error: orderError } = await supabase
+      .from("orders")
+      .insert({
+        user_id: user.id,
+        subtotal: Number(resumo.subtotal) || 0,
+        desconto: Number(resumo.desconto) || 0,
+        total: Number(resumo.totalComDesconto) || 0,
+        forma_pagamento: resumo.metodoPagamento || "",
+        parcelas: Number(document.getElementById("installments")?.value || 1),
+        status: "enviado_whatsapp",
+        endereco_entrega: enderecoEntrega,
+      })
+      .select("id")
+      .single();
+
+    if (orderError || !orderData?.id) return null;
+
+    const itensPedido = cart.map((item) => ({
+      order_id: orderData.id,
+      produto_id: item.id,
+      nome: item.nome,
+      preco_unitario: Number(item.preco) || 0,
+      quantidade: Math.max(1, Number(item.quantidade) || 1),
+      img: item.img || "",
+      cor_orcada: item.corOrcada || null,
+      largura_orcada: Number(item.larguraOrcada) || 0,
+      altura_orcada: Number(item.alturaOrcada) || 0,
+      profundidade_orcada: Number(item.profundidadeOrcada) || 0,
+    }));
+
+    const { error: itemsError } = await supabase
+      .from("order_items")
+      .insert(itensPedido);
+
+    if (itemsError) return null;
+
+    try {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'purchase', {
+          transaction_id: orderData.id,
+          value: resumo.totalComDesconto,
+          currency: 'BRL',
+          items: cart.map((item) => ({
+            item_id: String(item.id),
+            item_name: item.nome,
+            price: item.preco,
+            quantity: item.quantidade,
+          })),
+        });
+      }
+    } catch {
+      // Falha silenciosa de analytics.
+    }
+
+    try {
+      if (typeof fbq !== 'undefined') {
+        fbq('track', 'Purchase', {
+          value: resumo.totalComDesconto,
+          currency: 'BRL',
+          content_ids: cart.map((item) => String(item.id)),
+          content_type: 'product',
+          num_items: cart.reduce((acc, item) => acc + (Number(item.quantidade) || 0), 0),
+        });
+      }
+    } catch {
+      // Falha silenciosa de analytics.
+    }
+
+    return orderData.id;
+  } catch {
+    return null;
+  }
+}
+
+function formatarEnderecoOpcao(endereco = {}, indice = 0) {
+  const logradouro = endereco.logradouro || "Endereço";
+  const numero = endereco.numero || "s/n";
+  const bairro = endereco.bairro || "";
+  const cidade = endereco.cidade || "";
+  const estado = endereco.estado || "";
+  return `${indice + 1}. ${logradouro}, ${numero} - ${bairro} ${cidade}/${estado}`.trim();
+}
+
+function obterEnderecoSelecionado() {
+  const select = document.getElementById("saved-addresses");
+  if (!select) return null;
+  const valor = select.value;
+  if (!valor || valor === "novo") return null;
+  const indice = Number(valor);
+  if (!Number.isFinite(indice) || indice < 0) return null;
+  return enderecosSalvos[indice] || null;
+}
+
+function aplicarEnderecoNoFormulario(endereco) {
+  const cidadeInput = document.getElementById("client-city");
+  if (!cidadeInput) return;
+  if (!endereco) {
+    cidadeInput.value = "";
+    return;
+  }
+  cidadeInput.value = endereco.cidade || "";
+}
+
+async function inicializarEnderecosSalvos() {
+  const section = document.getElementById("saved-address-section");
+  const select = document.getElementById("saved-addresses");
+  if (!section || !select) return;
+
+  const user = await getUser();
+  if (!user) {
+    section.hidden = true;
+    return;
+  }
+
+  const profile = await getProfile();
+  const fonte = Array.isArray(profile?.enderecos)
+    ? profile.enderecos
+    : Array.isArray(profile?.addresses)
+      ? profile.addresses
+      : profile?.endereco_padrao
+        ? [profile.endereco_padrao]
+        : [];
+
+  enderecosSalvos = fonte.filter(Boolean);
+  if (!enderecosSalvos.length) {
+    section.hidden = true;
+    return;
+  }
+
+  section.hidden = false;
+  select.innerHTML = '<option value="novo">Digitar novo endereço</option>';
+  enderecosSalvos.forEach((endereco, indice) => {
+    const option = document.createElement("option");
+    option.value = String(indice);
+    option.textContent = formatarEnderecoOpcao(endereco, indice);
+    select.appendChild(option);
+  });
+
+  if (enderecosSalvos.length > 0) {
+    select.value = "0";
+    aplicarEnderecoNoFormulario(enderecosSalvos[0]);
+  }
+
+  select.addEventListener("change", () => {
+    aplicarEnderecoNoFormulario(obterEnderecoSelecionado());
+  });
 }
 
 function atualizarCheckout() {
@@ -456,15 +641,23 @@ function inicializarCheckout() {
 
   const enviarBtn = document.getElementById("send-whatsapp");
   if (enviarBtn) {
-    enviarBtn.addEventListener("click", () => {
+    enviarBtn.addEventListener("click", async () => {
       const cart = getCart();
       if (!cart.length) {
         alert("Seu carrinho está vazio.");
         return;
       }
 
+      const resumo = calcularResumo(cart);
       const mensagem = montarMensagem(cart);
       if (!mensagem) return;
+
+      const orderId = await saveOrderToSupabase(cart, resumo);
+      if (orderId) {
+        exibirFeedbackPedidoSalvo();
+      } else {
+        console.log("Não foi possível salvar pedido no histórico.");
+      }
 
       window.open(
         `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`,
@@ -474,4 +667,7 @@ function inicializarCheckout() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", inicializarCheckout);
+document.addEventListener("DOMContentLoaded", async () => {
+  await inicializarEnderecosSalvos();
+  inicializarCheckout();
+});

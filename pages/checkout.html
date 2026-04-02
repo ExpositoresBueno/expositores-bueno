@@ -6,6 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Finalizar Pedido | Expositores Bueno</title>
     <link rel="stylesheet" href="../styles/checkout.css" />
+    <style>
+      .checkout-login-banner {
+        display: none;
+        margin: 0 auto 16px;
+        max-width: 1180px;
+        background: #e8f3ff;
+        border: 1px solid #b5d8f5;
+        color: #19527d;
+        border-radius: 10px;
+        padding: 12px 14px;
+        font-size: 14px;
+      }
+      .checkout-login-banner a {
+        color: #2e8bc6;
+        font-weight: 700;
+        text-decoration: none;
+      }
+      .checkout-login-banner a:hover {
+        text-decoration: underline;
+      }
+      .saved-address-section {
+        margin-top: 14px;
+      }
+      .order-save-feedback {
+        display: none;
+        color: #1f7a39;
+        font-size: 14px;
+        margin-top: 10px;
+      }
+    </style>
 
     <script
       async
@@ -84,6 +114,10 @@
 </head>
   <body>
     <main class="checkout-page">
+      <div id="checkout-login-banner" class="checkout-login-banner">
+        Faça login para salvar seu pedido no histórico e usar endereços salvos → <a href="./login.html">Entrar</a>
+      </div>
+
       <div class="checkout-topbar">
         <a class="checkout-back-btn" href="../index.html"
           >← Voltar aos produtos</a
@@ -128,6 +162,15 @@
               placeholder="Sua cidade"
               required
             />
+          </div>
+        </div>
+
+        <div id="saved-address-section" class="saved-address-section" hidden>
+          <div class="field-group">
+            <label for="saved-addresses">Usar endereço salvo</label>
+            <select id="saved-addresses">
+              <option value="novo">Digitar novo endereço</option>
+            </select>
           </div>
         </div>
       </section>
@@ -229,12 +272,30 @@
           <button id="send-whatsapp" class="checkout-btn">
             Enviar pedido no WhatsApp
           </button>
+          <p id="order-save-feedback" class="order-save-feedback"></p>
           <a class="back-link" href="../index.html">← Voltar para produtos</a>
         </aside>
       </section>
     </main>
 
+    <script type="module">
+      import { supabase } from "../scripts/supabase-client.js";
+
+      const banner = document.getElementById("checkout-login-banner");
+      if (banner) {
+        const atualizarBanner = async () => {
+          const { data } = await supabase.auth.getSession();
+          banner.style.display = data?.session ? "none" : "block";
+        };
+
+        atualizarBanner();
+        supabase.auth.onAuthStateChange(() => {
+          atualizarBanner();
+        });
+      }
+    </script>
     <script type="module" src="../scripts/checkout.js"></script>
+    <script type="module" src="../scripts/auth.js"></script>
     <script type="module" src="../scripts/performance.min.js"></script>
     <script src="/scripts/google-ads-tracking.js"></script>
   </body>
