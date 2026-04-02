@@ -164,6 +164,14 @@
             />
           </div>
         </div>
+
+        <div class="frete-checkout-wrap">
+          <p class="frete-checkout-label">Consultar frete estimado para sua cidade:</p>
+          <button type="button" id="frete-checkout-btn" class="frete-checkout-trigger">
+            Calcular frete
+          </button>
+          <div id="frete-checkout-resultado" class="frete-checkout-resultado" hidden></div>
+        </div>
         <p id="checkout-account-prefill-note" style="display:block; margin-top:8px; color:#5f6f82; font-size:12px;" hidden>Dados preenchidos da sua conta.</p>
 
         <div id="saved-address-section" class="saved-address-section" hidden>
@@ -296,6 +304,7 @@
       }
     </script>
     <script type="module" src="../scripts/checkout.js"></script>
+    <script type="module" src="../scripts/frete.js"></script>
     <script type="module" src="../scripts/auth.js"></script>
     <script type="module" src="../scripts/performance.min.js"></script>
     <script src="/scripts/google-ads-tracking.js"></script>

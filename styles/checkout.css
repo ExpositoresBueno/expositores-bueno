@@ -316,3 +316,49 @@ select, input {
     padding: 16px;
   }
 }
+
+/* ==========================================================================
+   WIDGET DE FRETE (CHECKOUT)
+   ========================================================================== */
+.frete-checkout-wrap {
+  margin-top: 14px;
+  padding: 12px;
+  border: 1px solid #d9e7f4;
+  border-radius: 12px;
+  background: #f8fcff;
+}
+
+.frete-checkout-label {
+  margin: 0 0 10px;
+  color: #2E8BC6;
+  font-weight: 600;
+}
+
+.frete-checkout-trigger {
+  border: none;
+  border-radius: 8px;
+  background: #F7941D;
+  color: #fff;
+  font-weight: 700;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+.frete-checkout-trigger:hover {
+  filter: brightness(1.03);
+}
+
+.frete-checkout-trigger:disabled {
+  opacity: 0.75;
+  cursor: wait;
+}
+
+.frete-checkout-resultado {
+  margin-top: 10px;
+  font-size: 0.92rem;
+  color: #1b4667;
+}
+
+.frete-checkout-resultado.is-error {
+  color: #c43a35;
+}
