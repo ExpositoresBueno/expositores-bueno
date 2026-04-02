@@ -533,6 +533,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         { chave: 'altura', nome: 'Altura', input: inputAltura, base: dimensoesBase.altura },
         { chave: 'profundidade', nome: 'Profundidade', input: inputProfundidade, base: dimensoesBase.profundidade },
       ];
+      const adicionalPercentualMedidaPersonalizada = 0.1;
 
       const existeAlgumaBase = dimensoesConfig.some((dim) => Number.isFinite(dim.base) && dim.base > 0);
 
@@ -582,6 +583,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         return Math.abs(valorDigitado - dim.base) < 0.0001;
       });
 
+      const possuiMedidaPersonalizada = () => !todasMedidasNoPadrao();
+
       const calcularValor = () => {
         const precoBaseBranco = Number(produtoSelecionado.preco);
         let fatorMedidas = 1;
@@ -604,7 +607,9 @@ document.addEventListener('DOMContentLoaded', async () => {
           medidasAplicadas.push(`${dim.nome}: ${formatarMetros(valorEfetivo)}m`);
         }
 
-        const valorBrancoMedida = precoBaseBranco * fatorMedidas;
+        const possuiPersonalizacao = possuiMedidaPersonalizada();
+        const fatorAdicional = possuiPersonalizacao ? (1 + adicionalPercentualMedidaPersonalizada) : 1;
+        const valorBrancoMedida = precoBaseBranco * fatorMedidas * fatorAdicional;
         const valorFinal = calcularPrecoComCor(valorBrancoMedida);
 
         resultadoOrcamento.classList.remove('error');
@@ -639,7 +644,8 @@ document.addEventListener('DOMContentLoaded', async () => {
           medidasNome.push(`${dim.nome} ${formatarMetros(valorEfetivo)}m`);
         }
 
-        const valorBranco = Number(produtoSelecionado.preco) * fatorMedidas;
+        const fatorAdicional = possuiMedidaPersonalizada() ? (1 + adicionalPercentualMedidaPersonalizada) : 1;
+        const valorBranco = Number(produtoSelecionado.preco) * fatorMedidas * fatorAdicional;
         return {
           valorFinal: calcularPrecoComCor(valorBranco),
           medidasNome,
