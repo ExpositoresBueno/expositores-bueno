@@ -208,6 +208,32 @@
                   </p>
                 </div>
 
+            </div>
+
+            <div class="eb-steps-bar">
+              <div class="eb-steps-inner">
+                <div class="eb-step active" id="dot-1">
+                  <div class="eb-step-circle">1</div>
+                  <span>Planta Baixa</span>
+                </div>
+                <div class="eb-step-connector"></div>
+                <div class="eb-step" id="dot-2">
+                  <div class="eb-step-circle">2</div>
+                  <span>Dados do Projeto</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="eb-main">
+              <section class="eb-card" id="step-1">
+                <div class="eb-card-header">
+                  <h2>Planta Baixa do Espaço</h2>
+                  <p>
+                    Clique no canvas para marcar os cantos da sala. Quando
+                    terminar, clique em <strong>Fechar Sala</strong>.
+                  </p>
+                </div>
+
                 <div class="eb-canvas-wrapper">
                   <svg
                     id="plant-svg"
@@ -370,21 +396,25 @@
                   <div class="eb-input-group">
                     <label for="nome-loja"
                       >Seu nome <span class="required">*</span></label
+                      >Nome da loja <span class="required">*</span></label
                     >
                     <input
                       type="text"
                       id="nome-loja"
                       placeholder="Ex: João da Silva"
+                      placeholder="Ex: Farmácia Central, Ótica Visão"
                     />
                   </div>
                   <div class="eb-input-group">
                     <label for="produto"
                       >Segmento <span class="required">*</span></label
+                      >Produto / Segmento <span class="required">*</span></label
                     >
                     <input
                       type="text"
                       id="produto"
                       placeholder="Ex: Farmácia, ótica, loja de roupas"
+                      placeholder="Ex: Gôndolas, prateleiras de vidro, balcão"
                     />
                   </div>
                   <div class="eb-input-group">
@@ -396,6 +426,18 @@
                       id="estilo"
                       placeholder="Ex: (51) 99999-9999"
                     />
+                      >Estilo desejado <span class="required">*</span></label
+                    >
+                    <select id="estilo">
+                      <option value="">Selecione...</option>
+                      <option value="Moderno">Moderno</option>
+                      <option value="Clássico">Clássico</option>
+                      <option value="Industrial">Industrial</option>
+                      <option value="Minimalista">Minimalista</option>
+                      <option value="Luxo / Premium">Luxo / Premium</option>
+                      <option value="Rústico / Natural">Rústico / Natural</option>
+                      <option value="Sem preferência">Sem preferência</option>
+                    </select>
                   </div>
                   <div class="eb-input-group">
                     <label for="orcamento"
@@ -437,6 +479,17 @@
                 </div>
               </section>
             </div>
+          <section class="examples-section">
+            <h2>Exemplos de materiais aceitos</h2>
+            <ul>
+              <li>Planta baixa em PDF, foto ou imagem;</li>
+              <li>Desenho feito à mão com medidas anotadas;</li>
+              <li>Fotos da fachada e da parte interna;</li>
+              <li>
+                Referências de lojas, ambientes ou móveis sob medida que você
+                gostou.
+              </li>
+            </ul>
           </section>
 
           <section class="socorro-section">
@@ -449,6 +502,295 @@
               rel="noopener noreferrer"
               >Clique aqui se precisa de ajuda</a
             >
+          </section>
+
+          <section class="final-cta">
+            <h2>Pronto! Agora é só iniciar o atendimento</h2>
+            <p>
+              Depois de preencher o formulário, clique no botão abaixo para
+              enviar seus dados no WhatsApp.
+            </p>
+            <a
+              id="final-whatsapp-btn"
+              class="btn-wa"
+              href="https://wa.me/5551996034579"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Iniciar atendimento no WhatsApp</a
+            >
+          </section>
+
+
+          <section class="eb-integrated-section">
+            <div class="eb-hero">
+              <div class="eb-hero-inner">
+                <span class="eb-badge">Gratuito · Sem compromisso</span>
+                <h1>Solicitar Projeto 3D</h1>
+                <p>
+                  Desenhe o espaço da sua loja, preencha os dados e receba uma
+                  proposta personalizada da nossa equipe pelo WhatsApp.
+                </p>
+              </div>
+            </div>
+
+            <div class="eb-steps-bar">
+              <div class="eb-steps-inner">
+                <div class="eb-step active" id="dot-1">
+                  <div class="eb-step-circle">1</div>
+                  <span>Planta Baixa</span>
+                </div>
+                <div class="eb-step-connector"></div>
+                <div class="eb-step" id="dot-2">
+                  <div class="eb-step-circle">2</div>
+                  <span>Dados do Projeto</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="eb-main">
+              <section class="eb-card" id="step-1">
+                <div class="eb-card-header">
+                  <h2>Planta Baixa do Espaço</h2>
+                  <p>
+                    Clique no canvas para marcar os cantos da sala. Quando
+                    terminar, clique em <strong>Fechar Sala</strong>.
+                  </p>
+                </div>
+
+                <div class="eb-canvas-wrapper">
+                  <svg
+                    id="plant-svg"
+                    viewBox="0 0 800 480"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <defs>
+                      <pattern
+                        id="smallGrid"
+                        width="20"
+                        height="20"
+                        patternUnits="userSpaceOnUse"
+                      >
+                        <path
+                          d="M 20 0 L 0 0 0 20"
+                          fill="none"
+                          stroke="#e9ecef"
+                          stroke-width="0.5"
+                        />
+                      </pattern>
+                      <pattern
+                        id="grid"
+                        width="100"
+                        height="100"
+                        patternUnits="userSpaceOnUse"
+                      >
+                        <rect width="100" height="100" fill="url(#smallGrid)" />
+                        <path
+                          d="M 100 0 L 0 0 0 100"
+                          fill="none"
+                          stroke="#d1d5db"
+                          stroke-width="1"
+                        />
+                      </pattern>
+                    </defs>
+                    <rect width="800" height="480" fill="#f8fafc" />
+                    <rect width="800" height="480" fill="url(#grid)" />
+                    <text
+                      id="canvas-hint"
+                      x="400"
+                      y="230"
+                      text-anchor="middle"
+                      fill="#94a3b8"
+                      font-family="Poppins, sans-serif"
+                      font-size="16"
+                    >
+                      Clique aqui para começar a desenhar
+                    </text>
+                    <text
+                      id="canvas-hint2"
+                      x="400"
+                      y="260"
+                      text-anchor="middle"
+                      fill="#cbd5e1"
+                      font-family="Poppins, sans-serif"
+                      font-size="13"
+                    >
+                      Cada clique = um canto da sala
+                    </text>
+                    <g id="layer-fill"></g>
+                    <g id="layer-lines"></g>
+                    <g id="layer-labels"></g>
+                    <g id="layer-points"></g>
+                    <line
+                      id="preview-line"
+                      x1="0"
+                      y1="0"
+                      x2="0"
+                      y2="0"
+                      stroke="#F7941D"
+                      stroke-width="1.5"
+                      stroke-dasharray="6,4"
+                      opacity="0"
+                    />
+                  </svg>
+                </div>
+
+                <div class="eb-canvas-controls">
+                  <button
+                    class="btn-canvas"
+                    id="btn-close"
+                    onclick="closeRoom()"
+                    disabled
+                  >
+                    Fechar Sala
+                  </button>
+                  <button class="btn-canvas" onclick="undoLastPoint()">
+                    Desfazer
+                  </button>
+                  <button class="btn-canvas" onclick="clearCanvas()">
+                    Limpar
+                  </button>
+                  <button
+                    class="btn-canvas"
+                    id="btn-download"
+                    onclick="downloadPlant()"
+                    disabled
+                  >
+                    Baixar Planta
+                  </button>
+                </div>
+
+                <div id="measurements-section" class="eb-measurements hidden">
+                  <h3>Medidas reais das paredes</h3>
+                  <p>
+                    Insira o comprimento de cada parede em metros. Use
+                    estimativas se não souber exato.
+                  </p>
+                  <div id="measurements-inputs" class="eb-measurements-grid"></div>
+                </div>
+
+                <div class="eb-divider">
+                  <span>ou informe apenas as dimensões principais</span>
+                </div>
+
+                <div class="eb-simple-dims">
+                  <div class="eb-input-group">
+                    <label for="dim-largura">Largura (metros)</label>
+                    <input
+                      type="number"
+                      id="dim-largura"
+                      min="1"
+                      max="200"
+                      step="0.5"
+                      placeholder="Ex: 8"
+                    />
+                  </div>
+                  <div class="eb-dim-x">×</div>
+                  <div class="eb-input-group">
+                    <label for="dim-comprimento">Comprimento (metros)</label>
+                    <input
+                      type="number"
+                      id="dim-comprimento"
+                      min="1"
+                      max="200"
+                      step="0.5"
+                      placeholder="Ex: 12"
+                    />
+                  </div>
+                </div>
+
+                <div class="eb-step-footer">
+                  <p class="eb-skip-note">
+                    Pode pular o desenho — as dimensões acima são suficientes.
+                  </p>
+                  <button class="btn-primary" onclick="goToStep2()">Próximo</button>
+                </div>
+              </section>
+
+              <section class="eb-card hidden" id="step-2">
+                <div class="eb-card-header">
+                  <h2>Dados do Projeto</h2>
+                  <p>
+                    Preencha as informações abaixo. Nossa equipe montará uma
+                    proposta e entrará em contato pelo WhatsApp.
+                  </p>
+                </div>
+
+                <div class="eb-form-grid">
+                  <div class="eb-input-group">
+                    <label for="nome-loja"
+                      >Nome da loja <span class="required">*</span></label
+                    >
+                    <input
+                      type="text"
+                      id="nome-loja"
+                      placeholder="Ex: Farmácia Central, Ótica Visão"
+                    />
+                  </div>
+                  <div class="eb-input-group">
+                    <label for="produto"
+                      >Produto / Segmento <span class="required">*</span></label
+                    >
+                    <input
+                      type="text"
+                      id="produto"
+                      placeholder="Ex: Gôndolas, prateleiras de vidro, balcão"
+                    />
+                  </div>
+                  <div class="eb-input-group">
+                    <label for="estilo"
+                      >Estilo desejado <span class="required">*</span></label
+                    >
+                    <select id="estilo">
+                      <option value="">Selecione...</option>
+                      <option value="Moderno">Moderno</option>
+                      <option value="Clássico">Clássico</option>
+                      <option value="Industrial">Industrial</option>
+                      <option value="Minimalista">Minimalista</option>
+                      <option value="Luxo / Premium">Luxo / Premium</option>
+                      <option value="Rústico / Natural">Rústico / Natural</option>
+                      <option value="Sem preferência">Sem preferência</option>
+                    </select>
+                  </div>
+                  <div class="eb-input-group">
+                    <label for="orcamento"
+                      >Orçamento estimado <span class="required">*</span></label
+                    >
+                    <select id="orcamento">
+                      <option value="">Selecione...</option>
+                      <option value="Até R$ 5.000">Até R$ 5.000</option>
+                      <option value="R$ 5.000 a R$ 10.000">R$ 5.000 a R$ 10.000</option>
+                      <option value="R$ 10.000 a R$ 20.000">R$ 10.000 a R$ 20.000</option>
+                      <option value="R$ 20.000 a R$ 50.000">R$ 20.000 a R$ 50.000</option>
+                      <option value="Acima de R$ 50.000">Acima de R$ 50.000</option>
+                      <option value="Não sei informar">Não sei informar</option>
+                    </select>
+                  </div>
+                  <div class="eb-input-group full">
+                    <label for="observacoes">Observações</label>
+                    <textarea
+                      id="observacoes"
+                      rows="4"
+                      placeholder="Necessidades específicas, prazo desejado, referências de estilo..."
+                    ></textarea>
+                  </div>
+                </div>
+
+                <p class="budget-note">
+                  Saiba que independente do seu orçamento ou do tamanho do projeto, vamos estar ao seu lado para fazer acontecer.
+                    Quando começamos, lá em 2003, tínhamos uma loja de 5 x 5,
+                    uma linha telefônica e o dinheiro contado do mês. Por isso,
+                    hoje fazemos questão de oferecer o suporte que fez falta lá
+                    atrás.
+                </p>
+
+                <div class="eb-step-footer split">
+                  <button class="btn-secondary" onclick="goToStep1()">Voltar</button>
+                  <button class="btn-whatsapp" onclick="sendToWhatsApp()">
+                    Enviar pelo WhatsApp
+                  </button>
+                </div>
+              </section>
+            </div>
           </section>
         </main>
       </div>

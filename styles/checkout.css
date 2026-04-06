@@ -334,6 +334,39 @@ select, input {
   font-weight: 600;
 }
 
+.frete-opcoes-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.frete-opcao-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border: 1px solid #d6deea;
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+.frete-opcao-card input[type="radio"] {
+  margin: 0 0 4px;
+}
+
+.frete-opcao-titulo {
+  font-size: 14px;
+  font-weight: 700;
+  color: #22344b;
+}
+
+.frete-opcao-descricao {
+  font-size: 13px;
+  color: #5a6f86;
+}
+
 .frete-checkout-trigger {
   border: none;
   border-radius: 8px;
