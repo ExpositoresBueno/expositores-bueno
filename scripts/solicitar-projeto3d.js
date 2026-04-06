@@ -8,7 +8,7 @@
 const WHATSAPP_NUMBER = '5551996034579';
 
 // Estado
-const state = { points: [], isClosed: false };
+const state = { points: [], isClosed: false, wallMeasurements: [] };
 
 // DOM
 const svg         = document.getElementById('plant-svg');
@@ -20,7 +20,6 @@ const previewLine = document.getElementById('preview-line');
 const canvasHint  = document.getElementById('canvas-hint');
 const canvasHint2 = document.getElementById('canvas-hint2');
 const btnClose    = document.getElementById('btn-close');
-const btnDownload = document.getElementById('btn-download');
 const measSection = document.getElementById('measurements-section');
 const measInputs  = document.getElementById('measurements-inputs');
 
@@ -54,14 +53,14 @@ function render() {
 
   if (pts.length === 0) {
     canvasHint.style.display = canvasHint2.style.display = '';
-    btnClose.disabled = btnDownload.disabled = true;
+    btnClose.disabled = true;
     measSection.classList.add('hidden');
+    state.wallMeasurements = [];
     return;
   }
 
   canvasHint.style.display = canvasHint2.style.display = 'none';
   btnClose.disabled    = pts.length < 3 || state.isClosed;
-  btnDownload.disabled = !state.isClosed;
 
   if (state.isClosed && pts.length >= 3) {
     const d = pts.map((p, i) => `${i === 0 ? 'M' : 'L'}${p.x},${p.y}`).join(' ') + ' Z';
@@ -106,7 +105,11 @@ function render() {
     txt.setAttribute('font-size', '11');
     txt.setAttribute('font-weight', '700');
     txt.setAttribute('transform', `rotate(${rot}, ${mid.x}, ${mid.y})`);
-    txt.textContent = `P${i + 1}`;
+    const wallInput = document.getElementById(`wall-${i}`);
+    const wallValue = wallInput ? parseFloat(wallInput.value) : NaN;
+    txt.textContent = Number.isFinite(wallValue) && wallValue > 0
+      ? `${wallValue.toFixed(1).replace('.', ',')}m`
+      : `P${i + 1}`;
 
     layerLabels.appendChild(bg);
     layerLabels.appendChild(txt);
@@ -137,11 +140,21 @@ function render() {
 function renderMeasurements(count) {
   measSection.classList.remove('hidden');
   measInputs.innerHTML = '';
+  if (state.wallMeasurements.length !== count) {
+    state.wallMeasurements = Array.from({ length: count }, (_, i) => state.wallMeasurements[i] || '');
+  }
+
   for (let i = 0; i < count; i++) {
     const cor = WALL_COLORS[i % WALL_COLORS.length];
     const div = document.createElement('div');
     div.className = 'eb-wall-input';
     div.innerHTML = `<label><span class="eb-wall-color" style="background:${cor}"></span>Parede ${i + 1}</label><input type="number" id="wall-${i}" min="0.5" max="500" step="0.5" placeholder="metros">`;
+    const input = div.querySelector('input');
+    input.value = state.wallMeasurements[i];
+    input.addEventListener('input', () => {
+      state.wallMeasurements[i] = input.value;
+      render();
+    });
     measInputs.appendChild(div);
   }
 }
@@ -194,26 +207,58 @@ function undoLastPoint() {
 
 function clearCanvas() {
   state.points = []; state.isClosed = false;
+  state.wallMeasurements = [];
   previewLine.setAttribute('opacity', '0');
   render();
 }
 
-function downloadPlant() {
-  if (!state.isClosed) { toast('Feche a sala antes de baixar a planta.', 'error'); return; }
+async function generatePlantPngBlob() {
+  if (!state.isClosed) return null;
   const clone = document.getElementById('plant-svg').cloneNode(true);
   clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+  clone.setAttribute('width', '800');
+  clone.setAttribute('height', '480');
   const prev = clone.querySelector('#preview-line');
   if (prev) prev.remove();
-  const blob = new Blob([clone.outerHTML], { type: 'image/svg+xml' });
-  const url  = URL.createObjectURL(blob);
-  const a    = document.createElement('a');
-  a.href = url; a.download = 'planta-baixa-bueno.svg'; a.click();
-  URL.revokeObjectURL(url);
-  toast('Planta baixada! Envie pelo WhatsApp junto com a mensagem.', 'success');
+  const svgBlob = new Blob([clone.outerHTML], { type: 'image/svg+xml;charset=utf-8' });
+  const svgUrl = URL.createObjectURL(svgBlob);
+
+  try {
+    const img = new Image();
+    img.decoding = 'async';
+    await new Promise((resolve, reject) => {
+      img.onload = resolve;
+      img.onerror = reject;
+      img.src = svgUrl;
+    });
+
+    const canvas = document.createElement('canvas');
+    canvas.width = 1600;
+    canvas.height = 960;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+    return await new Promise((resolve) => {
+      canvas.toBlob((blob) => resolve(blob), 'image/png', 1);
+    });
+  } finally {
+    URL.revokeObjectURL(svgUrl);
+  }
 }
 
 // Navegação
 function goToStep2() {
+  if (!state.isClosed) {
+    toast('Finalize o desenho da planta antes de avançar.', 'error');
+    return;
+  }
+  if (!state.wallMeasurements.length || state.wallMeasurements.some((value) => !parseFloat(value))) {
+    toast('Preencha a medida de todas as paredes antes de avançar.', 'error');
+    return;
+  }
+
   document.getElementById('step-1').classList.add('hidden');
   document.getElementById('step-2').classList.remove('hidden');
   document.getElementById('dot-1').classList.remove('active');
@@ -231,29 +276,8 @@ function goToStep1() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Coleta de dados
-function getDimensoes() {
-  if (state.isClosed && state.points.length >= 3) {
-    const count = state.points.length;
-    const linhas = [];
-    for (let i = 0; i < count; i++) {
-      const input = document.getElementById(`wall-${i}`);
-      const val   = input ? parseFloat(input.value) : 0;
-      linhas.push(`  Parede ${i + 1}: ${val > 0 ? val.toFixed(1) + ' metros' : '(não informado)'}`);
-    }
-    return `Planta desenhada (${count} paredes):
-${linhas.join('\n')}`;
-  }
-  const larg = parseFloat(document.getElementById('dim-largura').value)    || 0;
-  const comp = parseFloat(document.getElementById('dim-comprimento').value) || 0;
-  if (larg > 0 && comp > 0) return `${larg} m × ${comp} m`;
-  if (larg > 0) return `Largura: ${larg} m`;
-  if (comp > 0) return `Comprimento: ${comp} m`;
-  return 'Não informado';
-}
-
 // WhatsApp
-function sendToWhatsApp() {
+async function sendToWhatsApp() {
   const nomeLoja    = document.getElementById('nome-loja').value.trim();
   const produto     = document.getElementById('produto').value.trim();
   const estilo      = document.getElementById('estilo').value.trim();
@@ -264,8 +288,12 @@ function sendToWhatsApp() {
   if (!produto)   { toast('Informe o segmento.', 'error');               document.getElementById('produto').focus();   return; }
   if (!estilo)    { toast('Informe seu telefone.', 'error');             document.getElementById('estilo').focus();    return; }
   if (!orcamento) { toast('Selecione o orçamento estimado.', 'error');   document.getElementById('orcamento').focus(); return; }
+  if (!state.isClosed) { toast('Finalize o desenho da planta antes de enviar.', 'error'); return; }
+  if (!state.wallMeasurements.length || state.wallMeasurements.some((value) => !parseFloat(value))) {
+    toast('Preencha a medida de todas as paredes antes de enviar.', 'error');
+    return;
+  }
 
-  const dimensoes = getDimensoes();
   const linhas = [
     `Olá! Gostaria de solicitar um *Projeto 3D* pela Expositores Bueno.`,
     ``,
@@ -273,18 +301,49 @@ function sendToWhatsApp() {
     `🏷️ *Segmento:* ${produto}`,
     `📞 *Telefone:* ${estilo}`,
     `💰 *Orçamento:* ${orcamento}`,
-    `📐 *Dimensões do espaço:*`,
-    dimensoes.includes('\n') ? dimensoes : `  ${dimensoes}`,
+    observacoes ? `📝 *Observações:* ${observacoes}` : `📝 *Observações:* Não informado`,
+    ``,
+    `Estou enviando a planta em PNG junto com esta mensagem.`,
   ];
-
-  if (observacoes) linhas.push(`📝 *Observações:* ${observacoes}`);
-  if (state.isClosed) { linhas.push(``); linhas.push(`_(Planta baixa disponível para envio nesta conversa)_`); }
   linhas.push(``);
   linhas.push(`_Solicitação enviada pelo site expositoresbueno.com.br_`);
 
-  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(linhas.join('\n'))}`, '_blank');
+  const message = linhas.join('\n');
+  const pngBlob = await generatePlantPngBlob();
 
-  if (state.isClosed) setTimeout(() => toast('Lembre-se de enviar a planta baixa pelo WhatsApp também!', 'success'), 800);
+  const canShareFile =
+    typeof navigator !== 'undefined'
+    && typeof navigator.share === 'function'
+    && typeof navigator.canShare === 'function'
+    && pngBlob;
+
+  if (canShareFile) {
+    const file = new File([pngBlob], 'planta-baixa-bueno.png', { type: 'image/png' });
+    const shareData = { text: message, files: [file], title: 'Planta baixa - Projeto 3D' };
+    if (navigator.canShare(shareData)) {
+      try {
+        await navigator.share(shareData);
+        toast('Planta PNG e mensagem preparadas para envio.', 'success');
+        return;
+      } catch (err) {
+        if (err?.name !== 'AbortError') {
+          console.error('Falha ao compartilhar arquivo da planta:', err);
+        }
+      }
+    }
+  }
+
+  if (pngBlob) {
+    const pngUrl = URL.createObjectURL(pngBlob);
+    const a = document.createElement('a');
+    a.href = pngUrl;
+    a.download = 'planta-baixa-bueno.png';
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(pngUrl), 2000);
+  }
+
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
+  setTimeout(() => toast('A planta foi gerada em PNG para anexar ao WhatsApp.', 'success'), 700);
 }
 
 // Toast
