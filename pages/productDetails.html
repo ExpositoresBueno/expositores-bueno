@@ -245,33 +245,6 @@ Informe as dimensões abaixo e calcule o preço na hora.
                 <p class="installments-plan" id="installments-plan">1x de R$ 0,00</p>
               </section>
 
-              <section class="frete-calculator" id="frete-calculator">
-                <h2>Calcule o Frete</h2>
-                <p class="frete-helper">Informe sua cidade para calcular o frete até você.</p>
-                <div class="frete-input-row">
-                  <input
-                    type="text"
-                    id="frete-cidade-input"
-                    placeholder="Ex: Porto Alegre, Caxias do Sul..."
-                    autocomplete="off"
-                  />
-                  <select id="frete-uf-select">
-                    <option value="RS" selected>RS</option>
-                    <option value="SC">SC</option>
-                    <option value="PR">PR</option>
-                    <option value="SP">SP</option>
-                    <!-- demais UFs -->
-                  </select>
-                  <button type="button" id="frete-calcular-btn">Calcular</button>
-                </div>
-                <div id="frete-resultado" class="frete-resultado" hidden>
-                  <span class="frete-valor" id="frete-valor-texto"></span>
-                  <span class="frete-prazo" id="frete-prazo-texto"></span>
-                </div>
-                <div id="frete-loading" class="frete-loading" hidden>Calculando...</div>
-                <div id="frete-erro" class="frete-erro" hidden></div>
-              </section>
-
               <div class="purchase-actions">
                 <button id="add-to-cart-btn" class="btn-whatsapp-large" data-id="" style="border: none; cursor: pointer; width: 100%;">
                   Adicionar ao Carrinho
@@ -368,7 +341,6 @@ Informe as dimensões abaixo e calcule o preço na hora.
     </div>
     <script type="module" src="../scripts/index.js"></script>
     <script type="module" src="../scripts/productDetails.js"></script>
-    <script type="module" src="../scripts/frete.js"></script>
 
     <!-- WhatsApp flutuante -->
     <a
