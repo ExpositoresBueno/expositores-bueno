@@ -243,169 +243,6 @@
             </div>
           </section>
 
-          <section class="form-section">
-            <h2>Formulário de solicitação</h2>
-            <p class="form-intro">
-              Sem complicação: preencha o essencial para começarmos seu projeto.
-            </p>
-
-            <form id="request-3d-form" class="request-form">
-              <div class="form-grid">
-                <label>
-                  Nome
-                  <input
-                    type="text"
-                    name="nome"
-                    required
-                    placeholder="Seu nome"
-                  />
-                </label>
-
-                <label>
-                  WhatsApp
-                  <input
-                    type="tel"
-                    name="telefone"
-                    required
-                    placeholder="(51) 99999-9999"
-                  />
-                </label>
-
-                <label>
-                  Cidade / Estado
-                  <input
-                    type="text"
-                    name="cidade"
-                    required
-                    placeholder="Ex.: Canoas/RS"
-                  />
-                </label>
-
-                <label>
-                  Ramo / segmento
-                  <input
-                    type="text"
-                    name="ramo"
-                    required
-                    placeholder="Ex.: farmácia, roupas, ótica, escritório"
-                  />
-                </label>
-
-                <label class="full">
-                  Objetivo do projeto
-                  <textarea
-                    name="objetivo"
-                    rows="3"
-                    required
-                    placeholder="Ex.: organizar melhor o espaço e aumentar exposição de produtos"
-                  ></textarea>
-                </label>
-
-                <fieldset class="full simple-fieldset">
-                  <legend>Tipo de projeto</legend>
-                  <label
-                    ><input
-                      type="radio"
-                      name="tipoProjeto"
-                      value="Loja completa"
-                      required
-                    />
-                    Loja completa</label
-                  >
-                  <label
-                    ><input
-                      type="radio"
-                      name="tipoProjeto"
-                      value="Parte da loja"
-                    />
-                    Parte da loja (setor específico)</label
-                  >
-                  <label
-                    ><input
-                      type="radio"
-                      name="tipoProjeto"
-                      value="Móvel sob medida"
-                    />
-                    Móvel sob medida</label
-                  >
-                </fieldset>
-
-                <fieldset class="full simple-fieldset">
-                  <legend>Você possui planta ou desenho?</legend>
-                  <label
-                    ><input
-                      type="radio"
-                      name="planta"
-                      value="Tenho planta"
-                      required
-                    />
-                    Tenho planta</label
-                  >
-                  <label
-                    ><input
-                      type="radio"
-                      name="planta"
-                      value="Tenho desenho à mão"
-                    />
-                    Tenho desenho à mão</label
-                  >
-                  <label
-                    ><input type="radio" name="planta" value="Não tenho" /> Não
-                    tenho</label
-                  >
-                </fieldset>
-
-                <label class="full">
-                  O que você consegue nos enviar agora?
-                  <textarea
-                    name="materiais"
-                    rows="3"
-                    placeholder="Ex.: fotos, vídeo curto, desenho, referência do móvel desejado"
-                  ></textarea>
-                </label>
-
-                <label class="full">
-                  Medidas (opcional)
-                  <textarea
-                    name="medidas"
-                    rows="2"
-                    placeholder="Se tiver, pode informar medidas aproximadas."
-                  ></textarea>
-                </label>
-
-                <label>
-                  Quando pretende inaugurar?
-                  <input
-                    type="text"
-                    name="prazo"
-                    placeholder="Ex.: em 45 dias / no próximo mês / sem data definida"
-                  />
-                </label>
-
-                <label class="full">
-                  Faixa de investimento
-                  <input
-                    type="text"
-                    name="orcamento"
-                    placeholder="Escreva sua faixa"
-                  />
-                  <small class="options-help"
-                    >Sugestões: Até R$ 3.000 | R$ 3.000 a R$ 7.000 | R$ 7.000 a
-                    R$ 15.000 | Acima de R$ 15.000 | Ainda não definido.</small
-                  >
-                  <small class="budget-note"
-                    >Saiba que independente do seu orçamento ou do tamanho do
-                    projeto, vamos estar ao seu lado para fazer acontecer.
-                    Quando começamos, lá em 2003, tínhamos uma loja de 5 x 5,
-                    uma linha telefônica e o dinheiro contado do mês. Por isso,
-                    hoje fazemos questão de oferecer o suporte que fez falta lá
-                    atrás.</small
-                  >
-                </label>
-              </div>
-            </form>
-          </section>
-
           <section class="examples-section">
             <h2>Exemplos de materiais aceitos</h2>
             <ul>
@@ -705,6 +542,14 @@
                     ></textarea>
                   </div>
                 </div>
+
+                <p class="budget-note">
+                  Saiba que independente do seu orçamento ou do tamanho do projeto, vamos estar ao seu lado para fazer acontecer.
+                    Quando começamos, lá em 2003, tínhamos uma loja de 5 x 5,
+                    uma linha telefônica e o dinheiro contado do mês. Por isso,
+                    hoje fazemos questão de oferecer o suporte que fez falta lá
+                    atrás.
+                </p>
 
                 <div class="eb-step-footer split">
                   <button class="btn-secondary" onclick="goToStep1()">Voltar</button>
