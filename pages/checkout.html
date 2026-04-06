@@ -166,9 +166,24 @@
         </div>
 
         <div class="frete-checkout-wrap">
-          <p class="frete-checkout-label">Consultar frete estimado para sua cidade:</p>
+          <p class="frete-checkout-label">Escolha a modalidade de entrega (apenas na finalização):</p>
+
+          <div class="frete-opcoes-grid" role="radiogroup" aria-label="Modalidade de frete">
+            <label class="frete-opcao-card">
+              <input type="radio" name="frete-opcao" value="transportadora" checked />
+              <span class="frete-opcao-titulo">Transportadora</span>
+              <span class="frete-opcao-descricao">Envio via transportadora parceira. Produto enviado desmontado (montagem por conta do comprador).</span>
+            </label>
+
+            <label class="frete-opcao-card">
+              <input type="radio" name="frete-opcao" value="caminhao-proprio" />
+              <span class="frete-opcao-titulo">Caminhão próprio Expositores Bueno</span>
+              <span class="frete-opcao-descricao">Entrega Expositores Bueno. Frete fixo regional conforme nossa tabela de rotas.</span>
+            </label>
+          </div>
+
           <button type="button" id="frete-checkout-btn" class="frete-checkout-trigger">
-            Calcular frete
+            Calcular Frete
           </button>
           <div id="frete-checkout-resultado" class="frete-checkout-resultado" hidden></div>
         </div>
@@ -191,17 +206,17 @@
         </div>
 
         <aside class="checkout-card checkout-summary-card">
-          <h2>Como você prefere pagar?</h2>
+          <h2>Formas de Pagamento</h2>
 
           <section class="payment-section">
-            <h3>Como deseja pagar?</h3>
+            <h3>Formas de Pagamento</h3>
             <p class="section-helper">
-              Ajuste a forma de pagamento e confira o total do seu pedido.
+              Escolha a melhor opção para finalizar sua compra.
             </p>
 
             <div class="payment-grid">
               <div class="field-group">
-                <label for="payment-method">1ª forma de pagamento</label>
+                <label for="payment-method">Opção 1</label>
                 <select id="payment-method">
                   <option value="PIX">PIX</option>
                   <option value="DINHEIRO">DINHEIRO</option>
@@ -211,7 +226,7 @@
               </div>
 
               <div class="field-group">
-                <label for="second-payment-method">2ª forma de pagamento</label>
+                <label for="second-payment-method">Opção 2</label>
                 <select id="second-payment-method">
                   <option value="NENHUM">Sem segunda forma</option>
                   <option value="PIX">PIX</option>
@@ -222,7 +237,7 @@
               </div>
 
               <div class="field-group">
-                <label for="first-payment-amount">Valor</label>
+                <label for="first-payment-amount">Valor da opção 1</label>
                 <input
                   id="first-payment-amount"
                   type="number"
@@ -233,7 +248,7 @@
               </div>
 
               <div class="field-group">
-                <label for="second-payment-amount">Valor</label>
+                <label for="second-payment-amount">Valor da opção 2</label>
                 <input
                   id="second-payment-amount"
                   type="text"
