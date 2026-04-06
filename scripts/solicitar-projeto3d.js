@@ -263,13 +263,6 @@ function sendToWhatsApp() {
   if (!nomeLoja)  { toast('Preencha seu nome.', 'error');                document.getElementById('nome-loja').focus(); return; }
   if (!produto)   { toast('Informe o segmento.', 'error');               document.getElementById('produto').focus();   return; }
   if (!estilo)    { toast('Informe seu telefone.', 'error');             document.getElementById('estilo').focus();    return; }
-  const estilo      = document.getElementById('estilo').value;
-  const orcamento   = document.getElementById('orcamento').value;
-  const observacoes = document.getElementById('observacoes').value.trim();
-
-  if (!nomeLoja)  { toast('Preencha o nome da loja.', 'error');          document.getElementById('nome-loja').focus(); return; }
-  if (!produto)   { toast('Informe o produto ou segmento.', 'error');    document.getElementById('produto').focus();   return; }
-  if (!estilo)    { toast('Selecione o estilo desejado.', 'error');      document.getElementById('estilo').focus();    return; }
   if (!orcamento) { toast('Selecione o orçamento estimado.', 'error');   document.getElementById('orcamento').focus(); return; }
 
   const dimensoes = getDimensoes();
@@ -279,9 +272,6 @@ function sendToWhatsApp() {
     `👤 *Nome:* ${nomeLoja}`,
     `🏷️ *Segmento:* ${produto}`,
     `📞 *Telefone:* ${estilo}`,
-    `🏪 *Loja:* ${nomeLoja}`,
-    `📦 *Produto / Segmento:* ${produto}`,
-    `🎨 *Estilo:* ${estilo}`,
     `💰 *Orçamento:* ${orcamento}`,
     `📐 *Dimensões do espaço:*`,
     dimensoes.includes('\n') ? dimensoes : `  ${dimensoes}`,
