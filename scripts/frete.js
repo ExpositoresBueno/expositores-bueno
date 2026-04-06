@@ -130,6 +130,8 @@ const initFreteCheckout = async (dimensoesMap, tabelaCaminhao) => {
       if (!cidadeDestino) throw new Error('Informe a cidade para calcular o frete.');
 
       const valorPedido = cart.reduce((acc, item) => acc + ((Number(item.preco) || 0) * (Number(item.quantidade) || 0)), 0);
+      const opcaoSelecionada = document.querySelector('input[name="frete-opcao"]:checked')?.value || 'transportadora';
+
       if (opcaoSelecionada === 'caminhao-proprio') {
         const freteCaminhao = extrairFreteCaminhaoDaTabela(tabelaCaminhao, cidadeDestino, valorPedido);
 
@@ -158,6 +160,7 @@ const initFreteCheckout = async (dimensoesMap, tabelaCaminhao) => {
       if (!resposta?.sucesso) throw new Error(resposta?.erro || 'Não foi possível calcular o frete.');
 
       const avisoDesmontado = 'Envio via transportadora parceira. Produto enviado desmontado (montagem por conta do comprador).';
+      const avisoDesmontado = 'Transportadora: mobiliário enviado 100% desmontado. Montagem por conta do cliente.';
       resultado.textContent = `${avisoDesmontado} Frete: ${formatarMoeda(resposta.valorFrete)} • Prazo: ${resposta.prazoEntrega} dia(s) úteis.`;
       atualizarResumoFreteCheckout({
         tipo: 'Transportadora (mobiliário desmontado)',
