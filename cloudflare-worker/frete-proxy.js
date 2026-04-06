@@ -1,6 +1,10 @@
 /**
  * Cloudflare Worker - Proxy de cotação Rodonaves.
  *
+ * Observação (v3): a Rodonaves descontinuou o host 01wapi em 01/11/2025.
+ * Este worker usa quotation-apigateway.rte.com.br com fallback de rota de cotação
+ * para manter compatibilidade durante o período de transição de endpoints.
+ *
  * Variáveis de ambiente (secrets) esperadas:
  * - RODONAVES_CNPJ
  * - RODONAVES_SENHA
@@ -12,9 +16,13 @@
  * wrangler secret put RODONAVES_CEP_ORIGEM
  */
 
-const TOKEN_URL = 'https://01wapi.rte.com.br/token';
-const MUNICIPIO_URL = 'https://01wapi.rte.com.br/api/v1/RotaEntrega/BuscarMunicipioRota';
-const COTACAO_URL = 'https://01wapi.rte.com.br/api/v1/CotacaoFrete';
+const API_BASE_URL = 'https://quotation-apigateway.rte.com.br';
+const TOKEN_URL = `${API_BASE_URL}/token`;
+const MUNICIPIO_URL = `${API_BASE_URL}/api/v1/RotaEntrega/BuscarMunicipioRota`;
+const COTACAO_URLS = [
+  `${API_BASE_URL}/api/v1/gera-cotacao`,
+  `${API_BASE_URL}/api/v1/CotacaoFrete`,
+];
 
 const ORIGENS_PERMITIDAS = [
   'https://expositoresbueno.com.br',
@@ -166,23 +174,37 @@ async function cotarFrete(token, env, body, municipioIdDestino) {
     volumes,
   };
 
-  const response = await fetch(COTACAO_URL, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify(payloadCotacao),
-  });
+  let ultimoErro;
+  let dataResposta = {};
 
-  const texto = await response.text().catch(() => '');
-  const data = texto ? parseJsonSafe(texto, {}) : {};
-  if (!response.ok) {
-    throw new Error(extrairMensagemErro(
+  for (const endpointCotacao of COTACAO_URLS) {
+    const response = await fetch(endpointCotacao, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(payloadCotacao),
+    });
+
+    const texto = await response.text().catch(() => '');
+    const data = texto ? parseJsonSafe(texto, {}) : {};
+
+    if (response.ok) {
+      dataResposta = data;
+      ultimoErro = null;
+      break;
+    }
+
+    ultimoErro = new Error(extrairMensagemErro(
       data?.message || data?.erro || texto,
       'Falha ao cotar frete na Rodonaves.',
     ));
   }
+
+  if (ultimoErro) throw ultimoErro;
+
+  const data = dataResposta;
 
   const valorFrete = Number(data?.valorFrete ?? data?.valor ?? data?.totalFrete);
   const prazoEntrega = Number(data?.prazoEntrega ?? data?.prazo ?? data?.dias);
