@@ -8,6 +8,7 @@ const FRETE_ATIVO = true;
 
 const FRETE_PROXY_URL = 'https://frete-proxy.tiagocbueno.workers.dev/cotacao';
 const CAMINHAO_TABELA_URL = '../dados/tabela-frete-caminhao.json';
+const VENDEDOR_WHATSAPP_URL = 'https://wa.me/5551996034579';
 
 const formatarMoeda = (valor) => new Intl.NumberFormat('pt-BR', {
   style: 'currency',
@@ -114,6 +115,7 @@ const initFreteCheckout = async (dimensoesMap, tabelaCaminhao) => {
   }
 
   botao.addEventListener('click', async () => {
+    const opcaoSelecionada = document.querySelector('input[name="frete-opcao"]:checked')?.value || 'transportadora';
     botao.disabled = true;
     resultado.hidden = false;
     resultado.classList.remove('is-error');
@@ -157,6 +159,7 @@ const initFreteCheckout = async (dimensoesMap, tabelaCaminhao) => {
       const resposta = await chamarFreteProxy({ cidadeDestino, ufDestino, volumes, valorNf: valorPedido });
       if (!resposta?.sucesso) throw new Error(resposta?.erro || 'Não foi possível calcular o frete.');
 
+      const avisoDesmontado = 'Envio via transportadora parceira. Produto enviado desmontado (montagem por conta do comprador).';
       const avisoDesmontado = 'Transportadora: mobiliário enviado 100% desmontado. Montagem por conta do cliente.';
       resultado.textContent = `${avisoDesmontado} Frete: ${formatarMoeda(resposta.valorFrete)} • Prazo: ${resposta.prazoEntrega} dia(s) úteis.`;
       atualizarResumoFreteCheckout({
@@ -167,7 +170,18 @@ const initFreteCheckout = async (dimensoesMap, tabelaCaminhao) => {
       });
     } catch (e) {
       resultado.classList.add('is-error');
-      resultado.textContent = e.message || 'Erro ao calcular frete no checkout.';
+      if (opcaoSelecionada === 'transportadora') {
+        const mensagem = e?.message || 'Não foi possível calcular o frete da transportadora.';
+        resultado.innerHTML = `${mensagem} Não conseguimos retornar valor agora. <a href="${VENDEDOR_WHATSAPP_URL}" target="_blank" rel="noopener noreferrer">Chamar vendedor para consultar o frete</a>.`;
+        atualizarResumoFreteCheckout({
+          tipo: 'Transportadora (valor sob consulta com vendedor)',
+          valorFrete: 0,
+          prazoEntrega: 0,
+          observacao: 'Frete da transportadora sem valor automático. Consultar vendedor no WhatsApp.',
+        });
+      } else {
+        resultado.innerHTML = `${e.message || 'Erro ao calcular frete com caminhão próprio.'} <a href="${VENDEDOR_WHATSAPP_URL}" target="_blank" rel="noopener noreferrer">Chamar vendedor para consultar o frete</a>.`;
+      }
     } finally {
       botao.disabled = false;
     }

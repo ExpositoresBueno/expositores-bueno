@@ -59,6 +59,25 @@ function formatarMedidaCm(valorEmMetros) {
   return `${formatarNumeroBR(valor * 100)}cm`;
 }
 
+function limparTituloProduto(nome = "") {
+  return String(nome || "")
+    .replace(/\s*\([^)]*\)\s*/g, " ")
+    .replace(/\s+-\s+[^-()]+$/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function extrairDimensoesDoNome(nome = "") {
+  const texto = String(nome || "");
+  const match = texto.match(/Largura\s*([0-9.,]+)\s*m.*Altura\s*([0-9.,]+)\s*m.*Profundidade\s*([0-9.,]+)\s*m/i);
+  if (!match) return null;
+  return {
+    largura: `${match[1]}m`,
+    altura: `${match[2]}m`,
+    profundidade: `${match[3]}m`,
+  };
+}
+
 function normalizarTexto(texto = "") {
   return String(texto)
     .normalize("NFD")
@@ -222,26 +241,34 @@ function renderizarItens(cart) {
   }
 
   cart.forEach((item) => {
-    const larguraInfo = item.larguraOrcada
-      ? `<p>Largura: ${formatarMedidaCm(item.larguraOrcada)}</p>`
-      : "";
-    const corInfo = item.corOrcada ? `<p>Cor: ${item.corOrcada}</p>` : "";
-    const alturaInfo = item.alturaOrcada
-      ? `<p>Altura: ${formatarMedidaCm(item.alturaOrcada)}</p>`
-      : "";
-    const profundidadeInfo = item.profundidadeOrcada
-      ? `<p>Profundidade: ${formatarMedidaCm(item.profundidadeOrcada)}</p>`
-      : "";
+    const tituloLimpo = limparTituloProduto(item.nome);
+    const corTexto = item.corOrcada
+      ? item.corOrcada
+      : (item.nome?.match(/-\s*([^)]+)\)\s*$/)?.[1] || "").trim();
+    const dimensoesNome = extrairDimensoesDoNome(item.nome);
+    const larguraTexto = item.larguraOrcada
+      ? `${formatarNumeroBR(item.larguraOrcada)}m`
+      : (dimensoesNome?.largura || "");
+    const alturaTexto = item.alturaOrcada
+      ? `${formatarNumeroBR(item.alturaOrcada)}m`
+      : (dimensoesNome?.altura || "");
+    const profundidadeTexto = item.profundidadeOrcada
+      ? `${formatarNumeroBR(item.profundidadeOrcada)}m`
+      : (dimensoesNome?.profundidade || "");
+
+    const specs = [];
+    if (corTexto) specs.push(`Cor: ${corTexto}`);
+    if (larguraTexto || alturaTexto || profundidadeTexto) {
+      specs.push(`Dimensões: ${larguraTexto || "-"} (L) x ${alturaTexto || "-"} (A) x ${profundidadeTexto || "-"} (P)`);
+    }
+    const specsHtml = specs.map((linha) => `<p>${linha}</p>`).join("");
 
     container.innerHTML += `
       <article class="checkout-item">
         <img src="../${item.img.replace("./", "")}" alt="${item.nome}">
         <div class="checkout-item-info">
-          <a class="checkout-item-title" href="./productDetails.html?id=${item.id}">${item.nome}</a>
-          ${corInfo}
-          ${larguraInfo}
-          ${alturaInfo}
-          ${profundidadeInfo}
+          <a class="checkout-item-title" href="./productDetails.html?id=${item.id}">${tituloLimpo || item.nome}</a>
+          ${specsHtml}
           <div class="quantity-control">
             <span>Quantidade:</span>
             <button type="button" class="qty-btn" data-cart-key="${getCartItemKey(item)}" data-delta="-1">−</button>

@@ -392,6 +392,11 @@ select, input {
   color: #1b4667;
 }
 
+.frete-checkout-resultado a {
+  color: #0b5fad;
+  font-weight: 700;
+}
+
 .frete-checkout-resultado.is-error {
   color: #c43a35;
 }
