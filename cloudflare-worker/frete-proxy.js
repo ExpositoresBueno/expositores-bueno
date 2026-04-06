@@ -80,26 +80,51 @@ const parseJsonSafe = (texto, fallback = null) => {
 
 async function requestToken(env, tentativas = 2) {
   const cnpjNormalizado = String(env.RODONAVES_CNPJ || '').replace(/\D/g, '');
+  const cnpjOriginal = String(env.RODONAVES_CNPJ || '');
   const senha = String(env.RODONAVES_SENHA || '');
+
   const payloads = [
-    { CNPJ: cnpjNormalizado, senha },
-    { cnpj: cnpjNormalizado, senha },
-    { CNPJ: String(env.RODONAVES_CNPJ || ''), senha },
-    { cnpj: String(env.RODONAVES_CNPJ || ''), senha },
+    {
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        grant_type: 'password',
+        username: cnpjNormalizado || cnpjOriginal,
+        password: senha,
+        companyId: '1',
+        auth_type: 'dev',
+      }).toString(),
+    },
+    {
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ CNPJ: cnpjNormalizado, senha }),
+    },
+    {
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ cnpj: cnpjNormalizado, senha }),
+    },
+    {
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ CNPJ: cnpjOriginal, senha }),
+    },
+    {
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ cnpj: cnpjOriginal, senha }),
+    },
   ];
 
   let ultimoErro;
 
   for (let i = 0; i < tentativas; i += 1) {
-    for (const payload of payloads) {
+    for (const tentativaPayload of payloads) {
       try {
         const response = await fetch(TOKEN_URL, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
+          headers: tentativaPayload.headers,
+          body: tentativaPayload.body,
         });
 
-        const data = await response.json().catch(() => ({}));
+        const texto = await response.text().catch(() => '');
+        const data = parseJsonSafe(texto, {});
         const token = data?.access_token || data?.token;
 
         if (!response.ok || !token) {
