@@ -115,7 +115,7 @@
   <body>
     <main class="checkout-page">
       <div id="checkout-login-banner" class="checkout-login-banner">
-        Faça login para salvar seu pedido no histórico e usar endereços salvos → <a href="./login.html">Entrar</a>
+        Faça login para salvar seu pedido no histórico e usar endereços salvos → <a id="checkout-login-link" href="./login.html">Entrar</a>
       </div>
 
       <div class="checkout-topbar">
@@ -307,6 +307,13 @@
 
     <script type="module">
       import { supabase } from "../scripts/supabase-client.js";
+
+
+      const loginLink = document.getElementById("checkout-login-link");
+      if (loginLink) {
+        const redirectPath = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+        loginLink.href = `./login.html?redirect=${encodeURIComponent(redirectPath)}`;
+      }
 
       const banner = document.getElementById("checkout-login-banner");
       if (banner) {

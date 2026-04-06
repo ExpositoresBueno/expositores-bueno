@@ -23,6 +23,30 @@ function getCartUrl() {
   return window.location.pathname.includes('/pages/') ? '../index.html#carrinho' : './index.html#carrinho';
 }
 
+function getPostAuthRedirect() {
+  const params = new URLSearchParams(window.location.search);
+  const redirect = params.get('redirect');
+  if (!redirect) return null;
+
+  try {
+    const url = new URL(redirect, window.location.origin);
+    if (url.origin !== window.location.origin) return null;
+    return `${url.pathname}${url.search}${url.hash}`;
+  } catch {
+    return null;
+  }
+}
+
+function getRedirectedLoginUrl(redirectPath) {
+  const loginBase = getLoginUrl();
+  if (!redirectPath) return loginBase;
+
+  const normalized = String(redirectPath || '').trim();
+  if (!normalized.startsWith('/')) return loginBase;
+
+  return `${loginBase}?redirect=${encodeURIComponent(normalized)}`;
+}
+
 function escapeHtml(value = '') {
   return String(value)
     .replaceAll('&', '&amp;')
@@ -105,7 +129,7 @@ async function renderHeaderAuth() {
       </button>
     `;
     host.querySelector('button')?.addEventListener('click', () => {
-      window.location.href = getLoginUrl();
+      window.location.href = getRedirectedLoginUrl(`${window.location.pathname}${window.location.search}${window.location.hash}`);
     });
     return;
   }
@@ -223,7 +247,8 @@ function initLoginPage() {
       return;
     }
 
-    window.location.href = './minha-conta.html';
+    const postAuthRedirect = getPostAuthRedirect();
+    window.location.href = postAuthRedirect || './minha-conta.html';
   });
 
   signUpForm?.addEventListener('submit', async (event) => {
@@ -381,7 +406,7 @@ export async function checkAuth() {
   const { data } = await supabase.auth.getSession();
   const isLogged = Boolean(data?.session);
   if (!isLogged) {
-    window.location.href = getLoginUrl();
+    window.location.href = getRedirectedLoginUrl(`${window.location.pathname}${window.location.search}${window.location.hash}`);
   }
   return isLogged;
 }
