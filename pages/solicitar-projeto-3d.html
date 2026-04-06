@@ -208,6 +208,32 @@
                   </p>
                 </div>
 
+            </div>
+
+            <div class="eb-steps-bar">
+              <div class="eb-steps-inner">
+                <div class="eb-step active" id="dot-1">
+                  <div class="eb-step-circle">1</div>
+                  <span>Planta Baixa</span>
+                </div>
+                <div class="eb-step-connector"></div>
+                <div class="eb-step" id="dot-2">
+                  <div class="eb-step-circle">2</div>
+                  <span>Dados do Projeto</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="eb-main">
+              <section class="eb-card" id="step-1">
+                <div class="eb-card-header">
+                  <h2>Planta Baixa do Espaço</h2>
+                  <p>
+                    Clique no canvas para marcar os cantos da sala. Quando
+                    terminar, clique em <strong>Fechar Sala</strong>.
+                  </p>
+                </div>
+
                 <div class="eb-canvas-wrapper">
                   <svg
                     id="plant-svg"
@@ -369,26 +395,37 @@
                 <div class="eb-form-grid">
                   <div class="eb-input-group">
                     <label for="nome-loja"
+                      >Seu nome <span class="required">*</span></label
                       >Nome da loja <span class="required">*</span></label
                     >
                     <input
                       type="text"
                       id="nome-loja"
+                      placeholder="Ex: João da Silva"
                       placeholder="Ex: Farmácia Central, Ótica Visão"
                     />
                   </div>
                   <div class="eb-input-group">
                     <label for="produto"
+                      >Segmento <span class="required">*</span></label
                       >Produto / Segmento <span class="required">*</span></label
                     >
                     <input
                       type="text"
                       id="produto"
+                      placeholder="Ex: Farmácia, ótica, loja de roupas"
                       placeholder="Ex: Gôndolas, prateleiras de vidro, balcão"
                     />
                   </div>
                   <div class="eb-input-group">
                     <label for="estilo"
+                      >Seu telefone <span class="required">*</span></label
+                    >
+                    <input
+                      type="tel"
+                      id="estilo"
+                      placeholder="Ex: (51) 99999-9999"
+                    />
                       >Estilo desejado <span class="required">*</span></label
                     >
                     <select id="estilo">

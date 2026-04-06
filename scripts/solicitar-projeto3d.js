@@ -256,6 +256,13 @@ ${linhas.join('\n')}`;
 function sendToWhatsApp() {
   const nomeLoja    = document.getElementById('nome-loja').value.trim();
   const produto     = document.getElementById('produto').value.trim();
+  const estilo      = document.getElementById('estilo').value.trim();
+  const orcamento   = document.getElementById('orcamento').value;
+  const observacoes = document.getElementById('observacoes').value.trim();
+
+  if (!nomeLoja)  { toast('Preencha seu nome.', 'error');                document.getElementById('nome-loja').focus(); return; }
+  if (!produto)   { toast('Informe o segmento.', 'error');               document.getElementById('produto').focus();   return; }
+  if (!estilo)    { toast('Informe seu telefone.', 'error');             document.getElementById('estilo').focus();    return; }
   const estilo      = document.getElementById('estilo').value;
   const orcamento   = document.getElementById('orcamento').value;
   const observacoes = document.getElementById('observacoes').value.trim();
@@ -269,6 +276,9 @@ function sendToWhatsApp() {
   const linhas = [
     `Olá! Gostaria de solicitar um *Projeto 3D* pela Expositores Bueno.`,
     ``,
+    `👤 *Nome:* ${nomeLoja}`,
+    `🏷️ *Segmento:* ${produto}`,
+    `📞 *Telefone:* ${estilo}`,
     `🏪 *Loja:* ${nomeLoja}`,
     `📦 *Produto / Segmento:* ${produto}`,
     `🎨 *Estilo:* ${estilo}`,
