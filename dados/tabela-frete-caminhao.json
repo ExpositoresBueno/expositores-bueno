@@ -1,0 +1,77 @@
+{
+  "versao": "2026-04-06",
+  "moeda": "BRL",
+  "observacao": "ATENÇÃO: substituir os valores abaixo pela tabela oficial da empresa quando enviada.",
+  "cidades": [
+    {
+      "cidade": "Porto Alegre",
+      "faixas": [
+        { "valorPedidoMin": 0, "valorPedidoMax": 1999.99, "valorFrete": 180, "prazoEntregaDiasUteis": 3 },
+        { "valorPedidoMin": 2000, "valorPedidoMax": null, "valorFrete": 120, "prazoEntregaDiasUteis": 3 }
+      ]
+    },
+    {
+      "cidade": "Canoas",
+      "faixas": [
+        { "valorPedidoMin": 0, "valorPedidoMax": 1999.99, "valorFrete": 120, "prazoEntregaDiasUteis": 2 },
+        { "valorPedidoMin": 2000, "valorPedidoMax": null, "valorFrete": 80, "prazoEntregaDiasUteis": 2 }
+      ]
+    },
+    {
+      "cidade": "Novo Hamburgo",
+      "faixas": [
+        { "valorPedidoMin": 0, "valorPedidoMax": 1999.99, "valorFrete": 220, "prazoEntregaDiasUteis": 3 },
+        { "valorPedidoMin": 2000, "valorPedidoMax": null, "valorFrete": 160, "prazoEntregaDiasUteis": 3 }
+      ]
+    },
+    {
+      "cidade": "São Leopoldo",
+      "faixas": [
+        { "valorPedidoMin": 0, "valorPedidoMax": 1999.99, "valorFrete": 210, "prazoEntregaDiasUteis": 3 },
+        { "valorPedidoMin": 2000, "valorPedidoMax": null, "valorFrete": 150, "prazoEntregaDiasUteis": 3 }
+      ]
+    },
+    {
+      "cidade": "Caxias do Sul",
+      "faixas": [
+        { "valorPedidoMin": 0, "valorPedidoMax": 1999.99, "valorFrete": 320, "prazoEntregaDiasUteis": 4 },
+        { "valorPedidoMin": 2000, "valorPedidoMax": null, "valorFrete": 250, "prazoEntregaDiasUteis": 4 }
+      ]
+    },
+    {
+      "cidade": "Santa Maria",
+      "faixas": [
+        { "valorPedidoMin": 0, "valorPedidoMax": 1999.99, "valorFrete": 420, "prazoEntregaDiasUteis": 5 },
+        { "valorPedidoMin": 2000, "valorPedidoMax": null, "valorFrete": 340, "prazoEntregaDiasUteis": 5 }
+      ]
+    },
+    {
+      "cidade": "Passo Fundo",
+      "faixas": [
+        { "valorPedidoMin": 0, "valorPedidoMax": 1999.99, "valorFrete": 390, "prazoEntregaDiasUteis": 5 },
+        { "valorPedidoMin": 2000, "valorPedidoMax": null, "valorFrete": 320, "prazoEntregaDiasUteis": 5 }
+      ]
+    },
+    {
+      "cidade": "Pelotas",
+      "faixas": [
+        { "valorPedidoMin": 0, "valorPedidoMax": 1999.99, "valorFrete": 430, "prazoEntregaDiasUteis": 5 },
+        { "valorPedidoMin": 2000, "valorPedidoMax": null, "valorFrete": 350, "prazoEntregaDiasUteis": 5 }
+      ]
+    },
+    {
+      "cidade": "Rio Grande",
+      "faixas": [
+        { "valorPedidoMin": 0, "valorPedidoMax": 1999.99, "valorFrete": 460, "prazoEntregaDiasUteis": 6 },
+        { "valorPedidoMin": 2000, "valorPedidoMax": null, "valorFrete": 380, "prazoEntregaDiasUteis": 6 }
+      ]
+    },
+    {
+      "cidade": "Gravataí",
+      "faixas": [
+        { "valorPedidoMin": 0, "valorPedidoMax": 1999.99, "valorFrete": 160, "prazoEntregaDiasUteis": 2 },
+        { "valorPedidoMin": 2000, "valorPedidoMax": null, "valorFrete": 110, "prazoEntregaDiasUteis": 2 }
+      ]
+    }
+  ]
+}

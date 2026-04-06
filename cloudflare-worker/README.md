@@ -2,6 +2,8 @@
 
 Este Worker recebe o payload do frontend, autentica na Rodonaves, resolve o município de destino e retorna cotação de frete para o site.
 
+> Base da API usada: `https://quotation-apigateway.rte.com.br` (v3). O host legado `https://01wapi.rte.com.br` foi descontinuado em 01/11/2025.
+
 ## 1) Pré-requisitos
 
 - Node.js 18+
