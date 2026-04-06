@@ -346,6 +346,19 @@ function atualizarResumo(cart) {
     : formatarReal(baseParcelamento);
 }
 
+function obterResumoFreteSelecionado() {
+  const resultado = document.getElementById("frete-checkout-resultado");
+  if (!resultado) return null;
+
+  const tipo = resultado.dataset.freteTipo || "";
+  const valor = Number(resultado.dataset.freteValor || 0);
+  const prazo = Number(resultado.dataset.fretePrazo || 0);
+  const observacao = resultado.dataset.freteObservacao || "";
+
+  if (!tipo) return null;
+  return { tipo, valor, prazo, observacao };
+}
+
 
 function montarMensagem(cart) {
   const nome = document.getElementById("client-name")?.value.trim();
@@ -361,9 +374,15 @@ function montarMensagem(cart) {
     saldoSegundaForma,
     possuiSegundoPagamento,
   } = calcularResumo(cart);
+  const freteSelecionado = obterResumoFreteSelecionado();
 
   if (!nome || !cidade) {
     alert("Por favor, informe nome e cidade para finalizar.");
+    return null;
+  }
+
+  if (!freteSelecionado) {
+    alert("Selecione e calcule uma opção de frete antes de finalizar o pedido.");
     return null;
   }
 
@@ -417,6 +436,16 @@ function montarMensagem(cart) {
 `;
   }
   mensagem += `*Total do pedido:* ${formatarReal(totalComDesconto)}`;
+  if (freteSelecionado) {
+    mensagem += `\n*Frete escolhido:* ${freteSelecionado.tipo}`;
+    mensagem += `\n*Valor do frete:* ${formatarReal(freteSelecionado.valor)}`;
+    if (freteSelecionado.prazo > 0) {
+      mensagem += `\n*Prazo de entrega:* ${freteSelecionado.prazo} dia(s) úteis`;
+    }
+    if (freteSelecionado.observacao) {
+      mensagem += `\n*Observação frete:* ${freteSelecionado.observacao}`;
+    }
+  }
 
   return mensagem;
 }
