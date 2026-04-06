@@ -26,6 +26,13 @@ const fetchJSON = async (url, init) => {
 const carregarDimensoesFrete = async () => fetchJSON('../dados/dimensoes-frete.json');
 const getCart = () => JSON.parse(localStorage.getItem('cart') || '[]');
 
+const normalizarCidade = (texto = '') => String(texto || '')
+  .normalize('NFD')
+  .replace(/[\u0300-\u036f]/g, '')
+  .replace(/\s+/g, ' ')
+  .trim()
+  .toLowerCase();
+
 const identificarCidadeEUf = (valorCidade = '') => {
   const texto = String(valorCidade || '').trim();
   if (!texto) return { cidade: '', uf: 'RS' };
