@@ -1,31 +1,18 @@
 // ============================================================
-// LIGA / DESLIGA O WIDGET DE FRETE
-// false = widget some completamente do site
-// true  = widget ativo e visível para o cliente
+// LIGA / DESLIGA O BLOCO DE FRETE NO CHECKOUT
+// false = remove completamente o bloco de frete
+// true  = widget ativo
 // ============================================================
 const FRETE_ATIVO = true;
 // ============================================================
 
 const FRETE_PROXY_URL = 'https://frete-proxy.tiagocbueno.workers.dev/cotacao';
-
-const CIDADES_RS = new Set([
-  'porto alegre', 'caxias do sul', 'canoas', 'passo fundo', 'pelotas', 'santa maria',
-  'novo hamburgo', 'são leopoldo', 'rio grande', 'alvorada', 'gravataí', 'viamão',
-  'bento gonçalves', 'erechim', 'lajeado', 'ijui', 'bagé', 'uruguaiana', 'santa cruz do sul',
-]);
+const VENDEDOR_WHATSAPP_URL = 'https://wa.me/5551996034579';
 
 const formatarMoeda = (valor) => new Intl.NumberFormat('pt-BR', {
   style: 'currency',
   currency: 'BRL',
 }).format(Number(valor) || 0);
-
-const debounce = (fn, delay = 300) => {
-  let timer;
-  return (...args) => {
-    window.clearTimeout(timer);
-    timer = window.setTimeout(() => fn(...args), delay);
-  };
-};
 
 const fetchJSON = async (url, init) => {
   const res = await fetch(url, init);
@@ -37,13 +24,14 @@ const fetchJSON = async (url, init) => {
 };
 
 const carregarDimensoesFrete = async () => fetchJSON('../dados/dimensoes-frete.json');
-
-const obterProdutoIdDaUrl = () => {
-  const id = Number(new URLSearchParams(window.location.search).get('id'));
-  return Number.isFinite(id) && id > 0 ? String(id) : null;
-};
-
 const getCart = () => JSON.parse(localStorage.getItem('cart') || '[]');
+
+const normalizarCidade = (texto = '') => String(texto || '')
+  .normalize('NFD')
+  .replace(/[\u0300-\u036f]/g, '')
+  .replace(/\s+/g, ' ')
+  .trim()
+  .toLowerCase();
 
 const identificarCidadeEUf = (valorCidade = '') => {
   const texto = String(valorCidade || '').trim();
@@ -52,8 +40,7 @@ const identificarCidadeEUf = (valorCidade = '') => {
   const match = texto.match(/^(.+?)(?:\s*[-/]\s*([A-Za-z]{2}))?$/);
   const cidade = (match?.[1] || '').trim();
   const ufRaw = (match?.[2] || '').trim().toUpperCase();
-  const uf = ufRaw || (CIDADES_RS.has(cidade.toLowerCase()) ? 'RS' : 'RS');
-  return { cidade, uf };
+  return { cidade, uf: ufRaw || 'RS' };
 };
 
 const chamarFreteProxy = async (payload) => fetchJSON(FRETE_PROXY_URL, {
@@ -62,95 +49,44 @@ const chamarFreteProxy = async (payload) => fetchJSON(FRETE_PROXY_URL, {
   body: JSON.stringify(payload),
 });
 
-const initFreteProduto = async (dimensoesMap) => {
-  const section = document.getElementById('frete-calculator');
-  if (!section) return;
+const gerarAssinaturaCarrinho = (cart = []) => cart
+  .map((item) => `${item.id}:${item.quantidade}:${Number(item.preco) || 0}`)
+  .sort()
+  .join('|');
 
-  if (!FRETE_ATIVO) {
-    section.remove();
-    return;
-  }
+const atualizarResumoFreteCheckout = ({ tipo, valorFrete, prazoEntrega, observacao, assinaturaCarrinho }) => {
+  const resultado = document.getElementById('frete-checkout-resultado');
+  if (!resultado) return;
 
-  const cidadeInput = document.getElementById('frete-cidade-input');
-  const ufSelect = document.getElementById('frete-uf-select');
-  const calcularBtn = document.getElementById('frete-calcular-btn');
-  const resultado = document.getElementById('frete-resultado');
-  const valorTexto = document.getElementById('frete-valor-texto');
-  const prazoTexto = document.getElementById('frete-prazo-texto');
-  const loading = document.getElementById('frete-loading');
-  const erro = document.getElementById('frete-erro');
+  resultado.dataset.freteTipo = tipo || '';
+  resultado.dataset.freteValor = String(Number(valorFrete) || 0);
+  resultado.dataset.fretePrazo = String(Number(prazoEntrega) || 0);
+  resultado.dataset.freteObservacao = observacao || '';
+  resultado.dataset.freteCartSignature = assinaturaCarrinho || '';
 
-  const productId = obterProdutoIdDaUrl();
-  const volumeProduto = productId ? dimensoesMap[productId] : null;
-
-  const resetarEstado = () => {
-    section.classList.remove('is-loading', 'is-error', 'is-success');
-    erro.hidden = true;
-  };
-
-  cidadeInput?.addEventListener('input', debounce(() => {
-    const texto = cidadeInput.value.trim().toLowerCase();
-    if (texto.length < 3) return;
-
-    const sugestaoRS = Array.from(CIDADES_RS).some((cidade) => cidade.startsWith(texto));
-    if (sugestaoRS && ufSelect) ufSelect.value = 'RS';
-  }, 300));
-
-  calcularBtn?.addEventListener('click', async () => {
-    resetarEstado();
-
-    const cidadeDestino = cidadeInput?.value?.trim();
-    const ufDestino = ufSelect?.value || 'RS';
-
-    if (!cidadeDestino || !volumeProduto) {
-      section.classList.add('is-error');
-      erro.textContent = 'Não foi possível identificar cidade ou dimensões deste produto.';
-      erro.hidden = false;
-      return;
-    }
-
-    section.classList.add('is-loading');
-    loading.hidden = false;
-    resultado.hidden = true;
-
-    try {
-      const produtoValor = Number(document.getElementById('product-price')?.textContent?.replace(/\./g, '').replace(',', '.') || 0);
-      const payload = {
-        cidadeDestino,
-        ufDestino,
-        volumes: [{ ...volumeProduto, quantidade: 1 }],
-        valorNf: produtoValor || 0,
-      };
-
-      const resposta = await chamarFreteProxy(payload);
-      if (!resposta?.sucesso) throw new Error(resposta?.erro || 'Não foi possível calcular o frete.');
-
-      valorTexto.textContent = `Frete estimado: ${formatarMoeda(resposta.valorFrete)}`;
-      prazoTexto.textContent = `Prazo: ${resposta.prazoEntrega} dia(s) úteis`;
-      resultado.hidden = false;
-      section.classList.add('is-success');
-    } catch (e) {
-      section.classList.add('is-error');
-      erro.textContent = e.message || 'Erro ao calcular frete.';
-      erro.hidden = false;
-    } finally {
-      loading.hidden = true;
-      section.classList.remove('is-loading');
-    }
-  });
+  document.dispatchEvent(new CustomEvent('frete:atualizado', {
+    detail: {
+      tipo,
+      valorFrete: Number(valorFrete) || 0,
+      prazoEntrega: Number(prazoEntrega) || 0,
+      observacao: observacao || '',
+    },
+  }));
 };
 
 const initFreteCheckout = async (dimensoesMap) => {
+  const wrap = document.querySelector('.frete-checkout-wrap');
   const botao = document.getElementById('frete-checkout-btn');
   const resultado = document.getElementById('frete-checkout-resultado');
   if (!botao || !resultado) return;
 
   if (!FRETE_ATIVO) {
-    botao.closest('.frete-checkout-wrap')?.remove();
+    wrap?.remove();
     return;
   }
 
   botao.addEventListener('click', async () => {
+    const opcaoSelecionada = document.querySelector('input[name="frete-opcao"]:checked')?.value || 'transportadora';
     botao.disabled = true;
     resultado.hidden = false;
     resultado.classList.remove('is-error');
@@ -164,6 +100,22 @@ const initFreteCheckout = async (dimensoesMap) => {
       const { cidade: cidadeDestino, uf: ufDestino } = identificarCidadeEUf(cidadeRaw);
       if (!cidadeDestino) throw new Error('Informe a cidade para calcular o frete.');
 
+      const valorPedido = cart.reduce((acc, item) => acc + ((Number(item.preco) || 0) * (Number(item.quantidade) || 0)), 0);
+      const assinaturaCarrinho = gerarAssinaturaCarrinho(cart);
+      if (opcaoSelecionada === 'caminhao-proprio') {
+        const aviso = 'Caminhão próprio da Expositores Bueno. Frete fixo regional conforme nossa tabela de rotas.';
+        const consulta = 'Consulte um dos nossos vendedores para saber o frete da sua cidade.';
+        resultado.innerHTML = `${aviso} ${consulta} <a href="${VENDEDOR_WHATSAPP_URL}" target="_blank" rel="noopener noreferrer">Chamar vendedor para consultar o frete</a>.`;
+        atualizarResumoFreteCheckout({
+          tipo: 'Caminhão próprio Expositores Bueno',
+          valorFrete: 0,
+          prazoEntrega: 0,
+          observacao: `${aviso} ${consulta}`,
+          assinaturaCarrinho,
+        });
+        return;
+      }
+
       const volumes = cart.flatMap((item) => {
         const id = String(item.id);
         const base = dimensoesMap[id];
@@ -174,15 +126,33 @@ const initFreteCheckout = async (dimensoesMap) => {
 
       if (!volumes.length) throw new Error('Não encontramos dimensões para os itens do carrinho.');
 
-      const valorNf = cart.reduce((acc, item) => acc + ((Number(item.preco) || 0) * (Number(item.quantidade) || 0)), 0);
-
-      const resposta = await chamarFreteProxy({ cidadeDestino, ufDestino, volumes, valorNf });
+      const resposta = await chamarFreteProxy({ cidadeDestino, ufDestino, volumes, valorNf: valorPedido });
       if (!resposta?.sucesso) throw new Error(resposta?.erro || 'Não foi possível calcular o frete.');
 
-      resultado.textContent = `Frete estimado: ${formatarMoeda(resposta.valorFrete)} • Prazo: ${resposta.prazoEntrega} dia(s) úteis`;
+      const avisoDesmontado = 'Envio via transportadora parceira. Produto enviado desmontado (montagem por conta do comprador).';
+      resultado.textContent = `${avisoDesmontado} Frete: ${formatarMoeda(resposta.valorFrete)} • Prazo: ${resposta.prazoEntrega} dia(s) úteis.`;
+      atualizarResumoFreteCheckout({
+        tipo: 'Transportadora (mobiliário desmontado)',
+        valorFrete: resposta.valorFrete,
+        prazoEntrega: resposta.prazoEntrega,
+        observacao: avisoDesmontado,
+        assinaturaCarrinho,
+      });
     } catch (e) {
       resultado.classList.add('is-error');
-      resultado.textContent = e.message || 'Erro ao calcular frete no checkout.';
+      if (opcaoSelecionada === 'transportadora') {
+        const mensagem = e?.message || 'Não foi possível calcular o frete da transportadora.';
+        resultado.innerHTML = `${mensagem} Não conseguimos retornar valor agora. <a href="${VENDEDOR_WHATSAPP_URL}" target="_blank" rel="noopener noreferrer">Chamar vendedor para consultar o frete</a>.`;
+        atualizarResumoFreteCheckout({
+          tipo: 'Transportadora (valor sob consulta com vendedor)',
+          valorFrete: 0,
+          prazoEntrega: 0,
+          observacao: 'Frete da transportadora sem valor automático. Consultar vendedor no WhatsApp.',
+          assinaturaCarrinho: gerarAssinaturaCarrinho(getCart()),
+        });
+      } else {
+        resultado.innerHTML = `${e.message || 'Erro ao calcular frete com caminhão próprio.'} <a href="${VENDEDOR_WHATSAPP_URL}" target="_blank" rel="noopener noreferrer">Chamar vendedor para consultar o frete</a>.`;
+      }
     } finally {
       botao.disabled = false;
     }
@@ -192,9 +162,9 @@ const initFreteCheckout = async (dimensoesMap) => {
 const startFrete = async () => {
   try {
     const dimensoesMap = await carregarDimensoesFrete();
-    await Promise.all([initFreteProduto(dimensoesMap), initFreteCheckout(dimensoesMap)]);
+    await initFreteCheckout(dimensoesMap);
   } catch (e) {
-    console.error('Falha ao inicializar cálculo de frete:', e);
+    console.error('Falha ao inicializar cálculo de frete no checkout:', e);
   }
 };
 

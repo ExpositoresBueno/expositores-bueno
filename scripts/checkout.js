@@ -59,6 +59,25 @@ function formatarMedidaCm(valorEmMetros) {
   return `${formatarNumeroBR(valor * 100)}cm`;
 }
 
+function limparTituloProduto(nome = "") {
+  return String(nome || "")
+    .replace(/\s*\([^)]*\)\s*/g, " ")
+    .replace(/\s+-\s+[^-()]+$/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function extrairDimensoesDoNome(nome = "") {
+  const texto = String(nome || "");
+  const match = texto.match(/Largura\s*([0-9.,]+)\s*m.*Altura\s*([0-9.,]+)\s*m.*Profundidade\s*([0-9.,]+)\s*m/i);
+  if (!match) return null;
+  return {
+    largura: `${match[1]}m`,
+    altura: `${match[2]}m`,
+    profundidade: `${match[3]}m`,
+  };
+}
+
 function normalizarTexto(texto = "") {
   return String(texto)
     .normalize("NFD")
@@ -151,6 +170,26 @@ function obterPrecoAvistaItem(item) {
   return null;
 }
 
+function obterFreteValorAplicado() {
+  const resumoFrete = obterResumoFreteSelecionado();
+  if (!resumoFrete) return 0;
+
+  const assinaturaAtual = gerarAssinaturaCarrinho(getCart());
+  if (resumoFrete.assinaturaCarrinho !== assinaturaAtual) return 0;
+
+  const tipo = String(resumoFrete.tipo || "").toLowerCase();
+  const valor = Number(resumoFrete.valor) || 0;
+  if (!tipo.includes("transportadora")) return 0;
+  return Math.max(0, valor);
+}
+
+function gerarAssinaturaCarrinho(cart = []) {
+  return cart
+    .map((item) => `${item.id}:${item.quantidade}:${Number(item.preco) || 0}`)
+    .sort()
+    .join("|");
+}
+
 function calcularResumo(cart) {
   const subtotal = cart.reduce((acc, item) => acc + item.preco * item.quantidade, 0);
   const metodoPagamento = obterMetodoPagamentoSelecionado();
@@ -172,18 +211,22 @@ function calcularResumo(cart) {
     }, 0);
   }
 
+  const frete = obterFreteValorAplicado();
+  const totalGeral = totalComDesconto + frete;
   const desconto = Math.max(0, subtotal - totalComDesconto);
   const primeiroPagamento = segundaFormaSelecionada
-    ? obterValorPrimeiroPagamento(totalComDesconto)
-    : totalComDesconto;
+    ? obterValorPrimeiroPagamento(totalGeral)
+    : totalGeral;
   const saldoSegundaForma = segundaFormaSelecionada
-    ? Math.max(0, totalComDesconto - primeiroPagamento)
+    ? Math.max(0, totalGeral - primeiroPagamento)
     : 0;
   const possuiSegundoPagamento = segundaFormaSelecionada && saldoSegundaForma > 0;
 
   return {
     subtotal,
     desconto,
+    frete,
+    totalGeral,
     totalComDesconto,
     metodoPagamento,
     segundoMetodoPagamento,
@@ -222,26 +265,34 @@ function renderizarItens(cart) {
   }
 
   cart.forEach((item) => {
-    const larguraInfo = item.larguraOrcada
-      ? `<p>Largura: ${formatarMedidaCm(item.larguraOrcada)}</p>`
-      : "";
-    const corInfo = item.corOrcada ? `<p>Cor: ${item.corOrcada}</p>` : "";
-    const alturaInfo = item.alturaOrcada
-      ? `<p>Altura: ${formatarMedidaCm(item.alturaOrcada)}</p>`
-      : "";
-    const profundidadeInfo = item.profundidadeOrcada
-      ? `<p>Profundidade: ${formatarMedidaCm(item.profundidadeOrcada)}</p>`
-      : "";
+    const tituloLimpo = limparTituloProduto(item.nome);
+    const corTexto = item.corOrcada
+      ? item.corOrcada
+      : (item.nome?.match(/-\s*([^)]+)\)\s*$/)?.[1] || "").trim();
+    const dimensoesNome = extrairDimensoesDoNome(item.nome);
+    const larguraTexto = item.larguraOrcada
+      ? `${formatarNumeroBR(item.larguraOrcada)}m`
+      : (dimensoesNome?.largura || "");
+    const alturaTexto = item.alturaOrcada
+      ? `${formatarNumeroBR(item.alturaOrcada)}m`
+      : (dimensoesNome?.altura || "");
+    const profundidadeTexto = item.profundidadeOrcada
+      ? `${formatarNumeroBR(item.profundidadeOrcada)}m`
+      : (dimensoesNome?.profundidade || "");
+
+    const specs = [];
+    if (corTexto) specs.push(`Cor: ${corTexto}`);
+    if (larguraTexto || alturaTexto || profundidadeTexto) {
+      specs.push(`Dimensões: ${larguraTexto || "-"} (L) x ${alturaTexto || "-"} (A) x ${profundidadeTexto || "-"} (P)`);
+    }
+    const specsHtml = specs.map((linha) => `<p>${linha}</p>`).join("");
 
     container.innerHTML += `
       <article class="checkout-item">
         <img src="../${item.img.replace("./", "")}" alt="${item.nome}">
         <div class="checkout-item-info">
-          <a class="checkout-item-title" href="./productDetails.html?id=${item.id}">${item.nome}</a>
-          ${corInfo}
-          ${larguraInfo}
-          ${alturaInfo}
-          ${profundidadeInfo}
+          <a class="checkout-item-title" href="./productDetails.html?id=${item.id}">${tituloLimpo || item.nome}</a>
+          ${specsHtml}
           <div class="quantity-control">
             <span>Quantidade:</span>
             <button type="button" class="qty-btn" data-cart-key="${getCartItemKey(item)}" data-delta="-1">−</button>
@@ -309,6 +360,7 @@ function preencherParcelas(totalComDesconto) {
 function atualizarResumo(cart) {
   const subtotalEl = document.getElementById("checkout-subtotal");
   const descontoEl = document.getElementById("checkout-discount");
+  const freteEl = document.getElementById("checkout-frete");
   const totalEl = document.getElementById("checkout-total");
   const primeiroPagamentoEl = document.getElementById("first-payment-total");
   const saldoSegundaFormaEl = document.getElementById("second-payment-total");
@@ -316,11 +368,13 @@ function atualizarResumo(cart) {
   const parcelasEl = document.getElementById("installments");
   const valorSegundaFormaInput = document.getElementById("second-payment-amount");
 
-  if (!subtotalEl || !descontoEl || !totalEl || !parcelaEl || !parcelasEl || !primeiroPagamentoEl || !saldoSegundaFormaEl) return;
+  if (!subtotalEl || !descontoEl || !freteEl || !totalEl || !parcelaEl || !parcelasEl || !primeiroPagamentoEl || !saldoSegundaFormaEl) return;
 
   const {
     subtotal,
     desconto,
+    frete,
+    totalGeral,
     totalComDesconto,
     metodoPagamento,
     segundoMetodoPagamento,
@@ -330,20 +384,35 @@ function atualizarResumo(cart) {
   } = calcularResumo(cart);
   const parcelas = Number(parcelasEl.value) || 1;
 
-  const baseParcelamento = possuiSegundoPagamento ? saldoSegundaForma : totalComDesconto;
+  const baseParcelamento = possuiSegundoPagamento ? saldoSegundaForma : totalGeral;
   const metodoParcelamento = possuiSegundoPagamento ? segundoMetodoPagamento : metodoPagamento;
 
   subtotalEl.textContent = formatarReal(subtotal);
   descontoEl.textContent = desconto > 0 ? `- ${formatarReal(desconto)}` : formatarReal(0);
+  freteEl.textContent = formatarReal(frete);
   primeiroPagamentoEl.textContent = formatarReal(primeiroPagamento);
   saldoSegundaFormaEl.textContent = formatarReal(saldoSegundaForma);
   if (valorSegundaFormaInput) {
     valorSegundaFormaInput.value = formatarReal(saldoSegundaForma);
   }
-  totalEl.textContent = formatarReal(totalComDesconto);
+  totalEl.textContent = formatarReal(totalGeral);
   parcelaEl.textContent = metodoParcelamento === PAGAMENTO_CREDITO
     ? formatarReal(baseParcelamento / parcelas)
     : formatarReal(baseParcelamento);
+}
+
+function obterResumoFreteSelecionado() {
+  const resultado = document.getElementById("frete-checkout-resultado");
+  if (!resultado) return null;
+
+  const tipo = resultado.dataset.freteTipo || "";
+  const valor = Number(resultado.dataset.freteValor || 0);
+  const prazo = Number(resultado.dataset.fretePrazo || 0);
+  const observacao = resultado.dataset.freteObservacao || "";
+  const assinaturaCarrinho = resultado.dataset.freteCartSignature || "";
+
+  if (!tipo) return null;
+  return { tipo, valor, prazo, observacao, assinaturaCarrinho };
 }
 
 
@@ -355,15 +424,29 @@ function montarMensagem(cart) {
   const {
     subtotal,
     desconto,
+    frete,
+    totalGeral,
     totalComDesconto,
     segundoMetodoPagamento,
     primeiroPagamento,
     saldoSegundaForma,
     possuiSegundoPagamento,
   } = calcularResumo(cart);
+  const freteSelecionado = obterResumoFreteSelecionado();
 
   if (!nome || !cidade) {
     alert("Por favor, informe nome e cidade para finalizar.");
+    return null;
+  }
+
+  if (!freteSelecionado) {
+    alert("Selecione e calcule uma opção de frete antes de finalizar o pedido.");
+    return null;
+  }
+
+  const assinaturaAtualCarrinho = gerarAssinaturaCarrinho(cart);
+  if (freteSelecionado.assinaturaCarrinho !== assinaturaAtualCarrinho) {
+    alert("Seu carrinho mudou após o cálculo de frete. Clique em 'Calcular Frete' novamente.");
     return null;
   }
 
@@ -413,10 +496,21 @@ function montarMensagem(cart) {
 `;
     }
   } else {
-    mensagem += `*Parcelamento:* ${parcelas}x de ${formatarReal(totalComDesconto / parcelas)} sem juros
+    mensagem += `*Parcelamento:* ${parcelas}x de ${formatarReal(totalGeral / parcelas)} sem juros
 `;
   }
-  mensagem += `*Total do pedido:* ${formatarReal(totalComDesconto)}`;
+  mensagem += `*Frete:* ${formatarReal(frete)}\n`;
+  mensagem += `*Total do pedido:* ${formatarReal(totalGeral)}`;
+  if (freteSelecionado) {
+    mensagem += `\n*Frete escolhido:* ${freteSelecionado.tipo}`;
+    mensagem += `\n*Valor do frete:* ${formatarReal(freteSelecionado.valor)}`;
+    if (freteSelecionado.prazo > 0) {
+      mensagem += `\n*Prazo de entrega:* ${freteSelecionado.prazo} dia(s) úteis`;
+    }
+    if (freteSelecionado.observacao) {
+      mensagem += `\n*Observação frete:* ${freteSelecionado.observacao}`;
+    }
+  }
 
   return mensagem;
 }
@@ -449,7 +543,7 @@ async function saveOrderToSupabase(cart, resumo) {
         user_id: user.id,
         subtotal: Number(resumo.subtotal) || 0,
         desconto: Number(resumo.desconto) || 0,
-        total: Number(resumo.totalComDesconto) || 0,
+        total: Number(resumo.totalGeral ?? resumo.totalComDesconto) || 0,
         forma_pagamento: resumo.metodoPagamento || "",
         parcelas: Number(document.getElementById("installments")?.value || 1),
         status: "enviado_whatsapp",
@@ -483,7 +577,7 @@ async function saveOrderToSupabase(cart, resumo) {
       if (typeof gtag !== 'undefined') {
         gtag('event', 'purchase', {
           transaction_id: orderData.id,
-          value: resumo.totalComDesconto,
+          value: resumo.totalGeral ?? resumo.totalComDesconto,
           currency: 'BRL',
           items: cart.map((item) => ({
             item_id: String(item.id),
@@ -500,7 +594,7 @@ async function saveOrderToSupabase(cart, resumo) {
     try {
       if (typeof fbq !== 'undefined') {
         fbq('track', 'Purchase', {
-          value: resumo.totalComDesconto,
+          value: resumo.totalGeral ?? resumo.totalComDesconto,
           currency: 'BRL',
           content_ids: cart.map((item) => String(item.id)),
           content_type: 'product',
@@ -618,10 +712,10 @@ function atualizarCheckout() {
   renderizarItens(cart);
 
   const resumoInicial = calcularResumo(cart);
-  sincronizarCamposPagamento(resumoInicial.totalComDesconto);
+  sincronizarCamposPagamento(resumoInicial.totalGeral);
 
-  const { totalComDesconto } = calcularResumo(cart);
-  preencherParcelas(totalComDesconto);
+  const { totalGeral } = calcularResumo(cart);
+  preencherParcelas(totalGeral);
   atualizarResumo(cart);
 
   const enviarBtn = document.getElementById("send-whatsapp");
@@ -694,4 +788,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   await preencherDadosClienteLogado();
   await inicializarEnderecosSalvos();
   inicializarCheckout();
+  document.addEventListener("frete:atualizado", () => {
+    atualizarCheckout();
+  });
 });

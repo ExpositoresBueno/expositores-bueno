@@ -1,6 +1,10 @@
 /**
  * Cloudflare Worker - Proxy de cotação Rodonaves.
  *
+ * Observação (v3): a Rodonaves descontinuou o host 01wapi em 01/11/2025.
+ * Este worker usa quotation-apigateway.rte.com.br com fallback de rota de cotação
+ * para manter compatibilidade durante o período de transição de endpoints.
+ *
  * Variáveis de ambiente (secrets) esperadas:
  * - RODONAVES_CNPJ
  * - RODONAVES_SENHA
@@ -12,9 +16,13 @@
  * wrangler secret put RODONAVES_CEP_ORIGEM
  */
 
-const TOKEN_URL = 'https://01wapi.rte.com.br/token';
-const MUNICIPIO_URL = 'https://01wapi.rte.com.br/api/v1/RotaEntrega/BuscarMunicipioRota';
-const COTACAO_URL = 'https://01wapi.rte.com.br/api/v1/CotacaoFrete';
+const API_BASE_URL = 'https://quotation-apigateway.rte.com.br';
+const TOKEN_URL = `${API_BASE_URL}/token`;
+const MUNICIPIO_URL = `${API_BASE_URL}/api/v1/RotaEntrega/BuscarMunicipioRota`;
+const COTACAO_URLS = [
+  `${API_BASE_URL}/api/v1/gera-cotacao`,
+  `${API_BASE_URL}/api/v1/CotacaoFrete`,
+];
 
 const ORIGENS_PERMITIDAS = [
   'https://expositoresbueno.com.br',
@@ -45,6 +53,8 @@ const buildCorsHeaders = (origin) => {
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const INTERNAL_SERVER_ERROR_MSG = 'The page cannot be displayed because an internal server error has occurred.';
+const TOKEN_TTL_MS = 9 * 60 * 1000; // margem de segurança para evitar expiração durante a cotação
+let tokenCache = { value: null, expiresAt: 0 };
 
 const normalizarCidade = (cidade = '') => String(cidade || '')
   .normalize('NFD')
@@ -70,36 +80,100 @@ const parseJsonSafe = (texto, fallback = null) => {
   }
 };
 
+const parseJwtExpMs = (token = '') => {
+  try {
+    const [, payloadBase64] = String(token).split('.');
+    if (!payloadBase64) return null;
+    const normalized = payloadBase64.replace(/-/g, '+').replace(/_/g, '/');
+    const padded = normalized.padEnd(Math.ceil(normalized.length / 4) * 4, '=');
+    const decoded = atob(padded);
+    const payload = parseJsonSafe(decoded, {});
+    if (!payload?.exp) return null;
+    return Number(payload.exp) * 1000;
+  } catch (_) {
+    return null;
+  }
+};
+
+const tokenCacheValido = () => tokenCache.value && Date.now() < tokenCache.expiresAt;
+
 async function requestToken(env, tentativas = 2) {
-  const payload = {
-    CNPJ: env.RODONAVES_CNPJ,
-    senha: env.RODONAVES_SENHA,
-  };
+  if (tokenCacheValido()) {
+    return tokenCache.value;
+  }
+
+  const cnpjNormalizado = String(env.RODONAVES_CNPJ || '').replace(/\D/g, '');
+  const cnpjOriginal = String(env.RODONAVES_CNPJ || '');
+  const senha = String(env.RODONAVES_SENHA || '');
+
+  const payloads = [
+    {
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        grant_type: 'password',
+        username: cnpjNormalizado || cnpjOriginal,
+        password: senha,
+        companyId: '1',
+        auth_type: 'dev',
+      }).toString(),
+    },
+    {
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ CNPJ: cnpjNormalizado, senha }),
+    },
+    {
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ cnpj: cnpjNormalizado, senha }),
+    },
+    {
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ CNPJ: cnpjOriginal, senha }),
+    },
+    {
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ cnpj: cnpjOriginal, senha }),
+    },
+  ];
 
   let ultimoErro;
 
   for (let i = 0; i < tentativas; i += 1) {
-    try {
-      const response = await fetch(TOKEN_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
+    for (const tentativaPayload of payloads) {
+      try {
+        const response = await fetch(TOKEN_URL, {
+          method: 'POST',
+          headers: tentativaPayload.headers,
+          body: tentativaPayload.body,
+        });
 
-      const data = await response.json().catch(() => ({}));
-      const token = data?.access_token || data?.token;
+        const texto = await response.text().catch(() => '');
+        const data = parseJsonSafe(texto, {});
+        const token = data?.access_token || data?.token;
 
-      if (!response.ok || !token) {
-        throw new Error(data?.message || data?.erro || `Falha ao obter token (${response.status})`);
-      }
+        if (!response.ok || !token) {
+          throw new Error(data?.message || data?.erro || `Falha ao obter token (${response.status})`);
+        }
 
-      return token;
-    } catch (erro) {
-      ultimoErro = erro;
-      if (i < tentativas - 1) {
-        await delay(350 * (i + 1));
+        const expJwtMs = parseJwtExpMs(token);
+        const expFallbackMs = Date.now() + TOKEN_TTL_MS;
+        tokenCache = {
+          value: token,
+          expiresAt: Math.max(Date.now() + 60_000, (expJwtMs || expFallbackMs) - 30_000),
+        };
+
+        return token;
+      } catch (erro) {
+        ultimoErro = erro;
       }
     }
+
+    if (i < tentativas - 1) {
+      await delay(350 * (i + 1));
+    }
+  }
+
+  if (tokenCache.value) {
+    return tokenCache.value;
   }
 
   throw ultimoErro || new Error('Não foi possível autenticar na API da Rodonaves.');
@@ -166,23 +240,37 @@ async function cotarFrete(token, env, body, municipioIdDestino) {
     volumes,
   };
 
-  const response = await fetch(COTACAO_URL, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify(payloadCotacao),
-  });
+  let ultimoErro;
+  let dataResposta = {};
 
-  const texto = await response.text().catch(() => '');
-  const data = texto ? parseJsonSafe(texto, {}) : {};
-  if (!response.ok) {
-    throw new Error(extrairMensagemErro(
+  for (const endpointCotacao of COTACAO_URLS) {
+    const response = await fetch(endpointCotacao, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(payloadCotacao),
+    });
+
+    const texto = await response.text().catch(() => '');
+    const data = texto ? parseJsonSafe(texto, {}) : {};
+
+    if (response.ok) {
+      dataResposta = data;
+      ultimoErro = null;
+      break;
+    }
+
+    ultimoErro = new Error(extrairMensagemErro(
       data?.message || data?.erro || texto,
       'Falha ao cotar frete na Rodonaves.',
     ));
   }
+
+  if (ultimoErro) throw ultimoErro;
+
+  const data = dataResposta;
 
   const valorFrete = Number(data?.valorFrete ?? data?.valor ?? data?.totalFrete);
   const prazoEntrega = Number(data?.prazoEntrega ?? data?.prazo ?? data?.dias);

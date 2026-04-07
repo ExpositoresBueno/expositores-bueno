@@ -2,6 +2,8 @@
 
 Este Worker recebe o payload do frontend, autentica na Rodonaves, resolve o município de destino e retorna cotação de frete para o site.
 
+> Base da API usada: `https://quotation-apigateway.rte.com.br` (v3). O host legado `https://01wapi.rte.com.br` foi descontinuado em 01/11/2025.
+
 ## 1) Pré-requisitos
 
 - Node.js 18+
@@ -83,6 +85,28 @@ Retorno esperado em sucesso:
   "observacao": "Prazo em dias úteis"
 }
 ```
+
+### Teste de integração real (sem mock)
+
+Para diagnosticar o erro em produção diretamente no Worker publicado:
+
+```bash
+FRETE_PROXY_URL="https://frete-proxy.SEU_SUBDOMINIO.workers.dev/cotacao" \
+node tests/run-frete-integracao-real.mjs
+```
+
+Opcionalmente, para validar **direto no token da Rodonaves** (sem passar pelo Worker), informe também:
+
+```bash
+RODONAVES_CNPJ="00000000000191" \
+RODONAVES_SENHA="SUA_SENHA" \
+node tests/run-frete-integracao-real.mjs
+```
+
+O script imprime diagnóstico objetivo para diferenciar:
+- erro de autenticação/token;
+- erro no fluxo de cotação;
+- falha de ambiente/rede.
 
 ## 6) Atualizar URL do Worker no frontend
 

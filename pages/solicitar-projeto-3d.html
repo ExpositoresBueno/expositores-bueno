@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="../styles/index.css" />
     <link rel="stylesheet" href="../styles/performance.min.css" />
     <link rel="stylesheet" href="../styles/solicitar-projeto-3d.css" />
+    <link rel="stylesheet" href="../styles/solicitar-projeto3d.css" />
 
     <link
       rel="stylesheet"
@@ -172,282 +173,242 @@
         </nav>
 
         <main class="solicitar-wrapper">
-          <section class="hero-request">
-            <h1>Como solicitar seu projeto 3D</h1>
-            <p>
-              Preencha o formulário abaixo com informações simples e objetivas.
-              Nós transformamos isso em um briefing completo para seu
-              atendimento.
-            </p>
-          </section>
-
-          <section class="step-section">
-            <h2>Passo a passo</h2>
-            <div class="steps-grid">
-              <article class="step-card">
-                <span>1</span>
-                <h3>Tipo de projeto e objetivo</h3>
-                <p>Diga se é loja completa, um setor ou móvel sob medida.</p>
-                <small class="step-hint"
-                  >Ex.: Quero somente um balcão sob medida para
-                  atendimento.</small
-                >
-              </article>
-
-              <article class="step-card">
-                <span>2</span>
-                <h3>Informações principais</h3>
-                <p>Passe o que você já sabe, sem complicar.</p>
-                <small class="step-hint"
-                  >Se não tiver medidas, sem problema: descreva o espaço e a
-                  necessidade.</small
-                >
-              </article>
-
-              <article class="step-card">
-                <span>3</span>
-                <h3>Planta ou desenho</h3>
-                <p>Pode ser planta, croqui ou desenho feito à mão.</p>
-                <small class="step-hint"
-                  >Foto do desenho com medidas já é suficiente.</small
-                >
-              </article>
-
-              <article class="step-card">
-                <span>4</span>
-                <h3>Fotos do local</h3>
-                <p>Fotos de frente e dos cantos do ambiente.</p>
-                <small class="step-hint"
-                  >Quanto mais ângulos, melhor para entender o espaço.</small
-                >
-              </article>
-
-              <article class="step-card">
-                <span>5</span>
-                <h3>Preferências</h3>
-                <p>Cores, estilo e faixa de investimento esperada.</p>
-                <small class="step-hint"
-                  >Não precisa ser exato: uma faixa já resolve.</small
-                >
-              </article>
-
-              <article class="step-card step-card-sos">
-                <span>6</span>
-                <h3>SOCORRO</h3>
-                <p>Quero que um vendedor me ajude a iniciar o meu projeto.</p>
-                <small class="step-hint"
-                  >Se preferir, clique no botão de ajuda para solicitar visita e
-                  orientação completa.</small
-                >
-              </article>
+          <section class="eb-integrated-section">
+            <div class="eb-hero">
+              <div class="eb-hero-inner">
+                <span class="eb-badge">Gratuito · Sem compromisso</span>
+                <h1>Solicitar Projeto 3D</h1>
+                <p>
+                  Desenhe o espaço da sua loja, preencha os dados e receba uma
+                  proposta personalizada da nossa equipe pelo WhatsApp.
+                </p>
+              </div>
             </div>
-          </section>
 
-          <section class="form-section">
-            <h2>Formulário de solicitação</h2>
-            <p class="form-intro">
-              Sem complicação: preencha o essencial para começarmos seu projeto.
-            </p>
+            <div class="eb-steps-bar">
+              <div class="eb-steps-inner">
+                <div class="eb-step active" id="dot-1">
+                  <div class="eb-step-circle">1</div>
+                  <span>Planta Baixa</span>
+                </div>
+                <div class="eb-step-connector"></div>
+                <div class="eb-step" id="dot-2">
+                  <div class="eb-step-circle">2</div>
+                  <span>Dados do Projeto</span>
+                </div>
+              </div>
+            </div>
 
-            <form id="request-3d-form" class="request-form">
-              <div class="form-grid">
-                <label>
-                  Nome
-                  <input
-                    type="text"
-                    name="nome"
-                    required
-                    placeholder="Seu nome"
-                  />
-                </label>
+            <div class="eb-main">
+              <section class="eb-card" id="step-1">
+                <div class="eb-card-header">
+                  <h2>Planta Baixa do Espaço</h2>
+                  <p>
+                    Clique no canvas para marcar os cantos da sala. Quando
+                    terminar, clique em <strong>Fechar Sala</strong>.
+                  </p>
+                </div>
 
-                <label>
-                  WhatsApp
-                  <input
-                    type="tel"
-                    name="telefone"
-                    required
-                    placeholder="(51) 99999-9999"
-                  />
-                </label>
-
-                <label>
-                  Cidade / Estado
-                  <input
-                    type="text"
-                    name="cidade"
-                    required
-                    placeholder="Ex.: Canoas/RS"
-                  />
-                </label>
-
-                <label>
-                  Ramo / segmento
-                  <input
-                    type="text"
-                    name="ramo"
-                    required
-                    placeholder="Ex.: farmácia, roupas, ótica, escritório"
-                  />
-                </label>
-
-                <label class="full">
-                  Objetivo do projeto
-                  <textarea
-                    name="objetivo"
-                    rows="3"
-                    required
-                    placeholder="Ex.: organizar melhor o espaço e aumentar exposição de produtos"
-                  ></textarea>
-                </label>
-
-                <fieldset class="full simple-fieldset">
-                  <legend>Tipo de projeto</legend>
-                  <label
-                    ><input
-                      type="radio"
-                      name="tipoProjeto"
-                      value="Loja completa"
-                      required
+                <div class="eb-canvas-wrapper">
+                  <svg
+                    id="plant-svg"
+                    viewBox="0 0 800 480"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <defs>
+                      <pattern
+                        id="smallGrid"
+                        width="20"
+                        height="20"
+                        patternUnits="userSpaceOnUse"
+                      >
+                        <path
+                          d="M 20 0 L 0 0 0 20"
+                          fill="none"
+                          stroke="#e9ecef"
+                          stroke-width="0.5"
+                        />
+                      </pattern>
+                      <pattern
+                        id="grid"
+                        width="100"
+                        height="100"
+                        patternUnits="userSpaceOnUse"
+                      >
+                        <rect width="100" height="100" fill="url(#smallGrid)" />
+                        <path
+                          d="M 100 0 L 0 0 0 100"
+                          fill="none"
+                          stroke="#d1d5db"
+                          stroke-width="1"
+                        />
+                      </pattern>
+                    </defs>
+                    <rect width="800" height="480" fill="#f8fafc" />
+                    <rect width="800" height="480" fill="url(#grid)" />
+                    <text
+                      id="canvas-hint"
+                      x="400"
+                      y="230"
+                      text-anchor="middle"
+                      fill="#94a3b8"
+                      font-family="Poppins, sans-serif"
+                      font-size="16"
+                    >
+                      Clique aqui para começar a desenhar
+                    </text>
+                    <text
+                      id="canvas-hint2"
+                      x="400"
+                      y="260"
+                      text-anchor="middle"
+                      fill="#cbd5e1"
+                      font-family="Poppins, sans-serif"
+                      font-size="13"
+                    >
+                      Cada clique = um canto da sala
+                    </text>
+                    <g id="layer-fill"></g>
+                    <g id="layer-lines"></g>
+                    <g id="layer-labels"></g>
+                    <g id="layer-points"></g>
+                    <line
+                      id="preview-line"
+                      x1="0"
+                      y1="0"
+                      x2="0"
+                      y2="0"
+                      stroke="#F7941D"
+                      stroke-width="1.5"
+                      stroke-dasharray="6,4"
+                      opacity="0"
                     />
-                    Loja completa</label
+                  </svg>
+                </div>
+
+                <div class="eb-canvas-controls">
+                  <button
+                    class="btn-canvas"
+                    id="btn-close"
+                    onclick="closeRoom()"
+                    disabled
                   >
-                  <label
-                    ><input
-                      type="radio"
-                      name="tipoProjeto"
-                      value="Parte da loja"
+                    Fechar Sala
+                  </button>
+                  <button class="btn-canvas" onclick="undoLastPoint()">
+                    Desfazer
+                  </button>
+                  <button class="btn-canvas" onclick="clearCanvas()">
+                    Limpar
+                  </button>
+                </div>
+
+                <div id="measurements-section" class="eb-measurements hidden">
+                  <h3>Medidas reais das paredes</h3>
+                  <p>
+                    Insira o comprimento de cada parede em metros. Use
+                    estimativas se não souber exato. Ao preencher, a medida
+                    aparece no desenho.
+                  </p>
+                  <div id="measurements-inputs" class="eb-measurements-grid"></div>
+                </div>
+
+                <div class="eb-step-footer">
+                  <button class="btn-primary" onclick="goToStep2()">Próximo</button>
+                </div>
+              </section>
+
+              <section class="eb-card hidden" id="step-2">
+                <div class="eb-card-header">
+                  <h2>Dados do Projeto</h2>
+                  <p>
+                    Preencha as informações abaixo. Nossa equipe montará uma
+                    proposta e entrará em contato pelo WhatsApp.
+                  </p>
+                </div>
+
+                <div class="eb-form-grid">
+                  <div class="eb-input-group">
+                    <label for="nome-loja"
+                      >Seu nome <span class="required">*</span></label
+                    >
+                    <input
+                      type="text"
+                      id="nome-loja"
+                      placeholder="Ex: João da Silva"
                     />
-                    Parte da loja (setor específico)</label
-                  >
-                  <label
-                    ><input
-                      type="radio"
-                      name="tipoProjeto"
-                      value="Móvel sob medida"
+                  </div>
+                  <div class="eb-input-group">
+                    <label for="produto"
+                      >Segmento <span class="required">*</span></label
+                    >
+                    <input
+                      type="text"
+                      id="produto"
+                      placeholder="Ex: Farmácia, ótica, loja de roupas"
                     />
-                    Móvel sob medida</label
-                  >
-                </fieldset>
-
-                <fieldset class="full simple-fieldset">
-                  <legend>Você possui planta ou desenho?</legend>
-                  <label
-                    ><input
-                      type="radio"
-                      name="planta"
-                      value="Tenho planta"
-                      required
+                  </div>
+                  <div class="eb-input-group">
+                    <label for="estilo"
+                      >Seu telefone <span class="required">*</span></label
+                    >
+                    <input
+                      type="tel"
+                      id="estilo"
+                      placeholder="Ex: (51) 99999-9999"
                     />
-                    Tenho planta</label
-                  >
-                  <label
-                    ><input
-                      type="radio"
-                      name="planta"
-                      value="Tenho desenho à mão"
-                    />
-                    Tenho desenho à mão</label
-                  >
-                  <label
-                    ><input type="radio" name="planta" value="Não tenho" /> Não
-                    tenho</label
-                  >
-                </fieldset>
+                  </div>
+                  <div class="eb-input-group">
+                    <label for="orcamento"
+                      >Orçamento estimado <span class="required">*</span></label
+                    >
+                    <select id="orcamento">
+                      <option value="">Selecione...</option>
+                      <option value="Até R$ 5.000">Até R$ 5.000</option>
+                      <option value="R$ 5.000 a R$ 10.000">R$ 5.000 a R$ 10.000</option>
+                      <option value="R$ 10.000 a R$ 20.000">R$ 10.000 a R$ 20.000</option>
+                      <option value="R$ 20.000 a R$ 50.000">R$ 20.000 a R$ 50.000</option>
+                      <option value="Acima de R$ 50.000">Acima de R$ 50.000</option>
+                      <option value="Não sei informar">Não sei informar</option>
+                    </select>
+                  </div>
+                  <div class="eb-input-group full">
+                    <label for="observacoes">Observações</label>
+                    <textarea
+                      id="observacoes"
+                      rows="4"
+                      placeholder="Necessidades específicas, prazo desejado, referências de estilo..."
+                    ></textarea>
+                  </div>
+                </div>
 
-                <label class="full">
-                  O que você consegue nos enviar agora?
-                  <textarea
-                    name="materiais"
-                    rows="3"
-                    placeholder="Ex.: fotos, vídeo curto, desenho, referência do móvel desejado"
-                  ></textarea>
-                </label>
-
-                <label class="full">
-                  Medidas (opcional)
-                  <textarea
-                    name="medidas"
-                    rows="2"
-                    placeholder="Se tiver, pode informar medidas aproximadas."
-                  ></textarea>
-                </label>
-
-                <label>
-                  Quando pretende inaugurar?
-                  <input
-                    type="text"
-                    name="prazo"
-                    placeholder="Ex.: em 45 dias / no próximo mês / sem data definida"
-                  />
-                </label>
-
-                <label class="full">
-                  Faixa de investimento
-                  <input
-                    type="text"
-                    name="orcamento"
-                    placeholder="Escreva sua faixa"
-                  />
-                  <small class="options-help"
-                    >Sugestões: Até R$ 3.000 | R$ 3.000 a R$ 7.000 | R$ 7.000 a
-                    R$ 15.000 | Acima de R$ 15.000 | Ainda não definido.</small
-                  >
-                  <small class="budget-note"
-                    >Saiba que independente do seu orçamento ou do tamanho do
-                    projeto, vamos estar ao seu lado para fazer acontecer.
+                <p class="budget-note">
+                  Saiba que independente do seu orçamento ou do tamanho do projeto, vamos estar ao seu lado para fazer acontecer.
                     Quando começamos, lá em 2003, tínhamos uma loja de 5 x 5,
                     uma linha telefônica e o dinheiro contado do mês. Por isso,
                     hoje fazemos questão de oferecer o suporte que fez falta lá
-                    atrás.</small
-                  >
-                </label>
-              </div>
-            </form>
-          </section>
+                    atrás.
+                </p>
 
-          <section class="examples-section">
-            <h2>Exemplos de materiais aceitos</h2>
-            <ul>
-              <li>Planta baixa em PDF, foto ou imagem;</li>
-              <li>Desenho feito à mão com medidas anotadas;</li>
-              <li>Fotos da fachada e da parte interna;</li>
-              <li>
-                Referências de lojas, ambientes ou móveis sob medida que você
-                gostou.
-              </li>
-            </ul>
+                <div class="eb-step-footer split">
+                  <button class="btn-secondary" onclick="goToStep1()">Voltar</button>
+                  <button class="btn-whatsapp" onclick="sendToWhatsApp()">
+                    Enviar pelo WhatsApp
+                  </button>
+                </div>
+              </section>
+            </div>
           </section>
 
           <section class="socorro-section">
             <h2 class="socorro-title">🚨 SOS projeto</h2>
-            <p>😅 Travou aí? Relaxa.</p>
-            <p>
-              Se o formulário ficou mais complicado que montar móvel sem manual,
-              chama a gente. A gente te ajuda do zero.
-            </p>
+            <p>Precisa de ajuda para iniciar? Fale com um vendedor agora.</p>
             <a
               class="btn-socorro"
               href="https://wa.me/5551996034579?text=SOS%20projeto%3A%20Travou%20aqui%20e%20quero%20ajuda%20para%20come%C3%A7ar%20do%20zero."
               target="_blank"
               rel="noopener noreferrer"
               >Clique aqui se precisa de ajuda</a
-            >
-          </section>
-
-          <section class="final-cta">
-            <h2>Pronto! Agora é só iniciar o atendimento</h2>
-            <p>
-              Depois de preencher o formulário, clique no botão abaixo para
-              enviar seus dados no WhatsApp.
-            </p>
-            <a
-              id="final-whatsapp-btn"
-              class="btn-wa"
-              href="https://wa.me/5551996034579"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Iniciar atendimento no WhatsApp</a
             >
           </section>
         </main>
@@ -552,9 +513,9 @@
     </div>
 
     <script type="module" src="../scripts/index.js"></script>
-    <script type="module" src="../scripts/solicitar-projeto-3d.js"></script>
     <script type="module" src="../scripts/auth.js"></script>
     <script type="module" src="../scripts/performance.min.js"></script>
+    <script src="../scripts/solicitar-projeto3d.js"></script>
     <script src="/scripts/google-ads-tracking.js"></script>
   </body>
 </html>
