@@ -6,6 +6,10 @@ import {
   removeItemFromDb,
   buildCartKey,
 } from './cart-db.js';
+import {
+  enriquecerProdutoComPromocao,
+  obterPromocoesCarrossel,
+} from './promo-pricing.js';
 
 /* ==========================================================================
    1. CAROUSEL E MENU (MANTIDOS ORIGINAIS)
@@ -151,6 +155,17 @@ function formatarNumeroBR(valor) {
 
 function obterPrecoAvistaProduto(produto) {
   if (!produto || typeof produto !== "object") return null;
+
+  const precoPromocional = Number(produto.precoPromocional);
+  if (Number.isFinite(precoPromocional) && precoPromocional > 0) {
+    return precoPromocional;
+  }
+
+  const produtoComPromocao = enriquecerProdutoComPromocao(produto);
+  const precoPromocionalMapeado = Number(produtoComPromocao?.precoPromocional);
+  if (Number.isFinite(precoPromocionalMapeado) && precoPromocionalMapeado > 0) {
+    return precoPromocionalMapeado;
+  }
 
   for (const campo of CAMPOS_PRECO_AVISTA) {
     const valorCampo = Number(produto[campo]);
@@ -325,14 +340,7 @@ function renderizarPromocoes(listaProdutos) {
     ? "./productDetails.html"
     : "./pages/productDetails.html";
 
-  const promocoesConfiguradas = [
-    { id: 35, precoPromocional: 699 },
-    { id: 40, precoPromocional: 699 },
-    { id: 2, precoPromocional: 799 },
-    { id: 58, precoPromocional: 799 },
-    { id: 57, precoPromocional: 2900 },
-    { id: 68, precoPromocional: 749 },
-  ];
+  const promocoesConfiguradas = obterPromocoesCarrossel();
 
   const produtosPorId = new Map(listaProdutos.map((produto) => [produto.id, produto]));
   const promocoes = promocoesConfiguradas
@@ -348,7 +356,7 @@ function renderizarPromocoes(listaProdutos) {
     })
     .filter(Boolean);
 
-  promoTrack.innerHTML = promocoes
+  const cardsHtml = promocoes
     .map((prod) => {
       const imgPath = isPaginaInterna ? prod.img.replace("./", "../") : prod.img;
       const precoOriginal = Number(prod.precoOriginal) || 0;
@@ -366,52 +374,86 @@ function renderizarPromocoes(listaProdutos) {
       `;
     })
     .join("");
+  promoTrack.innerHTML = cardsHtml;
+  if (promocoes.length > 1) {
+    promoTrack.innerHTML += cardsHtml;
+  }
 
+  const podeFazerLoop = promocoes.length > 1 && promoTrack.scrollWidth > promoTrack.clientWidth;
+  const larguraLoop = podeFazerLoop ? promoTrack.scrollWidth / 2 : promoTrack.scrollWidth;
+  const velocidadePxPorSegundo = 38;
+  let pausado = false;
+  let ultimoFrame = 0;
+  let timeoutInteracao = null;
 
-  const velocidadeAutoplay = 1;
-  let autoplayTimer = null;
+  if (promoTrack._promoRafId) {
+    window.cancelAnimationFrame(promoTrack._promoRafId);
+  }
 
-  const pararAutoplay = () => {
-    if (autoplayTimer) {
-      window.clearInterval(autoplayTimer);
-      autoplayTimer = null;
+  const normalizarScrollLoop = () => {
+    if (!podeFazerLoop || larguraLoop <= 0) return;
+    if (promoTrack.scrollLeft >= larguraLoop) {
+      promoTrack.scrollLeft -= larguraLoop;
+    } else if (promoTrack.scrollLeft < 0) {
+      promoTrack.scrollLeft += larguraLoop;
     }
   };
 
-  const iniciarAutoplay = () => {
-    if (autoplayTimer || promoTrack.scrollWidth <= promoTrack.clientWidth) return;
+  const pausarTemporariamente = (duracaoMs = 850) => {
+    pausado = true;
+    if (timeoutInteracao) {
+      window.clearTimeout(timeoutInteracao);
+    }
+    timeoutInteracao = window.setTimeout(() => {
+      pausado = false;
+    }, duracaoMs);
+  };
 
-    autoplayTimer = window.setInterval(() => {
-      const chegouAoFim = promoTrack.scrollLeft + promoTrack.clientWidth >= promoTrack.scrollWidth - 2;
+  const animar = (timestamp) => {
+    if (!ultimoFrame) ultimoFrame = timestamp;
+    const deltaMs = timestamp - ultimoFrame;
+    ultimoFrame = timestamp;
 
-      if (chegouAoFim) {
-        promoTrack.scrollTo({ left: 0, behavior: "smooth" });
-        return;
-      }
+    if (!pausado && podeFazerLoop) {
+      const deslocamento = (velocidadePxPorSegundo * deltaMs) / 1000;
+      promoTrack.scrollLeft += deslocamento;
+      normalizarScrollLoop();
+    }
 
-      promoTrack.scrollBy({ left: velocidadeAutoplay, behavior: "auto" });
-    }, 16);
+    promoTrack._promoRafId = window.requestAnimationFrame(animar);
   };
 
   const prevBtn = document.querySelector(".promo-prev");
   const nextBtn = document.querySelector(".promo-next");
   const scrollAmount = 260;
 
+  const moverManual = (direcao) => {
+    pausarTemporariamente();
+    promoTrack.scrollBy({ left: direcao * scrollAmount, behavior: "smooth" });
+    window.setTimeout(normalizarScrollLoop, 420);
+  };
+
   if (prevBtn) {
     prevBtn.onclick = () => {
-      promoTrack.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+      moverManual(-1);
     };
   }
 
   if (nextBtn) {
     nextBtn.onclick = () => {
-      promoTrack.scrollBy({ left: scrollAmount, behavior: "smooth" });
+      moverManual(1);
     };
   }
 
-  promoTrack.addEventListener("mouseenter", pararAutoplay);
-  promoTrack.addEventListener("mouseleave", iniciarAutoplay);
-  iniciarAutoplay();
+  promoTrack.scrollLeft = 0;
+  promoTrack.onmouseenter = () => {
+    pausado = true;
+  };
+  promoTrack.onmouseleave = () => {
+    pausado = false;
+  };
+
+  promoTrack._promoRafId = window.requestAnimationFrame(animar);
 }
 
 function inicializarCarrosselSegmentos() {
@@ -568,15 +610,16 @@ async function usuarioLogado() {
 }
 
 function addToCart(produto) {
+  const produtoComPromocao = enriquecerProdutoComPromocao(produto);
   const quantidade = Math.max(1, parseInt(produto.quantidade, 10) || 1);
   const cart = getCart();
-  const cartKey = getCartItemKey(produto);
+  const cartKey = getCartItemKey(produtoComPromocao);
   const existente = cart.find((item) => getCartItemKey(item) === cartKey);
 
   if (existente) {
     existente.quantidade += quantidade;
   } else {
-    cart.push({ ...produto, cartKey, quantidade });
+    cart.push({ ...produtoComPromocao, cartKey, quantidade });
   }
 
   saveCart(cart);
@@ -584,7 +627,7 @@ function addToCart(produto) {
 
   usuarioLogado().then((logado) => {
     if (logado) {
-      addItemToDb({ ...produto, cartKey, quantidade }).catch(() => {});
+      addItemToDb({ ...produtoComPromocao, cartKey, quantidade }).catch(() => {});
     }
   });
 

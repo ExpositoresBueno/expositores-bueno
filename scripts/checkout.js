@@ -1,6 +1,7 @@
 import { supabase } from "./supabase-client.js";
 import { getProfile, getUser } from "./auth.js";
 import { getAddresses } from "./profile.js";
+import { obterPrecoPromocionalPorId } from "./promo-pricing.js";
 
 const numeroWhatsApp = "5551996034579";
 const DESCONTO_PAGAMENTO_AVISTA = 0.05;
@@ -163,6 +164,16 @@ function sincronizarCamposPagamento(totalComDesconto) {
 }
 
 function obterPrecoAvistaItem(item) {
+  const precoPromocionalNoItem = Number(item?.precoPromocional);
+  if (Number.isFinite(precoPromocionalNoItem) && precoPromocionalNoItem > 0) {
+    return precoPromocionalNoItem;
+  }
+
+  const precoPromocionalPorId = obterPrecoPromocionalPorId(item?.id);
+  if (precoPromocionalPorId != null) {
+    return precoPromocionalPorId;
+  }
+
   for (const campo of CAMPOS_PRECO_AVISTA) {
     const valor = Number(item?.[campo]);
     if (Number.isFinite(valor) && valor > 0) return valor;
