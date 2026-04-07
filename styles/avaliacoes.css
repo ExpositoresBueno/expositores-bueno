@@ -48,10 +48,6 @@
   width: fit-content;
 }
 
-.reviews-hero {
-  background: var(--tech-gradient);
-}
-
 
 .reviews-content {
   display: grid;
