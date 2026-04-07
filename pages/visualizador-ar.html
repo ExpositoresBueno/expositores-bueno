@@ -149,9 +149,7 @@
       }
       .sim-item .rotate-btn {
         position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
+        top: -12px;
         width: 34px;
         height: 34px;
         border-radius: 50%;
@@ -163,9 +161,18 @@
         place-items: center;
         cursor: pointer;
       }
+      .sim-item .rotate-btn.left { left: -12px; }
+      .sim-item .rotate-btn.right { right: -12px; }
       .sim-help { font-size: .9rem; color: #666; margin-top: 8px; }
+      .sim-camera-status {
+        margin: 0;
+        font-size: .9rem;
+        color: #444;
+      }
       @media (max-width: 1024px) {
         .sim-layout { grid-template-columns: 1fr; }
+        .sim-stage-card { order: 1; }
+        .sim-panel { order: 2; }
         .sim-panel { max-height: none; }
         .sim-stage { min-height: 58vh; }
       }
@@ -214,6 +221,7 @@
               <button id="open-camera" type="button">Abrir câmera</button>
               <button id="close-camera" class="ghost" type="button">Fechar câmera</button>
               <button id="remove-bg" class="ghost" type="button">Remover fundo</button>
+              <p id="camera-status" class="sim-camera-status">Câmera inativa.</p>
             </div>
 
             <h2>2) Buscar produtos</h2>
@@ -260,6 +268,7 @@
         const openCameraBtn = document.getElementById('open-camera');
         const closeCameraBtn = document.getElementById('close-camera');
         const removeBgBtn = document.getElementById('remove-bg');
+        const cameraStatusEl = document.getElementById('camera-status');
 
         const btnBringFront = document.getElementById('bring-front');
         const btnSendBack = document.getElementById('send-back');
@@ -388,19 +397,27 @@
 
           const resize = document.createElement('span');
           resize.className = 'resize';
-          const rotateBtn = document.createElement('button');
-          rotateBtn.className = 'rotate-btn';
-          rotateBtn.type = 'button';
-          rotateBtn.setAttribute('aria-label', 'Girar imagem');
-          rotateBtn.title = 'Girar imagem';
-          rotateBtn.textContent = '⟳';
+          const rotateLeftBtn = document.createElement('button');
+          rotateLeftBtn.className = 'rotate-btn left';
+          rotateLeftBtn.type = 'button';
+          rotateLeftBtn.setAttribute('aria-label', 'Girar para a esquerda');
+          rotateLeftBtn.title = 'Girar para a esquerda';
+          rotateLeftBtn.textContent = '↺';
+
+          const rotateRightBtn = document.createElement('button');
+          rotateRightBtn.className = 'rotate-btn right';
+          rotateRightBtn.type = 'button';
+          rotateRightBtn.setAttribute('aria-label', 'Girar para a direita');
+          rotateRightBtn.title = 'Girar para a direita';
+          rotateRightBtn.textContent = '↻';
 
           item.appendChild(img);
-          item.appendChild(rotateBtn);
+          item.appendChild(rotateLeftBtn);
+          item.appendChild(rotateRightBtn);
           item.appendChild(resize);
           stage.appendChild(item);
 
-          enableMoveAndResize(item, resize, rotateBtn);
+          enableMoveAndResize(item, resize, rotateLeftBtn, rotateRightBtn);
           selectItem(item);
         }
 
@@ -413,6 +430,7 @@
             cameraVideoEl.remove();
             cameraVideoEl = null;
           }
+          cameraStatusEl.textContent = 'Câmera inativa.';
         }
 
         async function startCamera() {
@@ -461,6 +479,7 @@
             });
 
             await cameraVideoEl.play();
+            cameraStatusEl.textContent = 'Câmera ativa.';
           } catch (error) {
             stopCamera();
             cameraStream = null;
@@ -472,7 +491,7 @@
           return Math.min(max, Math.max(min, val));
         }
 
-        function enableMoveAndResize(item, resizeHandle, rotateBtn) {
+        function enableMoveAndResize(item, resizeHandle, rotateLeftBtn, rotateRightBtn) {
           let mode = null;
           let startX = 0;
           let startY = 0;
@@ -480,11 +499,25 @@
           let startTop = 0;
           let startW = 0;
           let startH = 0;
+          let startPinchDistance = 0;
+
+          const getTouchDistance = (touches) => {
+            const dx = touches[0].clientX - touches[1].clientX;
+            const dy = touches[0].clientY - touches[1].clientY;
+            return Math.hypot(dx, dy);
+          };
 
           const onDownMove = (e) => {
             if (e.target === resizeHandle) return;
             selectItem(item);
-            mode = 'move';
+            if (e.touches && e.touches.length === 2) {
+              mode = 'pinch';
+              startPinchDistance = getTouchDistance(e.touches);
+              startW = item.offsetWidth;
+              startH = item.offsetHeight;
+            } else {
+              mode = 'move';
+            }
             item.style.zIndex = String(++zCounter);
 
             const rect = item.getBoundingClientRect();
@@ -509,12 +542,12 @@
             startH = item.offsetHeight;
           };
 
-          const onRotate = (e) => {
+          const onRotate = (delta) => (e) => {
             e.preventDefault();
             e.stopPropagation();
             selectItem(item);
             const current = Number(item.dataset.rotation || 0);
-            const next = current + 15;
+            const next = current + delta;
             item.dataset.rotation = String(next);
             item.style.transform = `rotate(${next}deg)`;
           };
@@ -532,6 +565,19 @@
               const newTop = clamp(startTop + dy, 0, stage.clientHeight - item.offsetHeight);
               item.style.left = `${newLeft}px`;
               item.style.top = `${newTop}px`;
+            } else if (mode === 'pinch' && e.touches && e.touches.length >= 2) {
+              e.preventDefault();
+              const currentDistance = getTouchDistance(e.touches);
+              const scale = currentDistance / (startPinchDistance || 1);
+              const ratio = startW / startH || 1;
+              let newW = clamp(startW * scale, 60, stageRect.width);
+              let newH = newW / ratio;
+              if (newH > stageRect.height) {
+                newH = stageRect.height;
+                newW = newH * ratio;
+              }
+              item.style.width = `${newW}px`;
+              item.style.height = `${newH}px`;
             } else if (mode === 'resize') {
               const ratio = startW / startH || 1;
               let newW = clamp(startW + dx, 60, stageRect.width);
@@ -548,11 +594,13 @@
           const onUp = () => { mode = null; };
 
           item.addEventListener('mousedown', onDownMove);
-          item.addEventListener('touchstart', onDownMove, { passive: true });
+          item.addEventListener('touchstart', onDownMove, { passive: false });
           resizeHandle.addEventListener('mousedown', onDownResize);
           resizeHandle.addEventListener('touchstart', onDownResize, { passive: false });
-          rotateBtn.addEventListener('click', onRotate);
-          rotateBtn.addEventListener('touchstart', onRotate, { passive: false });
+          rotateLeftBtn.addEventListener('click', onRotate(-15));
+          rotateLeftBtn.addEventListener('touchstart', onRotate(-15), { passive: false });
+          rotateRightBtn.addEventListener('click', onRotate(15));
+          rotateRightBtn.addEventListener('touchstart', onRotate(15), { passive: false });
 
           window.addEventListener('mousemove', onMove);
           window.addEventListener('touchmove', onMove, { passive: false });
@@ -585,8 +633,9 @@
           clone.style.zIndex = String(++zCounter);
           stage.appendChild(clone);
           const resize = clone.querySelector('.resize');
-          const rotateBtn = clone.querySelector('.rotate-btn');
-          enableMoveAndResize(clone, resize, rotateBtn);
+          const rotateLeftBtn = clone.querySelector('.rotate-btn.left');
+          const rotateRightBtn = clone.querySelector('.rotate-btn.right');
+          enableMoveAndResize(clone, resize, rotateLeftBtn, rotateRightBtn);
           selectItem(clone);
         });
 
