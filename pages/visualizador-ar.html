@@ -163,6 +163,10 @@
       }
       .sim-item .rotate-btn.left { left: -12px; }
       .sim-item .rotate-btn.right { right: -12px; }
+      .sim-item .rotate-btn.flip {
+        left: 50%;
+        transform: translateX(-50%);
+      }
       .sim-help { font-size: .9rem; color: #666; margin-top: 8px; }
       .sim-camera-status {
         margin: 0;
@@ -411,13 +415,21 @@
           rotateRightBtn.title = 'Girar para a direita';
           rotateRightBtn.textContent = '↻';
 
+          const rotateFlipBtn = document.createElement('button');
+          rotateFlipBtn.className = 'rotate-btn flip';
+          rotateFlipBtn.type = 'button';
+          rotateFlipBtn.setAttribute('aria-label', 'Espelhar lateralmente');
+          rotateFlipBtn.title = 'Espelhar lateralmente';
+          rotateFlipBtn.textContent = '⇋';
+
           item.appendChild(img);
           item.appendChild(rotateLeftBtn);
+          item.appendChild(rotateFlipBtn);
           item.appendChild(rotateRightBtn);
           item.appendChild(resize);
           stage.appendChild(item);
 
-          enableMoveAndResize(item, resize, rotateLeftBtn, rotateRightBtn);
+          enableMoveAndResize(item, resize, rotateLeftBtn, rotateRightBtn, rotateFlipBtn);
           selectItem(item);
         }
 
@@ -491,7 +503,13 @@
           return Math.min(max, Math.max(min, val));
         }
 
-        function enableMoveAndResize(item, resizeHandle, rotateLeftBtn, rotateRightBtn) {
+        function applyItemTransform(item) {
+          const rotation = Number(item.dataset.rotation || 0);
+          const flipX = Number(item.dataset.flipX || 1);
+          item.style.transform = `rotate(${rotation}deg) scaleX(${flipX})`;
+        }
+
+        function enableMoveAndResize(item, resizeHandle, rotateLeftBtn, rotateRightBtn, rotateFlipBtn) {
           let mode = null;
           let startX = 0;
           let startY = 0;
@@ -549,7 +567,16 @@
             const current = Number(item.dataset.rotation || 0);
             const next = current + delta;
             item.dataset.rotation = String(next);
-            item.style.transform = `rotate(${next}deg)`;
+            applyItemTransform(item);
+          };
+
+          const onFlip = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            selectItem(item);
+            const current = Number(item.dataset.flipX || 1);
+            item.dataset.flipX = String(current === 1 ? -1 : 1);
+            applyItemTransform(item);
           };
 
           const onMove = (e) => {
@@ -601,6 +628,8 @@
           rotateLeftBtn.addEventListener('touchstart', onRotate(-15), { passive: false });
           rotateRightBtn.addEventListener('click', onRotate(15));
           rotateRightBtn.addEventListener('touchstart', onRotate(15), { passive: false });
+          rotateFlipBtn.addEventListener('click', onFlip);
+          rotateFlipBtn.addEventListener('touchstart', onFlip, { passive: false });
 
           window.addEventListener('mousemove', onMove);
           window.addEventListener('touchmove', onMove, { passive: false });
@@ -635,7 +664,8 @@
           const resize = clone.querySelector('.resize');
           const rotateLeftBtn = clone.querySelector('.rotate-btn.left');
           const rotateRightBtn = clone.querySelector('.rotate-btn.right');
-          enableMoveAndResize(clone, resize, rotateLeftBtn, rotateRightBtn);
+          const rotateFlipBtn = clone.querySelector('.rotate-btn.flip');
+          enableMoveAndResize(clone, resize, rotateLeftBtn, rotateRightBtn, rotateFlipBtn);
           selectItem(clone);
         });
 
