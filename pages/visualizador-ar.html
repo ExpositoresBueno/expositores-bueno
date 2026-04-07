@@ -112,12 +112,22 @@
         background-size: cover;
         background-position: center;
       }
+      .sim-stage video.sim-camera-feed {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+        pointer-events: none;
+      }
       .sim-item {
         position: absolute;
         width: 140px;
         height: 140px;
         user-select: none;
         cursor: grab;
+        z-index: 1;
       }
       .sim-item.selected { outline: 2px solid #f7941d; }
       .sim-item img {
@@ -201,6 +211,8 @@
             <h2>1) Fundo do ambiente</h2>
             <div class="sim-controls">
               <input id="bg-upload" type="file" accept="image/*" />
+              <button id="open-camera" type="button">Abrir câmera</button>
+              <button id="close-camera" class="ghost" type="button">Fechar câmera</button>
               <button id="remove-bg" class="ghost" type="button">Remover fundo</button>
             </div>
 
@@ -245,6 +257,8 @@
         const searchEl = document.getElementById('search');
         const categoryEl = document.getElementById('category-filter');
         const bgUpload = document.getElementById('bg-upload');
+        const openCameraBtn = document.getElementById('open-camera');
+        const closeCameraBtn = document.getElementById('close-camera');
         const removeBgBtn = document.getElementById('remove-bg');
 
         const btnBringFront = document.getElementById('bring-front');
@@ -256,6 +270,8 @@
         let allProducts = [];
         let selectedItem = null;
         let zCounter = 2;
+        let cameraStream = null;
+        let cameraVideoEl = null;
 
         function normalizePath(path) {
           if (!path) return '';
@@ -386,6 +402,49 @@
 
           enableMoveAndResize(item, resize, rotateBtn);
           selectItem(item);
+        }
+
+        function stopCamera() {
+          if (cameraStream) {
+            cameraStream.getTracks().forEach((track) => track.stop());
+            cameraStream = null;
+          }
+          if (cameraVideoEl) {
+            cameraVideoEl.remove();
+            cameraVideoEl = null;
+          }
+        }
+
+        async function startCamera() {
+          if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+            alert('Seu navegador não permite abrir a câmera neste dispositivo.');
+            return;
+          }
+
+          stopCamera();
+          stage.style.backgroundImage = '';
+          stage.classList.remove('has-bg');
+          bgUpload.value = '';
+
+          try {
+            cameraStream = await navigator.mediaDevices.getUserMedia({
+              video: {
+                facingMode: { ideal: 'environment' }
+              },
+              audio: false
+            });
+
+            cameraVideoEl = document.createElement('video');
+            cameraVideoEl.className = 'sim-camera-feed';
+            cameraVideoEl.autoplay = true;
+            cameraVideoEl.muted = true;
+            cameraVideoEl.playsInline = true;
+            cameraVideoEl.srcObject = cameraStream;
+            stage.prepend(cameraVideoEl);
+          } catch (error) {
+            cameraStream = null;
+            alert('Não foi possível acessar a câmera. Verifique as permissões do navegador.');
+          }
         }
 
         function clamp(val, min, max) {
@@ -533,10 +592,16 @@
         });
 
         removeBgBtn.addEventListener('click', () => {
+          stopCamera();
           stage.style.backgroundImage = '';
           stage.classList.remove('has-bg');
           bgUpload.value = '';
         });
+
+        bgUpload.addEventListener('click', () => stopCamera());
+        openCameraBtn.addEventListener('click', startCamera);
+        closeCameraBtn.addEventListener('click', stopCamera);
+        window.addEventListener('beforeunload', stopCamera);
 
         searchEl.addEventListener('input', renderProducts);
         categoryEl.addEventListener('change', renderProducts);
