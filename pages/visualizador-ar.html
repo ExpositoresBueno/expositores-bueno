@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visualizador de Ambientes | Expositores Bueno</title>
+    <link rel="stylesheet" href="../styles/index.css" />
+    <link rel="stylesheet" href="../styles/performance.min.css" />
+    <link rel="icon" type="image/png" href="../images/favicon.png" />
+    <style>
+      .simulador-wrap {
+        max-width: 1300px;
+        margin: 24px auto 48px;
+        padding: 0 16px;
+      }
+      .simulador-title { margin-bottom: 8px; }
+      .simulador-subtitle { margin: 0 0 18px; color: #555; }
+      .sim-layout {
+        display: grid;
+        grid-template-columns: 340px 1fr;
+        gap: 16px;
+      }
+      .sim-panel,
+      .sim-stage-card {
+        background: #fff;
+        border: 1px solid #e5e5e5;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,.04);
+      }
+      .sim-panel { padding: 14px; max-height: 78vh; overflow: auto; }
+      .sim-panel h2 {
+        font-size: 1rem;
+        margin: 10px 0 8px;
+      }
+      .sim-controls { display: grid; gap: 8px; margin-bottom: 10px; }
+      .sim-controls input,
+      .sim-controls select,
+      .sim-controls button {
+        width: 100%;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #d9d9d9;
+        font: inherit;
+      }
+      .sim-controls button {
+        background: #f7941d;
+        color: #fff;
+        border: 0;
+        cursor: pointer;
+        font-weight: 600;
+      }
+      .sim-controls button.ghost {
+        background: #fff;
+        color: #f7941d;
+        border: 1px solid #f7941d;
+      }
+      .sim-products {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      .sim-product {
+        display: grid;
+        grid-template-columns: 68px 1fr;
+        gap: 8px;
+        align-items: center;
+        border: 1px solid #ececec;
+        border-radius: 8px;
+        padding: 6px;
+      }
+      .sim-product img {
+        width: 68px;
+        height: 68px;
+        object-fit: contain;
+        background: #fafafa;
+        border-radius: 6px;
+      }
+      .sim-product button {
+        margin-top: 4px;
+        border: 0;
+        background: #222;
+        color: #fff;
+        border-radius: 6px;
+        padding: 6px 8px;
+        cursor: pointer;
+      }
+      .sim-stage-card { padding: 12px; }
+      .sim-stage-toolbar {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 10px;
+      }
+      .sim-stage-toolbar button {
+        border: 1px solid #ddd;
+        background: #fff;
+        padding: 8px 10px;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      .sim-stage {
+        position: relative;
+        width: 100%;
+        min-height: 70vh;
+        background: linear-gradient(180deg,#f7f7f7 0%,#efefef 100%);
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px dashed #ccc;
+        touch-action: none;
+      }
+      .sim-stage.has-bg {
+        background-size: cover;
+        background-position: center;
+      }
+      .sim-item {
+        position: absolute;
+        width: 140px;
+        height: 140px;
+        user-select: none;
+        cursor: grab;
+      }
+      .sim-item.selected { outline: 2px solid #f7941d; }
+      .sim-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        pointer-events: none;
+      }
+      .sim-item .resize {
+        position: absolute;
+        right: -8px;
+        bottom: -8px;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        border: 2px solid #fff;
+        background: #f7941d;
+        cursor: nwse-resize;
+      }
+      .sim-item .rotate-btn {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        border: 2px solid #fff;
+        background: rgba(34, 34, 34, 0.85);
+        color: #fff;
+        font-size: 16px;
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+      }
+      .sim-help { font-size: .9rem; color: #666; margin-top: 8px; }
+      @media (max-width: 1024px) {
+        .sim-layout { grid-template-columns: 1fr; }
+        .sim-panel { max-height: none; }
+        .sim-stage { min-height: 58vh; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <div class="header-top">
+          <div class="header-top-left">
+            <img src="../images/callPhone.png" alt="Telefone" />
+            <a href="https://wa.me/5551996034579" style="color: white; text-decoration: none;">Ligue agora +55 (51) 99603-4579</a>
+          </div>
+        </div>
+
+        <div class="header-main">
+          <div class="header-logo">
+            <a href="../index.html" style="text-decoration: none;">
+              <img src="../images/72739814197.png" alt="Expositores Bueno" />
+            </a>
+          </div>
+          <div class="header-user-auth" data-auth-user-menu></div>
+        </div>
+
+        <nav class="header-nav">
+          <ul>
+            <li><a href="../index.html">INÍCIO</a></li>
+            <li><a href="../pages/projetos3D.html">PROJETOS 3D</a></li>
+            <li><a href="../pages/instalacoes.html">INSTALAÇÕES</a></li>
+            <li><a href="../pages/avaliacoes.html">AVALIAÇÕES</a></li>
+            <li><a href="../pages/nossa-loja.html">NOSSA LOJA</a></li>
+            <li><a href="./visualizador-ar.html" style="color:#F7941D;font-weight:700;">✦ SIMULADOR</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main class="simulador-wrap">
+        <h1 class="simulador-title">Simulador de Ambientes</h1>
+        <p class="simulador-subtitle">Seu ambiente, do seu jeito. Arraste, redimensione e planeje seu layout ideal de forma simples e rápida.</p>
+
+        <div class="sim-layout">
+          <aside class="sim-panel">
+            <h2>1) Fundo do ambiente</h2>
+            <div class="sim-controls">
+              <input id="bg-upload" type="file" accept="image/*" />
+              <button id="remove-bg" class="ghost" type="button">Remover fundo</button>
+            </div>
+
+            <h2>2) Buscar produtos</h2>
+            <div class="sim-controls">
+              <input id="search" type="text" placeholder="Buscar por nome..." />
+              <select id="category-filter">
+                <option value="">Todas as categorias</option>
+              </select>
+            </div>
+
+            <h2>3) Adicionar ao ambiente</h2>
+            <div id="products" class="sim-products" aria-live="polite"></div>
+          </aside>
+
+          <section class="sim-stage-card">
+            <div class="sim-stage-toolbar">
+              <button id="bring-front" type="button">Trazer p/ frente</button>
+              <button id="send-back" type="button">Enviar p/ trás</button>
+              <button id="duplicate" type="button">Duplicar</button>
+              <button id="delete-item" type="button">Excluir selecionado</button>
+              <button id="clear-stage" type="button">Limpar ambiente</button>
+            </div>
+
+            <div id="stage" class="sim-stage" aria-label="Área do simulador"></div>
+            <p class="sim-help">Dica: clique em um item para selecionar. Arraste para mover e use o círculo laranja para redimensionar.</p>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <script src="../scripts/auth.js"></script>
+    <script src="../scripts/index.js"></script>
+    <script src="../scripts/performance.min.js" defer></script>
+    <script>
+      (function () {
+        const DATA_URL = '../dados/produtos.json';
+        const NO_BG_BASE = '../assets/fotos-sem-fundo';
+
+        const stage = document.getElementById('stage');
+        const productsEl = document.getElementById('products');
+        const searchEl = document.getElementById('search');
+        const categoryEl = document.getElementById('category-filter');
+        const bgUpload = document.getElementById('bg-upload');
+        const removeBgBtn = document.getElementById('remove-bg');
+
+        const btnBringFront = document.getElementById('bring-front');
+        const btnSendBack = document.getElementById('send-back');
+        const btnDuplicate = document.getElementById('duplicate');
+        const btnDelete = document.getElementById('delete-item');
+        const btnClear = document.getElementById('clear-stage');
+
+        let allProducts = [];
+        let selectedItem = null;
+        let zCounter = 2;
+
+        function normalizePath(path) {
+          if (!path) return '';
+          if (path.startsWith('./')) return `..${path.slice(1)}`;
+          if (path.startsWith('/')) return `..${path}`;
+          if (path.startsWith('../')) return path;
+          return `../${path}`;
+        }
+
+        function resolveImageById(product) {
+          const fallback = normalizePath(product.img || (product.galeria && product.galeria[0]) || '');
+          const nobg = `${NO_BG_BASE}/${product.id}.png`;
+          return { nobg, fallback };
+        }
+
+        function buildCategoryFilter(products) {
+          const set = new Set();
+          products.forEach(p => (p.categoria || []).forEach(c => set.add(c)));
+          const cats = [...set].sort((a,b) => a.localeCompare(b, 'pt-BR'));
+          for (const c of cats) {
+            const opt = document.createElement('option');
+            opt.value = c;
+            opt.textContent = c;
+            categoryEl.appendChild(opt);
+          }
+        }
+
+        function fmtPrice(v) {
+          return Number(v || 0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        }
+
+        async function imageSrcWithFallback(product) {
+          const { nobg, fallback } = resolveImageById(product);
+          return new Promise((resolve) => {
+            const testImg = new Image();
+            testImg.onload = () => resolve(nobg);
+            testImg.onerror = () => resolve(fallback);
+            testImg.src = nobg;
+          });
+        }
+
+        function renderProducts() {
+          const query = searchEl.value.trim().toLowerCase();
+          const cat = categoryEl.value;
+
+          const filtered = allProducts.filter(p => {
+            const byName = !query || (p.nome || '').toLowerCase().includes(query);
+            const byCat = !cat || (p.categoria || []).includes(cat);
+            return byName && byCat;
+          });
+
+          productsEl.innerHTML = '';
+
+          if (!filtered.length) {
+            productsEl.innerHTML = '<p>Nenhum produto encontrado.</p>';
+            return;
+          }
+
+          filtered.slice(0, 80).forEach(async (product) => {
+            const card = document.createElement('article');
+            card.className = 'sim-product';
+
+            const img = document.createElement('img');
+            img.alt = product.nome || `Produto ${product.id}`;
+            img.loading = 'lazy';
+            img.src = await imageSrcWithFallback(product);
+
+            const info = document.createElement('div');
+            const title = document.createElement('strong');
+            title.textContent = product.nome || `Produto ${product.id}`;
+            const meta = document.createElement('div');
+            meta.style.fontSize = '.85rem';
+            meta.style.color = '#555';
+            meta.textContent = `${fmtPrice(product.preco)} • ID ${product.id}`;
+            const addBtn = document.createElement('button');
+            addBtn.type = 'button';
+            addBtn.textContent = 'Adicionar';
+            addBtn.addEventListener('click', () => addProductToStage(product, img.src));
+
+            info.appendChild(title);
+            info.appendChild(meta);
+            info.appendChild(addBtn);
+            card.appendChild(img);
+            card.appendChild(info);
+            productsEl.appendChild(card);
+          });
+        }
+
+        function clearSelection() {
+          if (selectedItem) selectedItem.classList.remove('selected');
+          selectedItem = null;
+        }
+
+        function selectItem(el) {
+          clearSelection();
+          selectedItem = el;
+          selectedItem.classList.add('selected');
+        }
+
+        function addProductToStage(product, src) {
+          const item = document.createElement('div');
+          item.className = 'sim-item';
+          item.style.left = '20px';
+          item.style.top = '20px';
+          item.style.width = '140px';
+          item.style.height = '140px';
+          item.style.zIndex = String(++zCounter);
+          item.dataset.productId = String(product.id);
+          item.dataset.productName = product.nome || '';
+
+          const img = document.createElement('img');
+          img.src = src;
+          img.alt = product.nome || '';
+
+          const resize = document.createElement('span');
+          resize.className = 'resize';
+          const rotateBtn = document.createElement('button');
+          rotateBtn.className = 'rotate-btn';
+          rotateBtn.type = 'button';
+          rotateBtn.setAttribute('aria-label', 'Girar imagem');
+          rotateBtn.title = 'Girar imagem';
+          rotateBtn.textContent = '⟳';
+
+          item.appendChild(img);
+          item.appendChild(rotateBtn);
+          item.appendChild(resize);
+          stage.appendChild(item);
+
+          enableMoveAndResize(item, resize, rotateBtn);
+          selectItem(item);
+        }
+
+        function clamp(val, min, max) {
+          return Math.min(max, Math.max(min, val));
+        }
+
+        function enableMoveAndResize(item, resizeHandle, rotateBtn) {
+          let mode = null;
+          let startX = 0;
+          let startY = 0;
+          let startLeft = 0;
+          let startTop = 0;
+          let startW = 0;
+          let startH = 0;
+
+          const onDownMove = (e) => {
+            if (e.target === resizeHandle) return;
+            selectItem(item);
+            mode = 'move';
+            item.style.zIndex = String(++zCounter);
+
+            const rect = item.getBoundingClientRect();
+            const stageRect = stage.getBoundingClientRect();
+
+            startX = (e.touches ? e.touches[0].clientX : e.clientX);
+            startY = (e.touches ? e.touches[0].clientY : e.clientY);
+            startLeft = rect.left - stageRect.left;
+            startTop = rect.top - stageRect.top;
+          };
+
+          const onDownResize = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            selectItem(item);
+            mode = 'resize';
+            item.style.zIndex = String(++zCounter);
+
+            startX = (e.touches ? e.touches[0].clientX : e.clientX);
+            startY = (e.touches ? e.touches[0].clientY : e.clientY);
+            startW = item.offsetWidth;
+            startH = item.offsetHeight;
+          };
+
+          const onRotate = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            selectItem(item);
+            const current = Number(item.dataset.rotation || 0);
+            const next = current + 15;
+            item.dataset.rotation = String(next);
+            item.style.transform = `rotate(${next}deg)`;
+          };
+
+          const onMove = (e) => {
+            if (!mode) return;
+            const x = (e.touches ? e.touches[0].clientX : e.clientX);
+            const y = (e.touches ? e.touches[0].clientY : e.clientY);
+            const dx = x - startX;
+            const dy = y - startY;
+            const stageRect = stage.getBoundingClientRect();
+
+            if (mode === 'move') {
+              const newLeft = clamp(startLeft + dx, 0, stage.clientWidth - item.offsetWidth);
+              const newTop = clamp(startTop + dy, 0, stage.clientHeight - item.offsetHeight);
+              item.style.left = `${newLeft}px`;
+              item.style.top = `${newTop}px`;
+            } else if (mode === 'resize') {
+              const ratio = startW / startH || 1;
+              let newW = clamp(startW + dx, 60, stageRect.width);
+              let newH = newW / ratio;
+              if (newH > stageRect.height) {
+                newH = stageRect.height;
+                newW = newH * ratio;
+              }
+              item.style.width = `${newW}px`;
+              item.style.height = `${newH}px`;
+            }
+          };
+
+          const onUp = () => { mode = null; };
+
+          item.addEventListener('mousedown', onDownMove);
+          item.addEventListener('touchstart', onDownMove, { passive: true });
+          resizeHandle.addEventListener('mousedown', onDownResize);
+          resizeHandle.addEventListener('touchstart', onDownResize, { passive: false });
+          rotateBtn.addEventListener('click', onRotate);
+          rotateBtn.addEventListener('touchstart', onRotate, { passive: false });
+
+          window.addEventListener('mousemove', onMove);
+          window.addEventListener('touchmove', onMove, { passive: false });
+          window.addEventListener('mouseup', onUp);
+          window.addEventListener('touchend', onUp);
+
+          item.addEventListener('click', (e) => {
+            e.stopPropagation();
+            selectItem(item);
+          });
+        }
+
+        stage.addEventListener('click', () => clearSelection());
+
+        btnBringFront.addEventListener('click', () => {
+          if (!selectedItem) return;
+          selectedItem.style.zIndex = String(++zCounter);
+        });
+
+        btnSendBack.addEventListener('click', () => {
+          if (!selectedItem) return;
+          selectedItem.style.zIndex = '1';
+        });
+
+        btnDuplicate.addEventListener('click', () => {
+          if (!selectedItem) return;
+          const clone = selectedItem.cloneNode(true);
+          clone.style.left = `${parseInt(selectedItem.style.left || '0', 10) + 20}px`;
+          clone.style.top = `${parseInt(selectedItem.style.top || '0', 10) + 20}px`;
+          clone.style.zIndex = String(++zCounter);
+          stage.appendChild(clone);
+          const resize = clone.querySelector('.resize');
+          const rotateBtn = clone.querySelector('.rotate-btn');
+          enableMoveAndResize(clone, resize, rotateBtn);
+          selectItem(clone);
+        });
+
+        btnDelete.addEventListener('click', () => {
+          if (!selectedItem) return;
+          selectedItem.remove();
+          selectedItem = null;
+        });
+
+        btnClear.addEventListener('click', () => {
+          stage.querySelectorAll('.sim-item').forEach(el => el.remove());
+          selectedItem = null;
+        });
+
+        bgUpload.addEventListener('change', (e) => {
+          const file = e.target.files && e.target.files[0];
+          if (!file) return;
+          const reader = new FileReader();
+          reader.onload = () => {
+            stage.style.backgroundImage = `url('${reader.result}')`;
+            stage.classList.add('has-bg');
+          };
+          reader.readAsDataURL(file);
+        });
+
+        removeBgBtn.addEventListener('click', () => {
+          stage.style.backgroundImage = '';
+          stage.classList.remove('has-bg');
+          bgUpload.value = '';
+        });
+
+        searchEl.addEventListener('input', renderProducts);
+        categoryEl.addEventListener('change', renderProducts);
+
+        fetch(DATA_URL)
+          .then((r) => r.json())
+          .then((data) => {
+            allProducts = Array.isArray(data) ? data : [];
+            buildCategoryFilter(allProducts);
+            renderProducts();
+          })
+          .catch(() => {
+            productsEl.innerHTML = '<p>Não foi possível carregar os produtos agora.</p>';
+          });
+      })();
+    </script>
+  </body>
+</html>
