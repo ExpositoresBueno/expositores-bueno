@@ -415,24 +415,29 @@ select, input {
   color: #22344b;
 }
 
-.frete-cidades-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 8px;
-}
-
-.frete-cidade-btn {
+.frete-cidades-busca {
+  margin-bottom: 8px;
   border: 1px solid #ccd8e8;
   border-radius: 8px;
-  background: #f6faff;
-  color: #1b3b62;
   padding: 8px 10px;
-  font-size: 0.88rem;
-  font-weight: 600;
-  cursor: pointer;
-  text-align: left;
 }
 
-.frete-cidade-btn:hover {
-  background: #eaf4ff;
+.frete-cidades-select {
+  width: 100%;
+  border: 1px solid #ccd8e8;
+  border-radius: 8px;
+  padding: 0;
+  background: #f9fbff;
+}
+
+.frete-cidades-select option {
+  padding: 8px 10px;
+  font-size: 0.9rem;
+  color: #1b3b62;
+}
+
+.frete-cidades-dica {
+  margin: 8px 0 0;
+  font-size: 0.82rem;
+  color: #5a6f86;
 }
