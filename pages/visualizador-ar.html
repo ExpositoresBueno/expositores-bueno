@@ -426,22 +426,43 @@
           stage.classList.remove('has-bg');
           bgUpload.value = '';
 
+          const constraintsList = [
+            { video: { facingMode: { exact: 'environment' } }, audio: false },
+            { video: { facingMode: { ideal: 'environment' } }, audio: false },
+            { video: true, audio: false }
+          ];
+
           try {
-            cameraStream = await navigator.mediaDevices.getUserMedia({
-              video: {
-                facingMode: { ideal: 'environment' }
-              },
-              audio: false
-            });
+            for (const constraints of constraintsList) {
+              try {
+                cameraStream = await navigator.mediaDevices.getUserMedia(constraints);
+                break;
+              } catch (err) {
+                cameraStream = null;
+              }
+            }
+
+            if (!cameraStream) {
+              throw new Error('STREAM_NOT_AVAILABLE');
+            }
 
             cameraVideoEl = document.createElement('video');
             cameraVideoEl.className = 'sim-camera-feed';
             cameraVideoEl.autoplay = true;
             cameraVideoEl.muted = true;
             cameraVideoEl.playsInline = true;
+            cameraVideoEl.setAttribute('playsinline', 'true');
             cameraVideoEl.srcObject = cameraStream;
             stage.prepend(cameraVideoEl);
+
+            await new Promise((resolve) => {
+              cameraVideoEl.onloadedmetadata = () => resolve();
+              setTimeout(resolve, 1200);
+            });
+
+            await cameraVideoEl.play();
           } catch (error) {
+            stopCamera();
             cameraStream = null;
             alert('Não foi possível acessar a câmera. Verifique as permissões do navegador.');
           }
