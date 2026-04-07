@@ -137,6 +137,22 @@
         background: #f7941d;
         cursor: nwse-resize;
       }
+      .sim-item .rotate-btn {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        border: 2px solid #fff;
+        background: rgba(34, 34, 34, 0.85);
+        color: #fff;
+        font-size: 16px;
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+      }
       .sim-help { font-size: .9rem; color: #666; margin-top: 8px; }
       @media (max-width: 1024px) {
         .sim-layout { grid-template-columns: 1fr; }
@@ -178,7 +194,7 @@
 
       <main class="simulador-wrap">
         <h1 class="simulador-title">Simulador de Ambientes</h1>
-        <p class="simulador-subtitle">Adicione produtos, arraste, redimensione e monte seu ambiente. Imagem sem fundo: <code>assets/fotos-sem-fundo/{id}.png</code> com fallback automático.</p>
+        <p class="simulador-subtitle">Seu ambiente, do seu jeito. Arraste, redimensione e planeje seu layout ideal de forma simples e rápida.</p>
 
         <div class="sim-layout">
           <aside class="sim-panel">
@@ -356,12 +372,19 @@
 
           const resize = document.createElement('span');
           resize.className = 'resize';
+          const rotateBtn = document.createElement('button');
+          rotateBtn.className = 'rotate-btn';
+          rotateBtn.type = 'button';
+          rotateBtn.setAttribute('aria-label', 'Girar imagem');
+          rotateBtn.title = 'Girar imagem';
+          rotateBtn.textContent = '⟳';
 
           item.appendChild(img);
+          item.appendChild(rotateBtn);
           item.appendChild(resize);
           stage.appendChild(item);
 
-          enableMoveAndResize(item, resize);
+          enableMoveAndResize(item, resize, rotateBtn);
           selectItem(item);
         }
 
@@ -369,7 +392,7 @@
           return Math.min(max, Math.max(min, val));
         }
 
-        function enableMoveAndResize(item, resizeHandle) {
+        function enableMoveAndResize(item, resizeHandle, rotateBtn) {
           let mode = null;
           let startX = 0;
           let startY = 0;
@@ -406,6 +429,16 @@
             startH = item.offsetHeight;
           };
 
+          const onRotate = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            selectItem(item);
+            const current = Number(item.dataset.rotation || 0);
+            const next = current + 15;
+            item.dataset.rotation = String(next);
+            item.style.transform = `rotate(${next}deg)`;
+          };
+
           const onMove = (e) => {
             if (!mode) return;
             const x = (e.touches ? e.touches[0].clientX : e.clientX);
@@ -438,6 +471,8 @@
           item.addEventListener('touchstart', onDownMove, { passive: true });
           resizeHandle.addEventListener('mousedown', onDownResize);
           resizeHandle.addEventListener('touchstart', onDownResize, { passive: false });
+          rotateBtn.addEventListener('click', onRotate);
+          rotateBtn.addEventListener('touchstart', onRotate, { passive: false });
 
           window.addEventListener('mousemove', onMove);
           window.addEventListener('touchmove', onMove, { passive: false });
@@ -470,7 +505,8 @@
           clone.style.zIndex = String(++zCounter);
           stage.appendChild(clone);
           const resize = clone.querySelector('.resize');
-          enableMoveAndResize(clone, resize);
+          const rotateBtn = clone.querySelector('.rotate-btn');
+          enableMoveAndResize(clone, resize, rotateBtn);
           selectItem(clone);
         });
 
