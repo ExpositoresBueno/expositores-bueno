@@ -2757,32 +2757,41 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14px;
+  justify-content: center;
+  gap: 10px;
   font-size: 24px;
-  border: none;
-  background: transparent;
+  border: 1px solid #cfd9e6;
+  background: #f3f6fa;
+  border-radius: 12px;
   cursor: pointer;
-  padding: 4px 0;
+  padding: 14px 12px;
   flex: 0 0 calc((100% - 90px) / 6);
   min-width: 140px;
+  min-height: 126px;
+  transition: border-color .2s ease, background-color .2s ease, transform .2s ease;
 }
 
 .segment-icon {
-  width: 108px;
-  height: 108px;
-  border-radius: 999px;
+  width: auto;
+  height: auto;
+  border-radius: 0;
   background: transparent;
   border: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   color: #111827;
-  transition: transform .2s ease, box-shadow .2s ease;
+  transition: transform .2s ease;
+}
+
+.segment-item:hover {
+  border-color: #afc1d8;
+  background: #edf2f8;
+  transform: translateY(-2px);
 }
 
 .segment-item:hover .segment-icon {
-  transform: translateY(-2px);
-  box-shadow: none;
+  transform: none;
 }
 
 .segment-label {
