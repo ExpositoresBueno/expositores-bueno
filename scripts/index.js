@@ -325,16 +325,34 @@ function renderizarPromocoes(listaProdutos) {
     ? "./productDetails.html"
     : "./pages/productDetails.html";
 
-  // Preencha com IDs de produtos em promoção quando a lista estiver disponível.
-  const idsPromocionais = [];
-  const promocoes = idsPromocionais.length
-    ? listaProdutos.filter((prod) => idsPromocionais.includes(prod.id))
-    : listaProdutos.slice(0, 8);
+  const promocoesConfiguradas = [
+    { id: 35, precoPromocional: 699 },
+    { id: 40, precoPromocional: 699 },
+    { id: 2, precoPromocional: 799 },
+    { id: 58, precoPromocional: 799 },
+    { id: 57, precoPromocional: 2900 },
+    { id: 68, precoPromocional: 749 },
+  ];
+
+  const produtosPorId = new Map(listaProdutos.map((produto) => [produto.id, produto]));
+  const promocoes = promocoesConfiguradas
+    .map((config) => {
+      const produto = produtosPorId.get(config.id);
+      if (!produto) return null;
+
+      return {
+        ...produto,
+        precoOriginal: Number(produto.preco) || 0,
+        precoPromocional: Number(config.precoPromocional) || 0,
+      };
+    })
+    .filter(Boolean);
 
   promoTrack.innerHTML = promocoes
     .map((prod) => {
       const imgPath = isPaginaInterna ? prod.img.replace("./", "../") : prod.img;
-      const precoOriginal = Number(prod.preco) || 0;
+      const precoOriginal = Number(prod.precoOriginal) || 0;
+      const precoPromocional = Number(prod.precoPromocional) || 0;
       const nomeProduto = prod.nome || "Produto";
       const nomeCurto = nomeProduto.slice(0, 58);
 
@@ -342,7 +360,8 @@ function renderizarPromocoes(listaProdutos) {
         <a class="promo-card" href="${destinoDetalheBase}?id=${prod.id}" aria-label="Ver promoção de ${nomeProduto}">
           <img src="${imgPath}" alt="${nomeProduto}" loading="lazy" decoding="async">
           <h3>${nomeCurto}</h3>
-          <p class="promo-price">${formatarMoedaBR(precoOriginal)}</p>
+          <p class="promo-price-from">de ${formatarMoedaBR(precoOriginal)}</p>
+          <p class="promo-price">${formatarMoedaBR(precoPromocional || precoOriginal)}</p>
         </a>
       `;
     })
@@ -393,6 +412,28 @@ function renderizarPromocoes(listaProdutos) {
   promoTrack.addEventListener("mouseenter", pararAutoplay);
   promoTrack.addEventListener("mouseleave", iniciarAutoplay);
   iniciarAutoplay();
+}
+
+function inicializarCarrosselSegmentos() {
+  const segmentTrack = document.querySelector(".segment-track");
+  const prevBtn = document.querySelector(".segment-prev");
+  const nextBtn = document.querySelector(".segment-next");
+
+  if (!segmentTrack) return;
+
+  const scrollAmount = 260;
+
+  if (prevBtn) {
+    prevBtn.onclick = () => {
+      segmentTrack.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+    };
+  }
+
+  if (nextBtn) {
+    nextBtn.onclick = () => {
+      segmentTrack.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    };
+  }
 }
 
 function renderizarProdutos(lista) {
@@ -873,6 +914,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   carregarCatalogo();
+  inicializarCarrosselSegmentos();
 
   // --- LÓGICA DO MENU DROPDOWN (MAIS VENDIDOS) ---
   document.querySelectorAll(".dropdown-menu a").forEach((link) => {

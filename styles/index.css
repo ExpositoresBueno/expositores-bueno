@@ -2715,23 +2715,24 @@ img {
 .segment-showcase {
   max-width: 1200px;
   margin: 18px auto 34px;
-  padding: 26px 20px 30px;
-  background: #f3f3f3;
+  padding: 10px 4px 14px;
+  background: transparent;
   border-radius: 16px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 48px 1fr 48px;
   align-items: center;
-  justify-content: center;
   gap: 18px;
 }
 
 .segment-nav {
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   border: none;
-  background: transparent;
-  color: #9ca3af;
-  font-size: 38px;
-  cursor: default;
+  border-radius: 999px;
+  background: #eceff3;
+  color: #6b7280;
+  font-size: 24px;
+  cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -2739,11 +2740,15 @@ img {
 }
 
 .segment-track {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(100px, 1fr));
-  gap: 22px;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 18px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
   width: 100%;
-  max-width: 980px;
+  max-width: 100%;
+  padding: 8px 2px;
+  scrollbar-width: none;
 }
 
 .segment-item {
@@ -2753,19 +2758,21 @@ img {
   flex-direction: column;
   align-items: center;
   gap: 14px;
-  font-size: 26px;
+  font-size: 24px;
   border: none;
   background: transparent;
   cursor: pointer;
-  padding: 0;
+  padding: 4px 0;
+  flex: 0 0 calc((100% - 90px) / 6);
+  min-width: 140px;
 }
 
 .segment-icon {
-  width: 124px;
-  height: 124px;
+  width: 108px;
+  height: 108px;
   border-radius: 999px;
-  background: #ebebeb;
-  border: 1px solid #e2e2e2;
+  background: transparent;
+  border: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -2775,7 +2782,7 @@ img {
 
 .segment-item:hover .segment-icon {
   transform: translateY(-2px);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+  box-shadow: none;
 }
 
 .segment-label {
@@ -2784,34 +2791,40 @@ img {
   text-align: center;
 }
 
+.segment-track::-webkit-scrollbar { display: none; }
+
 @media (max-width: 1100px) {
   .segment-showcase {
-    padding: 22px 14px;
+    padding: 8px 0 12px;
     gap: 10px;
   }
 
   .segment-track {
-    grid-template-columns: repeat(3, minmax(100px, 1fr));
+    gap: 14px;
   }
 
-  .segment-nav {
-    display: none;
+  .segment-item {
+    min-width: 120px;
   }
 }
 
 @media (max-width: 640px) {
-  .segment-track {
-    grid-template-columns: repeat(2, minmax(100px, 1fr));
-    gap: 16px;
-  }
+  .segment-showcase { grid-template-columns: 1fr; }
+  .segment-nav { display: none; }
+  .segment-track { gap: 12px; }
 
   .segment-icon {
-    width: 98px;
-    height: 98px;
+    width: 72px;
+    height: 72px;
   }
 
   .segment-label {
     font-size: 18px;
+  }
+
+  .segment-item {
+    flex: 0 0 42vw;
+    min-width: 140px;
   }
 }
 
@@ -2826,11 +2839,21 @@ img {
 
 .promo-header h2 {
   margin: 0 0 14px;
-  font-size: 38px;
-  color: #122a43;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
 }
 
-.promo-header h2 span {
+.promo-title-main {
+  font-size: 46px;
+  font-weight: 800;
+  color: #f7941d;
+  line-height: 1;
+}
+
+.promo-title-sub {
   font-size: 28px;
   font-weight: 500;
   color: #334155;
@@ -2896,10 +2919,17 @@ img {
   font-weight: 700;
 }
 
+.promo-price-from {
+  margin: 8px 0 0;
+  font-size: 16px;
+  color: #6b7280;
+  text-decoration: line-through;
+}
+
 @media (max-width: 768px) {
   .promo-showcase { padding: 8px 12px 12px; }
-  .promo-header h2 { font-size: 30px; }
-  .promo-header h2 span { display: block; font-size: 20px; }
+  .promo-title-main { font-size: 34px; }
+  .promo-title-sub { font-size: 20px; }
   .promo-carousel { grid-template-columns: 1fr; }
   .promo-nav { display: none; }
   .promo-track { gap: 12px; }
