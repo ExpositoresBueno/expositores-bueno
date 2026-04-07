@@ -308,10 +308,62 @@ async function carregarCatalogo() {
     if (!resposta.ok) throw new Error("Arquivo JSON não encontrado!");
 
     produtos = await resposta.json();
+    renderizarPromocoes(produtos);
     inicializarFiltrosAvancados();
     aplicarFiltros();
   } catch (erro) {
     console.error("Falha ao carregar o catálogo:", erro);
+  }
+}
+
+function renderizarPromocoes(listaProdutos) {
+  const promoTrack = document.getElementById("promo-track");
+  if (!promoTrack || !Array.isArray(listaProdutos) || listaProdutos.length === 0) return;
+
+  const isPaginaInterna = window.location.pathname.includes("/pages/");
+  const destinoDetalheBase = isPaginaInterna
+    ? "./productDetails.html"
+    : "./pages/productDetails.html";
+
+  // Preencha com IDs de produtos em promoção quando a lista estiver disponível.
+  const idsPromocionais = [];
+  const promocoes = idsPromocionais.length
+    ? listaProdutos.filter((prod) => idsPromocionais.includes(prod.id))
+    : listaProdutos.slice(0, 8);
+
+  promoTrack.innerHTML = promocoes
+    .map((prod) => {
+      const imgPath = isPaginaInterna ? prod.img.replace("./", "../") : prod.img;
+      const precoOriginal = Number(prod.preco) || 0;
+      const precoPromo = Math.max(precoOriginal * 0.9, 0);
+      const nomeProduto = prod.nome || "Produto";
+      const nomeCurto = nomeProduto.slice(0, 58);
+
+      return `
+        <a class="promo-card" href="${destinoDetalheBase}?id=${prod.id}" aria-label="Ver promoção de ${nomeProduto}">
+          <img src="${imgPath}" alt="${nomeProduto}" loading="lazy" decoding="async">
+          <h3>${nomeCurto}</h3>
+          <p class="promo-old-price">${formatarMoedaBR(precoOriginal)}</p>
+          <p class="promo-price">${formatarMoedaBR(precoPromo)}</p>
+        </a>
+      `;
+    })
+    .join("");
+
+  const prevBtn = document.querySelector(".promo-prev");
+  const nextBtn = document.querySelector(".promo-next");
+  const scrollAmount = 260;
+
+  if (prevBtn) {
+    prevBtn.onclick = () => {
+      promoTrack.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+    };
+  }
+
+  if (nextBtn) {
+    nextBtn.onclick = () => {
+      promoTrack.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    };
   }
 }
 
@@ -864,7 +916,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // --- RECONECTANDO SEUS FILTROS ORIGINAIS ---
   document
-    .querySelectorAll(".filter-list li, .category-card")
+    .querySelectorAll(".filter-list li, .category-card, .segment-item[data-category]")
     .forEach((item) => {
       item.addEventListener("click", () => {
         const cat =
