@@ -78,6 +78,17 @@
   text-align: center;
 }
 
+.monte-hero {
+  background: var(--tech-gradient);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.monte-hero h1,
+.monte-hero .monte-description {
+  color: #ffffff;
+}
+
 .gallery-lightbox {
   position: fixed;
   inset: 0;

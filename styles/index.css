@@ -2708,3 +2708,107 @@ img {
   gap: 24px;
   width: 100%;
 }
+
+/* ==========================================================================
+   TEMA GLOBAL - VISUAL TECNOLÓGICO (AZUL + DOURADO)
+   ========================================================================== */
+:root {
+  --tech-bg: #e9edf3;
+  --tech-surface: #f8fbff;
+  --tech-panel: #ffffff;
+  --tech-text: #162538;
+  --tech-muted: #5f7086;
+  --tech-border: #d7e0ea;
+  --tech-blue-strong: #216fa3;
+  --tech-blue: #2e8bc6;
+  --tech-gold: #f6b35b;
+  --tech-gradient: linear-gradient(120deg, #2f7ea8 0%, #6caac8 48%, #f1bb6e 100%);
+}
+
+body {
+  background: radial-gradient(circle at 8% 0%, #f4f8fc 0%, var(--tech-bg) 45%, #e3e9f0 100%);
+  color: var(--tech-text);
+}
+
+.header-top,
+.header-main,
+.header-nav {
+  background: var(--tech-gradient);
+}
+
+.header-nav {
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  border-bottom: 1px solid rgba(13, 33, 58, 0.12);
+}
+
+.header-nav ul > li > a,
+.header-top a,
+.header-top {
+  color: #f7fbff !important;
+}
+
+.header-main {
+  box-shadow: 0 18px 30px rgba(26, 54, 86, 0.12);
+}
+
+.header-search input,
+.header-search select,
+.header-search button,
+.search-suggestions,
+.filters-sidebar,
+.product-card,
+.category-card,
+.trust-seal-item,
+.breadcrumb,
+.footer-container,
+.header-user-dropdown {
+  background: var(--tech-panel);
+  border: 1px solid var(--tech-border);
+  box-shadow: 0 10px 24px rgba(27, 56, 86, 0.07);
+}
+
+.brand-showcase,
+.brand-showcase-content,
+.hero,
+.hero-section {
+  background: var(--tech-gradient);
+  color: #fff;
+  border-radius: 16px;
+}
+
+.brand-badge,
+.reviews-badge,
+.store-badge {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.34);
+}
+
+.brand-cta,
+.checkout-btn,
+button,
+.route-btn,
+.reviews-button {
+  background: linear-gradient(115deg, var(--tech-blue-strong), var(--tech-blue) 55%, var(--tech-gold));
+  color: #fff;
+  border: none;
+}
+
+a:hover,
+.header-nav a.active,
+.filter-item.active,
+.category-card a,
+.brand-copy h1 + p {
+  color: var(--tech-blue-strong);
+}
+
+.card-blue,
+.card-orange {
+  background: linear-gradient(140deg, #ffffff 0%, #f5f9fe 60%, #f9f3ea 100%);
+}
+
+.product-info p,
+.rating-note,
+.monte-description,
+.store-hero p {
+  color: var(--tech-muted);
+}
