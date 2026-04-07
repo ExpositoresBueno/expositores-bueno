@@ -2855,8 +2855,8 @@ img {
 }
 
 .promo-track {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(220px, 1fr));
+  display: flex;
+  flex-wrap: nowrap;
   gap: 16px;
   overflow-x: auto;
   scroll-behavior: smooth;
@@ -2873,6 +2873,7 @@ img {
   padding: 12px;
   text-decoration: none;
   color: #1f2937;
+  flex: 0 0 calc((100% - 48px) / 4);
   min-width: 220px;
 }
 
@@ -2888,13 +2889,6 @@ img {
   margin: 8px 0;
 }
 
-.promo-old-price {
-  margin: 0;
-  color: #6b7280;
-  text-decoration: line-through;
-  font-size: 14px;
-}
-
 .promo-price {
   margin: 4px 0 0;
   font-size: 28px;
@@ -2908,7 +2902,11 @@ img {
   .promo-header h2 span { display: block; font-size: 20px; }
   .promo-carousel { grid-template-columns: 1fr; }
   .promo-nav { display: none; }
-  .promo-track { grid-template-columns: repeat(4, minmax(180px, 80vw)); }
+  .promo-track { gap: 12px; }
+  .promo-card {
+    flex: 0 0 80vw;
+    min-width: 180px;
+  }
   .promo-card img { height: 140px; }
   .promo-price { font-size: 24px; }
 }
