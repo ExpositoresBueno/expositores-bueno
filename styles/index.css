@@ -2708,3 +2708,207 @@ img {
   gap: 24px;
   width: 100%;
 }
+
+/* ======================================================================
+   Segmentos (substitui os cards de categoria da home)
+   ====================================================================== */
+.segment-showcase {
+  max-width: 1200px;
+  margin: 18px auto 34px;
+  padding: 26px 20px 30px;
+  background: #f3f3f3;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+
+.segment-nav {
+  width: 42px;
+  height: 42px;
+  border: none;
+  background: transparent;
+  color: #9ca3af;
+  font-size: 38px;
+  cursor: default;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.segment-track {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(100px, 1fr));
+  gap: 22px;
+  width: 100%;
+  max-width: 980px;
+}
+
+.segment-item {
+  text-decoration: none;
+  color: #4b5563;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  font-size: 26px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.segment-icon {
+  width: 124px;
+  height: 124px;
+  border-radius: 999px;
+  background: #ebebeb;
+  border: 1px solid #e2e2e2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #111827;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.segment-item:hover .segment-icon {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+}
+
+.segment-label {
+  font-size: 24px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+@media (max-width: 1100px) {
+  .segment-showcase {
+    padding: 22px 14px;
+    gap: 10px;
+  }
+
+  .segment-track {
+    grid-template-columns: repeat(3, minmax(100px, 1fr));
+  }
+
+  .segment-nav {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .segment-track {
+    grid-template-columns: repeat(2, minmax(100px, 1fr));
+    gap: 16px;
+  }
+
+  .segment-icon {
+    width: 98px;
+    height: 98px;
+  }
+
+  .segment-label {
+    font-size: 18px;
+  }
+}
+
+/* ======================================================================
+   Carrossel de Promoções (home)
+   ====================================================================== */
+.promo-showcase {
+  max-width: 1200px;
+  margin: 0 auto 30px;
+  padding: 8px 20px 10px;
+}
+
+.promo-header h2 {
+  margin: 0 0 14px;
+  font-size: 38px;
+  color: #122a43;
+}
+
+.promo-header h2 span {
+  font-size: 28px;
+  font-weight: 500;
+  color: #334155;
+}
+
+.promo-carousel {
+  display: grid;
+  grid-template-columns: 48px 1fr 48px;
+  align-items: center;
+  gap: 14px;
+}
+
+.promo-nav {
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 999px;
+  background: #eceff3;
+  color: #6b7280;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.promo-track {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(220px, 1fr));
+  gap: 16px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 8px 2px 12px;
+  scrollbar-width: none;
+}
+
+.promo-track::-webkit-scrollbar { display: none; }
+
+.promo-card {
+  background: #fff;
+  border: 1px solid #dbe3ee;
+  border-radius: 12px;
+  padding: 12px;
+  text-decoration: none;
+  color: #1f2937;
+  min-width: 220px;
+}
+
+.promo-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+}
+
+.promo-card h3 {
+  font-size: 18px;
+  min-height: 44px;
+  margin: 8px 0;
+}
+
+.promo-old-price {
+  margin: 0;
+  color: #6b7280;
+  text-decoration: line-through;
+  font-size: 14px;
+}
+
+.promo-price {
+  margin: 4px 0 0;
+  font-size: 28px;
+  color: #111827;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .promo-showcase { padding: 8px 12px 12px; }
+  .promo-header h2 { font-size: 30px; }
+  .promo-header h2 span { display: block; font-size: 20px; }
+  .promo-carousel { grid-template-columns: 1fr; }
+  .promo-nav { display: none; }
+  .promo-track { grid-template-columns: repeat(4, minmax(180px, 80vw)); }
+  .promo-card img { height: 140px; }
+  .promo-price { font-size: 24px; }
+}

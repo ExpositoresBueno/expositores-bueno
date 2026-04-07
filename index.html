@@ -185,41 +185,60 @@ src="https://www.facebook.com/tr?id=1992317484686861&ev=PageView&noscript=1"
           <div class="trust-seal-item"><i class="fa-solid fa-truck-fast"></i><span>Entrega em todo RS</span></div>
         </section>
 
-        <section class="categories-grid">
-          <div class="category-card card-blue" data-category="Balcões">
-            <div class="category-icon"><i class="fa-solid fa-table"></i></div>
-            <h3>BALCÕES</h3>
-            <a href="javascript:void(0)">CLIQUE AQUI <span>→</span></a>
+        <section class="segment-showcase" aria-label="Segmentos atendidos">
+          <button class="segment-nav" type="button" aria-label="Segmento anterior">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+
+          <div class="segment-track">
+            <button class="segment-item" type="button" data-category="Balcões">
+              <span class="segment-icon"><i class="fa-solid fa-table"></i></span>
+              <span class="segment-label">Balcões</span>
+            </button>
+
+            <button class="segment-item" type="button" data-category="Armários Vestiários">
+              <span class="segment-icon"><i class="fa-solid fa-door-closed"></i></span>
+              <span class="segment-label">Armários Vestiários</span>
+            </button>
+
+            <button class="segment-item" type="button" data-category="Kits">
+              <span class="segment-icon"><i class="fa-solid fa-cubes"></i></span>
+              <span class="segment-label">Kits</span>
+            </button>
+
+            <button class="segment-item" type="button" data-category="Araras">
+              <span class="segment-icon"><i class="fa-solid fa-shirt"></i></span>
+              <span class="segment-label">Araras</span>
+            </button>
+
+            <button class="segment-item" type="button" data-category="Gôndolas">
+              <span class="segment-icon"><i class="fa-solid fa-shop"></i></span>
+              <span class="segment-label">Gôndolas</span>
+            </button>
+
+            <button class="segment-item" type="button" data-category="Painel Canaletado">
+              <span class="segment-icon"><i class="fa-solid fa-grip-lines"></i></span>
+              <span class="segment-label">Painel Canaletado</span>
+            </button>
           </div>
 
-          <div class="category-card card-blue" data-category="Armários Vestiários">
-            <div class="category-icon"><i class="fa-solid fa-door-closed"></i></div>
-            <h3>ARMÁRIOS VESTIÁRIOS</h3>
-            <a href="javascript:void(0)">CLIQUE AQUI <span>→</span></a>
-          </div>
+          <button class="segment-nav" type="button" aria-label="Próximo segmento">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </section>
 
-          <div class="category-card card-blue" data-category="Kits">
-            <div class="category-icon"><i class="fa-solid fa-cubes"></i></div>
-            <h3>KITS</h3>
-            <a href="javascript:void(0)">CLIQUE AQUI <span>→</span></a>
+        <section class="promo-showcase" aria-label="Produtos em promoção">
+          <div class="promo-header">
+            <h2>Promoção <span>- Deixe a sua loja pronta para o dia das mães</span></h2>
           </div>
-
-          <div class="category-card card-orange" data-category="Araras">
-            <div class="category-icon"><i class="fa-solid fa-shirt"></i></div>
-            <h3>ARARAS</h3>
-            <a href="javascript:void(0)">CLIQUE AQUI <span>→</span></a>
-          </div>
-
-          <div class="category-card card-orange" data-category="Gôndolas">
-            <div class="category-icon"><i class="fa-solid fa-shop"></i></div>
-            <h3>GÔNDOLAS</h3>
-            <a href="javascript:void(0)">CLIQUE AQUI <span>→</span></a>
-          </div>
-
-          <div class="category-card card-orange" data-category="Painel Canaletado">
-            <div class="category-icon"><i class="fa-solid fa-grip-lines"></i></div>
-            <h3>PAINEL CANALETADO</h3>
-            <a href="javascript:void(0)">CLIQUE AQUI <span>→</span></a>
+          <div class="promo-carousel">
+            <button class="promo-nav promo-prev" type="button" aria-label="Promoções anteriores">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <div class="promo-track" id="promo-track"></div>
+            <button class="promo-nav promo-next" type="button" aria-label="Próximas promoções">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
           </div>
         </section>
 
