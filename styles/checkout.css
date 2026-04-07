@@ -400,3 +400,39 @@ select, input {
 .frete-checkout-resultado.is-error {
   color: #c43a35;
 }
+
+.frete-caminhao-tabela {
+  margin-top: 10px;
+  border: 1px solid #d6deea;
+  border-radius: 10px;
+  background: #fff;
+  padding: 10px;
+}
+
+.frete-caminhao-tabela h4 {
+  margin: 0 0 8px;
+  font-size: 0.9rem;
+  color: #22344b;
+}
+
+.frete-cidades-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 8px;
+}
+
+.frete-cidade-btn {
+  border: 1px solid #ccd8e8;
+  border-radius: 8px;
+  background: #f6faff;
+  color: #1b3b62;
+  padding: 8px 10px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+}
+
+.frete-cidade-btn:hover {
+  background: #eaf4ff;
+}

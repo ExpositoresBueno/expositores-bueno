@@ -24,6 +24,7 @@ const fetchJSON = async (url, init) => {
 };
 
 const carregarDimensoesFrete = async () => fetchJSON('../dados/dimensoes-frete.json');
+const carregarTabelaFreteCaminhao = async () => fetchJSON('../dados/tabela-frete-caminhao.json');
 const getCart = () => JSON.parse(localStorage.getItem('cart') || '[]');
 
 const normalizarCidade = (texto = '') => String(texto || '')
@@ -48,6 +49,27 @@ const chamarFreteProxy = async (payload) => fetchJSON(FRETE_PROXY_URL, {
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify(payload),
 });
+
+const obterFreteCaminhaoCidade = (cidadeInfo) => {
+  const valorFreteDireto = Number(cidadeInfo?.valorFrete);
+  if (Number.isFinite(valorFreteDireto) && valorFreteDireto >= 0) {
+    return {
+      valorFrete: valorFreteDireto,
+      prazoEntregaDiasUteis: Number(cidadeInfo?.prazoEntregaDiasUteis) || 0,
+      distanciaKm: Number(cidadeInfo?.distanciaKm) || 0,
+    };
+  }
+
+  const faixas = Array.isArray(cidadeInfo?.faixas) ? cidadeInfo.faixas : [];
+  const faixaPadrao = faixas[0];
+  if (!faixaPadrao) return null;
+
+  return {
+    valorFrete: Number(faixaPadrao?.valorFrete) || 0,
+    prazoEntregaDiasUteis: Number(faixaPadrao?.prazoEntregaDiasUteis) || 0,
+    distanciaKm: Number(cidadeInfo?.distanciaKm) || 0,
+  };
+};
 
 const gerarAssinaturaCarrinho = (cart = []) => cart
   .map((item) => `${item.id}:${item.quantidade}:${Number(item.preco) || 0}`)
@@ -74,16 +96,107 @@ const atualizarResumoFreteCheckout = ({ tipo, valorFrete, prazoEntrega, observac
   }));
 };
 
-const initFreteCheckout = async (dimensoesMap) => {
+const renderizarTabelaCaminhao = ({ tabelaFreteCaminhao, resultado, cidadeInput, assinaturaCarrinho }) => {
+  const container = document.getElementById('frete-caminhao-tabela');
+  if (!container) return;
+
+  const cidades = Array.isArray(tabelaFreteCaminhao?.cidades) ? tabelaFreteCaminhao.cidades : [];
+  if (!cidades.length) {
+    container.hidden = true;
+    return;
+  }
+
+  container.innerHTML = '';
+  const titulo = document.createElement('h4');
+  titulo.textContent = 'Clique na cidade para calcular o frete do caminhão próprio:';
+  container.appendChild(titulo);
+
+  const cidadesGrid = document.createElement('div');
+  cidadesGrid.className = 'frete-cidades-grid';
+
+  cidades.forEach((cidadeInfo) => {
+    const cidade = String(cidadeInfo?.cidade || '').trim();
+    if (!cidade) return;
+
+    const botaoCidade = document.createElement('button');
+    botaoCidade.type = 'button';
+    botaoCidade.className = 'frete-cidade-btn';
+    const valorPreview = Number(cidadeInfo?.valorFrete);
+    const kmPreview = Number(cidadeInfo?.distanciaKm);
+    const partesPreview = [cidade];
+    if (Number.isFinite(kmPreview) && kmPreview > 0) partesPreview.push(`${kmPreview} km`);
+    if (Number.isFinite(valorPreview) && valorPreview >= 0) partesPreview.push(formatarMoeda(valorPreview));
+    botaoCidade.textContent = partesPreview.join(' • ');
+    botaoCidade.addEventListener('click', () => {
+      const freteCidade = obterFreteCaminhaoCidade(cidadeInfo);
+      if (!freteCidade) {
+        resultado.hidden = false;
+        resultado.classList.add('is-error');
+        resultado.textContent = `Não encontramos frete configurado para ${cidade}.`;
+        atualizarResumoFreteCheckout({
+          tipo: 'Caminhão próprio Expositores Bueno (não encontrado)',
+          valorFrete: 0,
+          prazoEntrega: 0,
+          observacao: `Tabela sem frete válido para ${cidade}.`,
+          assinaturaCarrinho,
+        });
+        return;
+      }
+
+      const frete = Number(freteCidade.valorFrete) || 0;
+      const prazo = Number(freteCidade.prazoEntregaDiasUteis) || 0;
+      const distanciaKm = Number(freteCidade.distanciaKm) || 0;
+      const trechoDistancia = distanciaKm > 0 ? ` • Distância: ${distanciaKm} km` : '';
+      const trechoPrazo = prazo > 0 ? ` • Prazo: ${prazo} dia(s) úteis` : '';
+      resultado.hidden = false;
+      resultado.classList.remove('is-error');
+      resultado.textContent = `Caminhão próprio para ${cidade}/RS${trechoDistancia} • Frete: ${formatarMoeda(frete)}${trechoPrazo}.`;
+      if (cidadeInput) cidadeInput.value = `${cidade} - RS`;
+      atualizarResumoFreteCheckout({
+        tipo: 'Caminhão próprio Expositores Bueno',
+        valorFrete: frete,
+        prazoEntrega: prazo,
+        observacao: `Entrega com caminhão próprio para ${cidade}/RS${trechoDistancia}.`,
+        assinaturaCarrinho,
+      });
+    });
+
+    cidadesGrid.appendChild(botaoCidade);
+  });
+
+  container.appendChild(cidadesGrid);
+  container.hidden = false;
+};
+
+const initFreteCheckout = async (dimensoesMap, tabelaFreteCaminhao) => {
   const wrap = document.querySelector('.frete-checkout-wrap');
   const botao = document.getElementById('frete-checkout-btn');
   const resultado = document.getElementById('frete-checkout-resultado');
+  const tabelaCaminhaoEl = document.getElementById('frete-caminhao-tabela');
+  const cidadeInput = document.getElementById('client-city');
   if (!botao || !resultado) return;
 
   if (!FRETE_ATIVO) {
     wrap?.remove();
     return;
   }
+
+  const atualizarVisibilidadeTabelaCaminhao = () => {
+    const opcaoSelecionada = document.querySelector('input[name="frete-opcao"]:checked')?.value || 'transportadora';
+    if (opcaoSelecionada !== 'caminhao-proprio') {
+      if (tabelaCaminhaoEl) tabelaCaminhaoEl.hidden = true;
+      return;
+    }
+
+    resultado.hidden = false;
+    resultado.classList.remove('is-error');
+    resultado.textContent = 'Clique em "Calcular Frete" para abrir as cidades do caminhão próprio.';
+  };
+
+  document.querySelectorAll('input[name="frete-opcao"]').forEach((radio) => {
+    radio.addEventListener('change', atualizarVisibilidadeTabelaCaminhao);
+  });
+  atualizarVisibilidadeTabelaCaminhao();
 
   botao.addEventListener('click', async () => {
     const opcaoSelecionada = document.querySelector('input[name="frete-opcao"]:checked')?.value || 'transportadora';
@@ -96,25 +209,23 @@ const initFreteCheckout = async (dimensoesMap) => {
       const cart = getCart();
       if (!cart.length) throw new Error('Carrinho vazio para cálculo de frete.');
 
-      const cidadeRaw = document.getElementById('client-city')?.value || '';
-      const { cidade: cidadeDestino, uf: ufDestino } = identificarCidadeEUf(cidadeRaw);
-      if (!cidadeDestino) throw new Error('Informe a cidade para calcular o frete.');
-
       const valorPedido = cart.reduce((acc, item) => acc + ((Number(item.preco) || 0) * (Number(item.quantidade) || 0)), 0);
       const assinaturaCarrinho = gerarAssinaturaCarrinho(cart);
       if (opcaoSelecionada === 'caminhao-proprio') {
-        const aviso = 'Caminhão próprio da Expositores Bueno. Frete fixo regional conforme nossa tabela de rotas.';
-        const consulta = 'Consulte um dos nossos vendedores para saber o frete da sua cidade.';
-        resultado.innerHTML = `${aviso} ${consulta} <a href="${VENDEDOR_WHATSAPP_URL}" target="_blank" rel="noopener noreferrer">Chamar vendedor para consultar o frete</a>.`;
-        atualizarResumoFreteCheckout({
-          tipo: 'Caminhão próprio Expositores Bueno',
-          valorFrete: 0,
-          prazoEntrega: 0,
-          observacao: `${aviso} ${consulta}`,
+        resultado.classList.remove('is-error');
+        resultado.textContent = 'Selecione a cidade na tabela abaixo para obter o valor do frete.';
+        renderizarTabelaCaminhao({
+          tabelaFreteCaminhao,
+          resultado,
+          cidadeInput,
           assinaturaCarrinho,
         });
         return;
       }
+      if (tabelaCaminhaoEl) tabelaCaminhaoEl.hidden = true;
+      const cidadeRaw = document.getElementById('client-city')?.value || '';
+      const { cidade: cidadeDestino, uf: ufDestino } = identificarCidadeEUf(cidadeRaw);
+      if (!cidadeDestino) throw new Error('Informe a cidade para calcular o frete.');
 
       const volumes = cart.flatMap((item) => {
         const id = String(item.id);
@@ -140,6 +251,7 @@ const initFreteCheckout = async (dimensoesMap) => {
       });
     } catch (e) {
       resultado.classList.add('is-error');
+      if (tabelaCaminhaoEl) tabelaCaminhaoEl.hidden = true;
       if (opcaoSelecionada === 'transportadora') {
         const mensagem = e?.message || 'Não foi possível calcular o frete da transportadora.';
         resultado.innerHTML = `${mensagem} Não conseguimos retornar valor agora. <a href="${VENDEDOR_WHATSAPP_URL}" target="_blank" rel="noopener noreferrer">Chamar vendedor para consultar o frete</a>.`;
@@ -161,8 +273,11 @@ const initFreteCheckout = async (dimensoesMap) => {
 
 const startFrete = async () => {
   try {
-    const dimensoesMap = await carregarDimensoesFrete();
-    await initFreteCheckout(dimensoesMap);
+    const [dimensoesMap, tabelaFreteCaminhao] = await Promise.all([
+      carregarDimensoesFrete(),
+      carregarTabelaFreteCaminhao(),
+    ]);
+    await initFreteCheckout(dimensoesMap, tabelaFreteCaminhao);
   } catch (e) {
     console.error('Falha ao inicializar cálculo de frete no checkout:', e);
   }
