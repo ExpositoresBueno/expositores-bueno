@@ -335,7 +335,6 @@ function renderizarPromocoes(listaProdutos) {
     .map((prod) => {
       const imgPath = isPaginaInterna ? prod.img.replace("./", "../") : prod.img;
       const precoOriginal = Number(prod.preco) || 0;
-      const precoPromo = Math.max(precoOriginal * 0.9, 0);
       const nomeProduto = prod.nome || "Produto";
       const nomeCurto = nomeProduto.slice(0, 58);
 
@@ -343,12 +342,37 @@ function renderizarPromocoes(listaProdutos) {
         <a class="promo-card" href="${destinoDetalheBase}?id=${prod.id}" aria-label="Ver promoção de ${nomeProduto}">
           <img src="${imgPath}" alt="${nomeProduto}" loading="lazy" decoding="async">
           <h3>${nomeCurto}</h3>
-          <p class="promo-old-price">${formatarMoedaBR(precoOriginal)}</p>
-          <p class="promo-price">${formatarMoedaBR(precoPromo)}</p>
+          <p class="promo-price">${formatarMoedaBR(precoOriginal)}</p>
         </a>
       `;
     })
     .join("");
+
+
+  const velocidadeAutoplay = 1;
+  let autoplayTimer = null;
+
+  const pararAutoplay = () => {
+    if (autoplayTimer) {
+      window.clearInterval(autoplayTimer);
+      autoplayTimer = null;
+    }
+  };
+
+  const iniciarAutoplay = () => {
+    if (autoplayTimer || promoTrack.scrollWidth <= promoTrack.clientWidth) return;
+
+    autoplayTimer = window.setInterval(() => {
+      const chegouAoFim = promoTrack.scrollLeft + promoTrack.clientWidth >= promoTrack.scrollWidth - 2;
+
+      if (chegouAoFim) {
+        promoTrack.scrollTo({ left: 0, behavior: "smooth" });
+        return;
+      }
+
+      promoTrack.scrollBy({ left: velocidadeAutoplay, behavior: "auto" });
+    }, 16);
+  };
 
   const prevBtn = document.querySelector(".promo-prev");
   const nextBtn = document.querySelector(".promo-next");
@@ -365,6 +389,10 @@ function renderizarPromocoes(listaProdutos) {
       promoTrack.scrollBy({ left: scrollAmount, behavior: "smooth" });
     };
   }
+
+  promoTrack.addEventListener("mouseenter", pararAutoplay);
+  promoTrack.addEventListener("mouseleave", iniciarAutoplay);
+  iniciarAutoplay();
 }
 
 function renderizarProdutos(lista) {
