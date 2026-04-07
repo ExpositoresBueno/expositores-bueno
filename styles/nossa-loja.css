@@ -79,6 +79,16 @@
   margin-top: 10px;
 }
 
+.store-hero {
+  background: var(--tech-gradient);
+}
+
+.route-btn.waze,
+.route-btn.maps {
+  background: linear-gradient(115deg, var(--tech-blue-strong), var(--tech-blue) 55%, var(--tech-gold));
+  color: #fff;
+}
+
 .history-header strong {
   color: #F7941D;
 }

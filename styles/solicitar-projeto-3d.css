@@ -9,7 +9,7 @@ body {
 }
 
 .hero-request {
-  background: linear-gradient(120deg, #f7941d 0%, #f8b358 100%);
+  background: var(--tech-gradient);
   border-radius: 16px;
   padding: 36px;
   color: #fff;
@@ -38,7 +38,7 @@ body {
 .examples-section h2,
 .socorro-section h2,
 .final-cta h2 {
-  color: #f7941d;
+  color: var(--tech-blue-strong);
   margin-bottom: 14px;
 }
 
