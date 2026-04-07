@@ -1,77 +1,66 @@
 {
-  "versao": "2026-04-06",
+  "versao": "2026-04-07",
   "moeda": "BRL",
-  "observacao": "ATENÇÃO: substituir os valores abaixo pela tabela oficial da empresa quando enviada.",
+  "origem": "Tabela enviada via atendimento em 07/04/2026",
   "cidades": [
-    {
-      "cidade": "Porto Alegre",
-      "faixas": [
-        { "valorPedidoMin": 0, "valorPedidoMax": 1999.99, "valorFrete": 180, "prazoEntregaDiasUteis": 3 },
-        { "valorPedidoMin": 2000, "valorPedidoMax": null, "valorFrete": 120, "prazoEntregaDiasUteis": 3 }
-      ]
-    },
-    {
-      "cidade": "Canoas",
-      "faixas": [
-        { "valorPedidoMin": 0, "valorPedidoMax": 1999.99, "valorFrete": 120, "prazoEntregaDiasUteis": 2 },
-        { "valorPedidoMin": 2000, "valorPedidoMax": null, "valorFrete": 80, "prazoEntregaDiasUteis": 2 }
-      ]
-    },
-    {
-      "cidade": "Novo Hamburgo",
-      "faixas": [
-        { "valorPedidoMin": 0, "valorPedidoMax": 1999.99, "valorFrete": 220, "prazoEntregaDiasUteis": 3 },
-        { "valorPedidoMin": 2000, "valorPedidoMax": null, "valorFrete": 160, "prazoEntregaDiasUteis": 3 }
-      ]
-    },
-    {
-      "cidade": "São Leopoldo",
-      "faixas": [
-        { "valorPedidoMin": 0, "valorPedidoMax": 1999.99, "valorFrete": 210, "prazoEntregaDiasUteis": 3 },
-        { "valorPedidoMin": 2000, "valorPedidoMax": null, "valorFrete": 150, "prazoEntregaDiasUteis": 3 }
-      ]
-    },
-    {
-      "cidade": "Caxias do Sul",
-      "faixas": [
-        { "valorPedidoMin": 0, "valorPedidoMax": 1999.99, "valorFrete": 320, "prazoEntregaDiasUteis": 4 },
-        { "valorPedidoMin": 2000, "valorPedidoMax": null, "valorFrete": 250, "prazoEntregaDiasUteis": 4 }
-      ]
-    },
-    {
-      "cidade": "Santa Maria",
-      "faixas": [
-        { "valorPedidoMin": 0, "valorPedidoMax": 1999.99, "valorFrete": 420, "prazoEntregaDiasUteis": 5 },
-        { "valorPedidoMin": 2000, "valorPedidoMax": null, "valorFrete": 340, "prazoEntregaDiasUteis": 5 }
-      ]
-    },
-    {
-      "cidade": "Passo Fundo",
-      "faixas": [
-        { "valorPedidoMin": 0, "valorPedidoMax": 1999.99, "valorFrete": 390, "prazoEntregaDiasUteis": 5 },
-        { "valorPedidoMin": 2000, "valorPedidoMax": null, "valorFrete": 320, "prazoEntregaDiasUteis": 5 }
-      ]
-    },
-    {
-      "cidade": "Pelotas",
-      "faixas": [
-        { "valorPedidoMin": 0, "valorPedidoMax": 1999.99, "valorFrete": 430, "prazoEntregaDiasUteis": 5 },
-        { "valorPedidoMin": 2000, "valorPedidoMax": null, "valorFrete": 350, "prazoEntregaDiasUteis": 5 }
-      ]
-    },
-    {
-      "cidade": "Rio Grande",
-      "faixas": [
-        { "valorPedidoMin": 0, "valorPedidoMax": 1999.99, "valorFrete": 460, "prazoEntregaDiasUteis": 6 },
-        { "valorPedidoMin": 2000, "valorPedidoMax": null, "valorFrete": 380, "prazoEntregaDiasUteis": 6 }
-      ]
-    },
-    {
-      "cidade": "Gravataí",
-      "faixas": [
-        { "valorPedidoMin": 0, "valorPedidoMax": 1999.99, "valorFrete": 160, "prazoEntregaDiasUteis": 2 },
-        { "valorPedidoMin": 2000, "valorPedidoMax": null, "valorFrete": 110, "prazoEntregaDiasUteis": 2 }
-      ]
-    }
+    { "cidade": "Canoas", "distanciaKm": 5, "valorFrete": 70 },
+    { "cidade": "Porto Alegre", "distanciaKm": 20, "valorFrete": 70 },
+    { "cidade": "Esteio", "distanciaKm": 10, "valorFrete": 70 },
+    { "cidade": "Sapucaia do Sul", "distanciaKm": 15, "valorFrete": 70 },
+    { "cidade": "São Leopoldo", "distanciaKm": 30, "valorFrete": 90 },
+    { "cidade": "Novo Hamburgo", "distanciaKm": 40, "valorFrete": 120 },
+    { "cidade": "Campo Bom", "distanciaKm": 45, "valorFrete": 135 },
+    { "cidade": "Portão", "distanciaKm": 60, "valorFrete": 180 },
+    { "cidade": "Gravataí", "distanciaKm": 18, "valorFrete": 70 },
+    { "cidade": "Cachoeirinha", "distanciaKm": 15, "valorFrete": 70 },
+    { "cidade": "Montenegro", "distanciaKm": 65, "valorFrete": 195 },
+    { "cidade": "Guaíba", "distanciaKm": 35, "valorFrete": 105 },
+    { "cidade": "Eldorado do Sul", "distanciaKm": 30, "valorFrete": 90 },
+    { "cidade": "Viamão", "distanciaKm": 35, "valorFrete": 105 },
+    { "cidade": "Estância Velha", "distanciaKm": 45, "valorFrete": 135 },
+    { "cidade": "Dois Irmãos", "distanciaKm": 55, "valorFrete": 165 },
+    { "cidade": "Ivoti", "distanciaKm": 50, "valorFrete": 150 },
+    { "cidade": "Sapiranga", "distanciaKm": 60, "valorFrete": 180 },
+    { "cidade": "Taquara", "distanciaKm": 75, "valorFrete": 225 },
+    { "cidade": "Nova Hartz", "distanciaKm": 70, "valorFrete": 210 },
+    { "cidade": "Morro Reuter", "distanciaKm": 75, "valorFrete": 225 },
+    { "cidade": "São Sebastião do Caí", "distanciaKm": 65, "valorFrete": 195 },
+    { "cidade": "Bom Princípio", "distanciaKm": 70, "valorFrete": 210 },
+    { "cidade": "Triunfo", "distanciaKm": 60, "valorFrete": 180 },
+    { "cidade": "Vendinha", "distanciaKm": 70, "valorFrete": 210 },
+    { "cidade": "São Jerônimo", "distanciaKm": 90, "valorFrete": 270 },
+    { "cidade": "Charqueadas", "distanciaKm": 80, "valorFrete": 240 },
+    { "cidade": "Lajeado", "distanciaKm": 115, "valorFrete": 345 },
+    { "cidade": "Caxias do Sul", "distanciaKm": 120, "valorFrete": 360 },
+    { "cidade": "Nova Petrópolis", "distanciaKm": 90, "valorFrete": 270, "regiao": "Serra / Vale / Interior" },
+    { "cidade": "Gramado", "distanciaKm": 95, "valorFrete": 285, "regiao": "Serra / Vale / Interior" },
+    { "cidade": "Canela", "distanciaKm": 100, "valorFrete": 300, "regiao": "Serra / Vale / Interior" },
+    { "cidade": "Feliz", "distanciaKm": 85, "valorFrete": 255, "regiao": "Serra / Vale / Interior" },
+    { "cidade": "Farroupilha", "distanciaKm": 115, "valorFrete": 345, "regiao": "Serra / Vale / Interior" },
+    { "cidade": "Venâncio Aires", "distanciaKm": 135, "valorFrete": 405, "regiao": "Serra / Vale / Interior" },
+    { "cidade": "Bento Gonçalves", "distanciaKm": 135, "valorFrete": 405, "regiao": "Serra / Vale / Interior" },
+    { "cidade": "Estrela", "distanciaKm": 110, "valorFrete": 330, "regiao": "Serra / Vale / Interior" },
+    { "cidade": "Guaporé", "distanciaKm": 160, "valorFrete": 480, "regiao": "Serra / Vale / Interior" },
+    { "cidade": "Santa Rita do Sul", "distanciaKm": 15, "valorFrete": 70, "regiao": "Serra / Vale / Interior" },
+    { "cidade": "General Câmara", "distanciaKm": 130, "valorFrete": 390, "regiao": "Serra / Vale / Interior" },
+    { "cidade": "Rolante", "distanciaKm": 85, "valorFrete": 255, "regiao": "Serra / Vale / Interior" },
+    { "cidade": "Lindolfo Collor", "distanciaKm": 80, "valorFrete": 240, "regiao": "Serra / Vale / Interior" },
+    { "cidade": "Santa Cruz do Sul", "distanciaKm": 155, "valorFrete": 465, "regiao": "Serra / Vale / Interior" },
+    { "cidade": "Teutônia", "distanciaKm": 120, "valorFrete": 360, "regiao": "Serra / Vale / Interior" },
+    { "cidade": "Roca Sales", "distanciaKm": 140, "valorFrete": 420, "regiao": "Serra / Vale / Interior" },
+    { "cidade": "Encantado", "distanciaKm": 125, "valorFrete": 375, "regiao": "Serra / Vale / Interior" },
+    { "cidade": "Bom Retiro do Sul", "distanciaKm": 115, "valorFrete": 345, "regiao": "Serra / Vale / Interior" },
+    { "cidade": "Palmares do Sul", "distanciaKm": 110, "valorFrete": 330, "regiao": "Serra / Vale / Interior" },
+    { "cidade": "Barra do Ribeiro", "distanciaKm": 90, "valorFrete": 270, "regiao": "Serra / Vale / Interior" },
+    { "cidade": "Águas Claras", "distanciaKm": 70, "valorFrete": 210, "regiao": "Serra / Vale / Interior" },
+    { "cidade": "Pinhal", "distanciaKm": 100, "valorFrete": 300, "regiao": "Serra / Vale / Interior" },
+    { "cidade": "Tramandaí", "distanciaKm": 110, "valorFrete": 330, "regiao": "Serra / Vale / Interior" },
+    { "cidade": "Capão da Canoa", "distanciaKm": 120, "valorFrete": 360, "regiao": "Serra / Vale / Interior" },
+    { "cidade": "Atlântida / Xangri-lá", "distanciaKm": 120, "valorFrete": 360, "regiao": "Serra / Vale / Interior" },
+    { "cidade": "Torres", "distanciaKm": 190, "valorFrete": 570, "regiao": "Serra / Vale / Interior" },
+    { "cidade": "Maquiné", "distanciaKm": 150, "valorFrete": 450, "regiao": "Serra / Vale / Interior" },
+    { "cidade": "Nova Prata", "distanciaKm": 180, "valorFrete": 540, "regiao": "Serra / Vale / Interior" },
+    { "cidade": "Rio Pardo", "distanciaKm": 145, "valorFrete": 435, "regiao": "Serra / Vale / Interior" },
+    { "cidade": "Arambaré", "distanciaKm": 130, "valorFrete": 390, "regiao": "Serra / Vale / Interior" }
   ]
 }

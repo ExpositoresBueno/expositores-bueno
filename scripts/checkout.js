@@ -188,9 +188,7 @@ function obterFreteValorAplicado() {
   const assinaturaAtual = gerarAssinaturaCarrinho(getCart());
   if (resumoFrete.assinaturaCarrinho !== assinaturaAtual) return 0;
 
-  const tipo = String(resumoFrete.tipo || "").toLowerCase();
   const valor = Number(resumoFrete.valor) || 0;
-  if (!tipo.includes("transportadora")) return 0;
   return Math.max(0, valor);
 }
 
