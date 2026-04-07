@@ -1,14 +1,8 @@
 * { box-sizing: border-box; }
-:root {
-  --tech-blue-strong: #216fa3;
-  --tech-blue: #2e8bc6;
-  --tech-gold: #f6b35b;
-  --tech-gradient: linear-gradient(120deg, #2f7ea8 0%, #6caac8 48%, #f1bb6e 100%);
-}
 body {
   margin: 0;
   font-family: Poppins, Arial, sans-serif;
-  background: #edf2f8;
+  background: #f5f7fb;
   color: #243042;
 }
 
@@ -79,18 +73,6 @@ body {
   border: 1px solid #e8edf4;
   border-radius: 12px;
   padding: 20px;
-  box-shadow: 0 12px 24px rgba(27, 56, 86, 0.08);
-}
-
-.checkout-header {
-  background: var(--tech-gradient);
-  color: #fff;
-  border-radius: 14px;
-  padding: 24px;
-}
-
-.checkout-header p {
-  color: rgba(255, 255, 255, 0.9);
 }
 
 .checkout-card h2,
