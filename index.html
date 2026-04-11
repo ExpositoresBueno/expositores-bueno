@@ -69,6 +69,7 @@ src="https://www.facebook.com/tr?id=1992317484686861&ev=PageView&noscript=1"
           <div class="header-search">
             <select id="search-category">
               <option value="Todos">Todos os produtos</option>
+              <option value="Promoções">Promoções</option>
 
               <option value="BALCÃO CAIXA C/ RODAPÉ">Balcão Caixa c/ Rodapé</option>
               <option value="BALCÃO CAIXA COM VITRINE">Balcão Caixa com Vitrine</option>
@@ -105,6 +106,7 @@ src="https://www.facebook.com/tr?id=1992317484686861&ev=PageView&noscript=1"
             <li class="has-dropdown">
               <a href="javascript:void(0)">NOSSOS PRODUTOS ▾</a>
               <ul class="dropdown-menu">
+                <li><a href="javascript:void(0)" data-filter="Promoções">Promoções</a></li>
                 <li><a href="javascript:void(0)" data-filter="Balcões">Balcões</a></li>
                 <li><a href="javascript:void(0)" data-filter="Armários Vestiários">Armários Vestiários</a></li>
                 <li><a href="javascript:void(0)" data-filter="Expositores">Expositores</a></li>
@@ -194,6 +196,11 @@ src="https://www.facebook.com/tr?id=1992317484686861&ev=PageView&noscript=1"
           </button>
 
           <div class="segment-track">
+            <button class="segment-item" type="button" data-category="Promoções">
+              <span class="segment-icon"><i class="fa-solid fa-tags"></i></span>
+              <span class="segment-label">Promoções</span>
+            </button>
+
             <button class="segment-item" type="button" data-category="Balcões">
               <span class="segment-icon"><i class="fa-solid fa-table"></i></span>
               <span class="segment-label">Balcões</span>
@@ -254,6 +261,7 @@ src="https://www.facebook.com/tr?id=1992317484686861&ev=PageView&noscript=1"
               <div class="filter-group">
                 <h4>CATEGORIAS</h4>
                 <ul class="filter-list" id="category-filters">
+                  <li class="filter-item" data-category="Promoções">Promoções</li>
                   <li class="filter-item" data-category="Balcões">Balcões</li>
                   <li class="filter-item" data-category="Armários Vestiários">Armários Vestiários</li>
                   <li class="filter-item" data-category="Expositores">Expositores</li>
