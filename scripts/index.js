@@ -8,6 +8,7 @@ import {
 } from './cart-db.js';
 import {
   enriquecerProdutoComPromocao,
+  obterPrecoPromocionalPorId,
   obterPromocoesCarrossel,
 } from './promo-pricing.js';
 
@@ -281,9 +282,12 @@ function aplicarFiltros(filtroManual = null) {
       removerAcentos(categoria),
     );
     const filtroTopoNormalizado = removerAcentos(filtroTopo);
+    const filtroPromocoes = stringsEquivalentes(filtroTopo, "Promoções");
+    const produtoEmPromocao = Number.isFinite(Number(obterPrecoPromocionalPorId(p.id)));
 
     const matchesCatOuNome =
       filtroTopo === "Todos" ||
+      (filtroPromocoes && produtoEmPromocao) ||
       categoriasNormalizadas.includes(filtroTopoNormalizado) ||
       stringsEquivalentes(p.nome, filtroTopo);
     const matchesTam = tamanho === "" || p.tamanho === tamanho;
