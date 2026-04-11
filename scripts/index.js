@@ -37,21 +37,63 @@ setInterval(() => {
 }, 5000);
 
 document.querySelectorAll(".has-dropdown").forEach((menuPai) => {
+  const dropdown = menuPai.querySelector(".dropdown-menu");
+  const toggle = menuPai.querySelector(".nav-dropdown-toggle");
+
+  const abrirDropdown = () => {
+    if (!dropdown) return;
+    dropdown.style.display = "block";
+    window.setTimeout(() => {
+      dropdown.style.opacity = "1";
+    }, 10);
+    if (toggle) toggle.setAttribute("aria-expanded", "true");
+  };
+
+  const fecharDropdown = () => {
+    if (!dropdown) return;
+    dropdown.style.display = "none";
+    dropdown.style.opacity = "0";
+    if (toggle) toggle.setAttribute("aria-expanded", "false");
+  };
+
   menuPai.addEventListener("mouseenter", function () {
-    const dropdown = this.querySelector(".dropdown-menu");
-    if (dropdown) {
-      dropdown.style.display = "block";
-      setTimeout(() => {
-        dropdown.style.opacity = "1";
-      }, 10);
-    }
+    abrirDropdown();
   });
   menuPai.addEventListener("mouseleave", function () {
-    const dropdown = this.querySelector(".dropdown-menu");
+    fecharDropdown();
+  });
+
+  if (toggle) {
+    toggle.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const expanded = toggle.getAttribute("aria-expanded") === "true";
+      if (expanded) fecharDropdown();
+      else abrirDropdown();
+    });
+    toggle.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        fecharDropdown();
+        toggle.focus();
+      }
+    });
+  }
+
+  menuPai.addEventListener("focusout", (event) => {
+    if (!menuPai.contains(event.relatedTarget)) {
+      fecharDropdown();
+    }
+  });
+});
+
+document.addEventListener("click", () => {
+  document.querySelectorAll(".has-dropdown").forEach((menuPai) => {
+    const dropdown = menuPai.querySelector(".dropdown-menu");
+    const toggle = menuPai.querySelector(".nav-dropdown-toggle");
     if (dropdown) {
       dropdown.style.display = "none";
       dropdown.style.opacity = "0";
     }
+    if (toggle) toggle.setAttribute("aria-expanded", "false");
   });
 });
 
@@ -75,6 +117,66 @@ const inputMin = document.getElementById("price-min");
 const inputMax = document.getElementById("price-max");
 const sortSelect = document.getElementById("sort-products");
 const possuiGridProdutos = Boolean(document.getElementById("products-grid"));
+const categoriasBase = [
+  "Promoções",
+  "Balcões",
+  "Armários Vestiários",
+  "Expositores",
+  "Araras",
+  "Vitrines",
+  "Caixas",
+  "Colmeias",
+  "Gôndolas",
+  "Painel Canaletado",
+  "Mesa de Manicure",
+  "Kits",
+];
+
+function inicializarCategoriasDaInterface() {
+  const searchCategory = document.getElementById("search-category");
+  if (searchCategory) {
+    searchCategory.innerHTML = [
+      '<option value="Todos">Todos os produtos</option>',
+      ...categoriasBase.map((categoria) => `<option value="${categoria}">${categoria}</option>`),
+    ].join("");
+  }
+
+  const categoryFilters = document.getElementById("category-filters");
+  if (categoryFilters) {
+    categoryFilters.innerHTML = categoriasBase
+      .map((categoria) => `<li class="filter-item" role="button" tabindex="0" data-category="${categoria}">${categoria}</li>`)
+      .join("");
+  }
+
+  const navProdutos = document.getElementById("nav-produtos-menu");
+  if (navProdutos) {
+    navProdutos.innerHTML = categoriasBase
+      .map((categoria) => `<li><a href="#" data-filter="${categoria}">${categoria}</a></li>`)
+      .join("");
+  }
+
+  const segmentTrack = document.getElementById("segment-track");
+  if (segmentTrack) {
+    const icones = {
+      Promoções: "fa-tags",
+      Balcões: "fa-table",
+      "Armários Vestiários": "fa-door-closed",
+      Kits: "fa-cubes",
+      Araras: "fa-shirt",
+      Gôndolas: "fa-shop",
+      "Painel Canaletado": "fa-grip-lines",
+    };
+    segmentTrack.innerHTML = categoriasBase
+      .filter((categoria) => icones[categoria])
+      .map((categoria) => `
+        <button class="segment-item" type="button" data-category="${categoria}">
+          <span class="segment-icon"><i class="fa-solid ${icones[categoria]}" aria-hidden="true"></i></span>
+          <span class="segment-label">${categoria}</span>
+        </button>
+      `)
+      .join("");
+  }
+}
 
 const ORDEM_PADRAO_CATEGORIAS = [
   "Balcões",
@@ -438,24 +540,20 @@ function renderizarPromocoes(listaProdutos) {
   };
 
   if (prevBtn) {
-    prevBtn.onclick = () => {
-      moverManual(-1);
-    };
+    prevBtn.addEventListener("click", () => moverManual(-1));
   }
 
   if (nextBtn) {
-    nextBtn.onclick = () => {
-      moverManual(1);
-    };
+    nextBtn.addEventListener("click", () => moverManual(1));
   }
 
   promoTrack.scrollLeft = 0;
-  promoTrack.onmouseenter = () => {
+  promoTrack.addEventListener("mouseenter", () => {
     pausado = true;
-  };
-  promoTrack.onmouseleave = () => {
+  });
+  promoTrack.addEventListener("mouseleave", () => {
     pausado = false;
-  };
+  });
 
   promoTrack._promoRafId = window.requestAnimationFrame(animar);
 }
@@ -470,15 +568,15 @@ function inicializarCarrosselSegmentos() {
   const scrollAmount = 260;
 
   if (prevBtn) {
-    prevBtn.onclick = () => {
+    prevBtn.addEventListener("click", () => {
       segmentTrack.scrollBy({ left: -scrollAmount, behavior: "smooth" });
-    };
+    });
   }
 
   if (nextBtn) {
-    nextBtn.onclick = () => {
+    nextBtn.addEventListener("click", () => {
       segmentTrack.scrollBy({ left: scrollAmount, behavior: "smooth" });
-    };
+    });
   }
 }
 
@@ -487,7 +585,7 @@ function renderizarProdutos(lista) {
   grid.innerHTML = "";
   if (lista.length === 0) {
     grid.innerHTML =
-      "<p style='grid-column: 1/-1; text-align:center;'>Nenhum produto encontrado.</p>";
+      "<p class='products-empty-state'>Nenhum produto encontrado.</p>";
     return;
   }
 
@@ -579,16 +677,9 @@ function atualizarBotoesPaginacao(totalItens, pagina) {
   container.innerHTML = "";
   for (let i = 1; i <= Math.min(totalPaginas, limitePaginas); i++) {
     const activeClass = i === pagina ? "active" : "";
-    container.innerHTML += `<button class="page-num ${activeClass}" onclick="irParaPagina(${i})">${i}</button>`;
+    container.innerHTML += `<button class="page-num ${activeClass}" type="button" data-page=\"${i}\">${i}</button>`;
   }
 }
-
-window.irParaPagina = (n) =>
-  exibirPagina(listaFiltrada, n, { rolarParaTopo: true });
-window.paginaAnterior = () =>
-  exibirPagina(listaFiltrada, paginaAtual - 1, { rolarParaTopo: true });
-window.proximaPagina = () =>
-  exibirPagina(listaFiltrada, paginaAtual + 1, { rolarParaTopo: true });
 
 /* ==========================================================================
    4. CARRINHO E WHATSAPP
@@ -735,6 +826,7 @@ function abrirCarrinhoDrawer() {
   if (!drawer || !overlay) return;
 
   drawer.classList.add("active");
+  drawer.setAttribute("aria-hidden", "false");
   overlay.classList.add("active");
   if (whatsappBtn) whatsappBtn.style.display = "none";
   if (cartFloating) cartFloating.style.display = "none";
@@ -749,6 +841,7 @@ function fecharCarrinhoDrawer() {
   if (!drawer || !overlay) return;
 
   drawer.classList.remove("active");
+  drawer.setAttribute("aria-hidden", "true");
   overlay.classList.remove("active");
   if (whatsappBtn) whatsappBtn.style.display = "flex";
   if (cartFloating) cartFloating.style.display = "flex";
@@ -932,6 +1025,7 @@ function mostrarAvisoCarrinho(nomeProduto) {
    5. INICIALIZAÇÃO UNIFICADA
    ========================================================================== */
 document.addEventListener("DOMContentLoaded", async () => {
+  inicializarCategoriasDaInterface();
   try {
     const { data, error } = await supabase.auth.getSession();
     const isLoggedIn = Boolean(data?.session?.user) && !error;
@@ -1031,11 +1125,34 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (btnFinalizar)
     btnFinalizar.addEventListener("click", irParaFinalizacao);
 
+  const paginationPrev = document.getElementById("pagination-prev");
+  const paginationNext = document.getElementById("pagination-next");
+  const pageNumbers = document.querySelector(".page-numbers");
+
+  if (paginationPrev) {
+    paginationPrev.addEventListener("click", () => {
+      exibirPagina(listaFiltrada, paginaAtual - 1, { rolarParaTopo: true });
+    });
+  }
+  if (paginationNext) {
+    paginationNext.addEventListener("click", () => {
+      exibirPagina(listaFiltrada, paginaAtual + 1, { rolarParaTopo: true });
+    });
+  }
+  if (pageNumbers) {
+    pageNumbers.addEventListener("click", (event) => {
+      const botao = event.target.closest(".page-num[data-page]");
+      if (!botao) return;
+      const pagina = Number(botao.getAttribute("data-page"));
+      exibirPagina(listaFiltrada, pagina, { rolarParaTopo: true });
+    });
+  }
+
   // --- RECONECTANDO SEUS FILTROS ORIGINAIS ---
   document
     .querySelectorAll(".filter-list li, .category-card, .segment-item[data-category]")
     .forEach((item) => {
-      item.addEventListener("click", () => {
+      const processarItemCategoria = () => {
         const cat =
           item.getAttribute("data-category") || item.textContent.trim();
 
@@ -1063,6 +1180,13 @@ document.addEventListener("DOMContentLoaded", async () => {
           }
         } else {
           aplicarFiltros(cat);
+        }
+      };
+      item.addEventListener("click", processarItemCategoria);
+      item.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          processarItemCategoria();
         }
       });
     });
