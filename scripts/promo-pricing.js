@@ -1,5 +1,4 @@
 const PROMOCOES_CARROSSEL = [
-  { id: 35, precoPromocional: 699 },
   { id: 40, precoPromocional: 699 },
   { id: 2, precoPromocional: 799 },
   { id: 58, precoPromocional: 799 },
