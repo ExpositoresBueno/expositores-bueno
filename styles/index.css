@@ -996,6 +996,18 @@ body {
   align-items: center;
 }
 
+.price-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.card-price-from {
+  font-size: 0.82rem;
+  color: #6b7280;
+  text-decoration: line-through;
+}
+
 .installment-preview {
   margin: 0;
   font-size: 0.8rem;

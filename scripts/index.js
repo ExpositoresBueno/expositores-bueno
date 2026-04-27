@@ -607,7 +607,15 @@ function renderizarProdutos(lista) {
       : "./images/carrinho_card.jpg";
 
     const destinoDetalhe = `${destinoDetalheBase}?id=${prod.id}`;
-    const precoAvista = obterPrecoAvistaProduto(prod);
+    const precoPromocional = obterPrecoPromocionalPorId(prod.id);
+    const precoAtual = Number.isFinite(precoPromocional) && precoPromocional > 0
+      ? precoPromocional
+      : Number(prod.preco);
+    const temPromocao = Number.isFinite(precoPromocional) && precoPromocional > 0 && precoPromocional < Number(prod.preco);
+    const precoAvista = obterPrecoAvistaProduto({
+      ...prod,
+      preco: precoAtual,
+    });
 
     cardDiv.innerHTML = `
       <a href="${destinoDetalhe}" class="product-card-link" aria-label="Abrir produto ${prod.nome}">
@@ -619,7 +627,10 @@ function renderizarProdutos(lista) {
           <h3>${prod.nome}</h3>
           <div class="product-footer">
             <div class="price-container">
-              <span class="price-value">${formatarMoedaBR(prod.preco)}</span>
+              <div class="price-stack">
+                ${temPromocao ? `<span class="card-price-from">de ${formatarMoedaBR(prod.preco)}</span>` : ""}
+                <span class="price-value">${formatarMoedaBR(precoAtual)}</span>
+              </div>
               <button class="btn-add-cart" data-id="${prod.id}">
                 <img class="carrinho_card" src="${cartIconPath}" alt="Adicionar ao carrinho" loading="lazy" decoding="async">
               </button>
@@ -627,7 +638,7 @@ function renderizarProdutos(lista) {
             <p class="installment-preview">${(() => {
               const limiteParcelas = Number(prod.maxParcelasSemJuros);
               const parcelamento = calcularParcelamentoSemJuros(
-                prod.preco,
+                precoAtual,
                 Number.isFinite(limiteParcelas) && limiteParcelas > 0 ? limiteParcelas : 12,
               );
               return `${parcelamento.parcelas}x de ${formatarMoedaBR(parcelamento.valorParcela)} sem juros`;

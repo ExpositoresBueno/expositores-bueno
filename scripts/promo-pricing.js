@@ -1,9 +1,9 @@
 const PROMOCOES_CARROSSEL = [
-  { id: 40, precoPromocional: 699 },
-  { id: 2, precoPromocional: 799 },
-  { id: 58, precoPromocional: 799 },
-  { id: 57, precoPromocional: 2900 },
-  { id: 68, precoPromocional: 749 },
+  { id: 5, precoPromocional: 589 },
+  { id: 6, precoPromocional: 469 },
+  { id: 64, precoPromocional: 390 },
+  { id: 3, precoPromocional: 690 },
+  { id: 18, precoPromocional: 585 },
 ];
 
 const mapaPromocoes = new Map(
