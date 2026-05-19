@@ -118,7 +118,6 @@ const inputMax = document.getElementById("price-max");
 const sortSelect = document.getElementById("sort-products");
 const possuiGridProdutos = Boolean(document.getElementById("products-grid"));
 const categoriasBase = [
-  "Promoções",
   "Balcões",
   "Armários Vestiários",
   "Expositores",
@@ -158,7 +157,6 @@ function inicializarCategoriasDaInterface() {
   const segmentTrack = document.getElementById("segment-track");
   if (segmentTrack) {
     const icones = {
-      Promoções: "fa-tags",
       Balcões: "fa-table",
       "Armários Vestiários": "fa-door-closed",
       Kits: "fa-cubes",
@@ -384,12 +382,8 @@ function aplicarFiltros(filtroManual = null) {
       removerAcentos(categoria),
     );
     const filtroTopoNormalizado = removerAcentos(filtroTopo);
-    const filtroPromocoes = stringsEquivalentes(filtroTopo, "Promoções");
-    const produtoEmPromocao = Number.isFinite(Number(obterPrecoPromocionalPorId(p.id)));
-
     const matchesCatOuNome =
       filtroTopo === "Todos" ||
-      (filtroPromocoes && produtoEmPromocao) ||
       categoriasNormalizadas.includes(filtroTopoNormalizado) ||
       stringsEquivalentes(p.nome, filtroTopo);
     const matchesTam = tamanho === "" || p.tamanho === tamanho;
@@ -628,7 +622,6 @@ function renderizarProdutos(lista) {
           <div class="product-footer">
             <div class="price-container">
               <div class="price-stack">
-                ${temPromocao ? `<span class="card-price-from">de ${formatarMoedaBR(prod.preco)}</span>` : ""}
                 <span class="price-value">${formatarMoedaBR(precoAtual)}</span>
               </div>
               <button class="btn-add-cart" data-id="${prod.id}">
