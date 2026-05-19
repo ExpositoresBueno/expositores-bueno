@@ -257,11 +257,6 @@ function obterPrecoAvistaProduto(produto) {
     return precoPromocional;
   }
 
-  const precoPromocionalMapeado = Number(produtoComPromocao?.precoPromocional);
-  if (Number.isFinite(precoPromocionalMapeado) && precoPromocionalMapeado > 0) {
-    return precoPromocionalMapeado;
-  }
-
   for (const campo of CAMPOS_PRECO_AVISTA) {
     const valorCampo = Number(produto[campo]);
     if (Number.isFinite(valorCampo) && valorCampo > 0) {
@@ -408,7 +403,8 @@ function aplicarFiltros(filtroManual = null) {
    ========================================================================== */
 async function carregarCatalogo() {
   try {
-    const caminhoJson = new URL('../dados/produtos.json', import.meta.url);
+    const isPages = window.location.pathname.includes('/pages/');
+    const caminhoJson = isPages ? '../dados/produtos.json' : './dados/produtos.json';
     const resposta = await fetch(caminhoJson);
     if (!resposta.ok) throw new Error("Arquivo JSON não encontrado!");
 
