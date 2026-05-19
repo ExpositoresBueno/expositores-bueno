@@ -6,11 +6,6 @@ import {
   removeItemFromDb,
   buildCartKey,
 } from './cart-db.js';
-import {
-  enriquecerProdutoComPromocao,
-  obterPrecoPromocionalPorId,
-  obterPromocoesCarrossel,
-} from './promo-pricing.js';
 
 /* ==========================================================================
    1. CAROUSEL E MENU (MANTIDOS ORIGINAIS)
@@ -118,7 +113,6 @@ const inputMax = document.getElementById("price-max");
 const sortSelect = document.getElementById("sort-products");
 const possuiGridProdutos = Boolean(document.getElementById("products-grid"));
 const categoriasBase = [
-  "Promoções",
   "Balcões",
   "Armários Vestiários",
   "Expositores",
@@ -158,7 +152,6 @@ function inicializarCategoriasDaInterface() {
   const segmentTrack = document.getElementById("segment-track");
   if (segmentTrack) {
     const icones = {
-      Promoções: "fa-tags",
       Balcões: "fa-table",
       "Armários Vestiários": "fa-door-closed",
       Kits: "fa-cubes",
@@ -264,7 +257,6 @@ function obterPrecoAvistaProduto(produto) {
     return precoPromocional;
   }
 
-  const produtoComPromocao = enriquecerProdutoComPromocao(produto);
   const precoPromocionalMapeado = Number(produtoComPromocao?.precoPromocional);
   if (Number.isFinite(precoPromocionalMapeado) && precoPromocionalMapeado > 0) {
     return precoPromocionalMapeado;
@@ -384,12 +376,8 @@ function aplicarFiltros(filtroManual = null) {
       removerAcentos(categoria),
     );
     const filtroTopoNormalizado = removerAcentos(filtroTopo);
-    const filtroPromocoes = stringsEquivalentes(filtroTopo, "Promoções");
-    const produtoEmPromocao = Number.isFinite(Number(obterPrecoPromocionalPorId(p.id)));
-
     const matchesCatOuNome =
       filtroTopo === "Todos" ||
-      (filtroPromocoes && produtoEmPromocao) ||
       categoriasNormalizadas.includes(filtroTopoNormalizado) ||
       stringsEquivalentes(p.nome, filtroTopo);
     const matchesTam = tamanho === "" || p.tamanho === tamanho;
@@ -429,133 +417,11 @@ async function carregarCatalogo() {
     if (!resposta.ok) throw new Error("Arquivo JSON não encontrado!");
 
     produtos = await resposta.json();
-    renderizarPromocoes(produtos);
     inicializarFiltrosAvancados();
     aplicarFiltros();
   } catch (erro) {
     console.error("Falha ao carregar o catálogo:", erro);
   }
-}
-
-function renderizarPromocoes(listaProdutos) {
-  const promoTrack = document.getElementById("promo-track");
-  if (!promoTrack || !Array.isArray(listaProdutos) || listaProdutos.length === 0) return;
-
-  const isPaginaInterna = window.location.pathname.includes("/pages/");
-  const destinoDetalheBase = isPaginaInterna
-    ? "./productDetails.html"
-    : "./pages/productDetails.html";
-
-  const promocoesConfiguradas = obterPromocoesCarrossel();
-
-  const produtosPorId = new Map(listaProdutos.map((produto) => [produto.id, produto]));
-  const promocoes = promocoesConfiguradas
-    .map((config) => {
-      const produto = produtosPorId.get(config.id);
-      if (!produto) return null;
-
-      return {
-        ...produto,
-        precoOriginal: Number(produto.preco) || 0,
-        precoPromocional: Number(config.precoPromocional) || 0,
-      };
-    })
-    .filter(Boolean);
-
-  const cardsHtml = promocoes
-    .map((prod) => {
-      const imgPath = isPaginaInterna ? prod.img.replace("./", "../") : prod.img;
-      const precoOriginal = Number(prod.precoOriginal) || 0;
-      const precoPromocional = Number(prod.precoPromocional) || 0;
-      const nomeProduto = prod.nome || "Produto";
-      const nomeCurto = nomeProduto.slice(0, 58);
-
-      return `
-        <a class="promo-card" href="${destinoDetalheBase}?id=${prod.id}" aria-label="Ver promoção de ${nomeProduto}">
-          <img src="${imgPath}" alt="${nomeProduto}" loading="lazy" decoding="async">
-          <h3>${nomeCurto}</h3>
-          <p class="promo-price-from">de ${formatarMoedaBR(precoOriginal)}</p>
-          <p class="promo-price">${formatarMoedaBR(precoPromocional || precoOriginal)}</p>
-        </a>
-      `;
-    })
-    .join("");
-  promoTrack.innerHTML = cardsHtml;
-  if (promocoes.length > 1) {
-    promoTrack.innerHTML += cardsHtml;
-  }
-
-  const podeFazerLoop = promocoes.length > 1 && promoTrack.scrollWidth > promoTrack.clientWidth;
-  const larguraLoop = podeFazerLoop ? promoTrack.scrollWidth / 2 : promoTrack.scrollWidth;
-  const velocidadePxPorSegundo = 38;
-  let pausado = false;
-  let ultimoFrame = 0;
-  let timeoutInteracao = null;
-
-  if (promoTrack._promoRafId) {
-    window.cancelAnimationFrame(promoTrack._promoRafId);
-  }
-
-  const normalizarScrollLoop = () => {
-    if (!podeFazerLoop || larguraLoop <= 0) return;
-    if (promoTrack.scrollLeft >= larguraLoop) {
-      promoTrack.scrollLeft -= larguraLoop;
-    } else if (promoTrack.scrollLeft < 0) {
-      promoTrack.scrollLeft += larguraLoop;
-    }
-  };
-
-  const pausarTemporariamente = (duracaoMs = 850) => {
-    pausado = true;
-    if (timeoutInteracao) {
-      window.clearTimeout(timeoutInteracao);
-    }
-    timeoutInteracao = window.setTimeout(() => {
-      pausado = false;
-    }, duracaoMs);
-  };
-
-  const animar = (timestamp) => {
-    if (!ultimoFrame) ultimoFrame = timestamp;
-    const deltaMs = timestamp - ultimoFrame;
-    ultimoFrame = timestamp;
-
-    if (!pausado && podeFazerLoop) {
-      const deslocamento = (velocidadePxPorSegundo * deltaMs) / 1000;
-      promoTrack.scrollLeft += deslocamento;
-      normalizarScrollLoop();
-    }
-
-    promoTrack._promoRafId = window.requestAnimationFrame(animar);
-  };
-
-  const prevBtn = document.querySelector(".promo-prev");
-  const nextBtn = document.querySelector(".promo-next");
-  const scrollAmount = 260;
-
-  const moverManual = (direcao) => {
-    pausarTemporariamente();
-    promoTrack.scrollBy({ left: direcao * scrollAmount, behavior: "smooth" });
-    window.setTimeout(normalizarScrollLoop, 420);
-  };
-
-  if (prevBtn) {
-    prevBtn.addEventListener("click", () => moverManual(-1));
-  }
-
-  if (nextBtn) {
-    nextBtn.addEventListener("click", () => moverManual(1));
-  }
-
-  promoTrack.scrollLeft = 0;
-  promoTrack.addEventListener("mouseenter", () => {
-    pausado = true;
-  });
-  promoTrack.addEventListener("mouseleave", () => {
-    pausado = false;
-  });
-
-  promoTrack._promoRafId = window.requestAnimationFrame(animar);
 }
 
 function inicializarCarrosselSegmentos() {
@@ -607,11 +473,7 @@ function renderizarProdutos(lista) {
       : "./images/carrinho_card.jpg";
 
     const destinoDetalhe = `${destinoDetalheBase}?id=${prod.id}`;
-    const precoPromocional = obterPrecoPromocionalPorId(prod.id);
-    const precoAtual = Number.isFinite(precoPromocional) && precoPromocional > 0
-      ? precoPromocional
-      : Number(prod.preco);
-    const temPromocao = Number.isFinite(precoPromocional) && precoPromocional > 0 && precoPromocional < Number(prod.preco);
+    const precoAtual = Number(prod.preco);
     const precoAvista = obterPrecoAvistaProduto({
       ...prod,
       preco: precoAtual,
@@ -628,8 +490,7 @@ function renderizarProdutos(lista) {
           <div class="product-footer">
             <div class="price-container">
               <div class="price-stack">
-                ${temPromocao ? `<span class="card-price-from">de ${formatarMoedaBR(prod.preco)}</span>` : ""}
-                <span class="price-value">${formatarMoedaBR(precoAtual)}</span>
+                                <span class="price-value">${formatarMoedaBR(precoAtual)}</span>
               </div>
               <button class="btn-add-cart" data-id="${prod.id}">
                 <img class="carrinho_card" src="${cartIconPath}" alt="Adicionar ao carrinho" loading="lazy" decoding="async">
@@ -716,16 +577,15 @@ async function usuarioLogado() {
 }
 
 function addToCart(produto) {
-  const produtoComPromocao = enriquecerProdutoComPromocao(produto);
   const quantidade = Math.max(1, parseInt(produto.quantidade, 10) || 1);
   const cart = getCart();
-  const cartKey = getCartItemKey(produtoComPromocao);
+  const cartKey = getCartItemKey(produto);
   const existente = cart.find((item) => getCartItemKey(item) === cartKey);
 
   if (existente) {
     existente.quantidade += quantidade;
   } else {
-    cart.push({ ...produtoComPromocao, cartKey, quantidade });
+    cart.push({ ...produto, cartKey, quantidade });
   }
 
   saveCart(cart);
@@ -733,7 +593,7 @@ function addToCart(produto) {
 
   usuarioLogado().then((logado) => {
     if (logado) {
-      addItemToDb({ ...produtoComPromocao, cartKey, quantidade }).catch(() => {});
+      addItemToDb({ ...produto, cartKey, quantidade }).catch(() => {});
     }
   });
 
