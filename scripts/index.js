@@ -408,11 +408,7 @@ function aplicarFiltros(filtroManual = null) {
    ========================================================================== */
 async function carregarCatalogo() {
   try {
-    const isPaginaInterna = window.location.pathname.includes("/pages/");
-    const caminhoJson = isPaginaInterna
-      ? "../dados/produtos.json"
-      : "./dados/produtos.json";
-
+    const caminhoJson = new URL('../dados/produtos.json', import.meta.url);
     const resposta = await fetch(caminhoJson);
     if (!resposta.ok) throw new Error("Arquivo JSON não encontrado!");
 
