@@ -317,7 +317,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   try {
     // 2. Busca o banco de dados de produtos
-    const resposta = await fetch('../dados/produtos.json');
+    const caminhoJson = new URL('../dados/produtos.json', import.meta.url);
+    const resposta = await fetch(caminhoJson);
     if (!resposta.ok) throw new Error('Falha ao carregar o banco de dados.');
 
     const produtos = await resposta.json();
