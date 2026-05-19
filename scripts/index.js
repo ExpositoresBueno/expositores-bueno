@@ -490,7 +490,7 @@ function renderizarProdutos(lista) {
           <div class="product-footer">
             <div class="price-container">
               <div class="price-stack">
-                                <span class="price-value">${formatarMoedaBR(precoAtual)}</span>
+                <span class="price-value">${formatarMoedaBR(precoAtual)}</span>
               </div>
               <button class="btn-add-cart" data-id="${prod.id}">
                 <img class="carrinho_card" src="${cartIconPath}" alt="Adicionar ao carrinho" loading="lazy" decoding="async">
