@@ -2313,5 +2313,39 @@
     ],
     "permiteOrcamentoMedida": "nao",
     "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 74,
+    "categoria": [
+      "Expositores",
+      "Papelaria",
+      "Gôndolas"
+    ],
+    "nome": "MÓVEL CANETEIRO CENTRAL",
+    "preco": 2900,
+    "tamanho": "1.45m",
+    "dimensoes": "1.45m Altura x 1.34m Largura x 80cm Profundidade",
+    "img": "./images/cards/movel-caneteiro-central-principal.jpeg",
+    "galeria": [
+      "./images/cards/movel-caneteiro-central-lateral.jpeg",
+      "./images/cards/movel-caneteiro-central-frente.jpeg"
+    ],
+    "descricao": "Móvel caneteiro central com diversos nichos para organizar e expor canetas, lápis, objetos de escritório e artigos de papelaria.\n\nAlém dos pequenos nichos na parte superior, conta com vãos maiores na parte inferior, ideais para exposição de cadernos e outros produtos.\n\nA combinação de MDF e vidro favorece a visualização dos itens. As fotos mostram uma composição com detalhe central colorido, que valoriza o design do expositor.\n\nIMPORTANTE: o valor de R$ 2.900,00 corresponde ao móvel todo em branco. O detalhe colorido apresentado nas fotos não faz parte do acabamento desse preço base.\n\nMedidas padrão:\nAltura: 1,45 m\nLargura: 1,34 m\nProfundidade: 80 cm\n\nPermite alteração de medidas e cores. Nas medidas padrão, preto com acréscimo de 32% e madeirado com acréscimo de 37%.",
+    "tags": [
+      "caneteiro",
+      "canetas",
+      "lapis",
+      "papelaria",
+      "escritorio",
+      "cadernos",
+      "nichos",
+      "expositor",
+      "central",
+      "mdf",
+      "vidro",
+      "gondola"
+    ],
+    "permiteOrcamentoMedida": "sim",
+    "permiteVariacaoCor": "sim"
   }
 ]
