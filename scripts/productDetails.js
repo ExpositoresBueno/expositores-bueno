@@ -284,8 +284,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const multiplicadoresCor = {
     branco: 1,
-    preto: 1.3,
-    madeirado: 1.35,
+    preto: 1.32,
+    madeirado: 1.37,
   };
 
   const nomeCor = {
