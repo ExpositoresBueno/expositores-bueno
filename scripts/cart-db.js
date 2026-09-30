@@ -1,4 +1,5 @@
 import { supabase } from './supabase-client.js';
+import { buildCartKey, normalizeColor, normalizeMeasure } from './cart-key.js';
 
 const CART_STORAGE_KEY = 'cart';
 
@@ -18,29 +19,6 @@ function getLocalCart() {
 
 function saveLocalCart(cart) {
   localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
-}
-
-function normalizeColor(cor) {
-  return String(cor || 'branco')
-    .trim()
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '');
-}
-
-function normalizeMeasure(value) {
-  const parsed = Number(value);
-  return Number.isFinite(parsed) && parsed > 0 ? parsed.toFixed(2) : '0.00';
-}
-
-function buildCartKey(item) {
-  return [
-    String(item.id ?? item.produto_id ?? ''),
-    normalizeMeasure(item.larguraOrcada ?? item.largura_orcada),
-    normalizeMeasure(item.alturaOrcada ?? item.altura_orcada),
-    normalizeMeasure(item.profundidadeOrcada ?? item.profundidade_orcada),
-    normalizeColor(item.corOrcada ?? item.cor_orcada),
-  ].join('-');
 }
 
 function parseCartKey(cartKey) {
@@ -99,7 +77,8 @@ function mapDbToItem(row) {
   return item;
 }
 
-export async function loadCartFromDb() {
+export async function loadCartFromDb({ preserveLocalChanges = false } = {}) {
+  const cartBeforeLoad = JSON.stringify(getLocalCart());
   console.log('Carregando carrinho do banco...');
 
   try {
@@ -116,6 +95,10 @@ export async function loadCartFromDb() {
 
     if (error) {
       console.error('[cart-db] Erro ao carregar carrinho:', error);
+      return null;
+    }
+
+    if (preserveLocalChanges && JSON.stringify(getLocalCart()) !== cartBeforeLoad) {
       return null;
     }
 
