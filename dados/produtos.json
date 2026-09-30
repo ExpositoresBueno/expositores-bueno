@@ -2443,5 +2443,36 @@
     ],
     "permiteOrcamentoMedida": "nao",
     "permiteVariacaoCor": "nao"
+  },
+  {
+    "id": 78,
+    "categoria": [
+      "Gôndolas",
+      "Expositores"
+    ],
+    "nome": "GÔNDOLA CENTRAL REDONDA",
+    "preco": 950,
+    "tamanho": "1.20m",
+    "dimensoes": "1.20m Altura x 60cm Diâmetro",
+    "img": "./images/cards/gondola-central-redonda-1.jpeg",
+    "galeria": [
+      "./images/cards/gondola-central-redonda-2.jpeg",
+      "./images/cards/gondola-central-redonda-3.jpeg"
+    ],
+    "descricao": "Gôndola central redonda para organizar e destacar os produtos no centro da loja. As prateleiras circulares permitem exposição por todos os lados e facilitam a visualização dos itens pelos clientes.\n\nUma opção para montar pontos de destaque com acessórios, cosméticos, presentes e outros produtos, aproveitando o espaço vertical da loja.\n\nMedidas fixas:\nAltura: 1,20 m\nDiâmetro: 60 cm\n\nDisponível em branco, preto e madeirado. Valor de R$ 950,00 para a versão branca. Preto com acréscimo de 32% e madeirado com acréscimo de 37%.\n\nSem alteração de medidas.",
+    "tags": [
+      "gondola",
+      "gondolas",
+      "central",
+      "redonda",
+      "circular",
+      "expositor",
+      "prateleiras",
+      "acessorios",
+      "cosmeticos",
+      "presentes"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim"
   }
 ]
