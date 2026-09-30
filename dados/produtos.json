@@ -2224,5 +2224,36 @@
     ],
     "permiteOrcamentoMedida": "nao",
     "permiteVariacaoCor": "nao"
+  },
+  {
+    "id": 71,
+    "categoria": [
+      "Balcões"
+    ],
+    "nome": "BALCÃO CAIXA PREMIUM",
+    "preco": 1990,
+    "tamanho": "1.00m",
+    "dimensoes": "1.00m Altura x 90cm Largura x 40cm Profundidade",
+    "img": "./images/cards/balcao-caixa-premium-frente.jpeg",
+    "galeria": [
+      "./images/cards/balcao-caixa-premium-lateral.jpeg",
+      "./images/cards/balcao-caixa-premium-detalhe.jpeg"
+    ],
+    "descricao": "Balcão caixa premium com acabamento madeirado, detalhe frontal ripado e iluminação embutida. Um design marcante para valorizar o atendimento e a apresentação da loja.\n\nProduzido inteiramente em material de 18 mm, inclusive no ripado, com foco na qualidade e no acabamento.\n\nIluminação já incluída no valor:\n• Fita de LED amarela com 320 LEDs por metro\n• Botão liga e desliga\n• Fonte de 20 A\n\nMedidas padrão:\nAltura: 1,00 m\nLargura: 90 cm\nProfundidade: 40 cm\n\nPermite personalização de medidas. Acabamento na cor apresentada nas fotos, sem alteração de cores.",
+    "tags": [
+      "balcao",
+      "balcoes",
+      "caixa",
+      "premium",
+      "ripado",
+      "led",
+      "iluminacao",
+      "madeirado",
+      "atendimento",
+      "loja",
+      "18mm"
+    ],
+    "permiteOrcamentoMedida": "sim",
+    "permiteVariacaoCor": "nao"
   }
 ]
