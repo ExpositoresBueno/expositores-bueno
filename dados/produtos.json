@@ -2347,5 +2347,101 @@
     ],
     "permiteOrcamentoMedida": "sim",
     "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 75,
+    "categoria": [
+      "Expositores",
+      "Prateleiras",
+      "Estantes"
+    ],
+    "nome": "ESTANTE EM METALON COM PRATELEIRAS EM MDF (BRANCA)",
+    "preco": 1654,
+    "tamanho": "2.00m",
+    "dimensoes": "2.00m Altura x 90cm Largura x 36cm Profundidade",
+    "img": "./images/cards/estante-metalon-1.jpeg",
+    "galeria": [
+      "./images/cards/estante-metalon-2.jpeg",
+      "./images/cards/estante-metalon-3.jpeg"
+    ],
+    "descricao": "Estante expositora com visual industrial para organizar e valorizar os produtos da sua loja. O desenho aberto facilita a visualização dos itens e combina com diferentes ambientes comerciais.\n\nEstrutura em metalon de 30 × 30 mm com pintura epóxi e prateleiras em MDF.\n\nEsta versão possui prateleiras brancas. Valor: R$ 1.654,00.\n\nMedidas fixas:\nAltura: 2,00 m\nLargura: 90 cm\nProfundidade: 36 cm\n\nSem personalização de medidas ou cores. Os acabamentos branco, preto e amadeirado são vendidos em versões separadas, cada um com seu preço.\n\nFotos ilustrativas do modelo com prateleiras pretas. Este cadastro corresponde à versão com prateleiras brancas.",
+    "tags": [
+      "estante",
+      "metalon",
+      "metal",
+      "epoxi",
+      "prateleira",
+      "prateleiras",
+      "mdf",
+      "expositor",
+      "industrial",
+      "branca"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "nao"
+  },
+  {
+    "id": 76,
+    "categoria": [
+      "Expositores",
+      "Prateleiras",
+      "Estantes"
+    ],
+    "nome": "ESTANTE EM METALON COM PRATELEIRAS EM MDF (PRETA)",
+    "preco": 1789,
+    "tamanho": "2.00m",
+    "dimensoes": "2.00m Altura x 90cm Largura x 36cm Profundidade",
+    "img": "./images/cards/estante-metalon-1.jpeg",
+    "galeria": [
+      "./images/cards/estante-metalon-2.jpeg",
+      "./images/cards/estante-metalon-3.jpeg"
+    ],
+    "descricao": "Estante expositora com visual industrial para organizar e valorizar os produtos da sua loja. O desenho aberto facilita a visualização dos itens e combina com diferentes ambientes comerciais.\n\nEstrutura em metalon de 30 × 30 mm com pintura epóxi e prateleiras em MDF.\n\nEsta versão possui prateleiras pretas. Valor: R$ 1.789,00.\n\nMedidas fixas:\nAltura: 2,00 m\nLargura: 90 cm\nProfundidade: 36 cm\n\nSem personalização de medidas ou cores. Os acabamentos branco, preto e amadeirado são vendidos em versões separadas, cada um com seu preço.\n\nAs fotos mostram a versão com prateleiras pretas.",
+    "tags": [
+      "estante",
+      "metalon",
+      "metal",
+      "epoxi",
+      "prateleira",
+      "prateleiras",
+      "mdf",
+      "expositor",
+      "industrial",
+      "preta"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "nao"
+  },
+  {
+    "id": 77,
+    "categoria": [
+      "Expositores",
+      "Prateleiras",
+      "Estantes"
+    ],
+    "nome": "ESTANTE EM METALON COM PRATELEIRAS EM MDF (AMADEIRADA)",
+    "preco": 1810,
+    "tamanho": "2.00m",
+    "dimensoes": "2.00m Altura x 90cm Largura x 36cm Profundidade",
+    "img": "./images/cards/estante-metalon-1.jpeg",
+    "galeria": [
+      "./images/cards/estante-metalon-2.jpeg",
+      "./images/cards/estante-metalon-3.jpeg"
+    ],
+    "descricao": "Estante expositora com visual industrial para organizar e valorizar os produtos da sua loja. O desenho aberto facilita a visualização dos itens e combina com diferentes ambientes comerciais.\n\nEstrutura em metalon de 30 × 30 mm com pintura epóxi e prateleiras em MDF.\n\nEsta versão possui prateleiras amadeiradas. Valor: R$ 1.810,00.\n\nMedidas fixas:\nAltura: 2,00 m\nLargura: 90 cm\nProfundidade: 36 cm\n\nSem personalização de medidas ou cores. Os acabamentos branco, preto e amadeirado são vendidos em versões separadas, cada um com seu preço.\n\nFotos ilustrativas do modelo com prateleiras pretas. Este cadastro corresponde à versão com prateleiras amadeiradas.",
+    "tags": [
+      "estante",
+      "metalon",
+      "metal",
+      "epoxi",
+      "prateleira",
+      "prateleiras",
+      "mdf",
+      "expositor",
+      "industrial",
+      "amadeirada"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "nao"
   }
 ]
