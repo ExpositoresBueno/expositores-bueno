@@ -1,5 +1,11 @@
-import { supabase } from './supabase-client.js';
-import { syncCartOnLogin } from './cart-db.js';
+let supabasePromise;
+async function getSupabase() {
+  return (await (supabasePromise ||= import('./supabase-client.js'))).supabase;
+}
+
+async function syncCartOnLogin() {
+  return (await import('./cart-db.js')).syncCartOnLogin();
+}
 
 const AUTH_STYLE_ID = 'auth-header-style';
 
@@ -117,6 +123,15 @@ async function renderHeaderAuth() {
   host.classList.toggle('auth-on-dark', luminance < 0.55);
   host.classList.toggle('auth-on-light', luminance >= 0.55);
 
+  host.classList.add('is-guest');
+  host.innerHTML = `
+    <a class="header-user-button" href="${getRedirectedLoginUrl(`${window.location.pathname}${window.location.search}${window.location.hash}`)}" aria-label="Entrar ou criar conta">
+      <i class="fa-regular fa-user"></i>
+      <span class="header-user-label">Entrar / Cadastrar</span>
+    </a>
+  `;
+
+  const supabase = await getSupabase();
   const { data: sessionData } = await supabase.auth.getSession();
   const user = sessionData?.session?.user || null;
 
@@ -134,8 +149,7 @@ async function renderHeaderAuth() {
     return;
   }
 
-  const profile = await getProfile();
-  const nome = escapeHtml(getBaseProfileName(profile, user));
+  const nome = escapeHtml(getBaseProfileName(null, user));
   host.classList.remove('is-guest');
   host.innerHTML = `
     <button class="header-user-button" type="button" aria-haspopup="true" aria-expanded="false">
@@ -153,6 +167,11 @@ async function renderHeaderAuth() {
       <li><button type="button" data-auth-signout><i class="fa-solid fa-right-from-bracket"></i>Sair</button></li>
     </ul>
   `;
+
+  getProfile(user).then((profile) => {
+    const greeting = host.querySelector('.header-user-dropdown-greeting');
+    if (greeting && profile) greeting.textContent = `Olá, ${getBaseProfileName(profile, user)}`;
+  }).catch(() => {});
 
   const button = host.querySelector('.header-user-button');
   const dropdown = host.querySelector('.header-user-dropdown');
@@ -315,6 +334,7 @@ function initLoginPage() {
 }
 
 export async function signUp(nome, email, telefone, senha) {
+  const supabase = await getSupabase();
   const { data, error } = await supabase.auth.signUp({
     email,
     password: senha,
@@ -362,6 +382,7 @@ export async function signUp(nome, email, telefone, senha) {
 }
 
 export async function signIn(email, senha) {
+  const supabase = await getSupabase();
   const result = await supabase.auth.signInWithPassword({ email, password: senha });
   if (!result.error) {
     await syncCartOnLogin();
@@ -378,18 +399,21 @@ export async function signIn(email, senha) {
 }
 
 export async function signOut() {
+  const supabase = await getSupabase();
   await supabase.auth.signOut();
   window.location.href = getIndexUrl();
 }
 
 export async function getUser() {
+  const supabase = await getSupabase();
   const { data, error } = await supabase.auth.getUser();
   if (error) return null;
   return data?.user || null;
 }
 
-export async function getProfile() {
-  const user = await getUser();
+export async function getProfile(knownUser = null) {
+  const supabase = await getSupabase();
+  const user = knownUser || await getUser();
   if (!user) return null;
 
   const { data, error } = await supabase
@@ -403,6 +427,7 @@ export async function getProfile() {
 }
 
 export async function checkAuth() {
+  const supabase = await getSupabase();
   const { data } = await supabase.auth.getSession();
   const isLogged = Boolean(data?.session);
   if (!isLogged) {
@@ -412,6 +437,7 @@ export async function checkAuth() {
 }
 
 export async function sendPasswordReset(email) {
+  const supabase = await getSupabase();
   return supabase.auth.resetPasswordForEmail(email, {
     redirectTo: window.location.origin + '/pages/login.html',
   });
@@ -419,7 +445,7 @@ export async function sendPasswordReset(email) {
 
 document.addEventListener('DOMContentLoaded', async () => {
   ensureAuthStyles();
-  await renderHeaderAuth();
+  renderHeaderAuth().catch((error) => console.error('[auth] Erro ao carregar conta:', error));
   if (document.body.dataset.page === 'login') {
     initLoginPage();
   }

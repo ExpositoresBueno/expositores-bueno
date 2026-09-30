@@ -15,6 +15,9 @@
     <meta name="google-site-verification" content="AU_Mv6X8c7dOO97L7FxRX599tf0N9NSI3LKWVjh1ZsE" />
 
     <link rel="canonical" href="https://www.expositoresbueno.com.br/" />
+    <link rel="preload" href="./dados/produtos.json" as="fetch" crossorigin />
+    <link rel="modulepreload" href="./scripts/index.js" />
+    <link rel="modulepreload" href="./scripts/cart-key.js" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
@@ -86,7 +89,11 @@
             <span id="cart-count" aria-live="polite">0</span>
           </button>
 
-          <div class="header-user-auth" data-auth-user-menu></div>
+          <div class="header-user-auth is-guest" data-auth-user-menu>
+            <a class="header-user-button" href="./pages/login.html" aria-label="Entrar ou criar conta">
+              <i class="fa-regular fa-user"></i><span class="header-user-label">Entrar / Cadastrar</span>
+            </a>
+          </div>
         </div>
 
         <nav class="header-nav" aria-label="Navegação principal">

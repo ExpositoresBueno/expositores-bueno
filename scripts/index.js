@@ -1,11 +1,37 @@
-import { supabase } from './supabase-client.js';
-import {
-  addItemToDb,
-  clearCartInDb,
-  loadCartFromDb,
-  removeItemFromDb,
-  buildCartKey,
-} from './cart-db.js';
+import { buildCartKey } from './cart-key.js';
+
+let cartDbPromise;
+function getCartDb() {
+  return cartDbPromise ||= import('./cart-db.js');
+}
+
+async function getSupabase() {
+  return (await import('./supabase-client.js')).supabase;
+}
+
+async function addItemToDb(item) {
+  return (await getCartDb()).addItemToDb(item);
+}
+async function clearCartInDb() {
+  return (await getCartDb()).clearCartInDb();
+}
+async function removeItemFromDb(key) {
+  return (await getCartDb()).removeItemFromDb(key);
+}
+
+async function restaurarCarrinhoEmSegundoPlano() {
+  try {
+    const supabase = await getSupabase();
+    const { data, error } = await supabase.auth.getSession();
+    if (data?.session?.user && !error) {
+      await (await getCartDb()).loadCartFromDb({ preserveLocalChanges: true });
+      atualizarContadorCarrinho();
+      renderizarCarrinho();
+    }
+  } catch (error) {
+    console.error('[index] Erro ao restaurar carrinho:', error);
+  }
+}
 
 /* ==========================================================================
    1. CAROUSEL E MENU (MANTIDOS ORIGINAIS)
@@ -561,6 +587,7 @@ function getCartItemKey(item) {
 
 async function usuarioLogado() {
   try {
+    const supabase = await getSupabase();
     const { data } = await supabase.auth.getSession();
     return Boolean(data?.session?.user);
   } catch {
@@ -887,19 +914,8 @@ function mostrarAvisoCarrinho(nomeProduto) {
 /* ==========================================================================
    5. INICIALIZAÇÃO UNIFICADA
    ========================================================================== */
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener("DOMContentLoaded", () => {
   inicializarCategoriasDaInterface();
-  try {
-    const { data, error } = await supabase.auth.getSession();
-    const isLoggedIn = Boolean(data?.session?.user) && !error;
-
-    if (isLoggedIn) {
-      await loadCartFromDb();
-    }
-  } catch (error) {
-    console.error('[index] Erro ao restaurar carrinho:', error);
-  }
-
   atualizarContadorCarrinho();
 
   const parametrosUrl = new URLSearchParams(window.location.search);
@@ -918,6 +934,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   carregarCatalogo();
+  restaurarCarrinhoEmSegundoPlano();
   inicializarCarrosselSegmentos();
 
   // --- LÓGICA DO MENU DROPDOWN (MAIS VENDIDOS) ---
