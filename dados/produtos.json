@@ -6,7 +6,7 @@
       "Caixas"
     ],
     "nome": "BALCÃO CAIXINHA",
-    "preco": 449.0,
+    "preco": 449,
     "tamanho": "1.10m",
     "dimensoes": "1.10/1.00m Altura x 55cm Largura x 40cm Profundidade",
     "img": "./images/cards/balcaoCaixaComRodape.jpg",
@@ -32,7 +32,7 @@
       "Farmácia"
     ],
     "nome": "BALCÃO CAIXA COM VITRINE (BRANCO)",
-    "preco": 875.0,
+    "preco": 875,
     "tamanho": "1.10m",
     "dimensoes": "1.10/1.00m Altura x 1.15m Largura x 40cm Profundidade",
     "img": "./images/cards/atualizandocxvitrine (1).jpeg",
@@ -65,7 +65,7 @@
       "Expositores"
     ],
     "nome": "BALCÃO VITRINE",
-    "preco": 800.0,
+    "preco": 800,
     "tamanho": "1.00m",
     "dimensoes": "1.00m Altura x 1.00m Largura x 40cm Profundidade",
     "img": "./images/cards/atualizandobalcaovitrine (4).jpg",
@@ -96,7 +96,7 @@
       "Caixas"
     ],
     "nome": "BALCÃO CAIXA",
-    "preco": 815.0,
+    "preco": 815,
     "tamanho": "1.10m",
     "dimensoes": "1.10/1.00m Altura x 1.00m Largura x 40cm Profundidade",
     "img": "./images/CAIXAPACOTE1M (2).jpeg",
@@ -126,7 +126,7 @@
       "Pet Shop"
     ],
     "nome": "ARMÁRIO COLMEIA",
-    "preco": 699.0,
+    "preco": 699,
     "tamanho": "1.85m",
     "dimensoes": "1.85m Altura x 90cm Largura x 30cm Profundidade",
     "img": "./images/cards/armarioColmeia.jpg",
@@ -155,7 +155,7 @@
       "Moveis"
     ],
     "nome": "MÓVEL COM PRATELEIRAS",
-    "preco": 560.0,
+    "preco": 560,
     "tamanho": "1.80m",
     "dimensoes": "1.80m Altura x 90cm Largura x 30cm Profundidade",
     "img": "./images/cards/movelPrateleira.jpg",
@@ -185,7 +185,7 @@
       "Expositores"
     ],
     "nome": "ARARA DE MDF COM COLMEIA",
-    "preco": 459.0,
+    "preco": 459,
     "tamanho": "1.85m",
     "dimensoes": "1.85m Altura x 90cm Largura x 30cm Profundidade",
     "img": "./images/cards/araraMDFColmeia.jpg",
@@ -213,7 +213,7 @@
       "Expositores"
     ],
     "nome": "ARARA DE MDF COM COLMEIA LATERAL",
-    "preco": 459.0,
+    "preco": 459,
     "tamanho": "1.80m",
     "dimensoes": "1.80m Altura x 90cm Largura x 30cm Profundidade",
     "img": "./images/cards/araraMDFColmeia2.jpg",
@@ -249,7 +249,7 @@
       "Moveis"
     ],
     "nome": "GÔNDOLA 8 CANTOS",
-    "preco": 899.0,
+    "preco": 899,
     "tamanho": "1.20m",
     "dimensoes": "1.20m Altura x 90cm Largura x 90cm Profundidade",
     "img": "./images/8cantos (3).jpeg",
@@ -283,7 +283,7 @@
       "Moveis"
     ],
     "nome": "GÔNDOLA CENTRAL",
-    "preco": 990.0,
+    "preco": 990,
     "tamanho": "1.20m",
     "dimensoes": "1.20m Altura x 1.40m Largura x 80cm Profundidade",
     "img": "./images/gondoval (1).jpeg",
@@ -315,7 +315,7 @@
       "Vitrines"
     ],
     "nome": "MÓVEL PARA VITRINE",
-    "preco": 1590.0,
+    "preco": 1590,
     "tamanho": "1.10m",
     "dimensoes": "1.10m Altura x 1.50m Largura",
     "img": "./images/vitmad (1).jpeg",
@@ -350,7 +350,7 @@
       "Armários Vestiários"
     ],
     "nome": "ARMÁRIO VESTIÁRIO 8 PORTAS",
-    "preco": 1040.0,
+    "preco": 1040,
     "tamanho": "1.80m",
     "dimensoes": "1.80m Altura x 60cm Largura x 30cm Profundidade",
     "img": "./images/8P (1).jpeg",
@@ -384,7 +384,7 @@
       "Moveis"
     ],
     "nome": "GÔNDOLA CANALETADA",
-    "preco": 490.0,
+    "preco": 490,
     "tamanho": "1.10m",
     "dimensoes": "1.10m Altura x 90cm Largura x 60cm Profundidade",
     "img": "./images/gondolapaine (2).jpeg",
@@ -413,7 +413,7 @@
       "Moveis"
     ],
     "nome": "GÔNDOLA QUADRADA MADEIRADA",
-    "preco": 1590.0,
+    "preco": 1590,
     "tamanho": "1.20m",
     "dimensoes": "1.20m Altura x 90cm Largura x 90cm Profundidade",
     "img": "./images/quadradaMad (2).jpeg",
@@ -444,7 +444,7 @@
       "Linha Premium"
     ],
     "nome": "BALCÃO CAIXA COM RIPADO",
-    "preco": 3750.0,
+    "preco": 3750,
     "tamanho": "1.00m",
     "dimensoes": "2.50m Comprimento x 1.20m Parte do L x 1.00m Altura x 40cm Profundidade",
     "img": "./images/cxripado (2).jpeg",
@@ -480,7 +480,7 @@
       "Mesa de Manicure"
     ],
     "nome": "CARRINHO AUXILIAR",
-    "preco": 389.0,
+    "preco": 389,
     "tamanho": "80cm",
     "dimensoes": "80cm Altura x 40cm Largura x 30cm Profundidade",
     "img": "./images/carrinho (4).jpeg",
@@ -511,7 +511,7 @@
       "Vitrines"
     ],
     "nome": "MÓVEL PARA VITRINE EM S",
-    "preco": 689.0,
+    "preco": 689,
     "tamanho": "1.80m",
     "dimensoes": "1.80m Altura x 90cm Largura x 30cm Profundidade",
     "img": "./images/VIT (3).jpg",
@@ -541,7 +541,7 @@
       "Moveis"
     ],
     "nome": "MÓVEL PRATELEIRA INCLINADA",
-    "preco": 629.0,
+    "preco": 629,
     "tamanho": "1.80m",
     "dimensoes": "1.80m Altura x 90cm Largura x 30cm Profundidade",
     "img": "./images/prat (2).jpeg",
@@ -570,7 +570,7 @@
       "Moveis"
     ],
     "nome": "MÓVEL ESCADA",
-    "preco": 240.0,
+    "preco": 240,
     "tamanho": "90cm",
     "dimensoes": "90cm Altura x 90cm Largura x 30cm Profundidade",
     "img": "./images/escadinha (2).jpeg",
@@ -598,7 +598,7 @@
       "Moveis"
     ],
     "nome": "MÓVEL PAINEL CANALETADO",
-    "preco": 620.0,
+    "preco": 620,
     "tamanho": "1.80m",
     "dimensoes": "1.80m Altura x 90cm Largura x 30cm Profundidade",
     "img": "./images/MOVELPAINEL (2).jpeg",
@@ -627,7 +627,7 @@
       "Moveis"
     ],
     "nome": "MÓVEL PAINEL COM NICHO LATERAL",
-    "preco": 750.0,
+    "preco": 750,
     "tamanho": "1.80m",
     "dimensoes": "1.80m Altura x 90cm Largura x 30cm Profundidade",
     "img": "./images/painel.nicholat.jpeg",
@@ -654,7 +654,7 @@
       "Moveis"
     ],
     "nome": "MÓVEL PAINEL CANALETADO COM 9 NICHOS",
-    "preco": 750.0,
+    "preco": 750,
     "tamanho": "1.80m",
     "dimensoes": "1.80m Altura x 90cm Largura x 30cm Profundidade",
     "img": "./images/painel9nichos.jpeg",
@@ -681,7 +681,7 @@
       "Moveis"
     ],
     "nome": "MÓVEL PAINEL CANALETADO COM 6 NICHOS",
-    "preco": 750.0,
+    "preco": 750,
     "tamanho": "1.80m",
     "dimensoes": "1.80m Altura x 90cm Largura x 30cm Profundidade",
     "img": "./images/painel6nichos.jpeg",
@@ -709,7 +709,7 @@
       "Moveis"
     ],
     "nome": "KIT CABIDEIROS 60CM",
-    "preco": 899.0,
+    "preco": 899,
     "tamanho": "1.80m",
     "dimensoes": "1.80m Altura x 60cm Largura x 30cm Profundidade (unitário) | 1.80m Altura x 1.80m Largura x 30cm Profundidade (kit)",
     "img": "./images/kit60cm (2).jpeg",
@@ -745,7 +745,7 @@
       "Armários Vestiários"
     ],
     "nome": "ARMÁRIO VESTIÁRIO 12 PORTAS",
-    "preco": 1560.0,
+    "preco": 1560,
     "tamanho": "1.80m",
     "dimensoes": "1.80m Altura x 90cm Largura x 30cm Profundidade",
     "img": "./images/12p.jpg",
@@ -776,7 +776,7 @@
       "Armários Vestiários"
     ],
     "nome": "ARMÁRIO VESTIÁRIO 5 PORTAS",
-    "preco": 650.0,
+    "preco": 650,
     "tamanho": "1.60m",
     "dimensoes": "1.60m Altura x 40cm Largura x 30cm Profundidade",
     "img": "./images/vestiario5p (1).jpeg",
@@ -808,7 +808,7 @@
       "Armários Vestiários"
     ],
     "nome": "ARMÁRIO VESTIÁRIO 3 PORTAS",
-    "preco": 390.0,
+    "preco": 390,
     "tamanho": "95cm",
     "dimensoes": "95cm Altura x 40cm Largura x 30cm Profundidade",
     "img": "./images/vestiario3p (1).jpeg",
@@ -841,7 +841,7 @@
       "Armários Vestiários"
     ],
     "nome": "ARMÁRIO VESTIÁRIO 20 PORTAS",
-    "preco": 2600.0,
+    "preco": 2600,
     "tamanho": "2.00m",
     "dimensoes": "2.00m Altura x 2.00m Largura x 30cm Profundidade",
     "img": "./images/20P (1).jpeg",
@@ -873,7 +873,7 @@
       "Armários Vestiários"
     ],
     "nome": "ARMÁRIO VESTIÁRIO 10 PORTAS",
-    "preco": 1300.0,
+    "preco": 1300,
     "tamanho": "1.80m",
     "dimensoes": "1.80m Altura x 60cm Largura x 30cm Profundidade",
     "img": "./images/10portas (1).jpg",
@@ -904,7 +904,7 @@
       "Moveis"
     ],
     "nome": "KIT 3 BALCÕES",
-    "preco": 1700.0,
+    "preco": 1700,
     "tamanho": "Kit completo",
     "dimensoes": "Kit com 1 caixa + 1 cantoneira + 1 balcão vitrine",
     "img": "./images/kit3b (1).jpg",
@@ -931,7 +931,7 @@
     "permiteOrcamentoMedida": "nao",
     "permiteVariacaoCor": "sim",
     "id": 31,
-    "precoAvista": 1499.0
+    "precoAvista": 1499
   },
   {
     "categoria": [
@@ -941,7 +941,7 @@
       "Moveis"
     ],
     "nome": "KIT 6 MÓVEIS",
-    "preco": 3148.0,
+    "preco": 3148,
     "tamanho": "Kit completo",
     "dimensoes": "Kit com 3 balcões + 3 móveis de parede (2 cabideiros e 1 prateleira)",
     "img": "./images/kit2600.jpeg",
@@ -964,7 +964,7 @@
     "permiteOrcamentoMedida": "nao",
     "permiteVariacaoCor": "sim",
     "id": 32,
-    "precoAvista": 2600.0
+    "precoAvista": 2600
   },
   {
     "id": 33,
@@ -975,7 +975,7 @@
       "Moveis"
     ],
     "nome": "BALCÃO CAIXA EM L",
-    "preco": 2900.0,
+    "preco": 2900,
     "tamanho": "1.00m",
     "dimensoes": "1.00m Altura x 1.80m Comprimento x 1.20m Parte do L x 40cm Profundidade",
     "img": "./images/L180X120 (2).jpg",
@@ -1006,7 +1006,7 @@
       "Moveis"
     ],
     "nome": "GÔNDOLA RETANGULAR",
-    "preco": 875.0,
+    "preco": 875,
     "tamanho": "1.20m",
     "dimensoes": "1.20m Altura x 1.40m Largura x 80cm Profundidade",
     "img": "./images/RETANGULAR (2).jpg",
@@ -1040,7 +1040,7 @@
       "Moveis"
     ],
     "nome": "GÔNDOLA QUADRADA",
-    "preco": 805.0,
+    "preco": 805,
     "tamanho": "1.20m",
     "dimensoes": "1.20m Altura x 90cm Largura x 90cm Profundidade",
     "img": "./images/gquadrada (1).jpg",
@@ -1071,7 +1071,7 @@
       "Mesa de Manicure"
     ],
     "nome": "MESA MANICURE EM L COM ARMÁRIO AUXILIAR",
-    "preco": 1000.0,
+    "preco": 1000,
     "tamanho": "80cm",
     "dimensoes": "80cm Altura x 1.00m Largura x 1.00m Comprimento x 40cm Profundidade",
     "img": "./images/AUX (3).jpeg",
@@ -1103,7 +1103,7 @@
       "Mesa de Manicure"
     ],
     "nome": "MESA EM L COM 4 GAVETAS + GAVETA NO TAMPO COM VIDRO",
-    "preco": 1120.0,
+    "preco": 1120,
     "tamanho": "80cm",
     "dimensoes": "80cm Altura x 1.20m Largura x 80cm Comprimento x 40cm Profundidade",
     "img": "./images/4GAVETAS (3).jpeg",
@@ -1135,7 +1135,7 @@
       "Mesa de Manicure"
     ],
     "nome": "MESA COM PORTA E GAVETA",
-    "preco": 620.0,
+    "preco": 620,
     "tamanho": "80cm",
     "dimensoes": "80cm Altura x 1.00m Largura x 40cm Profundidade",
     "img": "./images/Mani (1).jpeg",
@@ -1164,7 +1164,7 @@
       "Moveis"
     ],
     "nome": "ARARA COM NICHO",
-    "preco": 420.0,
+    "preco": 420,
     "tamanho": "1.20m",
     "dimensoes": "1.20m Altura x 1.10m Largura x 30cm Profundidade",
     "img": "./images/araracnicho (2).jpg",
@@ -1195,7 +1195,7 @@
       "Moveis"
     ],
     "nome": "ARARA CASAQUEIRA",
-    "preco": 780.0,
+    "preco": 780,
     "tamanho": "1.20m",
     "dimensoes": "1.20m Altura x 1.20m Largura x 50cm Profundidade",
     "img": "./images/casaqueira (2).jpg",
@@ -1227,7 +1227,7 @@
       "Moveis"
     ],
     "nome": "ARARA SIMPLES",
-    "preco": 340.0,
+    "preco": 340,
     "tamanho": "1.20m",
     "dimensoes": "1.20m Altura x 1.10m Largura x 30cm Profundidade",
     "img": "./images/semnicho (3).jpeg",
@@ -1260,7 +1260,7 @@
       "Moveis"
     ],
     "nome": "BALCÃO CAIXINHA RETO COM VITRINE",
-    "preco": 515.0,
+    "preco": 515,
     "tamanho": "1.00m",
     "dimensoes": "1.00m Altura x 55cm Largura x 40cm Profundidade",
     "img": "./images/caixinhacvit (3).jpg",
@@ -1294,7 +1294,7 @@
       "Moveis"
     ],
     "nome": "GAVETA PARA DINHEIRO",
-    "preco": 175.0,
+    "preco": 175,
     "tamanho": "15cm",
     "dimensoes": "15cm Altura x 55cm Largura x 40cm Profundidade",
     "img": "./images/gavetacaixa (1).jpg",
@@ -1326,7 +1326,7 @@
       "Moveis"
     ],
     "nome": "BALCÃO CAIXINHA COM VITRINE (ELEVADO)",
-    "preco": 580.0,
+    "preco": 580,
     "tamanho": "1.00m",
     "dimensoes": "1.00m Altura x 55cm Largura x 40cm Profundidade",
     "img": "./images/elevadocvitrine (1).jpeg",
@@ -1359,7 +1359,7 @@
       "Moveis"
     ],
     "nome": "BALCÃO VITRINE COM GAVETÃO",
-    "preco": 999.0,
+    "preco": 999,
     "tamanho": "1.00m",
     "dimensoes": "1.00m Altura x 1.00m Largura x 40cm Profundidade",
     "img": "./images/vitcomgaveta (2).jpeg",
@@ -1392,7 +1392,7 @@
       "Moveis"
     ],
     "nome": "KIT LOJA DE ROUPAS",
-    "preco": 4999.0,
+    "preco": 4999,
     "tamanho": "Kit completo",
     "dimensoes": "Kit completo para montagem de loja de roupas",
     "img": "./images/kitlojaroupa (1).jpg",
@@ -1426,7 +1426,7 @@
       "Moveis"
     ],
     "nome": "KIT LOJA",
-    "preco": 7499.0,
+    "preco": 7499,
     "tamanho": "Kit completo",
     "dimensoes": "Kit com 5 móveis prateleira, 2 móveis colmeia, 1 balcão vitrine, 1 balcão cantoneira, 1 balcão caixa com vitrine, 1 gôndola central, 1 expositor em S e 1 painel canaletado",
     "img": "./images/kitloja6 (1).jpg",
@@ -1464,7 +1464,7 @@
       "Moveis"
     ],
     "nome": "KIT LOJA PARA TABACARIA E CONVENIÊNCIA",
-    "preco": 26900.0,
+    "preco": 26900,
     "tamanho": "Kit completo",
     "dimensoes": "Projeto completo sem opção de medidas",
     "img": "./images/Lojamadeirada (1).jpg",
@@ -1500,7 +1500,7 @@
       "Moveis"
     ],
     "nome": "KIT COMPACTO LOJA FUNCIONAL",
-    "preco": 3800.0,
+    "preco": 3800,
     "tamanho": "Kit completo",
     "dimensoes": "Kit compacto sem opção de medidas",
     "img": "./images/kit23 (1).jpeg",
@@ -1531,7 +1531,7 @@
       "Moveis"
     ],
     "nome": "FARMÁCIA COMPLETA – VIDRO + MDF",
-    "preco": 18900.0,
+    "preco": 18900,
     "tamanho": "Projeto completo",
     "dimensoes": "Projeto completo sem alteração de cores e sem alteração de medidas",
     "img": "./images/farmacia1 (1).jfif",
@@ -1563,7 +1563,7 @@
       "Moveis"
     ],
     "nome": "Balcão caixa com detalhes madeirado",
-    "preco": 1990.0,
+    "preco": 1990,
     "tamanho": "1,00m x 2,00m x 0,40m",
     "dimensoes": "Altura: 1,00 m | Largura: 2,00 m | Profundidade: 40 cm",
     "img": "./images/caixareto (2).jpg",
@@ -1594,7 +1594,7 @@
       "Moveis"
     ],
     "nome": "Balcão caixa em L com painel e prateleiras",
-    "preco": 3300.0,
+    "preco": 3300,
     "tamanho": "1,00m x 1,50m x 1,50m x 0,40m",
     "dimensoes": "Altura: 1,00 m | Comprimento: 1,50 m | Parte do L: 1,50 m | Profundidade: 40 cm",
     "img": "./images/Lcompainel (2).jpg",
@@ -1626,7 +1626,7 @@
       "Moveis"
     ],
     "nome": "Balcão Caixa em L com Iluminação LED",
-    "preco": 3500.0,
+    "preco": 3500,
     "tamanho": "1,10m/1,00m x 1,50m x 1,50m x 0,40m",
     "dimensoes": "Altura: 1,10 m ou 1,00 m | Comprimento: 1,50 m | Parte do L: 1,50 m | Profundidade: 40 cm",
     "img": "./images/Premium (2).jpg",
@@ -1660,7 +1660,7 @@
       "Moveis"
     ],
     "nome": "Balcão Caixa em L – Preto com Detalhe Madeirado",
-    "preco": 3770.0,
+    "preco": 3770,
     "tamanho": "1,10m/1,00m x 2,00m x 1,00m x 0,40m",
     "dimensoes": "Altura: 1,10 m e 1,00 m | Comprimento: 2,00 m | Parte do L: 1,00 m | Profundidade: 40 cm",
     "img": "./images/Balcaolpreto (1).jpg",
@@ -1693,7 +1693,7 @@
       "Moveis"
     ],
     "nome": "Balcão Caixa em L Madeirado com Detalhe Ripado",
-    "preco": 2900.0,
+    "preco": 2900,
     "tamanho": "1,10m x 1,20m x 1,20m",
     "dimensoes": "Altura: 1,10 m | Comprimento: 1,20 m | Parte do L: 1,20 m",
     "img": "./images/balcãoripadomadeirado (3).jpg",
@@ -1730,7 +1730,7 @@
       "Moveis"
     ],
     "nome": "Kit Expositor Preto para Loja com Cabideiro e Nichos",
-    "preco": 1650.0,
+    "preco": 1650,
     "tamanho": "Kit com 3 módulos",
     "dimensoes": "Kit padrão sem alteração de cor e sem alteração de medida",
     "img": "./images/KITMOVEL3PRETO (2).jpg",
@@ -1762,7 +1762,7 @@
       "Moveis"
     ],
     "nome": "Kit Closet Expositor Branco para Loja com Cabideiro, Nichos e Gavetas",
-    "preco": 3370.0,
+    "preco": 3370,
     "tamanho": "Kit com 3 módulos",
     "dimensoes": "Kit com opção de alteração de cor e de medida",
     "img": "./images/KITCLOSET (1).jpg",
@@ -1798,7 +1798,7 @@
       "Moveis"
     ],
     "nome": "CABIDEIRO COM PRATELEIRAS EXPOSITOR PARA LOJA",
-    "preco": 920.0,
+    "preco": 920,
     "tamanho": "1.80m",
     "dimensoes": "1.80m Altura x 1.80m Largura x 30cm Profundidade",
     "img": "./images/cabideirocomprat1 (1).jpeg",
@@ -1829,7 +1829,7 @@
       "Moveis"
     ],
     "nome": "BALCÃO CAIXA DUPLO COM PRATELEIRAS INCLINADAS PARA LOJA",
-    "preco": 1790.0,
+    "preco": 1790,
     "tamanho": "1.50m",
     "dimensoes": "1.00m Altura x 1.50m Largura x 50cm Profundidade",
     "img": "./images/caixaduplopratinclinada (2).jpeg",
@@ -1861,7 +1861,7 @@
       "Moveis"
     ],
     "nome": "BALCÃO CAIXA EM L COM VITRINE DE VIDRO PARA LOJA",
-    "preco": 2750.0,
+    "preco": 2750,
     "tamanho": "1.50m x 1.50m",
     "dimensoes": "1.00m Altura x 1.50m Largura x 40cm Profundidade",
     "img": "./images/caixavitrineemL (2).jpeg",
@@ -1893,7 +1893,7 @@
       "Moveis"
     ],
     "nome": "BALCÃO CANTONEIRA EXPOSITOR PARA LOJA",
-    "preco": 380.0,
+    "preco": 380,
     "tamanho": "40cm",
     "dimensoes": "1.00m Altura x 40cm Largura x 40cm Profundidade",
     "img": "./images/balcaocantoneira (2).jpeg",
@@ -1924,7 +1924,7 @@
       "Moveis"
     ],
     "nome": "BALCÃO CAIXA EM L COM VITRINE FRONTAL",
-    "preco": 2300.0,
+    "preco": 2300,
     "tamanho": "2.50m x 1.00m",
     "dimensoes": "1.00m Altura x 2.50m Largura x 50cm Profundidade",
     "img": "./images/caixavitrinemLdenovo (1).jpeg",
@@ -1956,7 +1956,7 @@
       "Moveis"
     ],
     "nome": "BALCÃO CAIXA EM L COM DETALHE FRONTAL – BRANCO",
-    "preco": 2900.0,
+    "preco": 2900,
     "tamanho": "1.50m x 1.50m",
     "dimensoes": "1.00m Altura x 1.50m Largura x 40cm Profundidade",
     "img": "./images/LBRANCODETALHEBRANCO.jpeg",
@@ -1985,7 +1985,7 @@
       "Moveis"
     ],
     "nome": "CABIDEIRO DUPLO",
-    "preco": 459.0,
+    "preco": 459,
     "tamanho": "1.80m",
     "dimensoes": "1.80m Altura x 1.00m Largura x 30cm Profundidade",
     "img": "./images/cabduplo (1).jpeg",
@@ -2016,7 +2016,7 @@
       "Moveis"
     ],
     "nome": "KIT BAZAR COMPLETO",
-    "preco": 28900.0,
+    "preco": 28900,
     "tamanho": "Kit completo",
     "dimensoes": "Móveis de parede 2.20m Altura x 35cm Profundidade",
     "img": "./images/bazarcanoas (2).jfif",
@@ -2051,7 +2051,7 @@
       "Moveis"
     ],
     "nome": "CABIDEIRO EM MDF COM PRATELEIRAS",
-    "preco": 459.0,
+    "preco": 459,
     "tamanho": "1.80m",
     "dimensoes": "1.80m Altura x 90cm Largura x 30cm Profundidade",
     "img": "./images/foto_1.jpg",
@@ -2120,7 +2120,7 @@
       "Moveis"
     ],
     "nome": "GÔNDOLA CENTRAL 4 LADOS COM PRATELEIRAS",
-    "preco": 820.0,
+    "preco": 820,
     "tamanho": "1.20m",
     "dimensoes": "1.20m Altura x 1.20m Largura x 40cm Profundidade",
     "img": "./images/paineleprat (1).jpg",
@@ -2156,7 +2156,7 @@
       "Moveis"
     ],
     "nome": "BALCÃO CAIXA COM PAINEL CANALETADO",
-    "preco": 1350.0,
+    "preco": 1350,
     "tamanho": "1.10m",
     "dimensoes": "1.10m Altura x 1.50m Largura x 40cm Profundidade",
     "img": "./images/CAIXACOMPAINEL (1).jpeg",
@@ -2196,7 +2196,7 @@
       "Moveis"
     ],
     "nome": "BALCÃO CAIXA EM L PREMIUM",
-    "preco": 3770.0,
+    "preco": 3770,
     "tamanho": "1.10m",
     "dimensoes": "2.00m Comprimento x 1.00m Retorno (L) x 40cm Profundidade x 1.00m Altura parte baixa x 1.10m Altura parte alta",
     "img": "./images/LPRETOAZUL (4).jpeg",
@@ -2471,6 +2471,39 @@
       "acessorios",
       "cosmeticos",
       "presentes"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim"
+  },
+  {
+    "id": 79,
+    "categoria": [
+      "Kits",
+      "Balcões",
+      "Expositores",
+      "Moveis"
+    ],
+    "nome": "KIT LOJA COM ILUMINAÇÃO",
+    "preco": 7700,
+    "tamanho": "Kit completo",
+    "dimensoes": "Medidas não informadas. Sem alteração de medidas.",
+    "img": "./images/cards/kit-loja-iluminacao-1.jpeg",
+    "galeria": [
+      "./images/cards/kit-loja-iluminacao-2.jpeg",
+      "./images/cards/kit-loja-iluminacao-3.jpeg"
+    ],
+    "descricao": "Um conjunto para valorizar seus produtos e dar destaque ao atendimento, com visual moderno e detalhes que fazem a diferença. A iluminação do balcão e dos expositores destaca o mobiliário e os itens expostos, enquanto as prateleiras de vidro favorecem a visualização dos produtos.\n\nO kit inclui:\n• 1 balcão caixa em L com ripas pretas e iluminação;\n• 1 porta vai e vem;\n• 2 móveis expositores com prateleiras de vidro e iluminação.\n\nValor do conjunto: R$ 7.700,00 no acabamento das fotos, com móveis brancos e ripas pretas.\n\nPermite alteração de cor. Preto com acréscimo de 32% e madeirado com acréscimo de 37% sobre o valor base.\n\nSem alteração de medidas. As medidas deste kit ainda não foram informadas.",
+    "tags": [
+      "kit",
+      "kit loja",
+      "iluminacao",
+      "balcao caixa",
+      "balcao em l",
+      "ripas pretas",
+      "porta vai e vem",
+      "prateleiras de vidro",
+      "expositor",
+      "moveis"
     ],
     "permiteOrcamentoMedida": "nao",
     "permiteVariacaoCor": "sim"
