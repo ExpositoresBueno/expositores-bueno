@@ -2288,5 +2288,30 @@
     ],
     "permiteOrcamentoMedida": "sim",
     "permiteVariacaoCor": "nao"
+  },
+  {
+    "id": 73,
+    "categoria": [
+      "Expositores",
+      "Gôndolas"
+    ],
+    "nome": "EXPOSITOR CENTRAL",
+    "preco": 1000,
+    "tamanho": "1.20m",
+    "dimensoes": "1.20m Altura x 80cm Largura x 80cm Profundidade",
+    "img": "./images/cards/expositor-central.jpeg",
+    "descricao": "Expositor central ideal para organizar e valorizar seus produtos no centro da loja. As prateleiras em diferentes lados ajudam a distribuir os itens e facilitam a visualização pelos clientes.\n\nMedidas:\nAltura: 1,20 m\nLargura: 80 cm\nProfundidade: 80 cm\n\nDisponível em branco, preto e madeirado. Valor informado para a cor branca. Preto com acréscimo de 32% e madeirado com acréscimo de 37%.\n\nMedidas fixas, sem personalização de tamanho.",
+    "tags": [
+      "expositor",
+      "expositores",
+      "central",
+      "gondola",
+      "gondolas",
+      "prateleiras",
+      "loja",
+      "organizacao"
+    ],
+    "permiteOrcamentoMedida": "nao",
+    "permiteVariacaoCor": "sim"
   }
 ]
