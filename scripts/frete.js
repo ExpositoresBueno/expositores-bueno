@@ -1,3 +1,4 @@
+import { lerCarrinhoPromocional } from './promo-pricing.js';
 // ============================================================
 // LIGA / DESLIGA O BLOCO DE FRETE NO CHECKOUT
 // false = remove completamente o bloco de frete
@@ -25,7 +26,7 @@ const fetchJSON = async (url, init) => {
 
 const carregarDimensoesFrete = async () => fetchJSON('../dados/dimensoes-frete.json');
 const carregarTabelaFreteCaminhao = async () => fetchJSON('../dados/tabela-frete-caminhao.json');
-const getCart = () => JSON.parse(localStorage.getItem('cart') || '[]');
+const getCart = () => lerCarrinhoPromocional();
 
 const normalizarCidade = (texto = '') => String(texto || '')
   .normalize('NFD')

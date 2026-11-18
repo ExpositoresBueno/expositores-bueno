@@ -1,4 +1,12 @@
 import { buildCartKey } from './cart-key.js';
+import { campanhaAtiva, obterPromocoesCarrossel, enriquecerProdutoComPromocao, lerCarrinhoPromocional, atualizarItemCarrinho, calcularParcelasBlackBueno } from './promo-pricing.js';
+if (!document.querySelector('link[data-black-bueno-css]')) {
+  const css = document.createElement('link');
+  css.rel = 'stylesheet';
+  css.href = new URL('../styles/black-bueno.css', import.meta.url).href;
+  css.dataset.blackBuenoCss = 'true';
+  document.head.appendChild(css);
+}
 
 let cartDbPromise;
 function getCartDb() {
@@ -139,6 +147,7 @@ const inputMax = document.getElementById("price-max");
 const sortSelect = document.getElementById("sort-products");
 const possuiGridProdutos = Boolean(document.getElementById("products-grid"));
 const categoriasBase = [
+  ...(campanhaAtiva() ? ["Black Bueno"] : []),
   "Balcões",
   "Armários Vestiários",
   "Expositores",
@@ -178,6 +187,7 @@ function inicializarCategoriasDaInterface() {
   const segmentTrack = document.getElementById("segment-track");
   if (segmentTrack) {
     const icones = {
+      "Black Bueno": "fa-tag",
       Balcões: "fa-table",
       "Armários Vestiários": "fa-door-closed",
       Kits: "fa-cubes",
@@ -399,6 +409,7 @@ function aplicarFiltros(filtroManual = null) {
     const filtroTopoNormalizado = removerAcentos(filtroTopo);
     const matchesCatOuNome =
       filtroTopo === "Todos" ||
+      (filtroTopo === "Black Bueno" && p.blackBueno) ||
       categoriasNormalizadas.includes(filtroTopoNormalizado) ||
       stringsEquivalentes(p.nome, filtroTopo);
     const matchesTam = tamanho === "" || p.tamanho === tamanho;
@@ -434,12 +445,69 @@ async function carregarCatalogo() {
     const resposta = await fetch(caminhoJson);
     if (!resposta.ok) throw new Error("Arquivo JSON não encontrado!");
 
-    produtos = await resposta.json();
+    produtos = (await resposta.json()).map(p => enriquecerProdutoComPromocao(p));
+    renderizarBlackBueno(produtos);
     inicializarFiltrosAvancados();
     aplicarFiltros();
   } catch (erro) {
     console.error("Falha ao carregar o catálogo:", erro);
   }
+}
+
+function renderizarBlackBueno(catalogo) {
+  const host = document.getElementById("black-bueno-section");
+  if (!host) return;
+  const ofertas = obterPromocoesCarrossel()
+    .map(oferta => ({...oferta, produto: catalogo.find(p => p.id === oferta.id)}))
+    .filter(oferta => oferta.produto);
+  if (!ofertas.length) { host.hidden = true; return; }
+  host.innerHTML = `
+    <div class="bb-head">
+      <div><p class="bb-kicker">EXPOSITORES BUENO • 05 A 30 DE NOVEMBRO</p>
+      <h2>BLACK <span>BUENO</span></h2>
+      <p class="bb-subtitle">Monte sua loja pagando menos.</p>
+      <p class="bb-note">10 ofertas especiais • Até 4x sem juros • Direto da fábrica</p></div>
+      <a class="bb-view-all" href="#products-grid">Ver todas as ofertas</a>
+    </div>
+    <div class="bb-navigation"><span>Confira os produtos em promoção</span>
+      <div><button type="button" class="bb-prev" aria-label="Ofertas anteriores">‹</button>
+      <button type="button" class="bb-next" aria-label="Próximas ofertas">›</button></div>
+    </div>
+    <div class="bb-track" tabindex="0" aria-label="Ofertas Black Bueno">${ofertas.map(o => `
+      <a class="bb-card" href="./pages/productDetails.html?id=${o.id}">
+        <div class="bb-photo"><img src="${o.produto.img}" alt="${o.nome}" loading="lazy" decoding="async">
+          <span class="bb-discount">-${Math.floor((1 - o.precoPromocional/o.precoOriginal)*100 + 1e-8)}%</span>
+        </div>
+        <div class="bb-card-copy"><h3>${o.nome}</h3>
+          <del>${formatarMoedaBR(o.precoOriginal)}</del>
+          <strong>${formatarMoedaBR(o.precoPromocional)}</strong>
+          <p>Até ${o.maxParcelasSemJuros}x sem juros</p>
+          <span class="bb-card-cta">Ver produto →</span>
+        </div>
+      </a>`).join("")}</div>
+    <p class="bb-conditions">Ofertas válidas de 05/11 a 30/11/2026, para os modelos nas medidas e acabamento de catálogo. Frete à parte. Descontos não cumulativos.</p>`;
+  host.hidden = false;
+  const track = host.querySelector(".bb-track");
+  const prev = host.querySelector(".bb-prev");
+  const next = host.querySelector(".bb-next");
+  const update = () => {
+    prev.disabled = track.scrollLeft <= 2;
+    next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
+  };
+  const scroll = direction => track.scrollBy({left: direction * Math.max(200, track.clientWidth * .85), behavior:"smooth"});
+  prev.addEventListener("click", () => scroll(-1));
+  next.addEventListener("click", () => scroll(1));
+  track.addEventListener("scroll", update, {passive:true});
+  window.addEventListener("resize", update, {passive:true});
+  requestAnimationFrame(update);
+  host.querySelector(".bb-view-all").addEventListener("click", event => {
+    event.preventDefault();
+    if (searchInput) searchInput.value = "";
+    if (searchCategoryTop) searchCategoryTop.value = "Black Bueno";
+    [sizeSelect,typeSelect,heightSelect,widthSelect,materialSelect,inputMin,inputMax].forEach(el => { if(el) el.value = ""; });
+    aplicarFiltros("Black Bueno");
+    grid?.scrollIntoView({behavior:"smooth",block:"start"});
+  });
 }
 
 function inicializarCarrosselSegmentos() {
@@ -480,7 +548,7 @@ function renderizarProdutos(lista) {
 
   lista.forEach((prod) => {
     const cardDiv = document.createElement("div");
-    cardDiv.className = "product-card";
+    cardDiv.className = `product-card${prod.blackBueno ? " bb-product-card" : ""}`;
     const categoriaPrincipal = Array.isArray(prod.categoria)
       ? prod.categoria[0]
       : prod.categoria;
@@ -501,6 +569,7 @@ function renderizarProdutos(lista) {
       <a href="${destinoDetalhe}" class="product-card-link" aria-label="Abrir produto ${prod.nome}">
         <div class="product-image-container">
           <span class="category-badge">${categoriaPrincipal.toUpperCase()}</span>
+          ${prod.blackBueno ? '<span class="bb-product-badge">BLACK BUENO</span>' : ""}
           <img src="${imgPath}" alt="${prod.nome}" class="product-img" loading="lazy" decoding="async">
         </div>
         <div class="product-info">
@@ -508,6 +577,7 @@ function renderizarProdutos(lista) {
           <div class="product-footer">
             <div class="price-container">
               <div class="price-stack">
+                ${prod.blackBueno ? `<del class="bb-old-price">${formatarMoedaBR(prod.precoOriginal)}</del>` : ""}
                 <span class="price-value">${formatarMoedaBR(precoAtual)}</span>
               </div>
               <button class="btn-add-cart" data-id="${prod.id}">
@@ -516,13 +586,14 @@ function renderizarProdutos(lista) {
             </div>
             <p class="installment-preview">${(() => {
               const limiteParcelas = Number(prod.maxParcelasSemJuros);
-              const parcelamento = calcularParcelamentoSemJuros(
+              const parcelamento = calcularParcelasBlackBueno(
                 precoAtual,
                 Number.isFinite(limiteParcelas) && limiteParcelas > 0 ? limiteParcelas : 12,
+                Boolean(prod.blackBueno),
               );
               return `${parcelamento.parcelas}x de ${formatarMoedaBR(parcelamento.valorParcela)} sem juros`;
             })()}</p>
-            ${precoAvista != null ? `<p class="cash-price">A vista ${formatarMoedaBR(precoAvista)}</p>` : ""}
+            ${prod.blackBueno ? '<p class="bb-offer-caption">Oferta até 30/11 • Não cumulativa</p>' : precoAvista != null ? `<p class="cash-price">A vista ${formatarMoedaBR(precoAvista)}</p>` : ""}
             <ul class="product-trust-list">
               <li><i class="fa-solid fa-check"></i><span>Parcelamento sem juros</span></li>
               <li><i class="fa-solid fa-check"></i><span>Entrega em todo RS</span></li>
@@ -575,7 +646,7 @@ function atualizarBotoesPaginacao(totalItens, pagina) {
    4. CARRINHO E WHATSAPP
    ========================================================================== */
 function getCart() {
-  return JSON.parse(localStorage.getItem("cart")) || [];
+  return lerCarrinhoPromocional();
 }
 function saveCart(cart) {
   localStorage.setItem("cart", JSON.stringify(cart));
@@ -596,13 +667,14 @@ async function usuarioLogado() {
 }
 
 function addToCart(produto) {
+  produto = atualizarItemCarrinho(produto);
   const quantidade = Math.max(1, parseInt(produto.quantidade, 10) || 1);
   const cart = getCart();
   const cartKey = getCartItemKey(produto);
   const existente = cart.find((item) => getCartItemKey(item) === cartKey);
 
   if (existente) {
-    existente.quantidade += quantidade;
+    Object.assign(existente, produto, { cartKey, quantidade: existente.quantidade + quantidade });
   } else {
     cart.push({ ...produto, cartKey, quantidade });
   }
@@ -612,7 +684,8 @@ function addToCart(produto) {
 
   usuarioLogado().then((logado) => {
     if (logado) {
-      addItemToDb({ ...produto, cartKey, quantidade }).catch(() => {});
+      const itemAtual = cart.find(item => getCartItemKey(item) === cartKey);
+      if (itemAtual) addItemToDb(itemAtual).catch(() => {});
     }
   });
 
@@ -693,6 +766,7 @@ function renderizarCarrinho() {
         <img src="${imgPath}" alt="${item.nome}">
         <div class="cart-item-info">
           <h4>${item.nome}</h4>
+          ${item.blackBueno ? '<p class="bb-cart-label">BLACK BUENO</p>' : ""}
           ${corInfo}
           ${larguraInfo}
           ${alturaInfo}

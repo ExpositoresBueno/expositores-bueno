@@ -1,3 +1,4 @@
+import { obterPromocaoPorId, enriquecerProdutoComPromocao, calcularParcelasBlackBueno } from './promo-pricing.js';
 /* ==========================================================================
    LÓGICA DE DETALHES DO PRODUTO (CORRIGIDO)
    ========================================================================== */
@@ -122,6 +123,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         <div class="recommendation-card-content">
           <p class="recommendation-category">${String(categoriaPrincipal || '').toUpperCase()}</p>
           <h3 class="recommendation-name">${produto.nome}</h3>
+          ${produto.blackBueno ? `<span class="bb-inline-tag">BLACK BUENO</span><del class="bb-old-price">${formatarMoeda(produto.precoOriginal)}</del>` : ""}
           <p class="recommendation-price">${formatarMoeda(Number(produto.preco) || 0)}</p>
         </div>
       </a>
@@ -328,7 +330,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // 4. Se o produto existir, preenche a página e configura o botão
     if (produtoSelecionado) {
-      renderizarRecomendacoes(produtoSelecionado, produtos);
+      renderizarRecomendacoes(produtoSelecionado, produtos.map(p => enriquecerProdutoComPromocao(p)));
       
       // Injeta Nome, Preço e Descrição
       document.getElementById('product-title').innerText = produtoSelecionado.nome;
@@ -340,11 +342,19 @@ document.addEventListener('DOMContentLoaded', async () => {
       const inputQuantidade = document.getElementById('detail-quantity-input') || document.getElementById('quantity-input');
       const colorSection = document.getElementById('color-selector');
       const budgetSection = document.getElementById('budget-calculator');
-      let valorAtualProduto = Number(produtoSelecionado.preco);
+      const oferta = obterPromocaoPorId(produtoSelecionado.id);
+      let valorAtualProduto = Number(oferta?.precoPromocional ?? produtoSelecionado.preco);
+      let medidaPadrao = true;
+      const promoBanner = document.createElement('div');
+      promoBanner.className = 'bb-detail-offer';
+      promoBanner.hidden = true;
+      priceElement?.closest('.price-container')?.before(promoBanner);
       const colorInputs = document.querySelectorAll('input[name="product-color"]');
       const permiteVariacaoCor = opcaoAtiva(produtoSelecionado.permiteVariacaoCor);
       const permiteOrcamentoMedida = opcaoAtiva(produtoSelecionado.permiteOrcamentoMedida);
       let corSelecionada = 'branco';
+      const obterOfertaAtual = () => corSelecionada === 'branco' && medidaPadrao ? obterPromocaoPorId(produtoSelecionado.id) : null;
+      const obterPrecoBase = () => Number(obterOfertaAtual()?.precoPromocional ?? produtoSelecionado.preco);
 
       const obterMultiplicadorCor = () => {
         if (!permiteVariacaoCor) return 1;
@@ -359,10 +369,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       const atualizarParcelamento = (valorBase) => {
         if (!installmentsValueElement || !installmentsPlanElement) return;
-        const limiteParcelas = Number(produtoSelecionado.maxParcelasSemJuros);
-        const { parcelas, valorParcela } = calcularParcelamentoSemJuros(
+        const promo = obterOfertaAtual();
+        const limiteParcelas = Number(promo?.maxParcelasSemJuros ?? produtoSelecionado.maxParcelasSemJuros);
+        const { parcelas, valorParcela } = calcularParcelasBlackBueno(
           valorBase,
           Number.isFinite(limiteParcelas) && limiteParcelas > 0 ? limiteParcelas : 12,
+          Boolean(promo),
         );
         installmentsValueElement.innerText = `Valor ${formatarMoeda(Number(valorBase) || 0)}.`;
         installmentsPlanElement.innerText = `${parcelas}x de ${formatarMoeda(valorParcela)} sem juros`;
@@ -372,11 +384,18 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (!priceElement) return;
         const valorTotal = valorAtualProduto * obterQuantidadeAtual();
         priceElement.innerText = formatarNumero(valorTotal);
+        const promo = obterOfertaAtual();
+        promoBanner.hidden = !promo;
+        if (promo) {
+          const economia = (promo.precoOriginal - promo.precoPromocional) * obterQuantidadeAtual();
+          promoBanner.innerHTML = `<span class="bb-inline-tag">BLACK BUENO • ATÉ 30/11</span><div><del>${formatarMoeda(promo.precoOriginal * obterQuantidadeAtual())}</del> <strong>Economize ${formatarMoeda(economia)}</strong></div><small>Oferta para medidas e acabamento de catálogo. Não cumulativa. Frete à parte.</small>`;
+        }
+        priceElement.closest('.price-container')?.classList.toggle('bb-detail-price', Boolean(promo));
         atualizarParcelamento(valorTotal);
       };
 
       const atualizarPrecoPrincipal = () => {
-        const precoComCor = calcularPrecoComCor(produtoSelecionado.preco);
+        const precoComCor = calcularPrecoComCor(obterPrecoBase());
         valorAtualProduto = precoComCor;
         atualizarPrecoExibicao();
       };
@@ -587,7 +606,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       const possuiMedidaPersonalizada = () => !todasMedidasNoPadrao();
 
       const calcularValor = () => {
-        const precoBaseBranco = Number(produtoSelecionado.preco);
+        medidaPadrao = todasMedidasNoPadrao();
+        const precoBaseBranco = obterPrecoBase();
         let fatorMedidas = 1;
         const medidasAplicadas = [];
 
@@ -598,6 +618,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           if (Number.isNaN(valorDigitado)) {
             resultadoOrcamento.innerText = `Informe uma ${dim.chave} válida maior que zero.`;
             resultadoOrcamento.classList.add('error');
+            medidaPadrao = false;
             valorAtualProduto = calcularPrecoComCor(produtoSelecionado.preco);
             atualizarPrecoExibicao();
             return;
@@ -645,8 +666,9 @@ document.addEventListener('DOMContentLoaded', async () => {
           medidasNome.push(`${dim.nome} ${formatarMetros(valorEfetivo)}m`);
         }
 
-        const fatorAdicional = possuiMedidaPersonalizada() ? (1 + adicionalPercentualMedidaPersonalizada) : 1;
-        const valorBranco = Number(produtoSelecionado.preco) * fatorMedidas * fatorAdicional;
+        medidaPadrao = !possuiMedidaPersonalizada();
+        const fatorAdicional = medidaPadrao ? 1 : (1 + adicionalPercentualMedidaPersonalizada);
+        const valorBranco = obterPrecoBase() * fatorMedidas * fatorAdicional;
         return {
           valorFinal: calcularPrecoComCor(valorBranco),
           medidasNome,
@@ -671,9 +693,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
 
             input.addEventListener('input', () => {
-              if (todasMedidasNoPadrao()) {
-                calcularValor();
-              }
+              if (oferta || todasMedidasNoPadrao()) calcularValor();
             });
           });
 
@@ -778,9 +798,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         const corKey = permiteVariacaoCor ? (corSelecionada || 'branco') : 'branco';
 
         if (!existeAlgumaBase || !permiteOrcamentoMedida) {
-          const precoSemMedida = calcularPrecoComCor(produtoSelecionado.preco);
+          medidaPadrao = true;
+          const precoSemMedida = calcularPrecoComCor(obterPrecoBase());
           return {
-            ...produtoSelecionado,
+            ...(obterOfertaAtual() ? enriquecerProdutoComPromocao(produtoSelecionado) : produtoSelecionado),
             preco: Number(precoSemMedida.toFixed(2)),
             ...(permiteVariacaoCor ? { corOrcada: corNome } : {}),
             cartKey: `${produtoSelecionado.id}-${corKey}`,
@@ -800,7 +821,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const { valorFinal, medidasNome, medidasOrcadas } = resultadoCalculo;
 
         return {
-          ...produtoSelecionado,
+          ...(obterOfertaAtual() ? enriquecerProdutoComPromocao(produtoSelecionado) : produtoSelecionado),
           preco: Number(valorFinal.toFixed(2)),
           ...medidasOrcadas,
           ...(permiteVariacaoCor ? { corOrcada: corNome } : {}),

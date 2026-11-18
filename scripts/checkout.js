@@ -1,3 +1,4 @@
+import { lerCarrinhoPromocional, calcularParcelasBlackBueno } from './promo-pricing.js';
 import { supabase } from "./supabase-client.js";
 import { getProfile, getUser } from "./auth.js";
 import { getAddresses } from "./profile.js";
@@ -13,7 +14,7 @@ const MAX_PARCELAS_KIT = 4;
 let enderecosSalvos = [];
 
 function getCart() {
-  return JSON.parse(localStorage.getItem("cart")) || [];
+  return lerCarrinhoPromocional();
 }
 
 const formatadorMoedaBR = new Intl.NumberFormat("pt-BR", {
@@ -291,6 +292,7 @@ function renderizarItens(cart) {
         <div class="checkout-item-info">
           <a class="checkout-item-title" href="./productDetails.html?id=${item.id}">${tituloLimpo || item.nome}</a>
           ${specsHtml}
+          ${item.blackBueno ? `<p class="bb-cart-label">BLACK BUENO • <del>${formatarReal(item.precoOriginal)}</del> por ${formatarReal(item.preco)} cada</p>` : ""}
           <div class="quantity-control">
             <span>Quantidade:</span>
             <button type="button" class="qty-btn" data-cart-key="${getCartItemKey(item)}" data-delta="-1">−</button>
@@ -339,9 +341,11 @@ function preencherParcelas(totalComDesconto) {
     MAX_PARCELAS_PADRAO,
   );
 
-  const { maxParcelas } = calcularParcelamentoSemJuros(
+  const somenteItensBlack = cart.length > 0 && cart.every(item => item.blackBueno);
+  const { parcelas: maxParcelas } = calcularParcelasBlackBueno(
     baseParcelamento,
     limiteParcelasCarrinho,
+    somenteItensBlack && !possuiSegundoPagamento,
   );
   for (let parcela = 1; parcela <= maxParcelas; parcela += 1) {
     const valorParcela = baseParcelamento / parcela;
@@ -764,6 +768,11 @@ function inicializarCheckout() {
       }
 
       const resumo = calcularResumo(cart);
+      const parcelasEl = document.getElementById("installments");
+      const anterior = parcelasEl?.value;
+      preencherParcelas(resumo.totalGeral);
+      if (parcelasEl && [...parcelasEl.options].some(o => o.value === anterior)) parcelasEl.value = anterior;
+      atualizarResumo(cart);
       const mensagem = montarMensagem(cart);
       if (!mensagem) return;
 
