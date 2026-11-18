@@ -1,7 +1,7 @@
 /* Black Bueno: estilos isolados, sem alterar a identidade do restante do site. */
 .bb-home[hidden],.bb-detail-offer[hidden]{display:none!important}
 .bb-home{
-  --bb-accent:#f4d34e;--bb-dark:#151515;
+  --bb-accent:#F7941D;--bb-dark:#151515;
   color:#fff;background:radial-gradient(ellipse at 95% 0%,#42381b 0%,transparent 50%),#141414;
   border:1px solid #393426;border-radius:16px;padding:clamp(14px,2.8vw,30px);
   margin:12px 0 26px;box-sizing:border-box;overflow:hidden;font-family:inherit;
@@ -21,10 +21,10 @@
 .bb-prev:disabled,.bb-next:disabled{opacity:.38;cursor:default}
 .bb-track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 48px)/4);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-inline:contain;padding:0 0 8px;scrollbar-width:thin;scrollbar-color:#b9a64d #302d25}
 .bb-card{display:flex;flex-direction:column;scroll-snap-align:start;background:#fff;color:#161616;border-radius:10px;overflow:hidden;text-decoration:none;min-width:0;height:100%;border:1px solid #e7e7e7;box-sizing:border-box}
-.bb-card:hover,.bb-card:focus-visible{outline:2px solid #f4d34e;outline-offset:-2px;color:#161616}
+.bb-card:hover,.bb-card:focus-visible{outline:2px solid #F7941D;outline-offset:-2px;color:#161616}
 .bb-photo{position:relative;background:#fff;aspect-ratio:4/3;overflow:hidden}
 .bb-photo img{display:block;width:100%;height:100%;object-fit:contain;padding:10px;box-sizing:border-box}
-.bb-discount{position:absolute;top:9px;left:9px;background:#f4d34e;color:#171717;font-size:12px;font-weight:800;line-height:1;border-radius:5px;padding:7px 8px}
+.bb-discount{position:absolute;top:9px;left:9px;background:#F7941D;color:#171717;font-size:12px;font-weight:800;line-height:1;border-radius:5px;padding:7px 8px}
 .bb-card-copy{display:flex;flex-direction:column;align-items:flex-start;flex:1;padding:13px}
 .bb-card-copy h3{font-size:14px;line-height:1.35;min-height:2.7em;margin:0 0 10px;color:#1d1d1d;font-weight:700}
 .bb-card-copy del,.bb-old-price{display:block;color:#707070;font-size:12px;font-weight:500;text-decoration:line-through}
@@ -33,12 +33,12 @@
 .bb-home .bb-card-cta{display:block;width:100%;box-sizing:border-box;padding:9px 6px;text-align:center;background:#1d1d1d;color:#fff;margin-top:auto}
 .bb-conditions{font-size:11px;line-height:1.5;color:#d1d1d1;margin:14px 0 0}
 .bb-product-card .product-image-container{position:relative}
-.bb-product-badge,.bb-inline-tag{display:inline-block;padding:5px 8px;background:#181818;color:#f4d34e;font-size:10px;letter-spacing:.035em;font-weight:800;border-radius:4px;line-height:1.3}
+.bb-product-badge,.bb-inline-tag{display:inline-block;padding:5px 8px;background:#181818;color:#F7941D;font-size:10px;letter-spacing:.035em;font-weight:800;border-radius:4px;line-height:1.3}
 .bb-product-badge{position:absolute;z-index:2;bottom:7px;left:7px;pointer-events:none}
 .bb-product-card .price-stack{display:flex;flex-direction:column;gap:3px;align-items:flex-start}
 .bb-product-card .price-value,.bb-detail-price .price-value{font-weight:800}
 .bb-offer-caption{font-size:11px;color:#624900;font-weight:650;margin:5px 0}
-.bb-detail-offer{background:#fff9df;border:1px solid #ddce7d;border-radius:9px;padding:12px;margin:10px 0;color:#282318;display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.bb-detail-offer{background:#fff4e6;border:1px solid #f1c28a;border-radius:9px;padding:12px;margin:10px 0;color:#282318;display:flex;flex-direction:column;gap:6px;align-items:flex-start}
 .bb-detail-offer del{color:#747474;margin-right:5px;font-size:14px}
 .bb-detail-offer strong{color:#382f0b;font-size:13px}
 .bb-detail-offer small{font-size:11px;line-height:1.5}
@@ -48,3 +48,28 @@
 @media(max-width:650px){.bb-home{border-radius:10px}.bb-track{grid-auto-columns:calc((100% - 10px)/2);gap:10px}.bb-card-copy{padding:9px}.bb-card-copy h3{font-size:12px}.bb-card-copy strong{font-size:18px}.bb-card-copy p{font-size:11px}.bb-head{gap:12px;margin-bottom:16px}.bb-view-all{padding:11px 15px}.bb-photo img{padding:5px}.bb-discount{font-size:10px;top:6px;left:6px}.bb-navigation{font-size:11px}}
 @media(max-width:340px){.bb-track{grid-auto-columns:76%}}
 @media(prefers-reduced-motion:reduce){.bb-track{scroll-behavior:auto}}
+
+/* Vitrine integrada à identidade Bueno: azul institucional, laranja e preto. */
+.bb-home{--bb-accent:#F7941D;--bb-blue:#2E8BC6;background:#fff;color:#243042;border:1px solid #e4e9ee;border-radius:12px;padding:0;margin:10px 0 24px;box-shadow:0 4px 18px #2430420c}
+.bb-head{position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(112deg,#101820 0%,#18232e 62%,#30343a 100%);padding:clamp(20px,3.4vw,42px);margin:0;border-bottom:4px solid #F7941D;gap:22px}
+.bb-head::before{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(120deg,transparent 67%,#F7941D 67%,#F7941D 70%,transparent 70%,transparent 73%,#F7941D33 73%,#F7941D33 82%,transparent 82%);pointer-events:none}
+.bb-head h2{font-size:clamp(36px,5.8vw,70px);letter-spacing:-.045em}
+.bb-kicker{color:#ffb55c;letter-spacing:.09em}
+.bb-view-all{background:#F7941D;color:#151515;box-shadow:0 3px 0 #ba6210;padding:14px 22px}
+.bb-view-all:hover{background:#ffad48}
+.bb-navigation{padding:20px 22px 0;margin-bottom:12px;color:#243042;font-size:16px}
+.bb-prev,.bb-next{background:#fff;color:#2E8BC6;border:1px solid #cbdde9;font-family:inherit;font-size:26px;line-height:1}
+.bb-prev:hover:not(:disabled),.bb-next:hover:not(:disabled){background:#2E8BC6;color:#fff}
+.bb-track{margin:0 22px;padding:2px 2px 12px;gap:14px;grid-auto-columns:calc((100% - 42px)/4);scrollbar-color:#b7cddd #eef3f7}
+.bb-card{border:1px solid #e0e7ed;border-radius:10px;box-shadow:0 2px 6px #24304208}
+.bb-card:hover,.bb-card:focus-visible{outline-color:#F7941D}
+.bb-photo{background:#fff;border-bottom:1px solid #f0f2f4}
+.bb-discount{background:#F7941D;color:#151515;border-radius:5px}
+.bb-card-copy strong{color:#20354a}
+.bb-home .bb-card-cta{background:#2E8BC6;color:#fff;padding:10px 8px}
+.bb-conditions{margin:0;padding:4px 22px 17px;color:#626e79}
+.bb-offer-caption,.bb-cart-label{color:#914800}
+.bb-detail-offer strong{color:#914800}
+@media(max-width:1000px){.bb-track{grid-auto-columns:calc((100% - 28px)/3)}}
+@media(max-width:650px){.bb-head{padding:20px 16px;gap:14px}.bb-head::before{opacity:.45}.bb-navigation{padding:14px 12px 0;font-size:13px}.bb-track{margin:0 12px;gap:10px;grid-auto-columns:calc((100% - 10px)/2)}.bb-conditions{padding:4px 12px 14px}.bb-view-all{padding:11px 15px}}
+@media(max-width:340px){.bb-track{grid-auto-columns:76%}}
